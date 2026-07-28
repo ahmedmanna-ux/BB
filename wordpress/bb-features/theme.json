@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": false,
+    "color": {
+      "custom": true,
+      "defaultPalette": false,
+      "palette": [
+        { "slug": "brand",            "color": "#ef5d33", "name": "Brand" },
+        { "slug": "brand-hover",      "color": "#fe724a", "name": "Brand hover" },
+        { "slug": "brand-subtle",     "color": "#fdefeb", "name": "Brand subtle" },
+        { "slug": "brand-muted",      "color": "#fcdfd6", "name": "Brand muted" },
+        { "slug": "brand-tertiary",   "color": "#f9bead", "name": "Brand tertiary" },
+        { "slug": "ink",              "color": "#000000", "name": "Ink" },
+        { "slug": "ink-secondary",    "color": "#2f2f2f", "name": "Ink secondary" },
+        { "slug": "ink-tertiary",     "color": "#666666", "name": "Ink tertiary" },
+        { "slug": "surface",          "color": "#ffffff", "name": "Surface" },
+        { "slug": "surface-subtle",   "color": "#f5f5f5", "name": "Surface subtle" },
+        { "slug": "stroke-default",   "color": "#e8e8e8", "name": "Stroke" },
+        { "slug": "accent-blue",      "color": "#ccebff", "name": "Accent blue" },
+        { "slug": "accent-green",     "color": "#aff4c6", "name": "Accent green" }
+      ],
+      "gradients": [
+        {
+          "slug": "cta-band",
+          "name": "CTA band",
+          "gradient": "linear-gradient(90deg, #000000 0%, #ef5d33 115.78%)"
+        }
+      ]
+    },
+    "typography": {
+      "customFontSize": true,
+      "fluid": false,
+      "fontFamilies": [
+        {
+          "slug": "heading",
+          "name": "Stack Sans Headline",
+          "fontFamily": "'Stack Sans Headline', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        },
+        {
+          "slug": "body",
+          "name": "Inter",
+          "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "xs",  "size": "12px", "name": "XS · caption" },
+        { "slug": "sm",  "size": "14px", "name": "SM · body" },
+        { "slug": "md",  "size": "16px", "name": "MD" },
+        { "slug": "lg",  "size": "18px", "name": "LG · h6" },
+        { "slug": "xl",  "size": "24px", "name": "XL · h5" },
+        { "slug": "2xl", "size": "28px", "name": "2XL · h4" },
+        { "slug": "3xl", "size": "36px", "name": "3XL · h3" },
+        { "slug": "4xl", "size": "46px", "name": "4XL · h2" },
+        { "slug": "5xl", "size": "56px", "name": "5XL · h1" }
+      ]
+    },
+    "spacing": {
+      "customSpacingSize": true,
+      "units": ["px", "rem", "%", "vw"],
+      "spacingSizes": [
+        { "slug": "10", "size": "4px",   "name": "1 · 4" },
+        { "slug": "20", "size": "8px",   "name": "2 · 8" },
+        { "slug": "30", "size": "12px",  "name": "3 · 12" },
+        { "slug": "40", "size": "16px",  "name": "4 · 16" },
+        { "slug": "50", "size": "24px",  "name": "5 · 24" },
+        { "slug": "60", "size": "32px",  "name": "6 · 32" },
+        { "slug": "70", "size": "40px",  "name": "7 · 40" },
+        { "slug": "80", "size": "56px",  "name": "8 · 56" },
+        { "slug": "90", "size": "104px", "name": "9 · 104 section" }
+      ]
+    },
+    "border": { "radius": true, "color": true, "style": true, "width": true }
+  }
+}

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Features — BuddyBoss</title>
+<meta name="description" content="Every module BuddyBoss ships with: activity feeds, social groups, forums, messaging, member profiles, media, gamification, moderation, courses and a white-label native app.">
+<link rel="icon" href="assets/icon/logo-buddyboss.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a href="#" aria-label="BuddyBoss home">
+      <img class="site-header__logo" src="assets/icon/logo-buddyboss.svg" alt="BuddyBoss">
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#">Products <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#" class="is-current">Pricing</a>
+      <a href="#">Integrations <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Resources <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="#" class="btn btn--ghost"><img src="assets/icon/hdr-user.svg" alt="" aria-hidden="true">Log In</a>
+      <a href="#" class="btn btn--solid">Get BuddyBoss</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================= HERO ============================= -->
+<section class="hero">
+  <div class="hero__stage" id="heroStage">
+    <div class="hero__copy">
+      <div class="hero__head">
+        <p class="hero__eyebrow">#1 Community Platform in WordPress</p>
+        <h1 class="h1 hero__title">Build a community where people feel connected</h1>
+      </div>
+      <div class="hero__actions">
+        <a href="#" class="btn btn--solid btn--lg">Watch Demo <img src="assets/icon/play-circle.svg" alt="" aria-hidden="true"></a>
+        <a href="#" class="btn btn--ghost btn--lg">Get BuddyBoss Now</a>
+      </div>
+    </div>
+
+    <div class="float float--composer"><img src="assets/img/hero-composer.png" alt="" aria-hidden="true"></div>
+    <div class="float float--avatars"><img src="assets/img/hero-avatars.png" alt="" aria-hidden="true"></div>
+    <div class="float float--notification"><img src="assets/img/hero-notification.png" alt="" aria-hidden="true"></div>
+    <div class="float float--message"><img src="assets/img/hero-message.png" alt="" aria-hidden="true"></div>
+    <div class="float float--update"><img src="assets/img/hero-update.png" alt="" aria-hidden="true"></div>
+    <div class="float float--reactions"><img src="assets/img/hero-reactions.png" alt="" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ======================= MODULE OVERVIEW ======================== -->
+<section class="shell" style="margin-top:88px">
+  <div class="modules" data-stagger>
+    <article class="module-card" style="--i:0">
+      <span class="module-card__icon"><img src="assets/icon/mod-activity.svg" alt=""></span>
+      <h3 class="module-card__title">Activity Feeds</h3>
+      <p class="module-card__text">Keep members engaged with personalized feeds for updates, discussions, polls, and meaningful community interactions.</p>
+    </article>
+    <article class="module-card" style="--i:1">
+      <span class="module-card__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
+      <h3 class="module-card__title">Social Groups &amp; Discussions</h3>
+      <p class="module-card__text">Create dedicated spaces where members connect, collaborate, share ideas, and build communities around shared interests.</p>
+    </article>
+    <article class="module-card" style="--i:2">
+      <span class="module-card__icon"><img src="assets/icon/mod-messaging.svg" alt=""></span>
+      <h3 class="module-card__title">Private Messaging</h3>
+      <p class="module-card__text">Enable secure one-to-one and group conversations with rich media sharing, right inside your community.</p>
+    </article>
+    <article class="module-card" style="--i:3">
+      <span class="module-card__icon"><img src="assets/icon/mod-media.svg" alt=""></span>
+      <h3 class="module-card__title">Media Uploads</h3>
+      <p class="module-card__text">Let members share photos, videos, audio, documents, and more to create richer community experiences.</p>
+    </article>
+    <article class="module-card" style="--i:4">
+      <span class="module-card__icon"><img src="assets/icon/mod-profiles.svg" alt=""></span>
+      <h3 class="module-card__title">Member Profiles</h3>
+      <p class="module-card__text">Build rich member profiles with custom fields, profile types, social links, and personalized privacy controls.</p>
+    </article>
+    <article class="module-card" style="--i:5">
+      <span class="module-card__icon"><img src="assets/icon/mod-reactions.svg" alt=""></span>
+      <h3 class="module-card__title">Reactions &amp; Custom Emoji</h3>
+      <p class="module-card__text">Boost engagement with customizable emoji reactions that make every post, comment, and message more expressive.</p>
+    </article>
+    <article class="module-card" style="--i:6">
+      <span class="module-card__icon"><img src="assets/icon/mod-follow.svg" alt=""></span>
+      <h3 class="module-card__title">Follow &amp; Connections</h3>
+      <p class="module-card__text">Help members grow relationships by following others and building trusted connections across your community.</p>
+    </article>
+    <article class="module-card" style="--i:7">
+      <span class="module-card__icon"><img src="assets/icon/mod-moderation.svg" alt=""></span>
+      <h3 class="module-card__title">Moderation</h3>
+      <p class="module-card__text">Keep your community safe with moderation tools for reports, spam prevention, and healthy member interactions.</p>
+    </article>
+    <article class="module-card" style="--i:8">
+      <span class="module-card__icon"><img src="assets/icon/mod-membership.svg" alt=""></span>
+      <h3 class="module-card__title">Memberships</h3>
+      <p class="module-card__text">Monetize your community with flexible memberships, subscriptions, and premium member experiences.</p>
+    </article>
+    <article class="module-card" style="--i:9">
+      <span class="module-card__icon"><img src="assets/icon/mod-gamification.svg" alt=""></span>
+      <h3 class="module-card__title">Gamifications</h3>
+      <p class="module-card__text">Reward participation with points, badges, ranks, and achievements that motivate members to stay engaged.</p>
+    </article>
+    <article class="module-card" style="--i:10">
+      <span class="module-card__icon"><img src="assets/icon/mod-courses.svg" alt=""></span>
+      <h3 class="module-card__title">Courses</h3>
+      <p class="module-card__text">Create engaging learning experiences with online courses, lessons, quizzes, and seamless LMS integrations.</p>
+    </article>
+    <article class="module-card" style="--i:11">
+      <span class="module-card__icon"><img src="assets/icon/mod-app.svg" alt=""></span>
+      <h3 class="module-card__title">Native Mobile App</h3>
+      <p class="module-card__text">Launch a fully white-label native app with your branding, published under your own developer accounts.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========================= ACTIVITY FEEDS ======================== -->
+<section class="shell section">
+  <div class="block__head" data-reveal>
+    <span class="tag"><span>Activity Feeds</span></span>
+    <h2 class="h2">Activity feeds that feels alive</h2>
+  </div>
+
+  <div class="split" data-reveal>
+    <div class="split__body">
+      <div class="split__intro">
+        <h3 class="h5">Keep members engaged with a personalized activity feed</h3>
+        <p class="body-sm">Give members a familiar social space to share updates, discover conversations, and stay connected with the people and communities that matter most.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Personalized feed</b> — only posts that matter</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Pinned posts</b> — keep key posts on top</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Scheduled posts</b> — write now, publish later</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Polls</b> — ask, vote, decide</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Activity topics</b> — organize the feed</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>Threaded comments</b> — replies stay organized</span></li>
+        <li style="--i:6"><img src="assets/icon/check.svg" alt=""><span><b>Auto refresh</b> — never miss a post</span></li>
+        <li style="--i:7"><img src="assets/icon/check.svg" alt=""><span><b>Post sharing</b> — share anywhere, even WhatsApp</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore Activity Feeds <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="split__panel"><img src="assets/img/panel-feed.png" alt="BuddyBoss activity feed with post composer, reactions and a live poll" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ========================== SOCIAL GROUPS ======================== -->
+<section class="shell section">
+  <div class="block__head" data-reveal>
+    <span class="tag"><span>Social Groups</span></span>
+    <h2 class="h2">Big community, small groups</h2>
+  </div>
+
+  <div class="split split--blue" data-reveal>
+    <div class="split__body split__body--airy">
+      <div class="split__intro">
+        <h3 class="h5">Bring members together in social groups — public, private, or hidden</h3>
+        <p class="body-sm">Create dedicated spaces where members connect around shared interests, collaborate, share content, and build stronger communities.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Group privacy</b> — control who sees and joins</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Group feed</b> — every group gets its own</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Roles &amp; permissions</b> — decide who posts and invites</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Group types</b> — reach every member at once</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Zoom meetings</b> — schedule and sync inside groups</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>Group messages</b> — reach every member at once</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore Social Groups <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="split__panel"><img src="assets/img/panel-groups.png" alt="A BuddyBoss group page showing organizers, members and group cards" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ================= FORUM DISCUSSIONS + MESSAGING ================= -->
+<section class="shell section">
+  <div class="duo">
+    <article class="duo__card" data-reveal="left">
+      <div class="duo__panel"><img src="assets/img/panel-forum.png" alt="A forum discussion thread with nested replies" loading="lazy"></div>
+      <div class="duo__body">
+        <div class="duo__intro">
+          <div class="duo__intro-head">
+            <span class="tag"><span>Forum Discussions</span></span>
+            <h2 class="h3">Discussions worth keeping</h2>
+          </div>
+          <p class="body-sm">Create organized discussion spaces where members can ask questions, share knowledge, exchange ideas, and build a searchable knowledge base through meaningful conversations.</p>
+        </div>
+        <a href="#" class="btn btn--ghost">Explore Forum Discussions <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </article>
+
+    <article class="duo__card" data-reveal="right">
+      <div class="duo__panel"><img src="assets/img/panel-messaging.png" alt="A private message thread with the composer open" loading="lazy"></div>
+      <div class="duo__body">
+        <div class="duo__intro">
+          <div class="duo__intro-head">
+            <span class="tag"><span>Private Messaging</span></span>
+            <h2 class="h3">Say more with a message</h2>
+          </div>
+          <p class="body-sm">Keep conversations inside your community with private one-to-one and group messaging. Share photos, videos, audio, and files while giving you full control over who can message whom.</p>
+        </div>
+        <a href="#" class="btn btn--ghost">Explore Private Messaging <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========================= MEMBER PROFILES ======================= -->
+<section class="shell section">
+  <div class="block__head" data-reveal>
+    <span class="tag"><span>Member Profiles</span></span>
+    <h2 class="h2">Every member. more than a username</h2>
+  </div>
+
+  <div class="split split--green" data-reveal>
+    <div class="split__body split__body--airy">
+      <div class="split__intro">
+        <h3 class="h5">Give every member a rich profile — with the fields you define and privacy down to every field</h3>
+        <p class="body-sm">Members join for the content and stay for the people. Profiles turn a user list into a community — faces, stories, things in common — on a WordPress site you own.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Profile fields</b> — custom field types, no code</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Profile types</b> — unique fields &amp; permissions per type</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Member directory</b> — searchable grid &amp; list views</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Advanced profile search</b> — filter by the fields you choose</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Member connections</b> — connect, follow &amp; message</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>WordPress roles</b> — auto-assigned per profile type</span></li>
+        <li style="--i:6"><img src="assets/icon/check.svg" alt=""><span><b>Avatars &amp; covers</b> — branded defaults, member uploads</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore Member Profiles <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="split__panel"><img src="assets/img/panel-profiles.png" alt="A member profile with about fields, connections and a photo cropper" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ============================ BIG REVIEW ========================= -->
+<section class="shell section">
+  <figure class="review" data-reveal="zoom">
+    <div class="review__stars" aria-label="Rated 5 out of 5">
+      <img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt="">
+    </div>
+    <blockquote class="review__block">
+      <h2 class="h3">A Game-Changer for the WordPress Ecosystem</h2>
+      <p class="review__quote">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+    </blockquote>
+    <figcaption class="review__by">
+      <span class="review__person">
+        <img src="assets/icon/av-review.png" alt="">
+        <span>
+          <span class="review__name" style="display:block">Ryan Carlock</span>
+          <span class="review__role">Managing Director</span>
+        </span>
+      </span>
+      <img class="review__logo" src="assets/icon/logo-foundr.png" alt="foundr">
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ================== REACTIONS + NOTIFICATIONS ==================== -->
+<section class="shell section">
+  <div class="duo">
+    <article class="duo__card" data-reveal="left">
+      <div class="duo__panel"><img src="assets/img/panel-reactions.png" alt="An activity post with the emoji reaction bar open" loading="lazy"></div>
+      <div class="duo__body">
+        <div class="duo__intro">
+          <div class="duo__intro-head">
+            <span class="tag"><span>Like &amp; Reactions</span></span>
+            <h2 class="h3">Reactions beyond the like button</h2>
+          </div>
+          <p class="body-sm">Encourage everyday engagement with customizable emoji reactions across activity posts, comments, blog posts, and private messages. Choose a simple Like button or up to six emotions to make every interaction more expressive.</p>
+        </div>
+        <a href="#" class="btn btn--ghost">Explore Like &amp; Reactions <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </article>
+
+    <article class="duo__card" data-reveal="right">
+      <div class="duo__panel"><img src="assets/img/panel-notifications.png" alt="The notifications panel with mentions, replies and follows" loading="lazy"></div>
+      <div class="duo__body">
+        <div class="duo__intro">
+          <div class="duo__intro-head">
+            <span class="tag"><span>Notifications</span></span>
+            <h2 class="h3">Notifications, never noise</h2>
+          </div>
+          <p class="body-sm">Keep members engaged with personalized notifications across email, web push, and on-screen alerts. Deliver mentions, replies, and invites while letting members choose how and when they stay informed.</p>
+        </div>
+        <a href="#" class="btn btn--ghost">Explore Notifications <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========================== MEDIA UPLOADS ======================== -->
+<section class="shell section">
+  <div class="block__head" data-reveal>
+    <span class="tag"><span>Media Uploads</span></span>
+    <h2 class="h2">Share every media type</h2>
+  </div>
+
+  <div class="stack stack--blue" data-reveal>
+    <div class="stack__panel"><img src="assets/img/panel-media.png" alt="Photo grid, video post and the document uploader in the post composer" loading="lazy"></div>
+    <div class="feature-row" data-stagger>
+      <div class="feature-row__item" style="--i:0">
+        <img src="assets/icon/feat-video.svg" alt="">
+        <h3 class="feature-row__title">Media types</h3>
+        <p class="feature-row__text">Support photos, videos, audio, documents, and more, giving members more ways to share.</p>
+      </div>
+      <div class="feature-row__item" style="--i:1">
+        <img src="assets/icon/feat-images.svg" alt="">
+        <h3 class="feature-row__title">Media albums</h3>
+        <p class="feature-row__text">Organize photos and videos into albums, making media easier to upload, browse, and manage.</p>
+      </div>
+      <div class="feature-row__item" style="--i:2">
+        <img src="assets/icon/feat-upload.svg" alt="">
+        <h3 class="feature-row__title">Upload permissions</h3>
+        <p class="feature-row__text">Control who can upload media with flexible permissions based on roles, profiles, or community settings.</p>
+      </div>
+      <div class="feature-row__item" style="--i:3">
+        <img src="assets/icon/feat-filetext.svg" alt="">
+        <h3 class="feature-row__title">File type control</h3>
+        <p class="feature-row__text">Choose which file formats members can upload to maintain content quality and community security.</p>
+      </div>
+    </div>
+    <div class="stack__cta">
+      <a href="#" class="btn btn--ghost">Explore Media Uploads <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== GAMIFICATIONS ======================== -->
+<section class="shell section">
+  <div class="block__head" data-reveal>
+    <span class="tag"><span>Gamifications</span></span>
+    <h2 class="h2">Gamify your commmunity</h2>
+  </div>
+
+  <div class="stack stack--tight" data-reveal>
+    <div class="stack__panel"><img src="assets/img/panel-gamification.png" alt="Achievement cards, a rank unlock modal and a member card with badges" loading="lazy"></div>
+    <div class="stack__split">
+      <div class="stack__split-left">
+        <h3 class="h4">Reward the behavior you want — community gamification built into WordPress</h3>
+        <p class="body-sm">Keep members motivated with points, badges, ranks, and achievements that reward participation, recognize contributions, and encourage long-term community engagement.</p>
+      </div>
+      <div class="stack__split-right">
+        <ul class="checks checks--roomy" data-stagger>
+          <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Points</b> — reward the actions you choose</span></li>
+          <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Ranks</b> — levels members climb</span></li>
+          <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Content unlocks</b> — courses &amp; hidden groups, per rank</span></li>
+          <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Achievements</b> — badges for any milestone</span></li>
+          <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Leaderboards</b> — by point type &amp; timeframe</span></li>
+          <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>Profile badges</b> — progress on display everywhere</span></li>
+          <li style="--i:6"><img src="assets/icon/check.svg" alt=""><span><b>Awards page</b> — the community trophy case</span></li>
+        </ul>
+        <a href="#" class="btn btn--ghost">Explore More Media Uploads <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MODERATION ========================= -->
+<section class="shell section">
+  <div class="halves">
+    <div class="halves__copy" data-reveal="left">
+      <div class="halves__intro">
+        <div class="halves__intro-head">
+          <span class="tag"><span>Moderation</span></span>
+          <h2 class="h3">Automated moderation tools for your community</h2>
+        </div>
+        <p class="body-sm">Keep your community safe and welcoming with powerful moderation tools that help manage content, reduce spam, and maintain healthy member interactions.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Member blocking</b> — hide anyone, everywhere</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Content reporting</b> — posts, photos, forums &amp; more</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Reporting categories</b> — define what's reportable</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Auto-hide</b> — content hides after enough reports</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Auto suspend</b> — repeat offenders, handled automatically</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>Reported content</b> — review, hide, or restore</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore Moderation <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="halves__art" data-reveal="right"><img src="assets/img/panel-moderation.png" alt="Reported media hidden automatically, with the moderation toggles beside it" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- =========================== OFFLOAD MEDIA ======================= -->
+<section class="shell section">
+  <div class="halves halves--flip">
+    <div class="halves__copy" data-reveal="right">
+      <div class="halves__intro">
+        <div class="halves__intro-head">
+          <span class="tag"><span>Offload Media</span></span>
+          <h2 class="h3">Store media files on external storage</h2>
+        </div>
+        <p class="body-sm">Reduce server storage and improve performance by offloading media files to cloud storage, ensuring faster loading times and a more scalable community.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Global CDN</b> — Cloudflare-fast, worldwide</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Custom domain</b> — what it does</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Bulk offload</b> — what it does</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Download back</b> — what it does</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Smart fallbacks</b> — what it does</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>Cache control</b> — what it does</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore More Member Profiles <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="halves__art" data-reveal="left"><img src="assets/img/panel-offload.png" alt="Media files syncing between a BuddyBoss site and Cloudflare storage" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ============================ SEO SETTINGS ======================= -->
+<section class="shell section">
+  <div class="halves">
+    <div class="halves__copy" data-reveal="left">
+      <div class="halves__intro">
+        <div class="halves__intro-head">
+          <span class="tag"><span>SEO Settings</span></span>
+          <h2 class="h3">Built-in SEO tools</h2>
+        </div>
+        <p class="body-sm">Improve your community's visibility with built-in SEO settings that help search engines discover, index, and rank your content more effectively.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>SEO title &amp; description</b> — control your search snippet</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Open graph</b> — rich previews when shared</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Activity title templates</b> — dynamic tags per post</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Indexing controls</b> — choose what Google sees</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Clean permalinks</b> — custom slugs site-wide</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore More Member Profiles <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="halves__art" data-reveal="right"><img src="assets/img/panel-seo.png" alt="SEO title and description settings with the resulting search snippet" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ========================= MEMBER BLOGGING ======================= -->
+<section class="shell section">
+  <div class="halves halves--flip">
+    <div class="halves__copy" data-reveal="right">
+      <div class="halves__intro">
+        <div class="halves__intro-head">
+          <span class="tag"><span>Member Blogging</span></span>
+          <h2 class="h3">Your community members write the blog</h2>
+        </div>
+        <p class="body-sm">The content you never have to write. Members turn what they know into real articles, and every published post is one more indexable page of user-generated content working for your site.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Blog creator</b> — write from the front end</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Block editor</b> — text, images, galleries, video</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Admin approval</b> — review before it's live</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Writer permissions</b> — who publishes, by role</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>Bookmarks</b> — save posts for later</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>Scheduling</b> — publish now or later</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore Member Blogging <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="halves__art" data-reveal="left"><img src="assets/img/panel-blogging.png" alt="The front-end blog creator with the block editor and publishing options" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ============================ MOBILE APP ========================= -->
+<section class="app-band section">
+  <img class="app-band__poly" src="assets/img/app-polygon.png" alt="" aria-hidden="true">
+  <div class="shell app-band__inner">
+    <div class="app-card" data-reveal="left">
+      <div class="app-card__head">
+        <span class="tag"><span>Mobile App</span></span>
+        <h2 class="h3" style="font-weight:700">Native app, built entirely with Flutter</h2>
+      </div>
+      <p class="body-sm">Launch a fully white-label native community app under your own App Store and Google Play developer accounts—your brand, your icon, your community.</p>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>White-label publishing</b> — your brand, your store</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Rebuilt on Flutter</b> — up to 3× faster loads</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Modern UI/UX</b> — clean &amp; fluid</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Dark mode</b> — from day one</span></li>
+        <li style="--i:4"><img src="assets/icon/check.svg" alt=""><span><b>In-app purchases</b> — courses &amp; memberships</span></li>
+        <li style="--i:5"><img src="assets/icon/check.svg" alt=""><span><b>App blocks</b> — native screens, no code</span></li>
+      </ul>
+      <a href="#" class="btn btn--solid">Explore More Mobile App <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <div class="app-card__stores">
+        <img src="assets/icon/store-android.svg" alt="Android">
+        <img src="assets/icon/store-apple.svg" alt="Apple">
+      </div>
+    </div>
+    <div class="app-art" data-reveal="right">
+      <!-- Four slides to match the four pagination dots in the design. Each slide
+           swaps all three phones at once. Slides 2-4 are placeholders reusing the
+           same three screens until the real ones are exported. -->
+      <div class="phones" data-carousel data-autoplay="4500" aria-roledescription="carousel" aria-label="BuddyBoss native app screens">
+        <div class="phones__track">
+          <div class="phone-set">
+            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="Writing a post in the BuddyBoss app"></span>
+            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="The activity feed in the BuddyBoss app"></span>
+            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="A post with comments in the BuddyBoss app"></span>
+          </div>
+          <div class="phone-set">
+            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="" loading="lazy"></span>
+            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="" loading="lazy"></span>
+            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="" loading="lazy"></span>
+          </div>
+          <div class="phone-set">
+            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="" loading="lazy"></span>
+            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="" loading="lazy"></span>
+            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="" loading="lazy"></span>
+          </div>
+          <div class="phone-set">
+            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="" loading="lazy"></span>
+            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="" loading="lazy"></span>
+            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="" loading="lazy"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= COURSES =========================== -->
+<section class="shell section">
+  <div class="block__head" data-reveal>
+    <span class="tag"><span>BuddyBoss Courses</span></span>
+    <h2 class="h2">Power of native courses</h2>
+  </div>
+
+  <div class="split" data-reveal>
+    <div class="split__body split__body--airy">
+      <div class="split__intro">
+        <h3 class="h5">Create public, private, and hidden groups with dedicated feeds, forums, messaging, and subgroups.</h3>
+        <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
+      </div>
+      <ul class="checks" data-stagger>
+        <li style="--i:0"><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        <li style="--i:1"><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        <li style="--i:2"><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        <li style="--i:3"><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+      </ul>
+      <a href="#" class="btn btn--ghost">Explore Courses <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </div>
+    <div class="split__panel"><img src="assets/img/panel-courses.png" alt="The BuddyBoss courses experience" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ====================== THEME / READYLAUNCH ====================== -->
+<section class="shell section">
+  <div class="products">
+    <article class="product-card" data-reveal="left">
+      <div class="product-card__art"><img src="assets/img/panel-theme.png" alt="A community profile page styled with the BuddyBoss Theme" loading="lazy"></div>
+      <div class="product-card__body">
+        <div class="product-card__copy">
+          <h2 class="h3">BuddyBoss Theme</h2>
+          <p class="body-sm">Take full control of your community's design with a premium BuddyBoss theme, customizing layouts, branding, typography, headers, and member-facing pages to match your brand.</p>
+        </div>
+        <a href="#" class="btn btn--ghost">Explore Theme <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </article>
+
+    <article class="product-card" data-reveal="right">
+      <div class="product-card__art"><img src="assets/img/panel-readylaunch.png" alt="A ReadyLaunch activity feed with sidebar widgets" loading="lazy"></div>
+      <div class="product-card__body">
+        <div class="product-card__copy">
+          <h2 class="h3">ReadyLaunch</h2>
+          <p class="body-sm">Launch your community faster with ReadyLaunch, featuring professionally designed templates, customizable layouts, branding options, beautiful widgets, and polished member-facing pages.</p>
+        </div>
+        <a href="#" class="btn btn--ghost">Explore ReadyLaunch <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================== STATS =========================== -->
+<section class="shell section">
+  <div class="stats" data-reveal>
+    <div class="stat">
+      <div class="stat__top">
+        <p class="stat__num" data-count="30" data-suffix="+">30+</p>
+        <p class="stat__text">Community modules built into one platform for every stage of your community journey</p>
+      </div>
+      <span class="stat__bar"></span>
+    </div>
+    <div class="stat">
+      <div class="stat__top">
+        <p class="stat__num" data-count="300" data-suffix="+">300+</p>
+        <p class="stat__text">Integrations with leading WordPress plugins and trusted third-party services</p>
+      </div>
+      <span class="stat__bar"></span>
+    </div>
+    <div class="stat">
+      <div class="stat__top">
+        <p class="stat__num" data-count="10" data-suffix="+">10+</p>
+        <p class="stat__text">Years of building community software trusted by WordPress creators and businesses</p>
+      </div>
+      <span class="stat__bar"></span>
+    </div>
+    <div class="stat">
+      <div class="stat__top">
+        <p class="stat__num" data-count="65000" data-suffix="+">65,000+</p>
+        <p class="stat__text">Communities worldwide trust BuddyBoss to grow, engage, and retain their members</p>
+      </div>
+      <span class="stat__bar"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== TESTIMONIALS ======================== -->
+<section class="testimonials">
+  <div class="shell">
+    <h2 class="h3 testimonials__title" data-reveal>Trusted by 60,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+    <div class="testimonials__grid" data-stagger>
+      <article class="tcard" style="--i:0">
+        <img class="tcard__badge" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+        <div class="tcard__who">
+          <img src="assets/icon/av-dwayne.png" alt="">
+          <p class="tcard__name">Dwayne Moore</p>
+        </div>
+        <div class="tcard__content">
+          <div class="tcard__stars" aria-label="5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="tcard__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+        </div>
+      </article>
+
+      <article class="tcard" style="--i:1">
+        <img class="tcard__badge" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+        <div class="tcard__who">
+          <img src="assets/icon/av-ryan.png" alt="">
+          <p class="tcard__name">Ryan Carlock</p>
+        </div>
+        <div class="tcard__content">
+          <div class="tcard__stars" aria-label="4 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20-outline.svg" alt="">
+          </div>
+          <p class="tcard__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+        </div>
+      </article>
+
+      <article class="tcard" style="--i:2">
+        <img class="tcard__badge" src="assets/icon/badge-capterra.svg" alt="Capterra">
+        <div class="tcard__who">
+          <img src="assets/icon/av-kyler.png" alt="">
+          <p class="tcard__name">Kyler Boudreau</p>
+        </div>
+        <div class="tcard__content">
+          <div class="tcard__stars" aria-label="5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="tcard__text">I've helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I'm an so excited to have moved my private community and training to this platform.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CTA ============================= -->
+<section class="shell section">
+  <div class="cta" data-reveal="zoom">
+    <h2 class="h1 cta__title">Build your online community today with 50% off</h2>
+    <p class="cta__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    <a href="#" class="btn btn--white btn--lg">Get BuddyBoss Now <img class="ico-arrow" src="assets/icon/cta-arrow.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cols">
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>BuddyBoss Web</h3>
+          <ul><li><a href="#">BuddyBoss Start</a></li><li><a href="#">BuddyBoss Launch</a></li><li><a href="#">BuddyBoss Scale</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>BuddyBoss App</h3>
+          <ul><li><a href="#">BuddyBoss App Solo</a></li><li><a href="#">BuddyBoss App Launch</a></li><li><a href="#">BuddyBoss App Managed</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Services</h3>
+          <ul><li><a href="#">Done For You</a></li><li><a href="#">Agency Program</a></li><li><a href="#">BuddyBoss Bundle</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Try The Demo</h3>
+          <div class="fdemo">
+            <span><img src="assets/icon/ft-apple.svg" alt="iOS demo"></span>
+            <span><img src="assets/icon/ft-android.svg" alt="Android demo"></span>
+            <span><img src="assets/icon/ft-globe.svg" alt="Web demo"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Online Communities</a></li><li><a href="#">Online Course</a></li>
+            <li><a href="#">Gamification</a></li><li><a href="#">Groups</a></li>
+            <li><a href="#">Messaging</a></li><li><a href="#">Media Sharing</a></li>
+            <li><a href="#">Access Control</a></li><li><a href="#">Automation</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Integrations</h3>
+          <ul>
+            <li><a href="#">WooCommerce</a></li><li><a href="#">LearnDash</a></li>
+            <li><a href="#">Zapier</a></li><li><a href="#">Tutor LMS</a></li><li><a href="#">Zoom</a></li>
+          </ul>
+          <a class="flink-more" href="#">View All <img src="assets/icon/ft-arrow.svg" alt="" aria-hidden="true"></a>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Online Courses</a></li><li><a href="#">Communities</a></li>
+            <li><a href="#">Education</a></li><li><a href="#">Coaching</a></li>
+            <li><a href="#">Club &amp; Associates</a></li><li><a href="#">Faith &amp; Non-Profits</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Comparisons</h3>
+          <ul>
+            <li><a href="#">BuddyBoss vs Might Networks</a></li><li><a href="#">BuddyBoss vs Circle</a></li>
+            <li><a href="#">BuddyBoss vs Kajabi</a></li><li><a href="#">BuddyBoss vs Skool</a></li>
+            <li><a href="#">BuddyBoss vs Fluent Community</a></li><li><a href="#">BuddyBoss vs Thinkific</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li><li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Release Notes</a></li><li><a href="#">Roadmap</a></li>
+            <li><a href="#">Developer Docs</a></li><li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Get Help</h3>
+          <ul><li><a href="#">Contact</a></li><li><a href="#">Knowledge Base</a></li><li><a href="#">Community</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Company</h3>
+          <ul><li><a href="#">About BuddyBoss</a></li><li><a href="#">Careers</a></li><li><a href="#">Media Kit</a></li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__mid">
+      <img class="logo" src="assets/icon/ft-logo.svg" alt="BuddyBoss">
+      <div class="fsocial">
+        <a href="#" aria-label="Facebook"><img src="assets/icon/ft-facebook.svg" alt=""></a>
+        <a href="#" aria-label="LinkedIn"><img src="assets/icon/ft-linkedin.svg" alt=""></a>
+        <a href="#" aria-label="X"><img src="assets/icon/ft-x.svg" alt=""></a>
+        <a href="#" aria-label="YouTube"><img src="assets/icon/ft-youtube.svg" alt=""></a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 BuddyBoss. All rights reserved.</p>
+      <nav class="fpolicies" aria-label="Policies">
+        <a href="#">Status</a><i></i>
+        <a href="#">Privacy Policy</a><i></i>
+        <a href="#">Refund Policy</a><i></i>
+        <a href="#">Terms &amp; Conditions</a><i></i>
+        <a href="#">Cookie Policy</a><i></i>
+        <a href="#">FTC Disclosure</a><i></i>
+        <a href="#">BuddyBoss Coupon</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

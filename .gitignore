@@ -1,0 +1,21 @@
+# Whitelist: ignore everything, then admit only the two website builds.
+# Deliberate — the sibling folders hold competitor research, Figma text dumps
+# and pricing work that shouldn't leave the machine, and a blacklist would let
+# them slip in the first time someone runs `git add -A`.
+
+*
+
+!.gitignore
+!README.md
+
+!website/
+!website/**
+!wordpress/
+!wordpress/**
+
+# --- never, under any circumstance --------------------------------------------
+**/node_modules/
+**/.DS_Store
+**/*.log
+**/.env
+**/.claude/
