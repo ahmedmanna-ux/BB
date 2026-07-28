@@ -15,7 +15,7 @@ $bbf_icon = get_theme_file_uri( 'assets/icon/' );
 	<!-- wp:group {"className":"bbf-shell","layout":{"type":"default"}} -->
 	<div class="wp-block-group bbf-shell">
 		<!-- wp:heading {"className":"bbf-h3 bbf-testimonials__title bbf-reveal"} -->
-		<h2 class="wp-block-heading bbf-h3 bbf-testimonials__title bbf-reveal">Trusted by 60,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+		<h2 class="wp-block-heading bbf-h3 bbf-testimonials__title bbf-reveal">Trusted by 65,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
 		<!-- /wp:heading -->
 		<!-- wp:group {"className":"bbf-tcards bbf-stagger","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbf-tcards bbf-stagger">

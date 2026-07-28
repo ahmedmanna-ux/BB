@@ -116,7 +116,9 @@
     requestAnimationFrame(step);
   }
 
-  if (!reduced && 'IntersectionObserver' in window && nums.length) {
+  var showAll = /[?&]reveal\b/.test(window.location.search);
+
+  if (!reduced && !showAll && 'IntersectionObserver' in window && nums.length) {
     var countIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) { return; }

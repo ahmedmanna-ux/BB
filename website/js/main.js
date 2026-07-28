@@ -138,7 +138,9 @@
     requestAnimationFrame(step);
   }
 
-  if (!reduced && 'IntersectionObserver' in window && nums.length) {
+  var showAll = /[?&]reveal\b/.test(location.search);
+
+  if (!reduced && !showAll && 'IntersectionObserver' in window && nums.length) {
     var io2 = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
