@@ -435,9 +435,9 @@
    scales with the column instead of breaking below 1440px. */
 .bbf-phone { position: absolute; margin: 0; }
 .bbf-phone img { width: 100%; height: 100%; object-fit: contain; object-position: top center; }
-.bbf-phone--left   { left: 7.389%;  top: 11.583%; width: 25.604%; aspect-ratio: 212 / 460; }
-.bbf-phone--center { left: 36.436%; top: 7.692%;  width: 27.174%; aspect-ratio: 225 / 489; z-index: 2; }
-.bbf-phone--right  { left: 67.545%; top: 11.583%; width: 24.758%; aspect-ratio: 205 / 445; }
+.bbf-phone--left   { left: 7.389%;  top: 11.583%; width: 25.604%; aspect-ratio: 636 / 1380; }
+.bbf-phone--center { left: 36.436%; top: 7.692%;  width: 27.174%; aspect-ratio: 675 / 1467; z-index: 2; }
+.bbf-phone--right  { left: 67.545%; top: 11.583%; width: 24.719%; aspect-ratio: 614 / 1335; }
 
 @media (prefers-reduced-motion: reduce) {
   .bbf-phones__track { transition: none; }
