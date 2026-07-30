@@ -41,6 +41,9 @@
   --bbf-stroke-default: #e8e8e8;
   --bbf-stroke-soft:    #d9d9d9;
   --bbf-stroke-rule:    #b2b2b2;
+  /* the stat dividers are a 0.5px stroke/default/secondary hairline in
+     Figma; #ececec is what that composites to over white */
+  --bbf-stroke-hairline:#ececec;
   --bbf-blue-50:        #ccebff;
   --bbf-green-200:      #aff4c6;
 
@@ -76,9 +79,14 @@
 .bbf *, .bbf *::before, .bbf *::after { box-sizing: border-box; }
 .bbf .is-layout-flow > * + *,
 .bbf .is-layout-constrained > * + * { margin-block-start: 0; }
-.bbf p, .bbf figure, .bbf blockquote, .bbf ul, .bbf li { margin: 0; }
-.bbf h1, .bbf h2, .bbf h3, .bbf h4, .bbf h5, .bbf h6 { margin: 0; font-weight: inherit; }
-.bbf ul { padding: 0; list-style: none; }
+/* The element lists sit inside :where() so these resets weigh a single
+   class. Without it `.bbf h3` (0,1,1) outranks a component rule like
+   `.bbf-module__title` (0,1,0) and silently eats its margin — which is
+   what pulled the module grid 4px per row off the Figma rhythm. Keeping
+   `.bbf` outside :where() still beats a parent theme's bare `h3 {}`. */
+.bbf :where(p, figure, blockquote, ul, li) { margin: 0; }
+.bbf :where(h1, h2, h3, h4, h5, h6) { margin: 0; font-weight: inherit; }
+.bbf :where(ul) { padding: 0; list-style: none; }
 .bbf img { display: block; max-width: 100%; height: auto; }
 .bbf figure.wp-block-image { margin: 0; line-height: 0; }
 .bbf .wp-block-image img { border-radius: inherit; }
@@ -276,20 +284,23 @@
 }
 .bbf-module__text { font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); color: var(--bbf-text-tertiary); }
 
-/* icon box 48 = 8px chip padding + the 32px Figma icon box; the second
-   pair of numbers is the vector leaf inset inside that 32px box */
-.bbf-i--activity::before     { background-image:url('../icon/mod-activity.svg');     background-position:11.002px 13.002px; background-size:26px 22px; }
-.bbf-i--groups::before       { background-image:url('../icon/mod-groups.svg');       background-position:8.278px 13.997px;  background-size:31.445px 20.003px; }
-.bbf-i--messaging::before    { background-image:url('../icon/mod-messaging.svg');    background-position:12px 11.002px;     background-size:25px 25px; }
-.bbf-i--media::before        { background-image:url('../icon/mod-media.svg');        background-position:11.002px 13.002px; background-size:26px 22px; }
-.bbf-i--profiles::before     { background-image:url('../icon/mod-profiles.svg');     background-position:10.998px 11.002px; background-size:26px 26px; }
-.bbf-i--reactions::before    { background-image:url('../icon/mod-reactions.svg');    background-position:10.998px 11.002px; background-size:26px 26px; }
-.bbf-i--follow::before       { background-image:url('../icon/mod-follow.svg');       background-position:10.006px 11.994px; background-size:29.994px 22.005px; }
-.bbf-i--moderation::before   { background-image:url('../icon/mod-moderation.svg');   background-position:12px 13.002px;     background-size:24px 25px; }
-.bbf-i--membership::before   { background-image:url('../icon/mod-membership.svg');   background-position:10.998px 13.002px; background-size:26px 22px; }
-.bbf-i--gamification::before { background-image:url('../icon/mod-gamification.svg'); background-position:9.001px 13.002px;  background-size:30px 24px; }
-.bbf-i--courses::before      { background-image:url('../icon/mod-courses.svg');      background-position:8px 11.002px;      background-size:31.999px 28px; }
-.bbf-i--app::before          { background-image:url('../icon/mod-app.svg');          background-position:14.998px 10px;     background-size:18px 28px; }
+/* icon box 48 = 8px chip padding + the 32px Figma icon box. These are
+   exported from the `iconFrame` instance, so the 32px box is baked into
+   the file and every icon lands at the same offset. */
+.bbf-module::before { background-position: 8px 8px; background-size: 32px 32px; }
+
+.bbf-i--activity::before     { background-image:url('../icon/mod-activity.svg'); }
+.bbf-i--groups::before       { background-image:url('../icon/mod-groups.svg'); }
+.bbf-i--messaging::before    { background-image:url('../icon/mod-messaging.svg'); }
+.bbf-i--media::before        { background-image:url('../icon/mod-media.svg'); }
+.bbf-i--profiles::before     { background-image:url('../icon/mod-profiles.svg'); }
+.bbf-i--reactions::before    { background-image:url('../icon/mod-reactions.svg'); }
+.bbf-i--follow::before       { background-image:url('../icon/mod-follow.svg'); }
+.bbf-i--moderation::before   { background-image:url('../icon/mod-moderation.svg'); }
+.bbf-i--membership::before   { background-image:url('../icon/mod-membership.svg'); }
+.bbf-i--gamification::before { background-image:url('../icon/mod-gamification.svg'); }
+.bbf-i--courses::before      { background-image:url('../icon/mod-courses.svg'); }
+.bbf-i--app::before          { background-image:url('../icon/mod-app.svg'); }
 
 /* =================================================================
    SPLIT  (headline + bordered card: copy left, artwork right)
@@ -532,7 +543,7 @@
    ================================================================= */
 .bbf-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-block: 24px; }
 .bbf-stat {
-  border-left: 1px solid var(--bbf-stroke-rule);
+  border-left: 1px solid var(--bbf-stroke-hairline);
   padding-inline: 24px; min-height: 176px;
   display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
 }

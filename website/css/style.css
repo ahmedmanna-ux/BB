@@ -54,6 +54,9 @@
   --stroke-default-prim: #e8e8e8;
   --stroke-default-sec:  #d9d9d9;
   --stroke-default-tert: #b2b2b2;
+  /* the stat dividers are a 0.5px stroke/default/secondary hairline in
+     Figma; #ececec is what that composites to over white */
+  --stroke-hairline:     #ececec;
   --stroke-positive-sec: #aff4c6;
 
   --blue-50:  #ccebff;
@@ -557,7 +560,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ================================================================= */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-block: 24px; }
 .stat {
-  border-left: 1px solid var(--stroke-default-tert);
+  border-left: 1px solid var(--stroke-hairline);
   padding-inline: 24px; min-height: 176px;
   display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
 }
@@ -717,8 +720,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    size would distort it. Every rule below restores the original
    two-part geometry: the outer icon box (width/height) and the leaf
    inside it (box minus padding), taken straight from the Figma insets.
+
+   The mod-* module icons are the exception: they are exported from the
+   32x32 `iconFrame` instance itself, so they already carry the icon box
+   in their viewBox and need no inset at all.
    ================================================================= */
 img[src$=".svg"] { box-sizing: border-box; }
+
+img[src*="/mod-"] { width:32px; height:32px; padding:0; }
 
 /* --- 16px boxes -------------------------------------------------- */
 img[src$="hdr-caret.svg"]  { width:16px; height:16px; padding:5.500px 2.500px 4.499px 2.500px; }
@@ -739,22 +748,10 @@ img[src$="ft-android.svg"]  { width:24px; height:24px; padding:3.749px 1.500px 5
 img[src$="ft-globe.svg"]    { width:24px; height:24px; padding:2.251px 2.251px 2.249px 2.249px; }
 
 /* --- 32px boxes -------------------------------------------------- */
-img[src$="mod-activity.svg"],
-img[src$="mod-media.svg"],
 img[src$="feat-video.svg"],
 img[src$="feat-images.svg"]        { width:32px; height:32px; padding:5.002px 3.002px 5.000px 2.998px; }
-img[src$="mod-groups.svg"]         { width:32px; height:32px; padding:5.997px 0.275px 6.000px 0.278px; }
-img[src$="mod-messaging.svg"]      { width:32px; height:32px; padding:3.002px 3.000px 4.000px 4.000px; }
-img[src$="mod-profiles.svg"],
-img[src$="mod-reactions.svg"],
 img[src$="ft-facebook.svg"],
 img[src$="ft-linkedin.svg"]        { width:32px; height:32px; padding:3.002px 3.002px 2.998px 2.998px; }
-img[src$="mod-follow.svg"]         { width:32px; height:32px; padding:3.994px 0 6.001px 2.006px; }
-img[src$="mod-moderation.svg"]     { width:32px; height:32px; padding:5.002px 4.000px 2.000px 4.000px; }
-img[src$="mod-membership.svg"]     { width:32px; height:32px; padding:5.002px 3.002px 5.000px 2.998px; }
-img[src$="mod-gamification.svg"]   { width:32px; height:32px; padding:5.002px 1.002px 3.000px 1.001px; }
-img[src$="mod-courses.svg"]        { width:32px; height:32px; padding:3.002px 0.001px 0.998px 0; }
-img[src$="mod-app.svg"]            { width:32px; height:32px; padding:2.000px 7.002px 2.000px 6.998px; }
 img[src$="feat-upload.svg"]        { width:32px; height:32px; padding:2.998px 4.000px 5.001px 4.000px; }
 img[src$="feat-filetext.svg"]      { width:32px; height:32px; padding:2.998px 5.002px 3.002px 4.998px; }
 img[src$="star-32.svg"]            { width:32px; height:32px; padding:2.000px 2.010px 3.004px 2.006px; }
