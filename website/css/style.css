@@ -275,7 +275,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .float--notification { left: 1190px;    top: 237px;  width: 410px; }    /* box 1190,311 */
 .float--message      { left: 61px;      top: 362px;  width: 504px; }    /* box 61,436 */
 .float--update       { left: 713px;     top: 400px;  width: 360px; }    /* box 733,486 */
-.float--reactions    { left: 1257px;    top: 395px;  width: 167.33px; } /* box 1257,469 */
+.float--reactions    { left: 1257px;    top: 395px;  width: 236.8px; }  /* box 1257,469 — 6 reactions */
 
 @media (prefers-reduced-motion: no-preference) {
   .float--composer     { animation: bob 7.5s ease-in-out infinite; }

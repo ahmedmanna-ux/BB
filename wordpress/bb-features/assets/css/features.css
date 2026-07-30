@@ -248,7 +248,7 @@
 .bbf-float--notification { left: 1190px;   top: 237px;  width: 410px; }
 .bbf-float--message      { left: 61px;     top: 362px;  width: 504px; }
 .bbf-float--update       { left: 713px;    top: 400px;  width: 360px; }
-.bbf-float--reactions    { left: 1257px;   top: 395px;  width: 167.33px; }
+.bbf-float--reactions    { left: 1257px;   top: 395px;  width: 236.8px; }  /* 6 reactions */
 
 @media (prefers-reduced-motion: no-preference) {
   .is-scaled .bbf-float--composer     { animation: bbf-bob 7.5s ease-in-out infinite; }
