@@ -20,8 +20,8 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 			<!-- wp:heading {"className":"bbf-h2"} --><h2 class="wp-block-heading bbf-h2">Power of native courses</h2><!-- /wp:heading -->
 		</div>
 		<!-- /wp:group -->
-		<!-- wp:group {"className":"bbf-split bbf-reveal","layout":{"type":"default"}} -->
-		<div class="wp-block-group bbf-split bbf-reveal">
+		<!-- wp:group {"className":"bbf-split bbf-split--blue bbf-reveal","layout":{"type":"default"}} -->
+		<div class="wp-block-group bbf-split bbf-split--blue bbf-reveal">
 			<!-- wp:group {"className":"bbf-split__body bbf-split__body--airy","layout":{"type":"default"}} -->
 			<div class="wp-block-group bbf-split__body bbf-split__body--airy">
 				<!-- wp:group {"className":"bbf-split__intro","layout":{"type":"default"}} -->

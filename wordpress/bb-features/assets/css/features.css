@@ -45,7 +45,33 @@
      Figma; #ececec is what that composites to over white */
   --bbf-stroke-hairline:#ececec;
   --bbf-blue-50:        #ccebff;
+  --bbf-blue-300:       #33b1ff;
+  --bbf-green-100:      #cff7d3;
   --bbf-green-200:      #aff4c6;
+  --bbf-green-400:      #14ae5c;
+  --bbf-brand-secondary:#fe724a;
+
+  /* --- card edges ----------------------------------------------
+     Module cards are stroked with a gradient, not a flat colour: full
+     strength at two opposite corners, fading to the pale tint across
+     the middle. Figma defines the gradient in object space, so its axis
+     stays a constant 0.83/0.17 mix of the card's two axes no matter how
+     tall the card is. CSS gradients are angular instead, so each card
+     height needs the angle that reproduces that mix:
+         tan(angle) = -4.88 * height / width
+     Hence one --bbf-edge-tilt per card size below. The 624px duo and
+     product cards are the exception: their axis measures 0.5, which is
+     exactly what `to bottom right` yields at any aspect.           */
+  --bbf-edge-tilt: 114deg;              /* 1280 x 599 cards */
+
+  --bbf-stops-peach: var(--bbf-stroke-brand), var(--bbf-stroke-muted) 26%,
+                     var(--bbf-stroke-muted) 74%, var(--bbf-stroke-brand);
+  --bbf-stops-blue:  var(--bbf-blue-300), var(--bbf-blue-50) 26%,
+                     var(--bbf-blue-50) 74%, var(--bbf-blue-300);
+  --bbf-stops-green: var(--bbf-green-400), var(--bbf-green-100) 26%,
+                     var(--bbf-green-100) 74%, var(--bbf-green-400);
+  --bbf-stops-soft:  var(--bbf-brand-secondary), var(--bbf-brand-subtle) 26%,
+                     var(--bbf-brand-subtle) 74%, var(--bbf-brand-secondary);
 
   /* --- type ---------------------------------------------------- */
   --bbf-font-heading: 'Stack Sans Headline', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -308,15 +334,30 @@
    SPLIT  (headline + bordered card: copy left, artwork right)
    ================================================================= */
 .bbf-head { display: flex; flex-direction: column; gap: 12px; max-width: 851px; }
+/* A gradient stroke can't be a border-color, so the border is left
+   transparent and painted by a second background layer clipped to the
+   border box, with the card's own surface clipped to the padding box
+   on top. This is the one approach that still respects border-radius. */
+.bbf-split, .bbf-stack, .bbf-duo__card, .bbf-product {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bbf-surface), var(--bbf-surface)) padding-box,
+    var(--bbf-edge) border-box;
+}
+.bbf-split, .bbf-stack   { --bbf-edge: linear-gradient(var(--bbf-edge-tilt), var(--bbf-stops-peach)); }
+.bbf-split--blue         { --bbf-edge: linear-gradient(var(--bbf-edge-tilt), var(--bbf-stops-blue)); }
+.bbf-split--green        { --bbf-edge: linear-gradient(var(--bbf-edge-tilt), var(--bbf-stops-green)); }
+.bbf-stack--blue         { --bbf-edge-tilt: 108deg;   /* media, 1280 x 795 */
+                           --bbf-edge: linear-gradient(var(--bbf-edge-tilt), var(--bbf-stops-blue)); }
+.bbf-stack--tight        { --bbf-edge-tilt: 106deg; } /* gamifications, 1280 x 915 */
+.bbf-duo__card, .bbf-product { --bbf-edge: linear-gradient(to bottom right, var(--bbf-stops-soft)); }
+
 .bbf-split {
   margin-top: 32px;
   display: flex; align-items: flex-start; gap: 40px;
   padding: 12px 12px 12px 32px;
-  border: 1px solid var(--bbf-stroke-muted);
   border-radius: var(--bbf-radius-3xl);
 }
-.bbf-split--blue  { border-color: var(--bbf-blue-50); }
-.bbf-split--green { border-color: var(--bbf-green-200); }
 .bbf-split__body {
   flex: 1 1 0; min-width: 0; padding-block: 32px;
   display: flex; flex-direction: column; gap: 24px; align-items: flex-start;
@@ -336,8 +377,6 @@
 .bbf-duo__card {
   flex: 1 1 0; min-width: 0;
   display: flex; flex-direction: column; gap: 32px; padding-bottom: 32px;
-  background: var(--bbf-surface);
-  border: 1px solid var(--bbf-stroke-muted);
   border-radius: var(--bbf-radius-3xl);
 }
 /* the card itself has no hover — only the button inside it reacts */
@@ -357,10 +396,8 @@
   margin-top: 32px;
   display: flex; flex-direction: column; gap: 24px;
   padding: 12px 12px 32px;
-  border: 1px solid var(--bbf-stroke-muted);
   border-radius: var(--bbf-radius-3xl);
 }
-.bbf-stack--blue  { border-color: var(--bbf-blue-50); }
 .bbf-stack--tight { padding-bottom: 24px; }
 .bbf-stack__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
 
@@ -502,8 +539,6 @@
 .bbf-products { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bbf-product {
   display: flex; flex-direction: column; gap: 32px; padding-bottom: 32px;
-  background: var(--bbf-surface);
-  border: 1px solid var(--bbf-stroke-muted);
   border-radius: var(--bbf-radius-3xl);
 }
 /* the card itself has no hover — only the button inside it reacts */

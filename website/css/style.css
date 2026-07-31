@@ -61,7 +61,33 @@
 
   --blue-50:  #ccebff;
   --blue-200: #66c4ff;
+  --blue-300: #33b1ff;
+  --green-100:#cff7d3;
   --green-200:#aff4c6;
+  --green-400:#14ae5c;
+
+  /* --- card edges ----------------------------------------------
+     Module cards are stroked with a gradient, not a flat colour: full
+     strength at two opposite corners, fading to the pale tint across
+     the middle. Figma defines the gradient in object space, so its axis
+     stays a constant 0.83/0.17 mix of the card's two axes no matter how
+     tall the card is. CSS gradients are angular instead, so each card
+     height needs the angle that reproduces that mix:
+         tan(angle) = -4.88 * height / width
+     Hence one --edge-tilt per card size below. The 624px duo and product
+     cards are the exception: their axis measures 0.5, which is exactly
+     what `to bottom right` yields at any aspect, so they can stay
+     keyword-based and keep adapting on their own.                  */
+  --edge-tilt: 114deg;                 /* 1280 x 599 cards */
+
+  --stops-peach: var(--stroke-brand-strong), var(--stroke-brand-primary) 26%,
+                 var(--stroke-brand-primary) 74%, var(--stroke-brand-strong);
+  --stops-blue:  var(--blue-300), var(--blue-50) 26%,
+                 var(--blue-50) 74%, var(--blue-300);
+  --stops-green: var(--green-400), var(--green-100) 26%,
+                 var(--green-100) 74%, var(--green-400);
+  --stops-soft:  var(--bg-brand-secondary), var(--bg-brand-subtle) 26%,
+                 var(--bg-brand-subtle) 74%, var(--bg-brand-secondary);
 
   /* --- type ---------------------------------------------------- */
   --font-heading: 'Stack Sans Headline', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -322,15 +348,30 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .block__head { display: flex; flex-direction: column; gap: 12px; max-width: 851px; }
 .block__head .h2 { color: var(--text-primary); }
 
+/* A gradient stroke can't be a border-color, so the border is left
+   transparent and painted by a second background layer clipped to the
+   border box, with the card's own surface clipped to the padding box
+   on top. This is the one approach that still respects border-radius. */
+.split, .stack, .duo__card, .product-card {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
+    var(--edge) border-box;
+}
+.split, .stack            { --edge: linear-gradient(var(--edge-tilt), var(--stops-peach)); }
+.split--blue              { --edge: linear-gradient(var(--edge-tilt), var(--stops-blue)); }
+.split--green             { --edge: linear-gradient(var(--edge-tilt), var(--stops-green)); }
+.stack--blue              { --edge-tilt: 108deg;   /* media, 1280 x 795 */
+                            --edge: linear-gradient(var(--edge-tilt), var(--stops-blue)); }
+.stack--tight             { --edge-tilt: 106deg; } /* gamifications, 1280 x 915 */
+.duo__card, .product-card { --edge: linear-gradient(to bottom right, var(--stops-soft)); }
+
 .split {
   margin-top: 32px;
   display: flex; align-items: flex-start; gap: 40px;
   padding: 12px 12px 12px 32px;
-  border: 1px solid var(--stroke-brand-primary);
   border-radius: var(--radius-3xl);
 }
-.split--blue  { border-color: var(--blue-50); }
-.split--green { border-color: var(--stroke-positive-sec); }
 
 .split__body {
   flex: 1 1 0; min-width: 0; padding-block: 32px;
@@ -354,8 +395,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   flex: 1 1 0; min-width: 0;
   display: flex; flex-direction: column; gap: 32px;
   padding-bottom: 32px;
-  background: var(--bg-default-surface);
-  border: 1px solid var(--stroke-brand-primary);
   border-radius: var(--radius-3xl);
 }
 /* the card itself has no hover — only the button inside it reacts */
@@ -376,10 +415,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: 32px;
   display: flex; flex-direction: column; gap: 24px;
   padding: 12px 12px 32px;
-  border: 1px solid var(--stroke-brand-primary);
   border-radius: var(--radius-3xl);
 }
-.stack--blue { border-color: var(--blue-50); }
 .stack--tight { padding-bottom: 24px; }
 .stack__panel { border-radius: var(--radius-3xl); overflow: hidden; }
 .stack__panel img { width: 100%; height: auto; }
@@ -517,8 +554,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .products { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .product-card {
   display: flex; flex-direction: column; gap: 32px; padding-bottom: 32px;
-  background: var(--bg-default-surface);
-  border: 1px solid var(--stroke-brand-primary);
   border-radius: var(--radius-3xl);
 }
 /* the card itself has no hover — only the button inside it reacts */
