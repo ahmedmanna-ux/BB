@@ -14,6 +14,10 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 <div class="wp-block-group alignfull bbf bbf-hero">
 	<!-- wp:group {"className":"bbf-hero__stage","layout":{"type":"default"}} -->
 	<div class="wp-block-group bbf-hero__stage">
+		<!-- wp:html -->
+		<img class="bbf-hero__deco bbf-hero__glow" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/hero-glow.svg' ) ); ?>" alt="" aria-hidden="true" />
+		<img class="bbf-hero__deco bbf-hero__panel" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/hero-panel.svg' ) ); ?>" alt="" aria-hidden="true" />
+		<!-- /wp:html -->
 		<!-- wp:group {"className":"bbf-hero__copy","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbf-hero__copy">
 			<!-- wp:group {"className":"bbf-hero__head","layout":{"type":"default"}} -->
