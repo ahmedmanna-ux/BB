@@ -549,9 +549,16 @@
 /* =================================================================
    REVIEW  (single social proof)
    ================================================================= */
+/* Same gradient treatment as the module cards, in grey — but a tighter
+   ramp on a steeper axis (0.90/0.10, so 109deg at this card's 1280x422),
+   not the 0.83/26% the module cards use. */
 .bbf-review {
-  background: var(--bbf-surface-subtle);
-  border: 1px solid var(--bbf-stroke-default);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bbf-surface-subtle), var(--bbf-surface-subtle)) padding-box,
+    linear-gradient(109deg,
+      var(--bbf-stroke-rule), var(--bbf-stroke-default) 19%,
+      var(--bbf-stroke-default) 81%, var(--bbf-stroke-rule)) border-box;
   border-radius: var(--bbf-radius-3xl);
   padding: 48px;
   display: flex; flex-direction: column; gap: 32px;

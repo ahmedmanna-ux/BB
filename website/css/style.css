@@ -565,9 +565,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =================================================================
    BIG REVIEW
    ================================================================= */
+/* Same gradient treatment as the module cards, in grey — but a tighter
+   ramp on a steeper axis (0.90/0.10, so 109deg at this card's 1280x422),
+   not the 0.83/26% the module cards use. */
 .review {
-  background: var(--bg-default-subtle);
-  border: 1px solid var(--stroke-default-prim);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-default-subtle), var(--bg-default-subtle)) padding-box,
+    linear-gradient(109deg,
+      var(--stroke-default-tert), var(--stroke-default-prim) 19%,
+      var(--stroke-default-prim) 81%, var(--stroke-default-tert)) border-box;
   border-radius: var(--radius-3xl);
   padding: 48px;
   display: flex; flex-direction: column; gap: 32px;
