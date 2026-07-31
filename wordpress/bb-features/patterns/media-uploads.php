@@ -20,8 +20,8 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 			<!-- wp:heading {"className":"bbf-h2"} --><h2 class="wp-block-heading bbf-h2">Share every media type</h2><!-- /wp:heading -->
 		</div>
 		<!-- /wp:group -->
-		<!-- wp:group {"className":"bbf-stack bbf-stack--blue bbf-reveal","layout":{"type":"default"}} -->
-		<div class="wp-block-group bbf-stack bbf-stack--blue bbf-reveal">
+		<!-- wp:group {"className":"bbf-stack bbf-stack--blue bbf-stack--narrow bbf-reveal","layout":{"type":"default"}} -->
+		<div class="wp-block-group bbf-stack bbf-stack--blue bbf-stack--narrow bbf-reveal">
 			<!-- wp:image {"className":"bbf-stack__panel"} -->
 			<figure class="wp-block-image bbf-stack__panel"><img src="<?php echo esc_url( $bbf_img . 'panel-media.png' ); ?>" alt="Photo grid, video post and the document uploader in the post composer"/></figure>
 			<!-- /wp:image -->

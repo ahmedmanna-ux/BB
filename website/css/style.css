@@ -413,11 +413,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ================================================================= */
 .stack {
   margin-top: 32px;
-  display: flex; flex-direction: column; gap: 24px;
+  display: flex; flex-direction: column; gap: 40px;
   padding: 12px 12px 32px;
   border-radius: var(--radius-3xl);
 }
-.stack--tight { padding-bottom: 24px; }
+/* Media Uploads is the one card that isn't the full 1280 content width —
+   the design has its wrapper at 1240, still flush left at the gutter. */
+.stack--narrow { max-width: 1240px; }
 .stack__panel { border-radius: var(--radius-3xl); overflow: hidden; }
 .stack__panel img { width: 100%; height: auto; }
 
@@ -449,6 +451,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .halves {
   display: grid; grid-template-columns: 432px 1fr; gap: 80px;
   align-items: center;
+  /* the artwork is inset 12px top and bottom inside the 560px row */
+  padding-block: 12px;
 }
 .halves--flip { grid-template-columns: 1fr 436px; }
 .halves__copy { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
@@ -470,8 +474,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    frame. Both sit behind the content. */
 .app-band__deco { position: absolute; pointer-events: none; z-index: 0; }
 .app-band__poly    { left: -84.08px;  top: 216px;    width: 671.17px; height: 582px; }
-.app-band__ellipse { left: 1223.74px; top: -73.87px; width: 545.8px;  height: 547.15px;
-                     transform: rotate(180deg); }
+/* The ellipse is rotated 180deg in Figma, and the export already bakes that
+   in — rotating it again in CSS flipped its gradient, putting the strong end
+   at the top instead of the bottom. This is the clipped visible piece, so it
+   sits at its true bounds with no transform. */
+.app-band__ellipse { left: 1223px; top: 0; width: 377px; height: 474px; }
 .app-band__inner { position: relative; z-index: 2; display: grid;
   grid-template-columns: 436px 1fr; gap: 16px; align-items: stretch; }
 .app-card {
@@ -577,8 +584,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
       var(--stroke-default-prim) 81%, var(--stroke-default-tert)) border-box;
   border-radius: var(--radius-3xl);
   padding: 48px;
-  display: flex; flex-direction: column; gap: 32px;
+  /* stars sit 16px above the quote, then 32px down to the reviewer */
+  display: flex; flex-direction: column; gap: 16px;
 }
+.review__by { margin-top: 16px; }
 .review__block { display: flex; flex-direction: column; gap: 16px; }
 .review__stars { display: flex; gap: 12px; }
 .review__stars img { width: 32px; height: 32px; }
@@ -625,7 +634,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ================================================================= */
 .testimonials {
   background: var(--bg-brand-subtle);
-  padding-block: 72px 80px;
+  padding-block: 80px;
   margin-top: var(--section-gap);
 }
 .testimonials__title { max-width: 795px; margin-bottom: 40px; }

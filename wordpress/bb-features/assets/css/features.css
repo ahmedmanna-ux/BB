@@ -169,7 +169,9 @@
 .bbf .wp-block-button { margin: 0; }
 .bbf-btn .wp-block-button__link {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 10px 16px; min-height: 40px;
+  /* max-height, not min-height: with a 1px border the padding + 22px line box
+     comes to 44 and the button overshoots the design's 40. */
+  padding: 10px 16px; max-height: 40px; overflow: hidden;
   border-radius: var(--bbf-radius-lg);
   font-family: var(--bbf-font-body);
   font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); font-weight: 500;
@@ -200,7 +202,7 @@
   background: var(--bbf-surface); color: var(--bbf-text-brand); border: 0;
 }
 .bbf-btn--lg .wp-block-button__link {
-  min-height: 48px; padding: 12px 24px;
+  max-height: 48px; padding: 12px 24px;
   font-size: var(--bbf-md); line-height: var(--bbf-lh-md);
 }
 .bbf-btn--lg .wp-block-button__link::after {
@@ -394,11 +396,13 @@
    ================================================================= */
 .bbf-stack {
   margin-top: 32px;
-  display: flex; flex-direction: column; gap: 24px;
+  display: flex; flex-direction: column; gap: 40px;
   padding: 12px 12px 32px;
   border-radius: var(--bbf-radius-3xl);
 }
-.bbf-stack--tight { padding-bottom: 24px; }
+/* Media Uploads is the one card that isn't the full 1280 content width —
+   the design has its wrapper at 1240, still flush left at the gutter. */
+.bbf-stack--narrow { max-width: 1240px; }
 .bbf-stack__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
 
 .bbf-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; padding: 8px 24px; }
@@ -424,7 +428,9 @@
 /* =================================================================
    HALVES  (half copy / half artwork)
    ================================================================= */
-.bbf-halves { display: grid; grid-template-columns: 432px 1fr; gap: 80px; align-items: center; }
+/* the artwork is inset 12px top and bottom inside the 560px row */
+.bbf-halves { display: grid; grid-template-columns: 432px 1fr; gap: 80px; align-items: center;
+              padding-block: 12px; }
 .bbf-halves--flip { grid-template-columns: 1fr 436px; }
 .bbf-halves__copy { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
 .bbf-halves__intro { display: flex; flex-direction: column; gap: 16px; }
@@ -450,9 +456,12 @@
   left: -84.08px; top: 216px; width: 671.17px; height: 582px;
   background-image: url('../img/app-polygon.svg');
 }
+/* The ellipse is rotated 180deg in Figma, and the export already bakes that
+   in — rotating it again in CSS flipped its gradient, putting the strong end
+   at the top instead of the bottom. This is the clipped visible piece, so it
+   sits at its true bounds with no transform. */
 .bbf-app::after {
-  left: 1223.74px; top: -73.87px; width: 545.8px; height: 547.15px;
-  transform: rotate(180deg);
+  left: 1223px; top: 0; width: 377px; height: 474px;
   background-image: url('../img/app-ellipse.svg');
 }
 .bbf-app__inner {
@@ -561,8 +570,10 @@
       var(--bbf-stroke-default) 81%, var(--bbf-stroke-rule)) border-box;
   border-radius: var(--bbf-radius-3xl);
   padding: 48px;
-  display: flex; flex-direction: column; gap: 32px;
+  /* stars sit 16px above the quote, then 32px down to the reviewer */
+  display: flex; flex-direction: column; gap: 16px;
 }
+.bbf-review__by { margin-top: 16px; }
 .bbf-review__stars { display: flex; gap: 12px; }
 .bbf-review__stars span {
   width: 32px; height: 32px;
@@ -603,7 +614,7 @@
 /* =================================================================
    TESTIMONIALS
    ================================================================= */
-.bbf-testimonials { background: var(--bbf-brand-subtle); padding-block: 72px 80px; }
+.bbf-testimonials { background: var(--bbf-brand-subtle); padding-block: 80px; }
 .bbf-testimonials__title { max-width: 795px; margin-bottom: 40px; }
 .bbf-tcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
 .bbf-tcard {
