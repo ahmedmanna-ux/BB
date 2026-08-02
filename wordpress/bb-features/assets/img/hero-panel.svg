@@ -1,9 +1,12 @@
-<svg width="250" height="384" viewBox="0 0 250 384" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Rectangle 1178" opacity="0.5" filter="url(#filter0_ii_1001_8451)">
+<!-- Rectangle 1178 from the hero frame, at full size. The rect was already
+     359x441 in the export; only the viewBox was clipped to the frame, which
+     cut 109px off its right side. -->
+<svg width="359" height="441" viewBox="0 0 359 441" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.5" filter="url(#heroPanel)">
 <rect width="359" height="441" rx="48" fill="white" fill-opacity="0.01"/>
 </g>
 <defs>
-<filter id="filter0_ii_1001_8451" x="-16" y="-40" width="391" height="501" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="heroPanel" x="-16" y="-40" width="391" height="501" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
@@ -11,16 +14,13 @@
 <feGaussianBlur stdDeviation="20"/>
 <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
 <feColorMatrix type="matrix" values="0 0 0 0 0.994197 0 0 0 0 0.446335 0 0 0 0 0.29181 0 0 0 1 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_1001_8451"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dx="-16" dy="-68"/>
 <feGaussianBlur stdDeviation="20"/>
 <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
 <feColorMatrix type="matrix" values="0 0 0 0 0.994197 0 0 0 0 0.446335 0 0 0 0 0.29181 0 0 0 1 0"/>
-<feBlend mode="normal" in2="effect1_innerShadow_1001_8451" result="effect2_innerShadow_1001_8451"/>
+<feBlend mode="normal" in2="effect1_innerShadow" result="effect2_innerShadow"/>
 </filter>
-<clipPath id="clip0_1001_8451">
-<rect width="1600" height="640" fill="white" transform="translate(-1350 -256)"/>
-</clipPath>
 </defs>
 </svg>

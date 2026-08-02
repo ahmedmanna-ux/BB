@@ -250,12 +250,25 @@
   padding: 0; display: block;
   transform-origin: top center;
 }
-/* Two decorative shapes behind the floating cards. Both are clipped by the
-   1600 x 640 frame in Figma, so each export is the visible piece and sits at
-   its true coordinate — minus the 74px header, like every other float. */
+/* Two decorative shapes behind the floating cards, both of which run off the
+   edge of the 1600px frame in Figma (the glow 184px past the left, the panel
+   109px past the right). They carry their own bleed, so the shapes are the
+   full ellipse/rect rather than Figma's frame-clipped export — otherwise the
+   arc simply stops mid-air.
+
+   The stage is capped at 1600 and centred, so past that width its edges pull
+   inward and a bleeding shape would come away from the viewport edge. The
+   subtracted gutter cancels that: the glow's left edge lands at -184 and the
+   panel's right edge at 100vw + 109, at every width. */
 .bbf-hero__deco { position: absolute; z-index: 0; pointer-events: none; }
-.bbf-hero__glow  { left: 0;      top: 195px; width: 350px; height: 371px; }  /* frame 0,269 */
-.bbf-hero__panel { left: 1350px; top: 182px; width: 250px; height: 384px; }  /* frame 1350,256 */
+.bbf-hero__glow {                             /* frame -184,269 */
+  top: 195px; width: 534px; height: 535px;
+  left: calc(-184px - max(0px, 100vw - var(--bbf-page-max)) / 2);
+}
+.bbf-hero__panel {                            /* frame 1350,256 */
+  top: 182px; width: 359px; height: 441px;
+  right: calc(-109px - max(0px, 100vw - var(--bbf-page-max)) / 2);
+}
 
 .bbf-hero__copy {
   width: min(779px, 100%);
