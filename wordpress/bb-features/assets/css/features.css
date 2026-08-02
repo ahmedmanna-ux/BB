@@ -476,12 +476,13 @@
   left: -84.08px; top: 216px; width: 671.17px; height: 582px;
   background-image: url('../img/app-polygon.svg');
 }
-/* The ellipse is rotated 180deg in Figma, and the export already bakes that
-   in — rotating it again in CSS flipped its gradient, putting the strong end
-   at the top instead of the bottom. This is the clipped visible piece, so it
-   sits at its true bounds with no transform. */
+/* Rotated 180deg in Figma, and the export bakes that in — rotating it again
+   in CSS flipped its gradient end to end. It also runs 169.5px past the
+   frame's right edge; the band is full-bleed, so anchoring to that edge keeps
+   the bleed off-screen at every width. A left offset would pin it to the
+   viewport and cut it short past 1600. */
 .bbf-app::after {
-  left: 1223px; top: 0; width: 377px; height: 474px;
+  right: -169.54px; top: -73.87px; width: 545.8px; height: 547.15px;
   background-image: url('../img/app-ellipse.svg');
 }
 .bbf-app__inner {

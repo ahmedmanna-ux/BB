@@ -498,7 +498,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    in — rotating it again in CSS flipped its gradient, putting the strong end
    at the top instead of the bottom. This is the clipped visible piece, so it
    sits at its true bounds with no transform. */
-.app-band__ellipse { left: 1223px; top: 0; width: 377px; height: 474px; }
+/* Runs 169.5px past the frame's right edge in Figma. The band is full-bleed,
+   so anchoring to its right edge keeps that bleed off-screen at every width —
+   a left offset would pin it to the viewport and cut it short past 1600. */
+.app-band__ellipse { right: -169.54px; top: -73.87px; width: 545.8px; height: 547.15px; }
 .app-band__inner { position: relative; z-index: 2; display: grid;
   grid-template-columns: 436px 1fr; gap: 16px; align-items: stretch; }
 .app-card {
