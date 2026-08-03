@@ -268,22 +268,37 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .navdrop__toggle img { width: 16px; height: 16px; transition: transform .2s ease; }
 .navdrop.is-open .navdrop__toggle img { transform: rotate(180deg); }
 
+/* The panel starts at the toggle's own bottom edge and pushes itself down
+   with padding, so the 10px of daylight above it is still inside .navdrop.
+   With a gap there instead, the pointer left the menu on the way to it and
+   it shut before you could reach a link. */
 .navdrop__menu {
-  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
-  min-width: 232px; padding: 8px;
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  padding-top: 10px; min-width: 248px;
+  display: flex; flex-direction: column;
+  z-index: 70;
+}
+.navdrop__menu::before {
+  content: ''; position: absolute; inset: 10px 0 0 0;
   background: var(--bg-default-surface);
   border: 1px solid var(--stroke-default-prim);
   border-radius: var(--radius-xl);
   box-shadow: 0 20px 48px rgba(15,15,20,.14);
-  display: flex; flex-direction: column; gap: 2px;
-  z-index: 70;
+}
+/* a little overshoot either side so a diagonal run at the menu stays inside */
+.navdrop__menu::after {
+  content: ''; position: absolute; top: 0; left: -16px; right: -16px; height: 12px;
 }
 .navdrop__menu[hidden] { display: none; }
 .navdrop__menu a {
-  padding: 10px 12px; border-radius: var(--radius-lg);
+  position: relative; z-index: 1;
+  margin: 0 8px; padding: 10px 12px; border-radius: var(--radius-lg);
   font-size: var(--size-sm); line-height: var(--lh-sm);
   color: var(--text-secondary); white-space: nowrap;
 }
+.navdrop__menu a:first-of-type { margin-top: 8px; }
+.navdrop__menu a:last-of-type  { margin-bottom: 8px; }
+.navdrop__menu a + a { margin-top: 2px; }
 .navdrop__menu a:hover { background: var(--bg-brand-subtle); color: var(--text-brand); }
 .navdrop__menu a.is-current { color: var(--text-brand); background: var(--bg-brand-subtle); }
 .navdrop__menu a[aria-disabled="true"] {
@@ -799,40 +814,57 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .fpolicies i { width: 1px; height: 12px; background: var(--stroke-default-sec); display: inline-block; }
 .fpolicies a:hover { color: var(--text-brand); }
 
+/* small one-off utilities, so nothing needs an inline style attribute */
+.section--tight       { margin-top: 88px; }
+.review__name--block  { display: block; }
+.h3--bold             { font-weight: 700; }
+
 /* =================================================================
    SCROLL ANIMATIONS
    ================================================================= */
 /* The hidden start state is scoped to .js so the page is fully readable
    if the script never runs; main.js also force-reveals after 2.5s. */
 @media (prefers-reduced-motion: no-preference) {
-  .js [data-reveal] {
+  .js .reveal {
     opacity: 0;
     transform: translate3d(0, 28px, 0);
     transition: opacity .7s cubic-bezier(.22,.61,.36,1),
                 transform .7s cubic-bezier(.22,.61,.36,1);
     will-change: opacity, transform;
   }
-  .js [data-reveal='left']  { transform: translate3d(-32px, 0, 0); }
-  .js [data-reveal='right'] { transform: translate3d(32px, 0, 0); }
-  .js [data-reveal='zoom']  { transform: scale(.965); }
-  .js [data-reveal].is-visible { opacity: 1; transform: none; }
+  .js .reveal--left  { transform: translate3d(-32px, 0, 0); }
+  .js .reveal--right { transform: translate3d(32px, 0, 0); }
+  .js .reveal--zoom  { transform: scale(.965); }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
 
-  .js [data-stagger] > * {
+  .js .stagger > * {
     opacity: 0; transform: translate3d(0, 22px, 0);
     transition: opacity .55s cubic-bezier(.22,.61,.36,1),
                 transform .55s cubic-bezier(.22,.61,.36,1);
-    transition-delay: calc(var(--i, 0) * 55ms);
   }
-  .js [data-stagger].is-visible > * { opacity: 1; transform: none; }
-
+  .js .stagger.is-visible > * { opacity: 1; transform: none; }
+  /* the step is spelled out per child rather than carried in an inline
+     custom property — Gutenberg keeps classes, not inline styles */
+  .js .stagger > *:nth-child(1)  { transition-delay:   0ms; }
+  .js .stagger > *:nth-child(2)  { transition-delay:  55ms; }
+  .js .stagger > *:nth-child(3)  { transition-delay: 110ms; }
+  .js .stagger > *:nth-child(4)  { transition-delay: 165ms; }
+  .js .stagger > *:nth-child(5)  { transition-delay: 220ms; }
+  .js .stagger > *:nth-child(6)  { transition-delay: 275ms; }
+  .js .stagger > *:nth-child(7)  { transition-delay: 330ms; }
+  .js .stagger > *:nth-child(8)  { transition-delay: 385ms; }
+  .js .stagger > *:nth-child(9)  { transition-delay: 440ms; }
+  .js .stagger > *:nth-child(10) { transition-delay: 495ms; }
+  .js .stagger > *:nth-child(11) { transition-delay: 550ms; }
+  .js .stagger > *:nth-child(12) { transition-delay: 605ms; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  [data-reveal], [data-stagger] > * { opacity: 1 !important; transform: none !important; }
+  .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
 }
 /* failsafe: never leave content stuck invisible */
-.reveal-all [data-reveal],
-.reveal-all [data-stagger] > * {
+.reveal-all .reveal,
+.reveal-all .stagger > * {
   opacity: 1 !important; transform: none !important;
   transition: none !important; transition-delay: 0s !important;
 }

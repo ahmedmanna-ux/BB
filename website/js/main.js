@@ -57,7 +57,7 @@
         too on pointer devices, but only as a shortcut — the click
         behaviour is what keyboard and touch rely on.
      --------------------------------------------------------- */
-  Array.prototype.forEach.call(document.querySelectorAll('[data-navdrop]'), function (drop) {
+  Array.prototype.forEach.call(document.querySelectorAll('.navdrop'), function (drop) {
     var btn = drop.querySelector('.navdrop__toggle');
     var menu = drop.querySelector('.navdrop__menu');
     if (!btn || !menu) return;
@@ -71,26 +71,43 @@
 
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
-      open(menu.hidden);
+      cancelClose();
+      if (menu.hidden) { open(true); pinned = true; }
+      else { open(false); pinned = false; }
     });
 
+    /* following a link should not leave the menu pinned open behind you */
+    menu.addEventListener('click', function () { pinned = false; });
+
+    /* Opening on hover is instant, closing is not: a short grace period means
+       overshooting the panel or cutting a corner doesn't snatch it away, and
+       moving between the toggle and the links never closes it at all.
+       Clicking pins it open so it survives leaving the menu entirely. */
+    var closeTimer = null, pinned = false;
+    function cancelClose() { if (closeTimer) { window.clearTimeout(closeTimer); closeTimer = null; } }
+    function closeSoon() {
+      cancelClose();
+      closeTimer = window.setTimeout(function () { if (!pinned) open(false); }, 260);
+    }
+
     if (hoverable) {
-      drop.addEventListener('mouseenter', function () { open(true); });
-      drop.addEventListener('mouseleave', function () { open(false); });
+      drop.addEventListener('mouseenter', function () { cancelClose(); open(true); });
+      drop.addEventListener('mouseleave', closeSoon);
+      drop.addEventListener('focusin', function () { cancelClose(); open(true); });
     }
 
     document.addEventListener('click', function (e) {
-      if (!drop.contains(e.target)) open(false);
+      if (!drop.contains(e.target)) { cancelClose(); pinned = false; open(false); }
     });
 
     drop.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !menu.hidden) { open(false); btn.focus(); }
+      if (e.key === 'Escape' && !menu.hidden) { cancelClose(); pinned = false; open(false); btn.focus(); }
     });
 
     /* leaving the last item with Tab should close it behind you */
     menu.addEventListener('focusout', function () {
       window.setTimeout(function () {
-        if (!drop.contains(document.activeElement)) open(false);
+        if (!drop.contains(document.activeElement) && !pinned) open(false);
       }, 0);
     });
   });
@@ -125,7 +142,7 @@
   /* ---------------------------------------------------------
      4. Scroll reveals
      --------------------------------------------------------- */
-  var revealables = document.querySelectorAll('[data-reveal], [data-stagger]');
+  var revealables = document.querySelectorAll('.reveal, .stagger');
 
   if (reduced || !('IntersectionObserver' in window)) {
     revealables.forEach(function (el) { el.classList.add('is-visible'); });
@@ -165,12 +182,16 @@
   /* ---------------------------------------------------------
      5. Stat counters
      --------------------------------------------------------- */
-  var nums = document.querySelectorAll('[data-count]');
+  var nums = document.querySelectorAll('.stat__num');
   function formatNum(n) { return n.toLocaleString('en-US'); }
 
+  /* The printed value is the source of truth — "65,000+" counts to 65000 and
+     keeps its "+". Nothing is carried in an attribute Gutenberg would strip. */
   function runCount(el) {
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    var suffix = el.getAttribute('data-suffix') || '';
+    var parts = el.textContent.trim().match(/^([\d,.\s]+)(.*)$/);
+    if (!parts) return;
+    var target = parseInt(parts[1].replace(/\D/g, ''), 10);
+    var suffix = parts[2];
     var dur = 1400, start = null;
     function step(ts) {
       if (start === null) start = ts;
@@ -208,8 +229,8 @@
 
     var frame = stage.parentNode;
     var count = slides.length;
-    var active = parseInt(stage.getAttribute('data-start'), 10) || 0;
-    var delay = parseInt(stage.getAttribute('data-autoplay'), 10) || 4500;
+    var active = 0;
+    var delay = 4500;
     var timer = null;
     var paused = false;
     var onScreen = true;
@@ -287,7 +308,7 @@
     play();
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), initCarousel);
+  Array.prototype.forEach.call(document.querySelectorAll('.phones'), initCarousel);
 
   /* NOTE: no parallax on the product panels. Any translate needs a
      compensating scale, and that re-crops the exported Figma artwork —
