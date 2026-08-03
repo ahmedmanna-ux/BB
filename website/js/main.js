@@ -52,6 +52,50 @@
   }
 
   /* ---------------------------------------------------------
+     2b. Nav dropdown
+        Click to open, click-away or Escape to close. Hover opens it
+        too on pointer devices, but only as a shortcut — the click
+        behaviour is what keyboard and touch rely on.
+     --------------------------------------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-navdrop]'), function (drop) {
+    var btn = drop.querySelector('.navdrop__toggle');
+    var menu = drop.querySelector('.navdrop__menu');
+    if (!btn || !menu) return;
+    var hoverable = window.matchMedia('(hover: hover)').matches;
+
+    function open(state) {
+      drop.classList.toggle('is-open', state);
+      btn.setAttribute('aria-expanded', state ? 'true' : 'false');
+      menu.hidden = !state;
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      open(menu.hidden);
+    });
+
+    if (hoverable) {
+      drop.addEventListener('mouseenter', function () { open(true); });
+      drop.addEventListener('mouseleave', function () { open(false); });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!drop.contains(e.target)) open(false);
+    });
+
+    drop.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) { open(false); btn.focus(); }
+    });
+
+    /* leaving the last item with Tab should close it behind you */
+    menu.addEventListener('focusout', function () {
+      window.setTimeout(function () {
+        if (!drop.contains(document.activeElement)) open(false);
+      }, 0);
+    });
+  });
+
+  /* ---------------------------------------------------------
      3. Hero — scale the 1600px design frame down to the viewport
         so the floating cards keep their exact Figma positions.
         Below 1100px the CSS switches to a reflowed stacked hero

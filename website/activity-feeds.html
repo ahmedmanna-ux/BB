@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activity Feeds — BuddyBoss</title>
+<meta name="description" content="A personalized activity feed for every member: relevant activity, filters, topics, search, polls, scheduled and pinned posts, threaded comments and admin controls.">
+<link rel="icon" href="assets/icon/logo-buddyboss.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a href="index.html" aria-label="BuddyBoss home">
+      <img class="site-header__logo" src="assets/icon/logo-buddyboss.svg" alt="BuddyBoss">
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#">Products <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Pricing</a>
+      <a href="#">Integrations <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Resources <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+
+      <div class="navdrop" data-navdrop>
+        <button type="button" class="navdrop__toggle" aria-expanded="false" aria-controls="navPreview">
+          Preview <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
+        </button>
+        <div class="navdrop__menu" id="navPreview" hidden>
+          <a href="index.html">Features (Top Modules)</a>
+          <a href="activity-feeds.html" class="is-current">Activity Feeds</a>
+          <a href="#" aria-disabled="true">Moderation <span class="navdrop__soon">Soon</span></a>
+          <a href="#" aria-disabled="true">Member Profiles <span class="navdrop__soon">Soon</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="#" class="btn btn--ghost"><img src="assets/icon/hdr-user.svg" alt="" aria-hidden="true">Log In</a>
+      <a href="#" class="btn btn--solid">Get BuddyBoss</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================= HERO ============================= -->
+<section class="mp-hero">
+  <div class="shell mp-hero__inner">
+    <div class="mp-hero__copy" data-reveal="left">
+      <div class="mp-hero__head">
+        <span class="tag"><span>Activity Feed</span></span>
+        <h1 class="h2">Keep members engaged with a personalized activity feed</h1>
+        <p class="body-sm">Give members a familiar social space to share updates, discover conversations, and stay connected with the people and communities that matter most.</p>
+      </div>
+      <div class="mp-hero__actions">
+        <a href="#" class="btn btn--solid">Get BuddyBoss Now</a>
+        <a href="#" class="btn btn--ghost btn--noicon">Check Video Tutorials</a>
+      </div>
+    </div>
+    <div class="mp-hero__art" data-reveal="right">
+      <img src="assets/img/af-hero.png" alt="The BuddyBoss activity feed on desktop and mobile, with a video tutorial play button">
+    </div>
+  </div>
+</section>
+
+<!-- ========================== JUMP CARDS ========================== -->
+<section class="shell section">
+  <div class="jumpcards" data-stagger>
+    <article class="jumpcard" style="--i:0">
+      <span class="jumpcard__num">1</span>
+      <h2 class="jumpcard__title">Discover</h2>
+      <p class="jumpcard__text">A feed built around each member</p>
+    </article>
+    <article class="jumpcard" style="--i:1">
+      <span class="jumpcard__num">2</span>
+      <h2 class="jumpcard__title">Post</h2>
+      <p class="jumpcard__text">Polls, pins, schedules &amp; more</p>
+    </article>
+    <article class="jumpcard" style="--i:2">
+      <span class="jumpcard__num">3</span>
+      <h2 class="jumpcard__title">Engage</h2>
+      <p class="jumpcard__text">Conversations that spread</p>
+    </article>
+    <article class="jumpcard" style="--i:3">
+      <span class="jumpcard__num">4</span>
+      <h2 class="jumpcard__title">Control</h2>
+      <p class="jumpcard__text">Every switch in one admin screen</p>
+    </article>
+  </div>
+</section>
+
+<!-- =========================== DISCOVER =========================== -->
+<section class="shell section mp-discover">
+  <div class="secthead" data-reveal>
+    <span class="tag"><span>Discover</span></span>
+    <h2 class="h2 secthead__title">One feed, personalized for every member</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Relevant Activity</span></span>
+        <h3 class="h3">A personalized feed of only the posts that matter</h3>
+        <p class="body-sm">Turn on Relevant Activity and each feed is assembled from that member's timeline, connections, followed members, joined groups, subscribed forums and @mentions. No black-box algorithm deciding what they see — just their community.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/af-personalized.png" alt="An activity feed showing posts from connections, groups and followed members" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack" data-reveal="left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Feed Filters</span></span>
+          <h3 class="h3">One feed, filtered your way</h3>
+          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-filters.png" alt="The activity filter bar with options for updates, reactions, groups and mentions" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack" data-reveal="right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Activity Topics</span></span>
+          <h3 class="h3">Activity topics that file every post</h3>
+          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-topics.png" alt="Activity topic chips filtering a feed by subject" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--stack" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Activity Search</span></span>
+        <h3 class="h3">Activity search that resurfaces any post in seconds</h3>
+        <p class="body-sm">Full-text search across every post and comment in the feed. That answer from three weeks ago resurfaces in seconds.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/af-search.png" alt="Activity search results for posts and members" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack" data-reveal="left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Activity Auto-Refresh</span></span>
+          <h3 class="h3">Activity feed that refreshes itself</h3>
+          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-refresh.png" alt="A toggle that automatically checks for new activity posts" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack" data-reveal="right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Activity Sharing</span></span>
+          <h3 class="h3">Share activity post to anywhere</h3>
+          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-sharing.png" alt="Sharing an activity post to Messenger, Facebook, X, LinkedIn and WhatsApp" loading="lazy">
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband" data-reveal>
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community's home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ============================= POST ============================= -->
+<section class="shell section mp-post">
+  <div class="secthead" data-reveal>
+    <span class="tag"><span>Post</span></span>
+    <h2 class="h2 secthead__title">Create better posts, build stronger communities</h2>
+  </div>
+
+  <div class="fcards">
+    <div class="fduo fduo--wide">
+      <article class="fcard fcard--stack" data-reveal="left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Schedule Posts</span></span>
+          <h3 class="h3">Write now, publish on time</h3>
+          <p class="body-sm">Group owners and moderators write now and publish later. The "Scheduled posts" queue shows each post with its date — Edit post or Edit schedule any time before it goes live.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-schedule.png" alt="A date picker scheduling a post for a future date" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack" data-reveal="right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Pin Posts</span></span>
+          <h3 class="h3">Pinned posts stays on top</h3>
+          <p class="body-sm">Group owners and moderators can pin posts — one admin switch. "Pin to feed" sits right in the post menu.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-pinned.png" alt="The post menu with Pin to feed and Report post" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Polls</span></span>
+        <h3 class="h3">Polls the community answers right in the feed</h3>
+        <p class="body-sm">Group owners and moderators drop a poll straight into the composer — live vote counts, with a closing date. Votes land where the conversation already is.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/af-polls.png" alt="A poll in the composer with live vote counts" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Post Feature Image</span></span>
+        <h3 class="h3">Cover images that turn updates into articles</h3>
+        <p class="body-sm">Group owners and moderators can add a featured image to a post. The composer's "Add Feature Image" dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/af-cover.png" alt="A post with a wide cover image above the text" loading="lazy">
+    </article>
+  </div>
+
+  <div class="minicards" data-stagger>
+    <article class="minicard" style="--i:0">
+      <img src="assets/icon/feat-filetext.svg" alt="">
+      <h3 class="minicard__title">Edit Activity</h3>
+      <p class="minicard__text">Members fix a typo or reword a post right from its menu, inside the edit window you set — thirty minutes up to forever. The feed stays accurate without a moderator in the loop.</p>
+    </article>
+    <article class="minicard" style="--i:1">
+      <img src="assets/icon/mod-messaging.svg" alt="">
+      <h3 class="minicard__title">Close Comments</h3>
+      <p class="minicard__text">Authors and admins hit "Turn off commenting" right in the post menu. The conversation ends on purpose.</p>
+    </article>
+    <article class="minicard" style="--i:2">
+      <img src="assets/icon/feat-filetext.svg" alt="">
+      <h3 class="minicard__title">Post Title</h3>
+      <p class="minicard__text">The composer carries a "Title (optional)" field you can make mandatory. Required titles turn the whole feed editorial.</p>
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband" data-reveal>
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community's home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ============================ ENGAGE ============================ -->
+<section class="shell section mp-engage">
+  <div class="secthead" data-reveal>
+    <span class="tag"><span>Engage</span></span>
+    <h2 class="h2 secthead__title">The feed that keeps conversations flowing</h2>
+  </div>
+
+  <div class="fcards">
+    <div class="fduo">
+      <article class="fcard fcard--stack" data-reveal="left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Enable Comments</span></span>
+          <h3 class="h3">Turn every post a conversation</h3>
+          <p class="body-sm">The master switch for commenting on activity posts. Turn it on and every post becomes a conversation members join right in the feed.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-eng1.png" alt="A comment box open beneath an activity post" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack" data-reveal="right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Edit Comments</span></span>
+          <h3 class="h3">Timed comment editing</h3>
+          <p class="body-sm">Members fix a typo in their comment inside the window you set. Once it's over, the record stands — no silent rewrites.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-eng2.png" alt="A setting allowing members to edit their comment for a chosen duration" loading="lazy">
+      </article>
+    </div>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack" data-reveal="left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Comment Threading</span></span>
+          <h3 class="h3">Readable threaded comments</h3>
+          <p class="body-sm">Conversations organize into threads at the depth you choose. Decide how many comments show per post, how many load at a time, and how long members can edit their replies.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-eng3.png" alt="A setting organizing replies into threads a chosen number of levels deep" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack" data-reveal="right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Comment Visibility</span></span>
+          <h3 class="h3">Comments visible before the fold</h3>
+          <p class="body-sm">Set the maximum comments displayed per post — three by default. The rest wait behind "View more comments," so long conversations stay tidy in the feed.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/af-eng4.png" alt="A setting for how many comments display per post in activity feeds" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split fcard--flip" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Comments Loading</span></span>
+        <h3 class="h3">Comment batches sized for a fast feed</h3>
+        <p class="body-sm">Set how many more comments arrive with each load. Members pull deeper into a thread at their own pace, and the feed stays fast.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/af-engage-split.png" alt="A setting for how many additional comments load on each request" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband" data-reveal>
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community's home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- =========================== CONTROL ============================ -->
+<section class="shell section mp-control">
+  <div class="secthead" data-reveal>
+    <span class="tag"><span>Control</span></span>
+    <h2 class="h2 secthead__title">Control built into the feed, not bolted on</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Access Control</span></span>
+        <h3 class="h3">Control who can create activity posts</h3>
+        <p class="body-sm">Not every member should be able to post the same things. Access Controls decides who can create activity posts — so paying members, instructors, or your most active contributors get privileges others don't. Set the rule once; administrators always keep full access.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>WordPress role</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Profile type</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Membership</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>GamiPress</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Gender</b> — what it does</span></li>
+        </ul>
+      </div>
+      <img class="fcard__art" src="assets/img/af-ctrl1.png" alt="Access control settings for who can create activity posts" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip" data-reveal>
+      <div class="fcard__copy">
+        <span class="tag"><span>Posts Visibility</span></span>
+        <h3 class="h3">Show activity content to users that matters</h3>
+        <p class="body-sm">Decide which activities are published to the activity feed, including BuddyBoss events, WordPress posts, and custom post types. Enable comments where supported.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        </ul>
+      </div>
+      <img class="fcard__art" src="assets/img/af-ctrl2.png" alt="Toggles choosing which activity types appear in the feed" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- ========================= TESTIMONIALS ========================= -->
+<section class="mp-reviews section">
+  <div class="shell">
+    <h2 class="h2 mp-reviews__title" data-reveal>Trusted by 65,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+    <div class="mp-rgrid" data-stagger>
+      <article class="mp-review" style="--i:0">
+        <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+        <div class="mp-review__who">
+          <img src="assets/icon/av-dwayne.png" alt="">
+          <span class="mp-review__name">Dwayne Moore</span>
+        </div>
+        <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+          <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+        </div>
+        <p class="mp-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+      </article>
+
+      <article class="mp-review" style="--i:1">
+        <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+        <div class="mp-review__who">
+          <img src="assets/icon/av-ryan.png" alt="">
+          <span class="mp-review__name">Ryan Carlock</span>
+        </div>
+        <div class="mp-review__stars" role="img" aria-label="Rated 4 out of 5">
+          <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20-outline.svg" alt="">
+        </div>
+        <p class="mp-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+      </article>
+
+      <article class="mp-review" style="--i:2">
+        <img class="mp-review__src" src="assets/icon/badge-capterra.svg" alt="Capterra">
+        <div class="mp-review__who">
+          <img src="assets/icon/av-kyler.png" alt="">
+          <span class="mp-review__name">Kyler Boudreau</span>
+        </div>
+        <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+          <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+        </div>
+        <p class="mp-review__text">I've helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I'm an so excited to have moved my private community and training to this platform.</p>
+      </article>
+
+      <article class="mp-review" style="--i:3">
+        <img class="mp-review__src" src="assets/icon/badge-capterra.svg" alt="WordPress">
+        <div class="mp-review__who">
+          <img src="assets/icon/av-review.png" alt="">
+          <span class="mp-review__name">Nate Walker</span>
+        </div>
+        <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+          <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+        </div>
+        <p class="mp-review__text">I have used the BuddyBoss theme, platform, mobile app, done-for-you, and agency services for nearly two years. I am constantly impressed with the product and services. The leaders model excellence in software development and communication, feverously making groundbreaking improvements while keeping its community informed. The support services are first-rate, and the employees are dedicated and hardworking. I don't know what I would have done without BuddyBoss during this pandemic. Their software and support team have made it possible to build a custom multisite and mobile app from scratch. I'm incredibly grateful for BuddyBoss and look forward to investing in its continued success.</p>
+      </article>
+
+      <article class="mp-review" style="--i:4">
+        <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+        <div class="mp-review__who">
+          <img src="assets/icon/av-dwayne.png" alt="">
+          <span class="mp-review__name">Kevin Castello</span>
+        </div>
+        <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+          <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+        </div>
+        <p class="mp-review__text">The BuddyBoss DFY Web process was very well laid out. It provided video explanations of each step and instructions for completing those steps. The questionnaires at the beginning of each stage help to set the expectations of the upcoming work. They also offer a full service agency approach if you would prefer to not be involved in the setup at all.</p>
+      </article>
+
+      <article class="mp-review" style="--i:5">
+        <img class="mp-review__src" src="assets/icon/badge-capterra.svg" alt="WordPress">
+        <div class="mp-review__who">
+          <img src="assets/icon/av-kyler.png" alt="">
+          <span class="mp-review__name">Circle One</span>
+        </div>
+        <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+          <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+        </div>
+        <p class="mp-review__text">Their line of products are consistent, elegant, and well thought out to build social platforms. Their support team is one of the best I've ever experienced and we owe our success to their entire team, especially their support staff who are organized, prompt, and reliable. Their support team is above the rest and is essential to the operations of our business and the future of our company's growth. The new releases and the continual improvements the BB team does is excellent! They really know what their doing, consistently deliver, and we're so thankful to have partnered with them two years ago.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== BIG CTA ============================ -->
+<section class="shell section">
+  <div class="ctaband ctaband--center" data-reveal="zoom">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Give your community a feed worth checking daily</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ======================== EXPLORE MODULES ======================= -->
+<section class="shell section">
+  <div class="secthead" data-reveal>
+    <h2 class="h3 secthead__title">Explore more feature modules</h2>
+  </div>
+  <div class="modcards" data-stagger>
+    <article class="modcard" style="--i:0">
+      <span class="modcard__icon"><img src="assets/icon/mod-profiles.svg" alt=""></span>
+      <h3 class="modcard__title">Member Profiles</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard" style="--i:1">
+      <span class="modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
+      <h3 class="modcard__title">Forum &amp; Group</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard" style="--i:2">
+      <span class="modcard__icon"><img src="assets/icon/mod-moderation.svg" alt=""></span>
+      <h3 class="modcard__title">Moderations</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cols">
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>BuddyBoss Web</h3>
+          <ul><li><a href="#">BuddyBoss Start</a></li><li><a href="#">BuddyBoss Launch</a></li><li><a href="#">BuddyBoss Scale</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>BuddyBoss App</h3>
+          <ul><li><a href="#">BuddyBoss App Solo</a></li><li><a href="#">BuddyBoss App Launch</a></li><li><a href="#">BuddyBoss App Managed</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Services</h3>
+          <ul><li><a href="#">Done For You</a></li><li><a href="#">Agency Program</a></li><li><a href="#">BuddyBoss Bundle</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Try The Demo</h3>
+          <div class="fdemo">
+            <span><img src="assets/icon/ft-apple.svg" alt="iOS demo"></span>
+            <span><img src="assets/icon/ft-android.svg" alt="Android demo"></span>
+            <span><img src="assets/icon/ft-globe.svg" alt="Web demo"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Online Communities</a></li><li><a href="#">Online Course</a></li>
+            <li><a href="#">Gamification</a></li><li><a href="#">Groups</a></li>
+            <li><a href="#">Messaging</a></li><li><a href="#">Media Sharing</a></li>
+            <li><a href="#">Access Control</a></li><li><a href="#">Automation</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Integrations</h3>
+          <ul>
+            <li><a href="#">WooCommerce</a></li><li><a href="#">LearnDash</a></li>
+            <li><a href="#">Zapier</a></li><li><a href="#">Tutor LMS</a></li><li><a href="#">Zoom</a></li>
+          </ul>
+          <a class="flink-more" href="#">View All <img src="assets/icon/ft-arrow.svg" alt="" aria-hidden="true"></a>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Online Courses</a></li><li><a href="#">Communities</a></li>
+            <li><a href="#">Education</a></li><li><a href="#">Coaching</a></li>
+            <li><a href="#">Club &amp; Associates</a></li><li><a href="#">Faith &amp; Non-Profits</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Comparisons</h3>
+          <ul>
+            <li><a href="#">BuddyBoss vs Might Networks</a></li><li><a href="#">BuddyBoss vs Circle</a></li>
+            <li><a href="#">BuddyBoss vs Kajabi</a></li><li><a href="#">BuddyBoss vs Skool</a></li>
+            <li><a href="#">BuddyBoss vs Fluent Community</a></li><li><a href="#">BuddyBoss vs Thinkific</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li><li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Release Notes</a></li><li><a href="#">Roadmap</a></li>
+            <li><a href="#">Developer Docs</a></li><li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Get Help</h3>
+          <ul><li><a href="#">Contact</a></li><li><a href="#">Knowledge Base</a></li><li><a href="#">Community</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Company</h3>
+          <ul><li><a href="#">About BuddyBoss</a></li><li><a href="#">Careers</a></li><li><a href="#">Media Kit</a></li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__mid">
+      <img class="logo" src="assets/icon/ft-logo.svg" alt="BuddyBoss">
+      <div class="fsocial">
+        <a href="#" aria-label="Facebook"><img src="assets/icon/ft-facebook.svg" alt=""></a>
+        <a href="#" aria-label="LinkedIn"><img src="assets/icon/ft-linkedin.svg" alt=""></a>
+        <a href="#" aria-label="X"><img src="assets/icon/ft-x.svg" alt=""></a>
+        <a href="#" aria-label="YouTube"><img src="assets/icon/ft-youtube.svg" alt=""></a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 BuddyBoss. All rights reserved.</p>
+      <nav class="fpolicies" aria-label="Policies">
+        <a href="#">Status</a><i></i>
+        <a href="#">Privacy Policy</a><i></i>
+        <a href="#">Refund Policy</a><i></i>
+        <a href="#">Terms &amp; Conditions</a><i></i>
+        <a href="#">Cookie Policy</a><i></i>
+        <a href="#">FTC Disclosure</a><i></i>
+        <a href="#">BuddyBoss Coupon</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
