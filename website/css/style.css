@@ -1087,7 +1087,11 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   content: ''; width: 24px; height: 2px; flex: none;
   border-radius: var(--radius-full); background: var(--text-brand);
 }
-.secthead__title { max-width: 956px; }
+/* Every section head is one line in the design — the four text blocks measure
+   956 / 1090 / 1048 / 996, which is just each title shrink-wrapped. Cap at the
+   widest so none of them wraps; 956 was breaking "Create better posts, build
+   stronger communities" over two lines. */
+.secthead__title { max-width: 1090px; }
 
 /* ---------- feature cards ----------------------------------------- */
 /* This page runs a 140px section rhythm and an 80px rhythm inside each
