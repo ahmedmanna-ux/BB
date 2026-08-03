@@ -186,20 +186,25 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ---------- buttons ---------------------------------------------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px; padding: 10px 16px; max-height: 40px;
+  gap: 8px; max-height: 40px;
+  /* Figma draws button strokes inside the box, so every button carries the
+     border and takes it out of its own padding. Without this an outlined
+     button lands 2px over on both axes and, in a stretch row, drags its
+     unbordered sibling with it. */
+  border: 1px solid transparent; padding: 9px 15px;
   border-radius: var(--radius-lg);
   font-size: var(--size-sm); line-height: var(--lh-sm); font-weight: 500;
   white-space: nowrap; overflow: hidden;
   transition: background-color .18s ease, color .18s ease, border-color .18s ease;
 }
 .btn img, .btn svg { width: 20px; height: 20px; flex: none; }
-.btn--ghost { border: 1px solid var(--stroke-brand-strong); color: var(--text-brand); }
+.btn--ghost { border-color: var(--stroke-brand-strong); color: var(--text-brand); }
 .btn--ghost:hover { background: var(--bg-brand-subtle); }
 .btn--solid { background: var(--bg-brand-primary); color: var(--text-light); }
 .btn--solid:hover { background: var(--bg-brand-secondary); }
 .btn--white { background: var(--bg-default-surface); color: var(--text-brand); }
 .btn--white:hover { background: var(--bg-brand-subtle); }
-.btn--lg { min-height: 48px; max-height: none; padding: 12px 24px;
+.btn--lg { min-height: 48px; max-height: none; padding: 11px 23px;
            font-size: var(--size-md); line-height: var(--lh-md); }
 .btn--lg img, .btn--lg svg { width: 24px; height: 24px; }
 /* Buttons never move on hover — nothing shifts, not the button and not the
@@ -1021,16 +1026,31 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
    500 + 82) and lets the shadow overhang crop against the band. */
 .mp-hero__inner {
   position: relative; z-index: 2;
-  display: grid; grid-template-columns: 547px 1fr; grid-template-rows: 500px;
-  gap: 61px; align-items: center;
+  display: grid; grid-template-columns: 547px minmax(0, 1fr); grid-template-rows: 500px;
+  gap: 61px; align-items: start;
   padding-block: 64px 82px;
 }
 .mp-hero__copy { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
-.mp-hero__head { display: flex; flex-direction: column; gap: 16px; }
-.mp-hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-.mp-hero__art { justify-self: end; width: 672px; max-width: 100%;
-                display: flex; align-items: center; }
-.mp-hero__art img { width: 100%; height: auto; }
+.mp-hero__head { display: flex; flex-direction: column; gap: 12px; }
+/* the hero eyebrow is the 18/26 headline variant with no leading rule —
+   the section eyebrows further down the page keep the dash */
+.mp-hero__head .tag { padding-block: 0; gap: 0; }
+.mp-hero__head .tag::before { display: none; }
+.mp-hero__head .tag span {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: var(--size-lg); line-height: var(--lh-lg); letter-spacing: 1.44px;
+}
+.mp-hero__head p { max-width: 507px;
+                   font-size: var(--size-md); line-height: var(--lh-md); }
+.mp-hero__actions { display: flex; gap: 24px; flex-wrap: wrap; }
+/* The art frame is 672x500, but the export carries a ~32px shadow halo on
+   every side (737x565), so the picture is pinned by that overhang rather than
+   by the box. Kept in percentages so it scales with the column instead of
+   spilling over the copy on mid-size screens. */
+.mp-hero__art { justify-self: end; position: relative;
+                width: 672px; max-width: 100%; aspect-ratio: 672 / 500; }
+.mp-hero__art img { position: absolute; left: -4.7619%; top: -6.6%;
+                    width: 109.6726%; height: auto; max-width: none; }
 /* both shapes bleed off the frame, so they carry their own overhang and
    anchor to the band edge rather than the centred content column */
 /* Both shapes are clipped by the 1600x720 frame, so each export is the
@@ -1213,8 +1233,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 
 /* ---------- module page responsive -------------------------------- */
 @media (max-width: 1100px) {
-  .mp-hero__inner { grid-template-columns: 1fr; gap: 40px; padding-block: 48px 56px; }
-  .mp-hero__art { justify-self: start; }
+  .mp-hero__inner { grid-template-columns: 1fr; grid-template-rows: auto; gap: 40px;
+                    padding-block: 48px 56px; }
+  .mp-hero__art { justify-self: start; width: 100%; }
   .jumpcards { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .fcard--split, .fcard--flip { grid-template-columns: 1fr; }
   .fcard--flip .fcard__art { order: 0; }

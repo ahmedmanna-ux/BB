@@ -170,8 +170,10 @@
 .bbf-btn .wp-block-button__link {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   /* max-height, not min-height: with a 1px border the padding + 22px line box
-     comes to 44 and the button overshoots the design's 40. */
-  padding: 10px 16px; max-height: 40px; overflow: hidden;
+     comes to 44 and the button overshoots the design's 40. Figma draws the
+     stroke inside the box, so every button carries the border and takes it
+     out of its own padding — otherwise outlined buttons run 2px wide. */
+  border: 1px solid transparent; padding: 9px 15px; max-height: 40px; overflow: hidden;
   border-radius: var(--bbf-radius-lg);
   font-family: var(--bbf-font-body);
   font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); font-weight: 500;
@@ -188,21 +190,21 @@
 
 .bbf-btn--ghost .wp-block-button__link {
   background: transparent; color: var(--bbf-text-brand);
-  border: 1px solid var(--bbf-stroke-brand);
+  border-color: var(--bbf-stroke-brand);
 }
 .bbf-btn--ghost .wp-block-button__link:hover { background: var(--bbf-brand-subtle); }
 
 .bbf-btn--solid .wp-block-button__link {
-  background: var(--bbf-brand); color: var(--bbf-text-light); border: 0;
+  background: var(--bbf-brand); color: var(--bbf-text-light);
 }
 .bbf-btn--solid .wp-block-button__link:hover { background: var(--bbf-brand-hover); }
 .bbf-btn--solid .wp-block-button__link::after { filter: brightness(0) invert(1); }
 
 .bbf-btn--white .wp-block-button__link {
-  background: var(--bbf-surface); color: var(--bbf-text-brand); border: 0;
+  background: var(--bbf-surface); color: var(--bbf-text-brand);
 }
 .bbf-btn--lg .wp-block-button__link {
-  max-height: 48px; padding: 12px 24px;
+  max-height: 48px; padding: 11px 23px;
   font-size: var(--bbf-md); line-height: var(--bbf-lh-md);
 }
 .bbf-btn--lg .wp-block-button__link::after {
