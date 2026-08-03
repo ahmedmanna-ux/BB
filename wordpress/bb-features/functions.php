@@ -17,6 +17,7 @@ defined( 'ABSPATH' ) || exit;
 const VERSION   = '1.0.0';
 const PREFIX    = 'bb-features';
 const PATTERN_CATEGORY = 'bb-features';
+const MODULE_CATEGORY  = 'bb-module-pages';
 
 /**
  * Cache-bust on file mtime in development, fall back to VERSION in production.
@@ -39,6 +40,16 @@ function enqueue_styles(): void {
 		get_theme_file_uri( 'assets/css/features.css' ),
 		array(),
 		asset_version( 'assets/css/features.css' )
+	);
+
+	/* The module pages (Activity Feeds, and the ones that follow it) are a
+	   second, self-contained scope — .bbm rather than .bbf — so they load as
+	   their own sheet instead of growing features.css. */
+	wp_enqueue_style(
+		PREFIX . '-module-page',
+		get_theme_file_uri( 'assets/css/module-page.css' ),
+		array(),
+		asset_version( 'assets/css/module-page.css' )
 	);
 }
 
@@ -100,6 +111,14 @@ function register_pattern_category(): void {
 		array(
 			'label'       => __( 'BuddyBoss — Features', 'bb-features' ),
 			'description' => __( 'Marketing sections from the Features (Top Modules) design.', 'bb-features' ),
+		)
+	);
+
+	register_block_pattern_category(
+		MODULE_CATEGORY,
+		array(
+			'label'       => __( 'BuddyBoss — Module pages', 'bb-features' ),
+			'description' => __( 'Sections for the per-module marketing pages, starting with Activity Feeds.', 'bb-features' ),
 		)
 	);
 }

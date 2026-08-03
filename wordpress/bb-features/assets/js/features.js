@@ -1,6 +1,7 @@
 /* =============================================================
    BB Features — front-end behaviour
    Scroll reveals, hero framing, stat counters, app carousel.
+   Drives both scopes: .bbf (Features page) and .bbm (module pages).
 
    Front end only: functions.php never enqueues this in the editor,
    and the reveal start state is scoped to `html.js`, which this file
@@ -11,7 +12,7 @@
   'use strict';
 
   var root = document.documentElement;
-  if (!document.querySelector('.bbf')) { return; }
+  if (!document.querySelector('.bbf, .bbm')) { return; }
 
   root.classList.add('js');
 
@@ -58,7 +59,7 @@
   /* ---------------------------------------------------------
      2. Scroll reveals
      --------------------------------------------------------- */
-  var revealables = document.querySelectorAll('.bbf .bbf-reveal, .bbf .bbf-stagger');
+  var revealables = document.querySelectorAll('.bbf .bbf-reveal, .bbf .bbf-stagger, .bbm .bbm-reveal, .bbm .bbm-stagger, .bbm.bbm-reveal, .bbm.bbm-stagger');
 
   if (reduced || !('IntersectionObserver' in window)) {
     Array.prototype.forEach.call(revealables, function (el) { el.classList.add('is-visible'); });

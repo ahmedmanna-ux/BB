@@ -1,0 +1,537 @@
+/* =============================================================
+   BB Features — module page sections
+   Built from Figma: BuddyBoss-Website / Activity Feed / 1886:10326
+
+   A second, self-contained scope alongside .bbf. The module pages
+   (Activity Feeds now, Moderation and Member Profiles when they
+   land) share this one stylesheet: everything is prefixed bbm- and
+   every token is declared on .bbm, so it neither reads from nor
+   leaks into the Features styles or the parent theme.
+
+   Stack Sans Headline is licensed and is not bundled — see the note
+   at the top of features.css.
+   ============================================================= */
+.bbm {
+  /* --- colour -------------------------------------------------- */
+  --bbm-text-primary:        #000000;
+  --bbm-text-secondary:      #2f2f2f;
+  --bbm-text-tertiary:       #666666;
+  --bbm-text-light:          #ffffff;
+  --bbm-text-brand:          #ef5d33;
+
+  --bbm-bg-brand-primary:    #ef5d33;
+  --bbm-bg-brand-secondary:  #fe724a;
+  --bbm-bg-brand-subtle:     #fdefeb;
+  --bbm-bg-brand-muted:      #fcdfd6;
+  --bbm-bg-brand-tertiary:   #f9bead;
+  --bbm-bg-default-surface:  #ffffff;
+  --bbm-bg-default-subtle:   #f5f5f5;
+  --bbm-bg-default-black:    #0c0c0d;
+
+  --bbm-stroke-brand-strong: #ef5d33;
+  --bbm-stroke-brand-primary:#fcdfd6;
+  --bbm-stroke-brand-second: #f9bead;
+  --bbm-stroke-default-prim: #e8e8e8;
+  --bbm-stroke-default-sec:  #d9d9d9;
+  --bbm-stroke-default-tert: #b2b2b2;
+  /* the stat dividers are a 0.5px stroke/default/secondary hairline in
+     Figma; #ececec is what that composites to over white */
+  --bbm-stroke-hairline:     #ececec;
+  --bbm-stroke-positive-sec: #aff4c6;
+
+  --bbm-blue-50:  #ccebff;
+  --bbm-blue-200: #66c4ff;
+  --bbm-blue-300: #33b1ff;
+  --bbm-green-100:#cff7d3;
+  --bbm-green-200:#aff4c6;
+  --bbm-green-400:#14ae5c;
+
+  /* --- card edges ----------------------------------------------
+     Module cards are stroked with a gradient, not a flat colour: full
+     strength at two opposite corners, fading to the pale tint across
+     the middle. Figma defines the gradient in object space, so its axis
+     stays a constant 0.83/0.17 mix of the card's two axes no matter how
+     tall the card is. CSS gradients are angular instead, so each card
+     height needs the angle that reproduces that mix:
+         tan(angle) = -4.88 * height / width
+     Hence one --edge-tilt per card size below. The 624px duo and product
+     cards are the exception: their axis measures 0.5, which is exactly
+     what `to bottom right` yields at any aspect, so they can stay
+     keyword-based and keep adapting on their own.                  */
+  --bbm-edge-tilt: 114deg;                 /* 1280 x 599 cards */
+
+  --bbm-stops-peach: var(--bbm-stroke-brand-strong), var(--bbm-stroke-brand-primary) 26%,
+                 var(--bbm-stroke-brand-primary) 74%, var(--bbm-stroke-brand-strong);
+  --bbm-stops-blue:  var(--bbm-blue-300), var(--bbm-blue-50) 26%,
+                 var(--bbm-blue-50) 74%, var(--bbm-blue-300);
+  --bbm-stops-green: var(--bbm-green-400), var(--bbm-green-100) 26%,
+                 var(--bbm-green-100) 74%, var(--bbm-green-400);
+  --bbm-stops-soft:  var(--bbm-bg-brand-secondary), var(--bbm-bg-brand-subtle) 26%,
+                 var(--bbm-bg-brand-subtle) 74%, var(--bbm-bg-brand-secondary);
+
+  /* --- type ---------------------------------------------------- */
+  --bbm-font-heading: 'Stack Sans Headline', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --bbm-font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --bbm-size-xs:  12px;  --bbm-lh-xs:  18px;
+  --bbm-size-sm:  14px;  --bbm-lh-sm:  22px;
+  --bbm-size-md:  16px;  --bbm-lh-md:  24px;
+  --bbm-size-lg:  18px;  --bbm-lh-lg:  26px;
+  --bbm-size-xl:  24px;  --bbm-lh-xl:  32px;
+  --bbm-size-2xl: 28px;  --bbm-lh-2xl: 36px;
+  --bbm-size-3xl: 36px;  --bbm-lh-3xl: 44px;
+  --bbm-size-4xl: 46px;  --bbm-lh-4xl: 56px;
+  --bbm-size-5xl: 56px;  --bbm-lh-5xl: 68px;
+
+  /* --- radius / spacing ---------------------------------------- */
+  --bbm-radius-sm: 4px; --bbm-radius-md: 6px; --bbm-radius-lg: 8px;
+  --bbm-radius-xl: 12px; --bbm-radius-3xl: 24px; --bbm-radius-full: 999px;
+
+  /* --- layout -------------------------------------------------- */
+  --bbm-page-max:   1600px;   /* Figma frame width          */
+  --bbm-header-h:   74px;     /* the bar overlays the hero  */
+  --bbm-content-max:1280px;   /* Figma inner content width  */
+  --bbm-gutter:     160px;    /* Figma side padding         */
+  --bbm-section-gap:104px;    /* Figma vertical rhythm      */
+
+  /* --- effects ------------------------------------------------- */
+  --bbm-shadow-img1: 0 0 32px rgba(0,0,0,.12);
+  --bbm-shadow-img2: -16px 0 32px rgba(0,0,0,.24);
+}
+/* ---------- reset ------------------------------------------------- */
+.bbm, .bbm *, .bbm *::before, .bbm *::after { box-sizing: border-box; }
+.bbm {
+  margin: 0;
+  font-family: var(--bbm-font-body);
+  font-size: var(--bbm-size-md);
+  line-height: var(--bbm-lh-md);
+  color: var(--bbm-text-primary);
+  background: var(--bbm-bg-default-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+.bbm :where(img, svg) { display: block; max-width: 100%; }
+.bbm :where(p, figure, blockquote, dl, dd) { margin: 0; }   /* figure ships with 1em 40px in every UA */
+.bbm :where(h1,h2,h3,h4,h5,h6) { margin: 0; font-weight: inherit; }
+.bbm :where(ul) { margin: 0; padding: 0; list-style: none; }
+.bbm :where(a) { color: inherit; text-decoration: none; }
+.bbm :where(button) { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.bbm :focus-visible { outline: 2px solid var(--bbm-text-brand); outline-offset: 2px; border-radius: 4px; }
+
+/* Heading face: when Stack Sans is missing, Inter needs a nudge to
+   sit at the same optical weight/width as the Figma comps. */
+.bbm-h1, .bbm-h2, .bbm-h3, .bbm-h4, .bbm-h5, .bbm-h6, .bbm-stat__num, .bbm-eyebrow-lg {
+  font-family: var(--bbm-font-heading);
+  letter-spacing: -0.022em;
+}
+
+/* ---------- layout helpers --------------------------------------- */
+.bbm-shell {                       /* full-bleed band, 160px gutters      */
+  width: 100%;
+  max-width: var(--bbm-page-max);
+  margin-inline: auto;
+  padding-inline: var(--bbm-gutter);
+}
+
+/* ---------- type scale ------------------------------------------- */
+.bbm-h1 { font-size: var(--bbm-size-5xl); line-height: var(--bbm-lh-5xl); font-weight: 700; }
+.bbm-h2 { font-size: var(--bbm-size-4xl); line-height: var(--bbm-lh-4xl); font-weight: 600; }
+.bbm-h3 { font-size: var(--bbm-size-3xl); line-height: var(--bbm-lh-3xl); font-weight: 600; }
+.bbm-h4 { font-size: var(--bbm-size-2xl); line-height: var(--bbm-lh-2xl); font-weight: 600; }
+.bbm-h5 { font-size: var(--bbm-size-xl);  line-height: var(--bbm-lh-xl);  font-weight: 400; }
+.bbm-h6 { font-size: var(--bbm-size-lg);  line-height: var(--bbm-lh-lg);  font-weight: 600; }
+
+.bbm-body-sm { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-secondary); }
+.bbm-body-md { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
+
+/* ---------- section tag ------------------------------------------ */
+.bbm-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding-block: 3px;
+}
+.bbm-tag::before {
+  content: ''; width: 24px; height: 2px; flex: none;
+  border-radius: var(--bbm-radius-full);
+  background: var(--bbm-bg-brand-primary);
+}
+.bbm-tag span {
+  font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm);
+  font-weight: 600; color: var(--bbm-text-brand);
+  text-transform: uppercase; white-space: nowrap;
+}
+
+/* ---------- buttons ---------------------------------------------- */
+.bbm-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; max-height: 40px;
+  /* Figma draws button strokes inside the box, so every button carries the
+     border and takes it out of its own padding. Without this an outlined
+     button lands 2px over on both axes and, in a stretch row, drags its
+     unbordered sibling with it. */
+  border: 1px solid transparent; padding: 9px 15px;
+  border-radius: var(--bbm-radius-lg);
+  font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); font-weight: 500;
+  white-space: nowrap; overflow: hidden;
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.bbm-btn img, .bbm-btn svg { width: 20px; height: 20px; flex: none; }
+.bbm-btn--ghost { border-color: var(--bbm-stroke-brand-strong); color: var(--bbm-text-brand); }
+.bbm-btn--ghost:hover { background: var(--bbm-bg-brand-subtle); }
+.bbm-btn--solid { background: var(--bbm-bg-brand-primary); color: var(--bbm-text-light); }
+.bbm-btn--solid:hover { background: var(--bbm-bg-brand-secondary); }
+.bbm-btn--white { background: var(--bbm-bg-default-surface); color: var(--bbm-text-brand); }
+.bbm-btn--white:hover { background: var(--bbm-bg-brand-subtle); }
+.bbm-btn--lg { min-height: 48px; max-height: none; padding: 11px 23px;
+           font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); }
+.bbm-btn--lg img, .bbm-btn--lg svg { width: 24px; height: 24px; }
+/* Buttons never move on hover — nothing shifts, not the button and not the
+   icon inside it. Colour is the only hover feedback. */
+
+/* icon recolouring for exported single-colour vectors */
+.bbm-ico-arrow--brand { filter: none; }
+
+/* ---------- feature check list ----------------------------------- */
+.bbm-checks { display: flex; flex-direction: column; gap: 8px; }
+.bbm-checks--roomy { gap: 12px; }
+.bbm-checks li {
+  display: flex; align-items: flex-start; gap: 8px; padding-block: 1px;
+  font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm);
+  color: var(--bbm-text-secondary);
+}
+.bbm-checks li img { width: 16px; height: 16px; flex: none; margin-top: 3px; }
+.bbm-checks b { font-weight: 600; color: var(--bbm-text-primary); }
+/* =================================================================
+   SCROLL ANIMATIONS
+   ================================================================= */
+/* The hidden start state is scoped to .js so the page is fully readable
+   if the script never runs; main.js also force-reveals after 2.5s. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .bbm-reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition: opacity .7s cubic-bezier(.22,.61,.36,1),
+                transform .7s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  .js .bbm-reveal--left  { transform: translate3d(-32px, 0, 0); }
+  .js .bbm-reveal--right { transform: translate3d(32px, 0, 0); }
+  .js .bbm-reveal--zoom  { transform: scale(.965); }
+  .js .bbm-reveal.is-visible { opacity: 1; transform: none; }
+
+  .js .bbm-stagger > * {
+    opacity: 0; transform: translate3d(0, 22px, 0);
+    transition: opacity .55s cubic-bezier(.22,.61,.36,1),
+                transform .55s cubic-bezier(.22,.61,.36,1);
+  }
+  .js .bbm-stagger.is-visible > * { opacity: 1; transform: none; }
+  /* the step is spelled out per child rather than carried in an inline
+     custom property — Gutenberg keeps classes, not inline styles */
+  .js .bbm-stagger > *:nth-child(1)  { transition-delay:   0ms; }
+  .js .bbm-stagger > *:nth-child(2)  { transition-delay:  55ms; }
+  .js .bbm-stagger > *:nth-child(3)  { transition-delay: 110ms; }
+  .js .bbm-stagger > *:nth-child(4)  { transition-delay: 165ms; }
+  .js .bbm-stagger > *:nth-child(5)  { transition-delay: 220ms; }
+  .js .bbm-stagger > *:nth-child(6)  { transition-delay: 275ms; }
+  .js .bbm-stagger > *:nth-child(7)  { transition-delay: 330ms; }
+  .js .bbm-stagger > *:nth-child(8)  { transition-delay: 385ms; }
+  .js .bbm-stagger > *:nth-child(9)  { transition-delay: 440ms; }
+  .js .bbm-stagger > *:nth-child(10) { transition-delay: 495ms; }
+  .js .bbm-stagger > *:nth-child(11) { transition-delay: 550ms; }
+  .js .bbm-stagger > *:nth-child(12) { transition-delay: 605ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .bbm-reveal, .bbm-stagger > * { opacity: 1 !important; transform: none !important; }
+}
+/* failsafe: never leave content stuck invisible */
+.reveal-all .bbm-reveal,
+.reveal-all .bbm-stagger > * {
+  opacity: 1 !important; transform: none !important;
+  transition: none !important; transition-delay: 0s !important;
+}
+
+/* =================================================================
+   MODULE PAGE  (activity-feeds.html and the pages that follow it)
+   Its own components — the Features page is a different layout, so
+   nothing here overrides anything above.
+   ================================================================= */
+
+/* ---------- hero -------------------------------------------------- */
+.bbm-hero {
+  position: relative; overflow: hidden; background: var(--bbm-bg-brand-subtle);
+}
+/* In the design the site header has no fill and the peach runs up behind it.
+   A WordPress header lives in the template, not here, so that is opt-in: make
+   the header transparent in the parent theme, then add bbm-hero--under-header
+   to the hero group (and override --bbm-header-h if the bar is not 74px). */
+.bbm-hero--under-header {
+  margin-top: calc(-1 * var(--bbm-header-h));
+  padding-top: var(--bbm-header-h);
+}
+/* The art's frame is 672x500 in Figma, but its children and shadows spill
+   past it, so the export comes back 737x565 whichever way it is fetched.
+   Pinning the row to 500 keeps the band exactly 720 tall (74 header + 64 +
+   500 + 82) and lets the shadow overhang crop against the band. */
+.bbm-hero__inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 547px minmax(0, 1fr); grid-template-rows: 500px;
+  gap: 61px; align-items: start;
+  padding-block: 64px 82px;
+}
+.bbm-hero__copy { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
+.bbm-hero__head { display: flex; flex-direction: column; gap: 12px; }
+/* the hero eyebrow is the 18/26 headline variant with no leading rule —
+   the section eyebrows further down the page keep the dash */
+.bbm-hero__head .bbm-tag { padding-block: 0; gap: 0; }
+.bbm-hero__head .bbm-tag::before { display: none; }
+.bbm-hero__head .bbm-tag span {
+  font-family: var(--bbm-font-heading); font-weight: 500;
+  font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); letter-spacing: 1.44px;
+}
+.bbm-hero__head p { max-width: 507px;
+                   font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); }
+.bbm-hero__actions { display: flex; gap: 24px; flex-wrap: wrap; }
+/* The art frame is 672x500, but the export carries a ~32px shadow halo on
+   every side (737x565), so the picture is pinned by that overhang rather than
+   by the box. Kept in percentages so it scales with the column instead of
+   spilling over the copy on mid-size screens. */
+.bbm-hero__art { justify-self: end; position: relative;
+                width: 672px; max-width: 100%; aspect-ratio: 672 / 500; }
+.bbm-hero__art img { position: absolute; left: -4.7619%; top: -6.6%;
+                    width: 109.6726%; height: auto; max-width: none; }
+/* both shapes bleed off the frame, so they carry their own overhang and
+   anchor to the band edge rather than the centred content column */
+/* Both shapes are clipped by the 1600x720 frame, so each export is the
+   visible piece and sits flush against the band edge it runs off. */
+.bbm-hero__deco { position: absolute; z-index: 0; pointer-events: none; }
+.bbm-hero__poly { right: 0; bottom: 0; width: 876px; height: 562px; }
+.bbm-hero__rect { left: 0;  top: 490px; width: 323px; height: 156px; }
+
+/* ---------- jump cards -------------------------------------------- */
+.bbm-jumpcards { display: grid; grid-template-columns: repeat(4, 296px); justify-content: space-between; }
+.bbm-jumpcard {
+  display: flex; flex-direction: column; gap: 8px; align-items: center;
+  padding-block: 40px; text-align: center;
+  /* 0.5px background/brand/tertiary in Figma; #fcded6 is what that
+     composites to over white, the same trick the stat dividers need */
+  border: 1px solid #fcded6; border-radius: var(--bbm-radius-xl);
+}
+.bbm-jumpcard__num {
+  width: 32px; height: 32px; border-radius: var(--bbm-radius-full);
+  border: 1.5px solid var(--bbm-text-brand); color: var(--bbm-text-brand);
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--bbm-size-sm); line-height: 1; font-weight: 600;
+}
+.bbm-jumpcard__title {
+  font-family: var(--bbm-font-heading); letter-spacing: -0.022em;
+  font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); color: var(--bbm-text-primary);
+}
+.bbm-jumpcard__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
+
+/* ---------- section head ------------------------------------------ */
+.bbm-secthead { display: flex; flex-direction: column; gap: 24px; align-items: center; text-align: center; }
+.bbm-secthead .bbm-tag { justify-content: center; }
+.bbm-secthead .bbm-tag::after {
+  content: ''; width: 24px; height: 2px; flex: none;
+  border-radius: var(--bbm-radius-full); background: var(--bbm-text-brand);
+}
+/* Every section head is one line in the design — the four text blocks measure
+   956 / 1090 / 1048 / 996, which is just each title shrink-wrapped. Cap at the
+   widest so none of them wraps; 956 was breaking "Create better posts, build
+   stronger communities" over two lines. */
+.bbm-secthead__title { max-width: 1090px; }
+
+/* ---------- feature cards ----------------------------------------- */
+/* This page runs a 140px section rhythm and an 80px rhythm inside each
+   section — both wider than the Features page. Scoped to .mp so they
+   cannot leak. */
+.bbm-section { margin-top: 140px; }
+.bbm-section--tight { margin-top: 104px; }   /* hero -> jump cards */
+.bbm-fcards { display: flex; flex-direction: column; gap: 80px; margin-top: 80px; }
+/* Post is the one section whose card rows sit 104 apart, not 80 */
+.bbm-post .bbm-fcards { gap: 104px; }
+.bbm-fcard {
+  border-radius: var(--bbm-radius-3xl); overflow: hidden;
+}
+/* Figma's copy block: 32 top, tag, 12, title, 24, body — and the body is
+   16/24 here, not the 14/22 the Features page cards use. Stack cards close
+   with 24 to the artwork rather than a full 32. */
+.bbm-fcard__copy { display: flex; flex-direction: column; gap: 24px; padding: 32px; }
+.bbm-fcard__copy .bbm-tag { margin-bottom: -12px; }
+.bbm-fcard__copy > p { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-secondary); }
+/* Split cards carry a 36/44 title; the narrower stack and duo cards drop
+   to 28/36 so three lines of body still fit the 592px card. */
+.bbm-fcard--stack .bbm-fcard__copy { padding-bottom: 24px; }
+.bbm-fcard--stack .bbm-fcard__copy .bbm-h3 { font-size: var(--bbm-size-2xl); line-height: var(--bbm-lh-2xl); }
+.bbm-fcard__art { display: block; width: 100%; height: auto; }
+
+/* copy left, artwork flush to the card's right edge */
+.bbm-fcard--split { display: grid; grid-template-columns: 548px 1fr; align-items: stretch; }
+.bbm-fcard--split .bbm-fcard__copy { padding: 32px 40px 32px 32px; align-self: center; }
+/* the artwork sets the row height — stretching it to the copy instead let
+   these cards collapse below the design's height */
+.bbm-fcard--split .bbm-fcard__art { width: 100%; height: auto; }
+.bbm-fcard--flip { grid-template-columns: 1fr 548px; }
+.bbm-fcard--flip .bbm-fcard__art { order: -1; }
+
+/* copy on top, artwork below */
+
+/* two cards side by side */
+.bbm-fduo { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.bbm-fduo--wide { grid-template-columns: 736fr 512fr; gap: 32px; }
+.bbm-fduo > .bbm-fcard { display: flex; flex-direction: column; }
+.bbm-fduo > .bbm-fcard .bbm-fcard__art { margin-top: auto; }
+
+/* Every card edge is the same ramp: the section's brand colour at full
+   strength in the top-left and bottom-right corners, easing into the pale
+   tint by 26% and holding it flat across the middle.
+
+   CSS corner keywords sit perpendicular to the *other* diagonal, so a real
+   corner-to-corner gradient needs its own angle per card: 180 - atan(w/h).
+   Cards sharing a row inherit the widest one's gradient transform in Figma,
+   which is why each narrow partner is shallower than its own diagonal would
+   suggest — those angles are measured, not derived. */
+.bbm-fcard, .bbm-minicard {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bbm-bg-default-surface), var(--bbm-bg-default-surface)) padding-box,
+    linear-gradient(var(--bbm-edge-angle, 134deg),
+      var(--bbm-edge-strong), var(--bbm-edge-pale) 26%,
+      var(--bbm-edge-pale) 74%, var(--bbm-edge-strong)) border-box;
+}
+.bbm-discover { --bbm-edge-strong: var(--bbm-stroke-brand-strong); --bbm-edge-pale: var(--bbm-stroke-brand-primary); }
+.bbm-post     { --bbm-edge-strong: #009bff;                    --bbm-edge-pale: var(--bbm-blue-50); }
+.bbm-engage   { --bbm-edge-strong: var(--bbm-green-400);           --bbm-edge-pale: var(--bbm-green-100); }
+
+.bbm-fcard--split { --bbm-edge-angle: 115deg; }   /* 1280 x 576 */
+.bbm-fcard--wide  { --bbm-edge-angle: 113deg; }   /* 1280 x 544 */
+.bbm-post .bbm-fcard--split                    { --bbm-edge-angle: 116deg; }  /* 1280 x 564 */
+.bbm-post .bbm-fduo--wide > .bbm-fcard:first-child { --bbm-edge-angle: 128deg; }  /*  736 x 564 */
+.bbm-post .bbm-fduo--wide > .bbm-fcard:last-child  { --bbm-edge-angle: 118deg; }  /*  512 x 564 */
+.bbm-engage .bbm-fduo .bbm-fcard                   { --bbm-edge-angle: 132deg; }  /*  616 x 568 */
+.bbm-minicard                                 { --bbm-edge-angle: 107deg; }  /*  344 x 254 */
+.bbm-minicard:first-child                     { --bbm-edge-angle: 115deg; }  /*  528 x 254 */
+
+/* Control's cards carry no stroke at all — the artwork panel is the only edge. */
+.bbm-control .bbm-fcard { border: 0; background: var(--bbm-bg-default-surface); }
+
+.bbm-fcard .bbm-checks { gap: 8px; }
+
+/* ---------- mini cards -------------------------------------------- */
+.bbm-minicards { display: grid; grid-template-columns: 528fr 344fr 344fr; gap: 32px; margin-top: 80px; }
+.bbm-minicard {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 24px;
+  border-radius: var(--bbm-radius-xl); min-height: 254px;
+}
+.bbm-minicard img { width: 24px; height: 24px; margin-bottom: 8px; }
+.bbm-minicard__title { font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); font-weight: 600; }
+.bbm-minicard__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-tertiary); }
+
+/* ---------- inline CTA band --------------------------------------- */
+.bbm-ctaband {
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  padding: 72px 56px; min-height: 256px; border-radius: var(--bbm-radius-3xl);
+  background: linear-gradient(90deg, #0c0c0d 0%, #6c2513 62%, #d2542a 100%);
+  color: var(--bbm-text-light);
+}
+.bbm-ctaband__copy { display: flex; flex-direction: column; gap: 12px; max-width: 660px; }
+.bbm-ctaband__title { font-size: var(--bbm-size-2xl); line-height: var(--bbm-lh-2xl); font-weight: 700;
+                  font-family: var(--bbm-font-heading); letter-spacing: -0.022em; }
+.bbm-ctaband__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: rgba(255,255,255,.82); }
+.bbm-ctaband--center {
+  flex-direction: column; text-align: center; padding: 72px 48px; gap: 24px;
+  min-height: 444px; justify-content: center;
+}
+.bbm-ctaband--center .bbm-ctaband__copy { align-items: center; max-width: 640px; }
+.bbm-ctaband--center .bbm-ctaband__title { font-size: var(--bbm-size-4xl); line-height: var(--bbm-lh-4xl); font-weight: 600; }
+
+/* ---------- explore more modules ---------------------------------- */
+.bbm-modcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.bbm-modcard {
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+  padding: 24px; border-radius: var(--bbm-radius-xl); min-height: 280px;
+  border: 1px solid var(--bbm-stroke-brand-primary);
+}
+.bbm-modcard:first-child { background: var(--bbm-bg-brand-subtle); }
+.bbm-modcard__icon {
+  display: inline-flex; padding: 8px; border-radius: var(--bbm-radius-lg);
+  background: var(--bbm-bg-brand-subtle);
+}
+.bbm-modcard__icon img { width: 24px; height: 24px; }
+.bbm-modcard__title { font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); font-weight: 600; margin-top: 4px; }
+.bbm-modcard__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-tertiary); }
+.bbm-modcard .bbm-btn { margin-top: 8px; }
+
+/* ---------- testimonial masonry ----------------------------------- */
+.bbm-reviews { background: var(--bbm-bg-brand-subtle); padding-block: 80px 88px; }
+.bbm-reviews__title { max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px; }
+.bbm-rgrid { columns: 3; column-gap: 24px; min-height: 790px; }
+.bbm-review {
+  break-inside: avoid; margin-bottom: 24px; padding-block: 28px;
+  background: var(--bbm-bg-default-surface);
+  /* 0.5px stroke/brand/secondary over the peach band, not over white */
+  border: 1px solid #fbd6cc;
+  border-radius: var(--bbm-radius-xl); padding: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative;
+}
+.bbm-review__who { display: flex; align-items: center; gap: 12px; }
+.bbm-review__who img { width: 40px; height: 40px; border-radius: var(--bbm-radius-full); }
+.bbm-review__name { font-family: var(--bbm-font-heading); letter-spacing: -0.022em;
+                   font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); font-weight: 600; }
+.bbm-review__stars { display: flex; gap: 2px; }
+.bbm-review__stars img { width: 16px; height: 16px; }
+.bbm-review__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-secondary); }
+.bbm-review__src { position: absolute; top: 20px; right: 20px; width: 20px; height: 20px; }
+
+/* ---------- module page responsive -------------------------------- */
+@media (max-width: 1100px) {
+  .bbm-hero__inner { grid-template-columns: 1fr; grid-template-rows: auto; gap: 40px;
+                    padding-block: 48px 56px; }
+  .bbm-hero__art { justify-self: start; width: 100%; }
+  .bbm-jumpcards { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .bbm-fcard--split, .bbm-fcard--flip { grid-template-columns: 1fr; }
+  .bbm-fcard--flip .bbm-fcard__art { order: 0; }
+  .bbm-fduo, .bbm-fduo--wide { grid-template-columns: 1fr; gap: 32px; }
+  .bbm-minicards, .bbm-modcards { grid-template-columns: 1fr; }
+  .bbm-rgrid { columns: 2; }
+  .bbm-ctaband { flex-direction: column; align-items: flex-start; padding: 32px; }
+}
+@media (max-width: 720px) {
+  .bbm-jumpcards { grid-template-columns: 1fr; }
+  .bbm-rgrid { columns: 1; }
+}
+
+/* the hero's secondary action is a plain label — no trailing arrow */
+.bbm-btn--noicon img, .bbm-btn--noicon svg { display: none; }
+
+
+/* ---------- token steps ------------------------------------------
+   The same breakpoints the static build uses; scoped to .bbm so the
+   parent theme's own scale is untouched. */
+@media (max-width: 1600px) { .bbm { --bbm-gutter: clamp(20px, 10vw, 160px); } }
+@media (max-width: 1180px) { .bbm { --bbm-section-gap: 80px; } }
+@media (max-width: 1024px) {
+  .bbm {
+    --bbm-size-5xl: 40px; --bbm-lh-5xl: 48px;
+    --bbm-size-4xl: 34px; --bbm-lh-4xl: 42px;
+    --bbm-size-3xl: 28px; --bbm-lh-3xl: 36px;
+    --bbm-size-2xl: 24px; --bbm-lh-2xl: 32px;
+    --bbm-size-xl:  21px; --bbm-lh-xl:  29px;
+  }
+  .bbm-section { margin-top: 96px; }
+}
+@media (max-width: 720px) {
+  .bbm {
+    --bbm-section-gap: 64px;
+    --bbm-size-5xl: 32px; --bbm-lh-5xl: 40px;
+    --bbm-size-4xl: 28px; --bbm-lh-4xl: 36px;
+    --bbm-size-3xl: 24px; --bbm-lh-3xl: 32px;
+    --bbm-size-2xl: 22px; --bbm-lh-2xl: 30px;
+    --bbm-size-xl:  19px; --bbm-lh-xl:  27px;
+    --bbm-size-lg:  17px; --bbm-lh-lg:  25px;
+  }
+  .bbm-section { margin-top: 72px; }
+}

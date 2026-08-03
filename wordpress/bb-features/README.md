@@ -1,9 +1,15 @@
 # BB Features — WordPress child theme
 
-The **Features (Top Modules)** marketing page as Gutenberg block patterns.
-Built from Figma frame `1008:8718` of the BuddyBoss-Website file.
+The BuddyBoss marketing pages as Gutenberg block patterns:
 
-<https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1008-8718>
+| page | Figma frame | pattern category | scope |
+|---|---|---|---|
+| Features (Top Modules) | [`1008:8718`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1008-8718) | BuddyBoss — Features | `.bbf` |
+| Activity Feeds | [`1886:10326`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1886-10326) | BuddyBoss — Module pages | `.bbm` |
+
+The two scopes are independent: each declares its own tokens and prefixes its
+own class names, so neither reads from nor leaks into the other. Moderation and
+Member Profiles will join `.bbm` — they are the same component set.
 
 ## Install
 
@@ -12,7 +18,7 @@ Built from Figma frame `1008:8718` of the BuddyBoss-Website file.
    (it currently says `buddyboss-theme`). Getting this wrong is the one thing that
    stops the theme activating.
 3. Activate **BB Features** in Appearance → Themes.
-4. Edit any page → **+** → **Patterns** → **BuddyBoss — Features**.
+4. Edit any page → **+** → **Patterns** → **BuddyBoss — Features** or **BuddyBoss — Module pages**.
 
 Requires WordPress 6.0+ (that's when patterns in `/patterns/` began auto-registering).
 No build step, no npm, no dependencies.
@@ -29,11 +35,20 @@ patterns with `register_block_pattern()` — the patterns then survive a theme s
 | | |
 |---|---|
 | `theme.json` | The Figma variables as editor presets — brand palette, the `xs → 5xl` type scale, spacing steps. They appear in Gutenberg's own colour and typography pickers. |
-| `patterns/` | 20 section patterns + `features-page.php`, which composes all 20 into the full page in one insert. |
-| `assets/css/features.css` | Every section style, scoped under `.bbf`. |
-| `assets/js/features.js` | Scroll reveals, hero framing, stat counters, app carousel. Front end only. |
+| `patterns/` | 20 Features sections + `features-page.php`; 12 module-page sections (`af-*`) + `af-page.php`. Each `*-page.php` composes its whole page in one insert. |
+| `assets/css/features.css` | Every Features section style, scoped under `.bbf`. |
+| `assets/css/module-page.css` | Every module-page style, scoped under `.bbm`. |
+| `assets/js/features.js` | Scroll reveals, hero framing, stat counters, app carousel — drives both scopes. Front end only. |
 | `assets/img`, `assets/icon` | 26 panel/hero PNGs and 45 icons, exported from Figma. |
-| `preview.html` | Static render of all 20 patterns for design review without a WP install. Safe to delete. |
+| `preview.html`, `preview-module.html` | Static renders of each page's patterns, for design review without a WP install. Safe to delete. |
+
+## The site header
+
+Both designs put the nav **on** the hero with no fill of its own — the peach runs
+up behind it. A WordPress header lives in the template, not in a pattern, so that
+is opt-in here: make the header transparent in the parent theme, then add
+`bbf-hero--under-header` / `bbm-hero--under-header` to the hero group. Override
+`--bbf-header-h` / `--bbm-header-h` if the bar is not 74px tall.
 
 ## Patterns
 

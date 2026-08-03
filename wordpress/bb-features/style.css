@@ -1,7 +1,7 @@
 /*
 Theme Name:   BB Features
 Theme URI:    https://www.buddyboss.com/
-Description:  Child theme that ships the "Features (Top Modules)" marketing sections as Gutenberg block patterns. Built from Figma frame 1008:8718 of the BuddyBoss-Website file.
+Description:  Child theme that ships the BuddyBoss marketing pages as Gutenberg block patterns — Features (Top Modules) and the per-module pages, starting with Activity Feeds. Built from the BuddyBoss-Website Figma file.
 Author:       BuddyBoss Design
 Version:      1.0.0
 Template:     buddyboss-theme
@@ -9,6 +9,7 @@ License:      GPL-2.0-or-later
 Text Domain:  bb-features
 */
 
-/* The section styling lives in assets/css/features.css — it is enqueued for
-   both the front end and the editor canvas by functions.php. Keep this file
-   for parent-theme overrides only. */
+/* The section styling lives in assets/css/features.css (.bbf) and
+   assets/css/module-page.css (.bbm) — both are enqueued for the front end and
+   the editor canvas by functions.php. Keep this file for parent-theme
+   overrides only. */
