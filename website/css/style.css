@@ -109,6 +109,7 @@
 
   /* --- layout -------------------------------------------------- */
   --page-max:   1600px;   /* Figma frame width          */
+  --header-h:   74px;     /* the bar overlays the hero  */
   --content-max:1280px;   /* Figma inner content width  */
   --gutter:     160px;    /* Figma side padding         */
   --section-gap:104px;    /* Figma vertical rhythm      */
@@ -227,14 +228,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =================================================================
    HEADER
    ================================================================= */
+/* The bar has no fill of its own — in the design it sits on the hero and the
+   peach runs behind it. The glass only appears once you have scrolled past
+   the hero, where the bar would otherwise be over live content. */
 .site-header {
   position: sticky; top: 0; z-index: 60;
+  background: transparent;
+  transition: box-shadow .25s ease, background-color .25s ease, backdrop-filter .25s ease;
+}
+.site-header.is-stuck {
   background: rgba(255,255,255,.86);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
-  transition: box-shadow .25s ease, background-color .25s ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
 }
-.site-header.is-stuck { box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05); }
 .site-header__inner {
   display: flex; align-items: center; justify-content: space-between;
   padding-block: 16px;
@@ -329,6 +336,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero {
   position: relative; overflow: hidden;
   background: var(--bg-brand-subtle);
+  /* the band runs up behind the transparent header rather than starting under it */
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
 }
 .hero__stage {
   position: relative;
@@ -339,7 +349,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    transform + wrapper height) so every floating card lands on its
    exact Figma coordinate. */
 .hero__stage.is-scaled {
-  position: absolute; left: 50%; top: 0;
+  /* padding does not offset an absolutely positioned child, so the stage has
+     to clear the overlaid header itself */
+  position: absolute; left: 50%; top: var(--header-h);
   width: 1600px; max-width: none; margin: 0;
   transform-origin: top center;
 }
@@ -1051,7 +1063,11 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
    ================================================================= */
 
 /* ---------- hero -------------------------------------------------- */
-.mp-hero { position: relative; overflow: hidden; background: var(--bg-brand-subtle); }
+.mp-hero {
+  position: relative; overflow: hidden; background: var(--bg-brand-subtle);
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
+}
 /* The art's frame is 672x500 in Figma, but its children and shadows spill
    past it, so the export comes back 737x565 whichever way it is fetched.
    Pinning the row to 500 keeps the band exactly 720 tall (74 header + 64 +

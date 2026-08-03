@@ -69,11 +69,14 @@
       menu.hidden = !state;
     }
 
+    /* Clicking must never punish you for having hovered first: if the menu is
+       only open because the pointer is there, a click pins it rather than
+       toggling it shut. It closes on a second click, once it is pinned. */
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       cancelClose();
-      if (menu.hidden) { open(true); pinned = true; }
-      else { open(false); pinned = false; }
+      if (pinned) { pinned = false; open(false); }
+      else { pinned = true; open(true); }
     });
 
     /* following a link should not leave the menu pinned open behind you */
@@ -120,6 +123,10 @@
      --------------------------------------------------------- */
   var stage = document.getElementById('heroStage');
   var HERO_W = 1600, HERO_H = 566, HERO_MIN = 1100;
+  /* the header overlays the band, so the wrapper carries its height on top of
+     the scaled stage — the stage's own coordinates already exclude it */
+  var HEADER_H = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 74;
 
   function sizeHero() {
     if (!stage) return;
@@ -133,7 +140,7 @@
     var scale = Math.min(1, vw / HERO_W);
     stage.classList.add('is-scaled');
     stage.style.transform = 'translateX(-50%) scale(' + scale + ')';
-    stage.parentNode.style.height = Math.round(HERO_H * scale) + 'px';
+    stage.parentNode.style.height = (Math.round(HERO_H * scale) + HEADER_H) + 'px';
   }
   sizeHero();
   window.addEventListener('resize', sizeHero, { passive: true });

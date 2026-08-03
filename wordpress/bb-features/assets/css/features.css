@@ -238,6 +238,15 @@
    HERO
    ================================================================= */
 .bbf-hero { background: var(--bbf-brand-subtle); overflow: hidden; }
+/* In the design the site header has no fill and the peach runs up behind it.
+   A WordPress header lives in the template, not in this pattern set, so that
+   is opt-in: make the header transparent in the parent theme, then add
+   bbf-hero--under-header to the hero group (and override --bbf-header-h if
+   the bar is not 74px tall). */
+.bbf-hero--under-header {
+  margin-top: calc(-1 * var(--bbf-header-h, 74px));
+  padding-top: var(--bbf-header-h, 74px);
+}
 .bbf-hero__stage {
   position: relative;
   width: 100%; max-width: var(--bbf-page-max); margin-inline: auto;
