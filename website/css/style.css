@@ -1099,9 +1099,7 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 /* Post is the one section whose card rows sit 104 apart, not 80 */
 .mp-post .fcards { gap: 104px; }
 .fcard {
-  border: 1px solid var(--mp-edge, var(--stroke-brand-primary));
   border-radius: var(--radius-3xl); overflow: hidden;
-  background: var(--bg-default-surface);
 }
 /* Figma's copy block: 32 top, tag, 12, title, 24, body — and the body is
    16/24 here, not the 14/22 the Features page cards use. Stack cards close
@@ -1129,40 +1127,50 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 
 /* two cards side by side */
 .fduo { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-.fduo--wide { grid-template-columns: 736fr 512fr; }
+.fduo--wide { grid-template-columns: 736fr 512fr; gap: 32px; }
 .fduo > .fcard { display: flex; flex-direction: column; }
 .fduo > .fcard .fcard__art { margin-top: auto; }
 
-/* section accents — the artwork carries the tint, the border matches it.
-   Every flat one is Figma's 0.5px stroke/brand/secondary or blue/100 shipped
-   at the colour it composites to over the card's own surface. */
-.mp-discover { --mp-edge: var(--stroke-brand-primary); }
-.mp-post     { --mp-edge: var(--blue-50); }
-/* Control's cards carry no stroke at all — the artwork panel is the only edge. */
-.mp-control .fcard { border: 0; }
+/* Every card edge is the same ramp: the section's brand colour at full
+   strength in the top-left and bottom-right corners, easing into the pale
+   tint by 26% and holding it flat across the middle.
 
-/* Engage is the one gradient stroke on the page: a true corner-to-corner ramp
-   from top-right to bottom-left, full strength at both corners and palest
-   exactly halfway. CSS corner keywords are perpendicular to the *other*
-   diagonal, so the angle has to be computed per card — atan(w/h) past 180 —
-   which also makes the gradient line exactly one diagonal long, putting the
-   0% and 100% stops on the corners themselves. */
-.mp-engage .fcard {
+   CSS corner keywords sit perpendicular to the *other* diagonal, so a real
+   corner-to-corner gradient needs its own angle per card: 180 - atan(w/h).
+   Cards sharing a row inherit the widest one's gradient transform in Figma,
+   which is why each narrow partner is shallower than its own diagonal would
+   suggest — those angles are measured, not derived. */
+.fcard, .minicard {
   border: 1px solid transparent;
   background:
     linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
-    linear-gradient(var(--edge-angle), #0a9d58, #e5fcea 50%, #0a9d58) border-box;
+    linear-gradient(var(--edge-angle, 134deg),
+      var(--edge-strong), var(--edge-pale) 26%,
+      var(--edge-pale) 74%, var(--edge-strong)) border-box;
 }
-.mp-engage .fduo .fcard   { --edge-angle: 227deg; }  /* 616 x 568/592 */
-.mp-engage .fcard--split  { --edge-angle: 246deg; }  /* 1280 x 576 */
+.mp-discover { --edge-strong: var(--stroke-brand-strong); --edge-pale: var(--stroke-brand-primary); }
+.mp-post     { --edge-strong: #009bff;                    --edge-pale: var(--blue-50); }
+.mp-engage   { --edge-strong: var(--green-400);           --edge-pale: var(--green-100); }
+
+.fcard--split { --edge-angle: 115deg; }   /* 1280 x 576 */
+.fcard--wide  { --edge-angle: 113deg; }   /* 1280 x 544 */
+.mp-post .fcard--split                    { --edge-angle: 116deg; }  /* 1280 x 564 */
+.mp-post .fduo--wide > .fcard:first-child { --edge-angle: 128deg; }  /*  736 x 564 */
+.mp-post .fduo--wide > .fcard:last-child  { --edge-angle: 118deg; }  /*  512 x 564 */
+.mp-engage .fduo .fcard                   { --edge-angle: 132deg; }  /*  616 x 568 */
+.minicard                                 { --edge-angle: 107deg; }  /*  344 x 254 */
+.minicard:first-child                     { --edge-angle: 115deg; }  /*  528 x 254 */
+
+/* Control's cards carry no stroke at all — the artwork panel is the only edge. */
+.mp-control .fcard { border: 0; background: var(--bg-default-surface); }
 
 .fcard .checks { gap: 8px; }
 
 /* ---------- mini cards -------------------------------------------- */
-.minicards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 80px; }
+.minicards { display: grid; grid-template-columns: 528fr 344fr 344fr; gap: 32px; margin-top: 80px; }
 .minicard {
   display: flex; flex-direction: column; gap: 8px;
-  padding: 24px; border: 1px solid #99d8ff;
+  padding: 24px;
   border-radius: var(--radius-xl); min-height: 254px;
 }
 .minicard img { width: 24px; height: 24px; margin-bottom: 8px; }
