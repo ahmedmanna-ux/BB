@@ -1133,35 +1133,29 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .fduo > .fcard { display: flex; flex-direction: column; }
 .fduo > .fcard .fcard__art { margin-top: auto; }
 
-/* section accents — the artwork carries the tint, the border matches it */
-.mp-discover, .mp-control { --mp-edge: var(--stroke-brand-primary); }
-.mp-post    { --mp-edge: var(--blue-50); }
+/* section accents — the artwork carries the tint, the border matches it.
+   Every flat one is Figma's 0.5px stroke/brand/secondary or blue/100 shipped
+   at the colour it composites to over the card's own surface. */
+.mp-discover { --mp-edge: var(--stroke-brand-primary); }
+.mp-post     { --mp-edge: var(--blue-50); }
+/* Control's cards carry no stroke at all — the artwork panel is the only edge. */
+.mp-control .fcard { border: 0; }
 
-/* Engage and Control cards carry a gradient stroke rather than a flat tint:
-   full strength at two opposite corners, pale across the middle. Engage runs
-   along the anti-diagonal (strong top-right and bottom-left); Control's two
-   cards mirror each other, each strong on the side its artwork sits. */
-.mp-engage .fcard,
-.mp-control .fcard {
+/* Engage is the one gradient stroke on the page: a true corner-to-corner ramp
+   from top-right to bottom-left, full strength at both corners and palest
+   exactly halfway. CSS corner keywords are perpendicular to the *other*
+   diagonal, so the angle has to be computed per card — atan(w/h) past 180 —
+   which also makes the gradient line exactly one diagonal long, putting the
+   0% and 100% stops on the corners themselves. */
+.mp-engage .fcard {
   border: 1px solid transparent;
   background:
     linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
-    var(--mp-stroke) border-box;
+    linear-gradient(var(--edge-angle), #0a9d58, #e5fcea 50%, #0a9d58) border-box;
 }
-.mp-engage .fcard {
-  --mp-stroke: linear-gradient(to bottom left,
-    #0a9d58, #e5fcea 30%, #e5fcea 70%, #0a9d58);
-}
-.mp-control .fcard {
-  --mp-stroke: linear-gradient(to bottom left,
-    #fe987b, #fff5f2 30%, #fff5f2 70%, #fe987b);
-}
-.mp-control .fcard--flip {
-  --mp-stroke: linear-gradient(to bottom right,
-    #fe987b, #fff5f2 30%, #fff5f2 70%, #fe987b);
-}
+.mp-engage .fduo .fcard   { --edge-angle: 227deg; }  /* 616 x 568/592 */
+.mp-engage .fcard--split  { --edge-angle: 246deg; }  /* 1280 x 576 */
 
-/* ---------- checklist inside a card ------------------------------- */
 .fcard .checks { gap: 8px; }
 
 /* ---------- mini cards -------------------------------------------- */
@@ -1217,7 +1211,8 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .mp-review {
   break-inside: avoid; margin-bottom: 24px; padding-block: 28px;
   background: var(--bg-default-surface);
-  border: 1px solid var(--stroke-brand-second);
+  /* 0.5px stroke/brand/secondary over the peach band, not over white */
+  border: 1px solid #fbd6cc;
   border-radius: var(--radius-xl); padding: 24px;
   display: flex; flex-direction: column; gap: 12px;
   position: relative;
