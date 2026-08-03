@@ -23,7 +23,7 @@
         the floating cards keep their exact Figma coordinates.
         Under 1100px the CSS reflows it and this bows out.
      --------------------------------------------------------- */
-  var HERO_W = 1600, HERO_H = 566, HERO_MIN = 1100;
+  var HERO_W = 1600, HERO_H = 606, HERO_MIN = 1100;
   var stages = document.querySelectorAll('.bbf-hero__stage');
 
   function sizeHeroes() {

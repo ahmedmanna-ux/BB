@@ -343,7 +343,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero__stage {
   position: relative;
   width: 100%; max-width: var(--page-max); margin-inline: auto;
-  height: 566px;                    /* 640 frame – 74 header */
+  height: 606px;                    /* 680 frame – 74 header */
 }
 /* ≥1100px the 1600px design frame is scaled as a unit (JS sets the
    transform + wrapper height) so every floating card lands on its
@@ -366,17 +366,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    subtracted gutter cancels that: the glow's left edge lands at -184 and the
    panel's right edge at 100vw + 109, at every width. */
 .hero__deco { position: absolute; z-index: 0; pointer-events: none; }
-.hero__glow {                             /* frame -184,269 */
-  top: 195px; width: 534px; height: 535px;
+.hero__glow {                             /* frame -184,349 */
+  top: 275px; width: 534px; height: 535px;
   left: calc(-184px - max(0px, 100vw - var(--page-max)) / 2);
 }
-.hero__panel {                            /* frame 1350,256 */
-  top: 182px; width: 359px; height: 441px;
+.hero__panel {                            /* frame 1350,310 */
+  top: 236px; width: 359px; height: 441px;
   right: calc(-109px - max(0px, 100vw - var(--page-max)) / 2);
 }
 
 .hero__copy {
-  position: absolute; left: 50%; top: 72px; transform: translateX(-50%);
+  position: absolute; left: 50%; top: 80px; transform: translateX(-50%);
   width: 779px; display: flex; flex-direction: column; gap: 24px;
   align-items: center; text-align: center;
 }
@@ -393,12 +393,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    offsets below place the card's *content box* on its Figma coordinate. */
 .float { position: absolute; pointer-events: none; will-change: transform; }
 .float img { width: 100%; height: auto; }
-.float--composer     { left: 75px;      top: 61px;   width: 333px; }    /* box 95,147 */
+.float--composer     { left: 70px;      top: 61px;   width: 333px; }    /* box 90,147 */
 .float--avatars      { left: 1270.2px;  top: 63.4px; width: 197px; }    /* box 1288,148 */
-.float--notification { left: 1190px;    top: 237px;  width: 410px; }    /* box 1190,311 */
-.float--message      { left: 61px;      top: 362px;  width: 504px; }    /* box 61,436 */
-.float--update       { left: 713px;     top: 400px;  width: 360px; }    /* box 733,486 */
-.float--reactions    { left: 1257px;    top: 395px;  width: 236.8px; }  /* box 1257,469 — 6 reactions */
+.float--notification { left: 1198px;    top: 277px;  width: 410px; }    /* box 1198,351 */
+.float--message      { left: 61px;      top: 378px;  width: 504px; }    /* box 61,452 */
+.float--update       { left: 713px;     top: 432px;  width: 360px; }    /* box 733,518 */
+.float--reactions    { left: 1257px;    top: 451px;  width: 236.8px; }  /* box 1257,525 — 6 reactions */
 
 @media (prefers-reduced-motion: no-preference) {
   .float--composer     { animation: bob 7.5s ease-in-out infinite; }

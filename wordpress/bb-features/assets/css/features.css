@@ -272,12 +272,12 @@
    subtracted gutter cancels that: the glow's left edge lands at -184 and the
    panel's right edge at 100vw + 109, at every width. */
 .bbf-hero__deco { position: absolute; z-index: 0; pointer-events: none; }
-.bbf-hero__glow {                             /* frame -184,269 */
-  top: 195px; width: 534px; height: 535px;
+.bbf-hero__glow {                             /* frame -184,349 */
+  top: 275px; width: 534px; height: 535px;
   left: calc(-184px - max(0px, 100vw - var(--bbf-page-max)) / 2);
 }
-.bbf-hero__panel {                            /* frame 1350,256 */
-  top: 182px; width: 359px; height: 441px;
+.bbf-hero__panel {                            /* frame 1350,310 */
+  top: 236px; width: 359px; height: 441px;
   right: calc(-109px - max(0px, 100vw - var(--bbf-page-max)) / 2);
 }
 
@@ -287,7 +287,7 @@
   align-items: center; text-align: center;
 }
 .is-scaled .bbf-hero__copy {
-  position: absolute; left: 50%; top: 72px; transform: translateX(-50%);
+  position: absolute; left: 50%; top: 80px; transform: translateX(-50%);
   width: 779px;
 }
 .bbf-hero__head { display: flex; flex-direction: column; gap: 12px; width: 100%; }
@@ -302,12 +302,12 @@
 .bbf-float { position: absolute; pointer-events: none; display: none; }
 .is-scaled .bbf-float { display: block; }
 .bbf-float img { width: 100%; }
-.bbf-float--composer     { left: 75px;     top: 61px;   width: 333px; }
+.bbf-float--composer     { left: 70px;     top: 61px;   width: 333px; }
 .bbf-float--avatars      { left: 1270.2px; top: 63.4px; width: 197px; }
-.bbf-float--notification { left: 1190px;   top: 237px;  width: 410px; }
-.bbf-float--message      { left: 61px;     top: 362px;  width: 504px; }
-.bbf-float--update       { left: 713px;    top: 400px;  width: 360px; }
-.bbf-float--reactions    { left: 1257px;   top: 395px;  width: 236.8px; }  /* 6 reactions */
+.bbf-float--notification { left: 1198px;   top: 277px;  width: 410px; }
+.bbf-float--message      { left: 61px;     top: 378px;  width: 504px; }
+.bbf-float--update       { left: 713px;    top: 432px;  width: 360px; }
+.bbf-float--reactions    { left: 1257px;   top: 451px;  width: 236.8px; }  /* 6 reactions */
 
 @media (prefers-reduced-motion: no-preference) {
   .is-scaled .bbf-float--composer     { animation: bbf-bob 7.5s ease-in-out infinite; }

@@ -122,7 +122,7 @@
         and this bows out.
      --------------------------------------------------------- */
   var stage = document.getElementById('heroStage');
-  var HERO_W = 1600, HERO_H = 566, HERO_MIN = 1100;
+  var HERO_W = 1600, HERO_H = 606, HERO_MIN = 1100;
   /* the header overlays the band, so the wrapper carries its height on top of
      the scaled stage — the stage's own coordinates already exclude it */
   var HEADER_H = parseInt(
