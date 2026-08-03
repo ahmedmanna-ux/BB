@@ -1033,14 +1033,20 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .mp-hero__art img { width: 100%; height: auto; }
 /* both shapes bleed off the frame, so they carry their own overhang and
    anchor to the band edge rather than the centred content column */
+/* Both shapes are clipped by the 1600x720 frame, so each export is the
+   visible piece and sits flush against the band edge it runs off. */
 .mp-hero__deco { position: absolute; z-index: 0; pointer-events: none; }
+.mp-hero__poly { right: 0; bottom: 0; width: 876px; height: 562px; }
+.mp-hero__rect { left: 0;  top: 490px; width: 323px; height: 156px; }
 
 /* ---------- jump cards -------------------------------------------- */
 .jumpcards { display: grid; grid-template-columns: repeat(4, 296px); justify-content: space-between; }
 .jumpcard {
   display: flex; flex-direction: column; gap: 8px; align-items: center;
   padding-block: 40px; text-align: center;
-  border: 1px solid var(--bg-brand-tertiary); border-radius: var(--radius-xl);
+  /* 0.5px background/brand/tertiary in Figma; #fcded6 is what that
+     composites to over white, the same trick the stat dividers need */
+  border: 1px solid #fcded6; border-radius: var(--radius-xl);
 }
 .jumpcard__num {
   width: 32px; height: 32px; border-radius: var(--radius-full);
@@ -1110,7 +1116,30 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 /* section accents — the artwork carries the tint, the border matches it */
 .mp-discover, .mp-control { --mp-edge: var(--stroke-brand-primary); }
 .mp-post    { --mp-edge: var(--blue-50); }
-.mp-engage  { --mp-edge: var(--green-100); }
+
+/* Engage and Control cards carry a gradient stroke rather than a flat tint:
+   full strength at two opposite corners, pale across the middle. Engage runs
+   along the anti-diagonal (strong top-right and bottom-left); Control's two
+   cards mirror each other, each strong on the side its artwork sits. */
+.mp-engage .fcard,
+.mp-control .fcard {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
+    var(--mp-stroke) border-box;
+}
+.mp-engage .fcard {
+  --mp-stroke: linear-gradient(to bottom left,
+    #0a9d58, #e5fcea 30%, #e5fcea 70%, #0a9d58);
+}
+.mp-control .fcard {
+  --mp-stroke: linear-gradient(to bottom left,
+    #fe987b, #fff5f2 30%, #fff5f2 70%, #fe987b);
+}
+.mp-control .fcard--flip {
+  --mp-stroke: linear-gradient(to bottom right,
+    #fe987b, #fff5f2 30%, #fff5f2 70%, #fe987b);
+}
 
 /* ---------- checklist inside a card ------------------------------- */
 .fcard .checks { gap: 8px; }
@@ -1119,7 +1148,7 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .minicards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 80px; }
 .minicard {
   display: flex; flex-direction: column; gap: 8px;
-  padding: 24px; border: 1px solid var(--stroke-default-prim);
+  padding: 24px; border: 1px solid #99d8ff;
   border-radius: var(--radius-xl); min-height: 254px;
 }
 .minicard img { width: 24px; height: 24px; margin-bottom: 8px; }
