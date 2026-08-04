@@ -17,7 +17,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-ctaband__copy","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-ctaband__copy">
 			<!-- wp:paragraph {"className":"bbm-ctaband__title"} -->
-			<p class="bbm-ctaband__title">Build your community's home on BuddyBoss</p>
+			<p class="bbm-ctaband__title">Build your community’s home on BuddyBoss</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"className":"bbm-ctaband__text"} -->
 			<p class="bbm-ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>

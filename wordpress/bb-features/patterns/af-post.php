@@ -99,7 +99,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 				<h3 class="wp-block-heading bbm-h3">Cover images that turn updates into articles</h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-				<p class="bbm-body-sm">Group owners and moderators can add a featured image to a post. The composer's "Add Feature Image" dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
+				<p class="bbm-body-sm">Group owners and moderators can add a featured image to a post. The composer’s "Add Feature Image" dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->

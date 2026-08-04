@@ -35,7 +35,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 				<h3 class="wp-block-heading bbm-h3">A personalized feed of only the posts that matter</h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-				<p class="bbm-body-sm">Turn on Relevant Activity and each feed is assembled from that member's timeline, connections, followed members, joined groups, subscribed forums and @mentions. No black-box algorithm deciding what they see — just their community.</p>
+				<p class="bbm-body-sm">Turn on Relevant Activity and each feed is assembled from that member’s timeline, connections, followed members, joined groups, subscribed forums and @mentions. No black-box algorithm deciding what they see — just their community.</p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->

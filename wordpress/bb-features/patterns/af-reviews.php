@@ -56,14 +56,14 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"bbm-review__text"} -->
-					<p class="bbm-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+					<p class="bbm-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn’t have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
 				<!-- wp:group {"className":"bbm-review","layout":{"type":"default"}} -->
 				<div class="wp-block-group bbm-review">
 					<!-- wp:html -->
-					<img class="bbm-review__src" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/badge-capterra.svg' ) ); ?>" alt="WordPress" />
+					<img class="bbm-review__src" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/badge-wordpress.svg' ) ); ?>" alt="WordPress" />
 					<!-- /wp:html -->
 					<!-- wp:group {"className":"bbm-review__who","layout":{"type":"default"}} -->
 					<div class="wp-block-group bbm-review__who">
@@ -95,7 +95,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"bbm-review__text"} -->
-					<p class="bbm-review__text">I have used the BuddyBoss theme, platform, mobile app, done-for-you, and agency services for nearly two years. I am constantly impressed with the product and services. The leaders model excellence in software development and communication, feverously making groundbreaking improvements while keeping its community informed. The support services are first-rate, and the employees are dedicated and hardworking. I don't know what I would have done without BuddyBoss during this pandemic. Their software and support team have made it possible to build a custom multisite and mobile app from scratch. I'm incredibly grateful for BuddyBoss and look forward to investing in its continued success.</p>
+					<p class="bbm-review__text">I have used the BuddyBoss theme, platform, mobile app, done-for-you, and agency services for nearly two years. I am constantly impressed with the product and services. The leaders model excellence in software development and communication, feverously making groundbreaking improvements while keeping its community informed. The support services are first-rate, and the employees are dedicated and hardworking. I don’t know what I would have done without BuddyBoss during this pandemic. Their software and support team have made it possible to build a custom multisite and mobile app from scratch. I’m incredibly grateful for BuddyBoss and look forward to investing in its continued success.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -138,7 +138,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"bbm-review__text"} -->
-					<p class="bbm-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+					<p class="bbm-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they’ve created. Bad reviews happen every day, but it’s not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I’m sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -220,14 +220,14 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"bbm-review__text"} -->
-					<p class="bbm-review__text">I've helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I'm an so excited to have moved my private community and training to this platform.</p>
+					<p class="bbm-review__text">I’ve helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I’m an so excited to have moved my private community and training to this platform.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
 				<!-- wp:group {"className":"bbm-review","layout":{"type":"default"}} -->
 				<div class="wp-block-group bbm-review">
 					<!-- wp:html -->
-					<img class="bbm-review__src" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/badge-capterra.svg' ) ); ?>" alt="WordPress" />
+					<img class="bbm-review__src" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/badge-wordpress.svg' ) ); ?>" alt="WordPress" />
 					<!-- /wp:html -->
 					<!-- wp:group {"className":"bbm-review__who","layout":{"type":"default"}} -->
 					<div class="wp-block-group bbm-review__who">
@@ -259,7 +259,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"bbm-review__text"} -->
-					<p class="bbm-review__text">Their line of products are consistent, elegant, and well thought out to build social platforms. Their support team is one of the best I've ever experienced and we owe our success to their entire team, especially their support staff who are organized, prompt, and reliable. Their support team is above the rest and is essential to the operations of our business and the future of our company's growth. The new releases and the continual improvements the BB team does is excellent! They really know what their doing, consistently deliver, and we're so thankful to have partnered with them two years ago.</p>
+					<p class="bbm-review__text">Their line of products are consistent, elegant, and well thought out to build social platforms. Their support team is one of the best I’ve ever experienced and we owe our success to their entire team, especially their support staff who are organized, prompt, and reliable. Their support team is above the rest and is essential to the operations of our business and the future of our company’s growth. The new releases and the continual improvements the BB team does is excellent! They really know what their doing, consistently deliver, and we’re so thankful to have partnered with them two years ago.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->

@@ -1282,9 +1282,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   background: var(--bg-brand-subtle);
 }
 .modcard__icon img { width: 32px; height: 32px; }   /* 48 tile, 32 glyph */
-.modcard__title { font-size: var(--size-xl); line-height: var(--lh-xl); font-weight: 600; margin-top: 4px; }
+.modcard__title { font-size: var(--size-xl); line-height: var(--lh-xl); font-weight: 600; }
 .modcard__text { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-tertiary); }
-.modcard .btn { margin-top: 8px; }
+.modcard .btn { margin-top: 16px; }   /* 8 gap + 16 = the 24 in the comp */
 
 /* ---------- testimonial masonry ----------------------------------- */
 .mp-reviews { background: var(--bg-brand-subtle); padding-block: 80px 88px; }
