@@ -26,8 +26,8 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- /wp:group -->
 		<!-- wp:buttons -->
 		<div class="wp-block-buttons">
-			<!-- wp:button {"className":"bbm-btn bbm-btn--white"} -->
-			<div class="wp-block-button bbm-btn bbm-btn--white"><a class="wp-block-button__link wp-element-button" href="#">Get BuddyBoss Now</a></div>
+			<!-- wp:button {"className":"bbm-btn bbm-btn--lg bbm-btn--white"} -->
+			<div class="wp-block-button bbm-btn bbm-btn--lg bbm-btn--white"><a class="wp-block-button__link wp-element-button" href="#">Get BuddyBoss Now</a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->

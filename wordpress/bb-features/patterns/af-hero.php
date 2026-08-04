@@ -13,10 +13,10 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 <!-- wp:group {"align":"full","className":"bbm bbm-hero","layout":{"type":"default"}} -->
 <div class="wp-block-group alignfull bbm bbm-hero">
 	<!-- wp:html -->
-	<img class="bbm-hero__deco bbm-hero__poly" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/mp-hero-poly.svg' ) ); ?>" alt="" aria-hidden="true" />
+	<img class="bbm-hero__deco bbm-hero__poly" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/mp-hero-poly.svg' ) ); ?>" alt="" aria-hidden="true"/>
 	<!-- /wp:html -->
 	<!-- wp:html -->
-	<img class="bbm-hero__deco bbm-hero__rect" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/mp-hero-rect.svg' ) ); ?>" alt="" aria-hidden="true" />
+	<img class="bbm-hero__deco bbm-hero__rect" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/mp-hero-rect.svg' ) ); ?>" alt="" aria-hidden="true"/>
 	<!-- /wp:html -->
 	<!-- wp:group {"className":"bbm-shell bbm-hero__inner","layout":{"type":"default"}} -->
 	<div class="wp-block-group bbm-shell bbm-hero__inner">

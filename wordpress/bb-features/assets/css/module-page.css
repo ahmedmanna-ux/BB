@@ -2,14 +2,9 @@
    BB Features — module page sections
    Built from Figma: BuddyBoss-Website / Activity Feed / 1886:10326
 
-   A second, self-contained scope alongside .bbf. The module pages
-   (Activity Feeds now, Moderation and Member Profiles when they
-   land) share this one stylesheet: everything is prefixed bbm- and
-   every token is declared on .bbm, so it neither reads from nor
-   leaks into the Features styles or the parent theme.
-
-   Stack Sans Headline is licensed and is not bundled — see the note
-   at the top of features.css.
+   Generated from the static stylesheet so the two cannot drift.
+   Everything is prefixed bbm- and every token is declared on .bbm,
+   so it neither reads from nor leaks into the Features styles.
    ============================================================= */
 .bbm {
   /* --- colour -------------------------------------------------- */
@@ -133,6 +128,7 @@
   margin-inline: auto;
   padding-inline: var(--bbm-gutter);
 }
+.bbm-section { margin-top: var(--bbm-section-gap); }
 
 /* ---------- type scale ------------------------------------------- */
 .bbm-h1 { font-size: var(--bbm-size-5xl); line-height: var(--bbm-lh-5xl); font-weight: 700; }
@@ -261,10 +257,7 @@
 .bbm-hero {
   position: relative; overflow: hidden; background: var(--bbm-bg-brand-subtle);
 }
-/* In the design the site header has no fill and the peach runs up behind it.
-   A WordPress header lives in the template, not here, so that is opt-in: make
-   the header transparent in the parent theme, then add bbm-hero--under-header
-   to the hero group (and override --bbm-header-h if the bar is not 74px). */
+/* opt-in: transparent header in the parent theme, then add this to the hero */
 .bbm-hero--under-header {
   margin-top: calc(-1 * var(--bbm-header-h));
   padding-top: var(--bbm-header-h);
@@ -362,13 +355,24 @@
 .bbm-fcard__copy > p { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-secondary); }
 /* Split cards carry a 36/44 title; the narrower stack and duo cards drop
    to 28/36 so three lines of body still fit the 592px card. */
-.bbm-fcard--stack .bbm-fcard__copy { padding-bottom: 24px; }
-.bbm-fcard--stack .bbm-fcard__copy .bbm-h3 { font-size: var(--bbm-size-2xl); line-height: var(--bbm-lh-2xl); }
+/* Stack cards inset their text by 24, not 32 — at 32 the Post pair's
+   description wraps to a third line and the row runs 26 over. */
+.bbm-fcard--stack .bbm-fcard__copy { padding: 32px 24px 24px; }
+.bbm-fcard--stack .bbm-fcard__copy > p { margin-top: -8px; }   /* the gap here is 16, not 24 */
+.bbm-control .bbm-fcard__copy > p   { margin-top: -8px; }
 .bbm-fcard__art { display: block; width: 100%; height: auto; }
 
 /* copy left, artwork flush to the card's right edge */
 .bbm-fcard--split { display: grid; grid-template-columns: 548px 1fr; align-items: stretch; }
-.bbm-fcard--split .bbm-fcard__copy { padding: 32px 40px 32px 32px; align-self: center; }
+/* The copy column is 548 wide and the text sits 32 from the card's outer edge;
+   the gutter facing the artwork is what varies — 40 in Discover, 56 in Post
+   and Engage, 72 in Control — giving text columns of 476, 460 and 444. */
+.bbm-fcard--split              { --bbm-copy-gutter: 40px; }
+.bbm-post    .bbm-fcard--split,
+.bbm-engage  .bbm-fcard--split  { --bbm-copy-gutter: 56px; }
+.bbm-control .bbm-fcard--split  { --bbm-copy-gutter: 72px; }
+.bbm-fcard--split .bbm-fcard__copy { padding: 32px var(--bbm-copy-gutter) 32px 32px; align-self: center; }
+.bbm-fcard--flip  .bbm-fcard__copy { padding: 32px 32px 32px var(--bbm-copy-gutter); }
 /* the artwork sets the row height — stretching it to the copy instead let
    these cards collapse below the design's height */
 .bbm-fcard--split .bbm-fcard__art { width: 100%; height: auto; }
@@ -433,22 +437,29 @@
 .bbm-ctaband {
   display: flex; align-items: center; justify-content: space-between; gap: 40px;
   padding: 72px 56px; min-height: 256px; border-radius: var(--bbm-radius-3xl);
-  background: linear-gradient(90deg, #0c0c0d 0%, #6c2513 62%, #d2542a 100%);
+  background: linear-gradient(90deg, #000000, #ce502c);   /* both bands, fitted to 1.5 */
   color: var(--bbm-text-light);
 }
-.bbm-ctaband__copy { display: flex; flex-direction: column; gap: 12px; max-width: 660px; }
-.bbm-ctaband__title { font-size: var(--bbm-size-2xl); line-height: var(--bbm-lh-2xl); font-weight: 700;
+/* band: title 36/44 on one line, body 16/24 capped at 703, 20 between them,
+   button 237x48 sitting 56 in from the right */
+/* the title runs wider than the copy frame in Figma — 840 against 703 — so the
+   cap belongs on the body alone, or the headline breaks onto a second line */
+.bbm-ctaband__copy { display: flex; flex-direction: column; gap: 20px; max-width: 840px; }
+.bbm-ctaband__text { max-width: 703px; }
+.bbm-ctaband__title { font-size: var(--bbm-size-3xl); line-height: var(--bbm-lh-3xl); font-weight: 700;
                   font-family: var(--bbm-font-heading); letter-spacing: -0.022em; }
-.bbm-ctaband__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: rgba(255,255,255,.82); }
+.bbm-ctaband__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: rgba(255,255,255,.82); }
+/* the closing band: 56/68 title over 840, 18/26 body over 756, 80 top and bottom */
 .bbm-ctaband--center {
-  flex-direction: column; text-align: center; padding: 72px 48px; gap: 24px;
+  flex-direction: column; text-align: center; padding: 80px 48px; gap: 24px;
   min-height: 444px; justify-content: center;
 }
-.bbm-ctaband--center .bbm-ctaband__copy { align-items: center; max-width: 640px; }
-.bbm-ctaband--center .bbm-ctaband__title { font-size: var(--bbm-size-4xl); line-height: var(--bbm-lh-4xl); font-weight: 600; }
+.bbm-ctaband--center .bbm-ctaband__copy { align-items: center; max-width: 840px; gap: 24px; }
+.bbm-ctaband--center .bbm-ctaband__title { font-size: var(--bbm-size-5xl); line-height: var(--bbm-lh-5xl); font-weight: 600; }
+.bbm-ctaband--center .bbm-ctaband__text { font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); max-width: 756px; }
 
 /* ---------- explore more modules ---------------------------------- */
-.bbm-modcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.bbm-modcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
 .bbm-modcard {
   display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
   padding: 24px; border-radius: var(--bbm-radius-xl); min-height: 280px;
@@ -460,31 +471,36 @@
   background: var(--bbm-bg-brand-subtle);
 }
 .bbm-modcard__icon img { width: 24px; height: 24px; }
-.bbm-modcard__title { font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); font-weight: 600; margin-top: 4px; }
-.bbm-modcard__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-tertiary); }
+.bbm-modcard__title { font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); font-weight: 600; margin-top: 4px; }
+.bbm-modcard__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
 .bbm-modcard .bbm-btn { margin-top: 8px; }
 
 /* ---------- testimonial masonry ----------------------------------- */
 .bbm-reviews { background: var(--bbm-bg-brand-subtle); padding-block: 80px 88px; }
 .bbm-reviews__title { max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px; }
-.bbm-rgrid { columns: 3; column-gap: 24px; min-height: 790px; }
+/* Figma sets the columns explicitly rather than balancing them, and the split
+   it chose is not the one CSS multi-column arrives at — so three real columns. */
+.bbm-rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.bbm-rcol  { display: flex; flex-direction: column; gap: 24px; }
 .bbm-review {
-  break-inside: avoid; margin-bottom: 24px; padding-block: 28px;
-  background: var(--bbm-bg-default-surface);
+  padding-block: 28px;
+  /* no fill — the card is the band's own colour, outlined only */
   /* 0.5px stroke/brand/secondary over the peach band, not over white */
   border: 1px solid #fbd6cc;
-  border-radius: var(--bbm-radius-xl); padding: 24px;
+  /* 23 + the inside border = Figma's 24 inset, which also gives the text the
+     362.67 it needs — at 361 the longest review takes an extra line */
+  border-radius: var(--bbm-radius-xl); padding: 23px;
   display: flex; flex-direction: column; gap: 12px;
   position: relative;
 }
 .bbm-review__who { display: flex; align-items: center; gap: 12px; }
-.bbm-review__who img { width: 40px; height: 40px; border-radius: var(--bbm-radius-full); }
+.bbm-review__who img { width: 56px; height: 56px; border-radius: var(--bbm-radius-full); }
 .bbm-review__name { font-family: var(--bbm-font-heading); letter-spacing: -0.022em;
-                   font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); font-weight: 600; }
-.bbm-review__stars { display: flex; gap: 2px; }
-.bbm-review__stars img { width: 16px; height: 16px; }
+                   font-size: var(--bbm-size-md); line-height: var(--bbm-lh-lg); font-weight: 600; }
+.bbm-review__stars { display: flex; gap: 4px; margin-top: 4px; }   /* 16 below the name, not 12 */
+.bbm-review__stars img { width: 20px; height: 20px; }
 .bbm-review__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-secondary); }
-.bbm-review__src { position: absolute; top: 20px; right: 20px; width: 20px; height: 20px; }
+.bbm-review__src { position: absolute; top: 16px; right: 16px; width: 34px; height: 32px; object-fit: contain; }
 
 /* ---------- module page responsive -------------------------------- */
 @media (max-width: 1100px) {
@@ -496,21 +512,18 @@
   .bbm-fcard--flip .bbm-fcard__art { order: 0; }
   .bbm-fduo, .bbm-fduo--wide { grid-template-columns: 1fr; gap: 32px; }
   .bbm-minicards, .bbm-modcards { grid-template-columns: 1fr; }
-  .bbm-rgrid { columns: 2; }
+  .bbm-rgrid { grid-template-columns: repeat(2, 1fr); }
   .bbm-ctaband { flex-direction: column; align-items: flex-start; padding: 32px; }
 }
 @media (max-width: 720px) {
   .bbm-jumpcards { grid-template-columns: 1fr; }
-  .bbm-rgrid { columns: 1; }
+  .bbm-rgrid { grid-template-columns: 1fr; }
 }
 
 /* the hero's secondary action is a plain label — no trailing arrow */
 .bbm-btn--noicon img, .bbm-btn--noicon svg { display: none; }
 
-
-/* ---------- token steps ------------------------------------------
-   The same breakpoints the static build uses; scoped to .bbm so the
-   parent theme's own scale is untouched. */
+/* ---------- token steps ------------------------------------------ */
 @media (max-width: 1600px) { .bbm { --bbm-gutter: clamp(20px, 10vw, 160px); } }
 @media (max-width: 1180px) { .bbm { --bbm-section-gap: 80px; } }
 @media (max-width: 1024px) {

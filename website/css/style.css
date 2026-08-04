@@ -1161,13 +1161,24 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .fcard__copy > p { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-secondary); }
 /* Split cards carry a 36/44 title; the narrower stack and duo cards drop
    to 28/36 so three lines of body still fit the 592px card. */
-.fcard--stack .fcard__copy { padding-bottom: 24px; }
-.fcard--stack .fcard__copy .h3 { font-size: var(--size-2xl); line-height: var(--lh-2xl); }
+/* Stack cards inset their text by 24, not 32 — at 32 the Post pair's
+   description wraps to a third line and the row runs 26 over. */
+.fcard--stack .fcard__copy { padding: 32px 24px 24px; }
+.fcard--stack .fcard__copy > p { margin-top: -8px; }   /* the gap here is 16, not 24 */
+.mp-control .fcard__copy > p   { margin-top: -8px; }
 .fcard__art { display: block; width: 100%; height: auto; }
 
 /* copy left, artwork flush to the card's right edge */
 .fcard--split { display: grid; grid-template-columns: 548px 1fr; align-items: stretch; }
-.fcard--split .fcard__copy { padding: 32px 40px 32px 32px; align-self: center; }
+/* The copy column is 548 wide and the text sits 32 from the card's outer edge;
+   the gutter facing the artwork is what varies — 40 in Discover, 56 in Post
+   and Engage, 72 in Control — giving text columns of 476, 460 and 444. */
+.fcard--split              { --copy-gutter: 40px; }
+.mp-post    .fcard--split,
+.mp-engage  .fcard--split  { --copy-gutter: 56px; }
+.mp-control .fcard--split  { --copy-gutter: 72px; }
+.fcard--split .fcard__copy { padding: 32px var(--copy-gutter) 32px 32px; align-self: center; }
+.fcard--flip  .fcard__copy { padding: 32px 32px 32px var(--copy-gutter); }
 /* the artwork sets the row height — stretching it to the copy instead let
    these cards collapse below the design's height */
 .fcard--split .fcard__art { width: 100%; height: auto; }
@@ -1233,22 +1244,29 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .ctaband {
   display: flex; align-items: center; justify-content: space-between; gap: 40px;
   padding: 72px 56px; min-height: 256px; border-radius: var(--radius-3xl);
-  background: linear-gradient(90deg, #0c0c0d 0%, #6c2513 62%, #d2542a 100%);
+  background: linear-gradient(90deg, #000000, #ce502c);   /* both bands, fitted to 1.5 */
   color: var(--text-light);
 }
-.ctaband__copy { display: flex; flex-direction: column; gap: 12px; max-width: 660px; }
-.ctaband__title { font-size: var(--size-2xl); line-height: var(--lh-2xl); font-weight: 700;
+/* band: title 36/44 on one line, body 16/24 capped at 703, 20 between them,
+   button 237x48 sitting 56 in from the right */
+/* the title runs wider than the copy frame in Figma — 840 against 703 — so the
+   cap belongs on the body alone, or the headline breaks onto a second line */
+.ctaband__copy { display: flex; flex-direction: column; gap: 20px; max-width: 840px; }
+.ctaband__text { max-width: 703px; }
+.ctaband__title { font-size: var(--size-3xl); line-height: var(--lh-3xl); font-weight: 700;
                   font-family: var(--font-heading); letter-spacing: -0.022em; }
-.ctaband__text { font-size: var(--size-sm); line-height: var(--lh-sm); color: rgba(255,255,255,.82); }
+.ctaband__text { font-size: var(--size-md); line-height: var(--lh-md); color: rgba(255,255,255,.82); }
+/* the closing band: 56/68 title over 840, 18/26 body over 756, 80 top and bottom */
 .ctaband--center {
-  flex-direction: column; text-align: center; padding: 72px 48px; gap: 24px;
+  flex-direction: column; text-align: center; padding: 80px 48px; gap: 24px;
   min-height: 444px; justify-content: center;
 }
-.ctaband--center .ctaband__copy { align-items: center; max-width: 640px; }
-.ctaband--center .ctaband__title { font-size: var(--size-4xl); line-height: var(--lh-4xl); font-weight: 600; }
+.ctaband--center .ctaband__copy { align-items: center; max-width: 840px; gap: 24px; }
+.ctaband--center .ctaband__title { font-size: var(--size-5xl); line-height: var(--lh-5xl); font-weight: 600; }
+.ctaband--center .ctaband__text { font-size: var(--size-lg); line-height: var(--lh-lg); max-width: 756px; }
 
 /* ---------- explore more modules ---------------------------------- */
-.modcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.modcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
 .modcard {
   display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
   padding: 24px; border-radius: var(--radius-xl); min-height: 280px;
@@ -1260,31 +1278,36 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   background: var(--bg-brand-subtle);
 }
 .modcard__icon img { width: 24px; height: 24px; }
-.modcard__title { font-size: var(--size-lg); line-height: var(--lh-lg); font-weight: 600; margin-top: 4px; }
-.modcard__text { font-size: var(--size-sm); line-height: var(--lh-sm); color: var(--text-tertiary); }
+.modcard__title { font-size: var(--size-xl); line-height: var(--lh-xl); font-weight: 600; margin-top: 4px; }
+.modcard__text { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-tertiary); }
 .modcard .btn { margin-top: 8px; }
 
 /* ---------- testimonial masonry ----------------------------------- */
 .mp-reviews { background: var(--bg-brand-subtle); padding-block: 80px 88px; }
 .mp-reviews__title { max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px; }
-.mp-rgrid { columns: 3; column-gap: 24px; min-height: 790px; }
+/* Figma sets the columns explicitly rather than balancing them, and the split
+   it chose is not the one CSS multi-column arrives at — so three real columns. */
+.mp-rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.mp-rcol  { display: flex; flex-direction: column; gap: 24px; }
 .mp-review {
-  break-inside: avoid; margin-bottom: 24px; padding-block: 28px;
-  background: var(--bg-default-surface);
+  padding-block: 28px;
+  /* no fill — the card is the band's own colour, outlined only */
   /* 0.5px stroke/brand/secondary over the peach band, not over white */
   border: 1px solid #fbd6cc;
-  border-radius: var(--radius-xl); padding: 24px;
+  /* 23 + the inside border = Figma's 24 inset, which also gives the text the
+     362.67 it needs — at 361 the longest review takes an extra line */
+  border-radius: var(--radius-xl); padding: 23px;
   display: flex; flex-direction: column; gap: 12px;
   position: relative;
 }
 .mp-review__who { display: flex; align-items: center; gap: 12px; }
-.mp-review__who img { width: 40px; height: 40px; border-radius: var(--radius-full); }
+.mp-review__who img { width: 56px; height: 56px; border-radius: var(--radius-full); }
 .mp-review__name { font-family: var(--font-heading); letter-spacing: -0.022em;
-                   font-size: var(--size-md); line-height: var(--lh-md); font-weight: 600; }
-.mp-review__stars { display: flex; gap: 2px; }
-.mp-review__stars img { width: 16px; height: 16px; }
+                   font-size: var(--size-md); line-height: var(--lh-lg); font-weight: 600; }
+.mp-review__stars { display: flex; gap: 4px; margin-top: 4px; }   /* 16 below the name, not 12 */
+.mp-review__stars img { width: 20px; height: 20px; }
 .mp-review__text { font-size: var(--size-sm); line-height: var(--lh-sm); color: var(--text-secondary); }
-.mp-review__src { position: absolute; top: 20px; right: 20px; width: 20px; height: 20px; }
+.mp-review__src { position: absolute; top: 16px; right: 16px; width: 34px; height: 32px; object-fit: contain; }
 
 /* ---------- module page responsive -------------------------------- */
 @media (max-width: 1100px) {
@@ -1296,12 +1319,12 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   .fcard--flip .fcard__art { order: 0; }
   .fduo, .fduo--wide { grid-template-columns: 1fr; gap: 32px; }
   .minicards, .modcards { grid-template-columns: 1fr; }
-  .mp-rgrid { columns: 2; }
+  .mp-rgrid { grid-template-columns: repeat(2, 1fr); }
   .ctaband { flex-direction: column; align-items: flex-start; padding: 32px; }
 }
 @media (max-width: 720px) {
   .jumpcards { grid-template-columns: 1fr; }
-  .mp-rgrid { columns: 1; }
+  .mp-rgrid { grid-template-columns: 1fr; }
 }
 
 /* the hero's secondary action is a plain label — no trailing arrow */
