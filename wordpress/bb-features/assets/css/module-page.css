@@ -301,7 +301,7 @@
    visible piece and sits flush against the band edge it runs off. */
 .bbm-hero__deco { position: absolute; z-index: 0; pointer-events: none; }
 .bbm-hero__poly { right: 0; bottom: 0; width: 876px; height: 562px; }
-.bbm-hero__rect { left: 0;  top: 490px; width: 323px; height: 156px; }
+.bbm-hero__rect { left: 0;  bottom: 0; width: 323px; height: 156px; }
 
 /* ---------- jump cards -------------------------------------------- */
 .bbm-jumpcards { display: grid; grid-template-columns: repeat(4, 296px); justify-content: space-between; }
