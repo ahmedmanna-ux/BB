@@ -176,6 +176,8 @@
 .bbm-btn--ghost:hover { background: var(--bbm-bg-brand-subtle); }
 .bbm-btn--solid { background: var(--bbm-bg-brand-primary); color: var(--bbm-text-light); }
 .bbm-btn--solid:hover { background: var(--bbm-bg-brand-secondary); }
+/* the arrow ships brand-coloured; on the brand fill it has to flip to white */
+.bbm-btn--solid img { filter: brightness(0) invert(1); }
 .bbm-btn--white { background: var(--bbm-bg-default-surface); color: var(--bbm-text-brand); }
 .bbm-btn--white:hover { background: var(--bbm-bg-brand-subtle); }
 .bbm-btn--lg { min-height: 48px; max-height: none; padding: 11px 23px;
@@ -465,12 +467,14 @@
   padding: 24px; border-radius: var(--bbm-radius-xl); min-height: 280px;
   border: 1px solid var(--bbm-stroke-brand-primary);
 }
-.bbm-modcard:first-child { background: var(--bbm-bg-brand-subtle); }
+/* the filled card in the comp is the hover state, not a default */
+.bbm-modcard { transition: background-color .18s ease; }
+.bbm-modcard:hover { background: var(--bbm-bg-brand-subtle); }
 .bbm-modcard__icon {
   display: inline-flex; padding: 8px; border-radius: var(--bbm-radius-lg);
   background: var(--bbm-bg-brand-subtle);
 }
-.bbm-modcard__icon img { width: 24px; height: 24px; }
+.bbm-modcard__icon img { width: 32px; height: 32px; }   /* 48 tile, 32 glyph */
 .bbm-modcard__title { font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); font-weight: 600; margin-top: 4px; }
 .bbm-modcard__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
 .bbm-modcard .bbm-btn { margin-top: 8px; }

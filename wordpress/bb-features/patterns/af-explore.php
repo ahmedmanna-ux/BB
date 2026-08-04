@@ -64,7 +64,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-modcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-modcard">
 			<!-- wp:html -->
-			<span class="bbm-modcard__icon"><img src="assets/icon/mod-moderation.svg" alt=""></span>
+			<span class="bbm-modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":3,"className":"bbm-modcard__title"} -->
 			<h3 class="wp-block-heading bbm-modcard__title">Moderations</h3>

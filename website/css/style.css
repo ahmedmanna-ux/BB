@@ -203,6 +203,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .btn--ghost:hover { background: var(--bg-brand-subtle); }
 .btn--solid { background: var(--bg-brand-primary); color: var(--text-light); }
 .btn--solid:hover { background: var(--bg-brand-secondary); }
+/* the arrow ships brand-coloured; on the brand fill it has to flip to white */
+.btn--solid img { filter: brightness(0) invert(1); }
 .btn--white { background: var(--bg-default-surface); color: var(--text-brand); }
 .btn--white:hover { background: var(--bg-brand-subtle); }
 .btn--lg { min-height: 48px; max-height: none; padding: 11px 23px;
@@ -395,7 +397,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .float img { width: 100%; height: auto; }
 .float--composer     { left: 70px;      top: 61px;   width: 333px; }    /* box 90,147 */
 .float--avatars      { left: 1270.2px;  top: 63.4px; width: 197px; }    /* box 1288,148 */
-.float--notification { left: 1198px;    top: 277px;  width: 410px; }    /* box 1198,351 */
+.float--notification { left: 1198px;    top: 277px;  width: 402px; }    /* box 1198,351 */
 .float--message      { left: 61px;      top: 378px;  width: 504px; }    /* box 61,452 */
 .float--update       { left: 713px;     top: 432px;  width: 360px; }    /* box 733,518 */
 .float--reactions    { left: 1257px;    top: 451px;  width: 236.8px; }  /* box 1257,525 — 6 reactions */
@@ -1272,12 +1274,14 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   padding: 24px; border-radius: var(--radius-xl); min-height: 280px;
   border: 1px solid var(--stroke-brand-primary);
 }
-.modcard:first-child { background: var(--bg-brand-subtle); }
+/* the filled card in the comp is the hover state, not a default */
+.modcard { transition: background-color .18s ease; }
+.modcard:hover { background: var(--bg-brand-subtle); }
 .modcard__icon {
   display: inline-flex; padding: 8px; border-radius: var(--radius-lg);
   background: var(--bg-brand-subtle);
 }
-.modcard__icon img { width: 24px; height: 24px; }
+.modcard__icon img { width: 32px; height: 32px; }   /* 48 tile, 32 glyph */
 .modcard__title { font-size: var(--size-xl); line-height: var(--lh-xl); font-weight: 600; margin-top: 4px; }
 .modcard__text { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-tertiary); }
 .modcard .btn { margin-top: 8px; }
