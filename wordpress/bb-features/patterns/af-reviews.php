@@ -150,7 +150,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					<!-- wp:group {"className":"bbm-review__who","layout":{"type":"default"}} -->
 					<div class="wp-block-group bbm-review__who">
 						<!-- wp:html -->
-						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/av-dwayne.png' ) ); ?>" alt="" />
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/av-kevin.png' ) ); ?>" alt="" />
 						<!-- /wp:html -->
 						<!-- wp:html -->
 						<span class="bbm-review__name">Kevin Castello</span>

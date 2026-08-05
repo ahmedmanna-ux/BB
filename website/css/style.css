@@ -168,6 +168,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .body-sm { font-size: var(--size-sm); line-height: var(--lh-sm); color: var(--text-secondary); }
 .body-md { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-tertiary); }
+/* Offload Media and Member Blogging set their body in a one-off #595961 rather
+   than the text/default/secondary token the other two halves sections use. */
+.body-sm--grey { color: #595961; }
 
 /* ---------- section tag ------------------------------------------ */
 .tag {
@@ -717,7 +720,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: var(--size-lg); line-height: var(--lh-lg); font-weight: 500;
 }
 .review__role { font-size: var(--size-sm); line-height: var(--lh-sm); color: var(--text-secondary); }
-.review__logo { height: 32px; width: auto; }
+.review__logo { width: 106px; height: 32px; object-fit: contain; }   /* node 1253:10888 */
 
 /* =================================================================
    STATS
@@ -928,6 +931,11 @@ img[src$="arrow-right.svg"]     { width:20px; height:20px; padding:3.750px 2.500
 /* the 48px button draws the same arrow in a 24px frame — the leaf inset scales with it */
 .btn--lg img[src$="arrow-right.svg"] { width:24px; height:24px; padding:4.500px 3.000px 4.499px 3.000px; }
 img[src$="hdr-user.svg"]        { width:20px; height:20px; padding:1.872px 1.868px 2.486px 1.868px; }
+
+/* --- 32px boxes: the mini-card glyphs ------------------------------ */
+img[src$="feat-notepencil.svg"] { width:32px; height:32px; padding:3.500px; }
+img[src$="feat-chattext.svg"]   { width:32px; height:32px; padding:4px 3px; }
+img[src$="feat-textt.svg"]      { width:32px; height:32px; padding:6px; }
 img[src$="star-20.svg"]         { width:20px; height:20px; padding:1.250px 1.256px 1.878px 1.254px; }
 img[src$="star-20-outline.svg"] { width:20px; height:20px; padding:1.250px 1.251px 1.875px 1.250px; }
 

@@ -115,7 +115,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-minicard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-minicard">
 			<!-- wp:html -->
-			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/feat-filetext.svg' ) ); ?>" alt="" />
+			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/feat-notepencil.svg' ) ); ?>" alt="" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":3,"className":"bbm-minicard__title"} -->
 			<h3 class="wp-block-heading bbm-minicard__title">Edit Activity</h3>
@@ -128,7 +128,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-minicard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-minicard">
 			<!-- wp:html -->
-			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/mod-messaging.svg' ) ); ?>" alt="" />
+			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/feat-chattext.svg' ) ); ?>" alt="" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":3,"className":"bbm-minicard__title"} -->
 			<h3 class="wp-block-heading bbm-minicard__title">Close Comments</h3>
@@ -141,7 +141,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-minicard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-minicard">
 			<!-- wp:html -->
-			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/feat-filetext.svg' ) ); ?>" alt="" />
+			<img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/feat-textt.svg' ) ); ?>" alt="" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":3,"className":"bbm-minicard__title"} -->
 			<h3 class="wp-block-heading bbm-minicard__title">Post Title</h3>

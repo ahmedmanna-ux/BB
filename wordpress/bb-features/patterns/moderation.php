@@ -23,7 +23,7 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 					<!-- wp:group {"className":"bbf-halves__intro-head","layout":{"type":"default"}} -->
 					<div class="wp-block-group bbf-halves__intro-head">
 						<!-- wp:paragraph {"className":"bbf-tag"} --><p class="bbf-tag">Moderation</p><!-- /wp:paragraph -->
-						<!-- wp:heading {"className":"bbf-h3"} --><h2 class="wp-block-heading bbf-h3">Automated moderation tools for your community</h2><!-- /wp:heading -->
+						<!-- wp:heading {"className":"bbf-h3 bbf-h3--bold"} --><h2 class="wp-block-heading bbf-h3 bbf-h3--bold">Automated moderation tools for your community</h2><!-- /wp:heading -->
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"bbf-body"} --><p class="bbf-body">Keep your community safe and welcoming with powerful moderation tools that help manage content, reduce spam, and maintain healthy member interactions.</p><!-- /wp:paragraph -->

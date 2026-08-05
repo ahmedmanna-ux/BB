@@ -625,7 +625,7 @@
 .bbf-review__person img { width: 56px; height: 56px; border-radius: var(--bbf-radius-full); object-fit: cover; }
 .bbf-review__name { font-size: var(--bbf-lg); line-height: var(--bbf-lh-lg); font-weight: 500; display: block; }
 .bbf-review__role { font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); color: var(--bbf-text-secondary); }
-.bbf-review__logo img { height: 32px; width: auto; }
+.bbf-review__logo img { width: 106px; height: 32px; object-fit: contain; }   /* node 1253:10888 */
 
 /* =================================================================
    STATS

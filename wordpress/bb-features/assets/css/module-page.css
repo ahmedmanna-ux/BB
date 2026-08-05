@@ -145,6 +145,9 @@
 
 .bbm-body-sm { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-secondary); }
 .bbm-body-md { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
+/* Offload Media and Member Blogging set their body in a one-off #595961 rather
+   than the text/default/secondary token the other two halves sections use. */
+.bbm-body-sm--grey { color: #595961; }
 
 /* ---------- section tag ------------------------------------------ */
 .bbm-tag {
