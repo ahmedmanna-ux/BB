@@ -1271,8 +1271,8 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   background:
     linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
     linear-gradient(var(--edge-angle, 134deg),
-      var(--edge-strong), var(--edge-pale) var(--edge-stop, 26%),
-      var(--edge-pale) calc(100% - var(--edge-stop, 26%)), var(--edge-strong)) border-box;
+      var(--edge-strong), var(--edge-pale) var(--edge-stop-a, 26%),
+      var(--edge-pale) var(--edge-stop-b, 74%), var(--edge-strong)) border-box;
 }
 /* What a section modifier actually carries is the edge ramp, so that is what
    the class now says. The two pages built before this named their sections
@@ -1283,8 +1283,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .mp-edge--blue,  .mp-post, .mp-directory { --edge-strong: #009bff;          --edge-pale: var(--blue-50); }
 .mp-edge--green, .mp-engage, .mp-connect { --edge-strong: var(--green-400); --edge-pale: var(--green-100); }
 
-.fcard--split { --edge-angle: 115deg; }   /* 1280 x 576 */
-.fcard--wide  { --edge-angle: 113deg; }   /* 1280 x 544 */
+.fcard--split { --edge-angle: 115deg; }   /* 1280 x 576, stops 26/74 */
+.fcard--wide  { --edge-angle: 113deg; --edge-stop-a: 23%; --edge-stop-b: 79.5%; }
+.mp-post .fduo--wide > .fcard:first-child { --edge-stop-a: 22%; }   /* 736 x 564 */
 .mp-post .fcard--split                    { --edge-angle: 116deg; }  /* 1280 x 564 */
 .mp-post .fduo--wide > .fcard:first-child { --edge-angle: 128deg; }  /*  736 x 564 */
 .mp-post .fduo--wide > .fcard:last-child  { --edge-angle: 118deg; }  /*  512 x 564 */
@@ -1302,9 +1303,10 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
    shallower than its own diagonal implies. The 616x592 duo measures the same
    on every page that draws it, so it hangs off the ramp class. */
 .mp-identity .fcard--wide,
-.mp-mcontrol .fcard--wide { --edge-angle: 112deg; }   /* 1280 x 568 */
+.mp-mcontrol .fcard--wide { --edge-angle: 112deg; }   /* 1280 x 568, stops as .fcard--wide */
 .mp-edge--peach .fduo .fcard, .mp-identity .fduo .fcard,
-.mp-mcontrol    .fduo .fcard { --edge-angle: 134deg; }  /* 616 x 592 */
+.mp-mcontrol    .fduo .fcard { --edge-angle: 134deg;
+                               --edge-stop-a: 27.5%; --edge-stop-b: 79%; }  /* 616 x 592 */
 .mp-edge--green .fduo .fcard, .mp-connect .fduo .fcard { --edge-angle: 131deg; }
 /* Identity's wide card caps its body at 1056; Control's runs the full 1232, so
    the cap belongs on the one card rather than on .fcard--wide. */
@@ -1334,7 +1336,7 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
    cards use. */
 .mp-mcontrol .minicards { grid-template-columns: 480fr 368fr 368fr; }
 .mp-mcontrol .minicard  { min-height: 276px; }
-.mp-mcontrol .minicard             { --edge-angle: 113deg; --edge-stop: 21%; }
+.mp-mcontrol .minicard             { --edge-angle: 113deg; --edge-stop-a: 21%; --edge-stop-b: 79%; }
 .mp-mcontrol .minicard:first-child { --edge-angle: 119deg; }
 
 /* ---------- sub-head + three-up grid -------------------------------

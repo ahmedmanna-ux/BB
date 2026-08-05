@@ -450,8 +450,8 @@
   background:
     linear-gradient(var(--bbm-bg-default-surface), var(--bbm-bg-default-surface)) padding-box,
     linear-gradient(var(--bbm-edge-angle, 134deg),
-      var(--bbm-edge-strong), var(--bbm-edge-pale) var(--bbm-edge-stop, 26%),
-      var(--bbm-edge-pale) calc(100% - var(--bbm-edge-stop, 26%)), var(--bbm-edge-strong)) border-box;
+      var(--bbm-edge-strong), var(--bbm-edge-pale) var(--bbm-edge-stop-a, 26%),
+      var(--bbm-edge-pale) var(--bbm-edge-stop-b, 74%), var(--bbm-edge-strong)) border-box;
 }
 /* What a section modifier actually carries is the edge ramp, so that is what
    the class now says. The two pages built before this named their sections
@@ -462,8 +462,9 @@
 .bbm-edge--blue,  .bbm-post, .bbm-directory { --bbm-edge-strong: #009bff;          --bbm-edge-pale: var(--bbm-blue-50); }
 .bbm-edge--green, .bbm-engage, .bbm-connect { --bbm-edge-strong: var(--bbm-green-400); --bbm-edge-pale: var(--bbm-green-100); }
 
-.bbm-fcard--split { --bbm-edge-angle: 115deg; }   /* 1280 x 576 */
-.bbm-fcard--wide  { --bbm-edge-angle: 113deg; }   /* 1280 x 544 */
+.bbm-fcard--split { --bbm-edge-angle: 115deg; }   /* 1280 x 576, stops 26/74 */
+.bbm-fcard--wide  { --bbm-edge-angle: 113deg; --bbm-edge-stop-a: 23%; --bbm-edge-stop-b: 79.5%; }
+.bbm-post .bbm-fduo--wide > .bbm-fcard:first-child { --bbm-edge-stop-a: 22%; }   /* 736 x 564 */
 .bbm-post .bbm-fcard--split                    { --bbm-edge-angle: 116deg; }  /* 1280 x 564 */
 .bbm-post .bbm-fduo--wide > .bbm-fcard:first-child { --bbm-edge-angle: 128deg; }  /*  736 x 564 */
 .bbm-post .bbm-fduo--wide > .bbm-fcard:last-child  { --bbm-edge-angle: 118deg; }  /*  512 x 564 */
@@ -481,9 +482,10 @@
    shallower than its own diagonal implies. The 616x592 duo measures the same
    on every page that draws it, so it hangs off the ramp class. */
 .bbm-identity .bbm-fcard--wide,
-.bbm-mcontrol .bbm-fcard--wide { --bbm-edge-angle: 112deg; }   /* 1280 x 568 */
+.bbm-mcontrol .bbm-fcard--wide { --bbm-edge-angle: 112deg; }   /* 1280 x 568, stops as .fcard--wide */
 .bbm-edge--peach .bbm-fduo .bbm-fcard, .bbm-identity .bbm-fduo .bbm-fcard,
-.bbm-mcontrol    .bbm-fduo .bbm-fcard { --bbm-edge-angle: 134deg; }  /* 616 x 592 */
+.bbm-mcontrol    .bbm-fduo .bbm-fcard { --bbm-edge-angle: 134deg;
+                               --bbm-edge-stop-a: 27.5%; --bbm-edge-stop-b: 79%; }  /* 616 x 592 */
 .bbm-edge--green .bbm-fduo .bbm-fcard, .bbm-connect .bbm-fduo .bbm-fcard { --bbm-edge-angle: 131deg; }
 /* Identity's wide card caps its body at 1056; Control's runs the full 1232, so
    the cap belongs on the one card rather than on .fcard--wide. */
@@ -513,7 +515,7 @@
    cards use. */
 .bbm-mcontrol .bbm-minicards { grid-template-columns: 480fr 368fr 368fr; }
 .bbm-mcontrol .bbm-minicard  { min-height: 276px; }
-.bbm-mcontrol .bbm-minicard             { --bbm-edge-angle: 113deg; --bbm-edge-stop: 21%; }
+.bbm-mcontrol .bbm-minicard             { --bbm-edge-angle: 113deg; --bbm-edge-stop-a: 21%; --bbm-edge-stop-b: 79%; }
 .bbm-mcontrol .bbm-minicard:first-child { --bbm-edge-angle: 119deg; }
 
 /* ---------- sub-head + three-up grid -------------------------------
