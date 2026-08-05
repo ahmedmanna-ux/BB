@@ -140,6 +140,18 @@ PAGES = {
   ('cta-big','Module — Closing CTA','Tall centred CTA band that closes the page.'),
   ('explore','Module — Explore more modules','Three cards linking on to the other module pages.'),
  ]),
+ 'moderation': ('md', 'Moderation', [
+  ('hero','Module — Moderation hero','Peach hero with the headline, two CTAs, feed artwork and the two background shapes.'),
+  ('jumpcards','Module — Jump cards','Four numbered cards summarising the sections below.'),
+  ('protect','Module — Protect','Section head, a pair, a split card, then a left-aligned sub-head over a nine-card grid of reportable content types.'),
+  ('define','Module — Define','Section head and two split cards on reporting categories.'),
+  ('cta','Module — CTA band','Dark full-width CTA band.'),
+  ('automate','Module — Automate','Section head, a pair and a split on auto hide, auto suspend and the alert that follows.'),
+  ('resolve','Module — Resolve','Section head and three split cards on flagged members and reported content.'),
+  ('reviews','Module — Review masonry','Peach band with three columns of customer reviews.'),
+  ('cta-big','Module — Closing CTA','Tall centred CTA band that closes the page.'),
+  ('explore','Module — Explore more modules','Three cards linking on to the other module pages.'),
+ ]),
  'member-profiles': ('mp', 'Member Profiles', [
   ('hero','Module — Member Profiles hero','Peach hero with the headline, two CTAs, profile artwork and the two background shapes.'),
   ('jumpcards','Module — Jump cards','Four numbered cards summarising the sections below.'),

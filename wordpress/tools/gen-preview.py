@@ -26,7 +26,7 @@ HEAD = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name=
 <script>document.documentElement.classList.add('js');</script></head><body>
 """
 
-PAGES = {'activity-feeds': 'af', 'member-profiles': 'mp'}
+PAGES = {'activity-feeds': 'af', 'member-profiles': 'mp', 'moderation': 'md'}
 
 
 def render(prefix: str) -> str:

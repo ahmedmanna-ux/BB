@@ -7,10 +7,12 @@ The BuddyBoss marketing pages as Gutenberg block patterns:
 | Features (Top Modules) | [`1008:8718`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1008-8718) | BuddyBoss — Features | `.bbf` |
 | Activity Feeds | [`1886:10326`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1886-10326) | BuddyBoss — Module pages | `.bbm` |
 | Member Profiles | [`2268:44480`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2268-44480) | BuddyBoss — Module pages | `.bbm` |
+| Moderation | [`2359:52842`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2359-52842) | BuddyBoss — Module pages | `.bbm` |
 
 The two scopes are independent: each declares its own tokens and prefixes its
-own class names, so neither reads from nor leaks into the other. Every module
-page shares one component set, so Moderation joins `.bbm` when it is built.
+own class names, so neither reads from nor leaks into the other. All three
+module pages share one component set under `.bbm`; a section picks its card
+stroke with `bbm-edge--peach` / `--blue` / `--green`.
 
 ## Install
 
@@ -36,7 +38,7 @@ patterns with `register_block_pattern()` — the patterns then survive a theme s
 | | |
 |---|---|
 | `theme.json` | The Figma variables as editor presets — brand palette, the `xs → 5xl` type scale, spacing steps. They appear in Gutenberg's own colour and typography pickers. |
-| `patterns/` | 20 Features sections + `features-page.php`; 12 sections each for Activity Feeds (`af-*`) and Member Profiles (`mp-*`), with `af-page.php` / `mp-page.php`. Each `*-page.php` composes its whole page in one insert. |
+| `patterns/` | 20 Features sections + `features-page.php`; the module pages as `af-*` (12), `mp-*` (12) and `md-*` (10), each with a `*-page.php`. Each `*-page.php` composes its whole page in one insert. |
 | `assets/css/features.css` | Every Features section style, scoped under `.bbf`. |
 | `assets/css/module-page.css` | Every module-page style, scoped under `.bbm`. |
 | `assets/js/features.js` | Scroll reveals, hero framing, stat counters, app carousel — drives both scopes. Front end only. |
@@ -54,7 +56,8 @@ cd Website Redesign/wordpress
 python3 tools/gen-module-css.py
 python3 tools/gen-patterns.py activity-feeds
 python3 tools/gen-patterns.py member-profiles
-python3 tools/gen-preview.py activity-feeds member-profiles
+python3 tools/gen-patterns.py moderation
+python3 tools/gen-preview.py activity-feeds member-profiles moderation
 ```
 
 Each script validates its own output (prefixing, brace balance, missing assets)

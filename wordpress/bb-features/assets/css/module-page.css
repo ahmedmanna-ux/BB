@@ -83,7 +83,7 @@
 
   /* --- radius / spacing ---------------------------------------- */
   --bbm-radius-sm: 4px; --bbm-radius-md: 6px; --bbm-radius-lg: 8px;
-  --bbm-radius-xl: 12px; --bbm-radius-3xl: 24px; --bbm-radius-full: 999px;
+  --bbm-radius-xl: 12px; --bbm-radius-2xl: 16px; --bbm-radius-3xl: 24px; --bbm-radius-full: 999px;
 
   /* --- layout -------------------------------------------------- */
   --bbm-page-max:   1600px;   /* Figma frame width          */
@@ -299,6 +299,9 @@
                 width: 672px; max-width: 100%; aspect-ratio: 672 / 500; }
 .bbm-hero__art img { position: absolute; left: -4.7619%; top: -6.6%;
                     width: 109.6726%; height: auto; max-width: none; }
+/* Not every hero export carries that halo — where the artwork fills the frame
+   Figma exports it tight, and the picture sits on the box instead. */
+.bbm-hero__art--tight img { left: 0; top: 0; width: 100%; }
 /* both shapes bleed off the frame, so they carry their own overhang and
    anchor to the band edge rather than the centred content column */
 /* Both shapes are clipped by the 1600x720 frame, so each export is the
@@ -329,6 +332,9 @@
   font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); color: var(--bbm-text-primary);
 }
 .bbm-jumpcard__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
+/* Where a description runs to two lines the design insets the card by 16 so it
+   breaks where it is drawn to break, and the row grows 188 -> 212. */
+.bbm-jumpcards--roomy .bbm-jumpcard { padding-inline: 16px; }
 
 /* ---------- section head ------------------------------------------ */
 /* The section eyebrow is the `sectionTag` *pill* variant — the heading face at
@@ -383,6 +389,10 @@
 .bbm-fcard__copy > p { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-secondary); }
 /* Split cards carry a 36/44 title; the narrower stack and duo cards drop
    to 28/36 so three lines of body still fit the 592px card. */
+/* The copy column is 548 wide and the text sits 32 from the card's outer edge;
+   the gutter facing the artwork is 56 on almost every card, which leaves the
+   460px text column the design draws. Activity Feeds is the exception: its
+   Discover cards run 40 and its Control cards 72. */
 /* Stack cards inset their text by 24, not 32 — at 32 the Post pair's
    description wraps to a third line and the row runs 26 over. */
 .bbm-fcard--stack .bbm-fcard__copy { padding: 31px 23px 24px; }
@@ -397,13 +407,9 @@
 
 /* copy left, artwork flush to the card's right edge */
 .bbm-fcard--split { display: grid; grid-template-columns: 548px 1fr; align-items: stretch; }
-/* The copy column is 548 wide and the text sits 32 from the card's outer edge;
-   the gutter facing the artwork is what varies — 40 in Discover, 56 in Post
-   and Engage, 72 in Control — giving text columns of 476, 460 and 444. */
-.bbm-fcard--split              { --bbm-copy-gutter: 40px; }
-.bbm-post    .bbm-fcard--split,
-.bbm-engage  .bbm-fcard--split  { --bbm-copy-gutter: 56px; }
-.bbm-control .bbm-fcard--split  { --bbm-copy-gutter: 72px; }
+.bbm-fcard--split              { --bbm-copy-gutter: 56px; }
+.bbm-discover .bbm-fcard--split { --bbm-copy-gutter: 40px; }
+.bbm-control  .bbm-fcard--split { --bbm-copy-gutter: 72px; }
 .bbm-fcard--split .bbm-fcard__copy { padding: 32px var(--bbm-copy-gutter) 32px 32px; align-self: center; }
 .bbm-fcard--flip  .bbm-fcard__copy { padding: 32px 32px 32px var(--bbm-copy-gutter); }
 /* the artwork sets the row height — stretching it to the copy instead let
@@ -438,13 +444,14 @@
       var(--bbm-edge-strong), var(--bbm-edge-pale) var(--bbm-edge-stop, 26%),
       var(--bbm-edge-pale) calc(100% - var(--bbm-edge-stop, 26%)), var(--bbm-edge-strong)) border-box;
 }
-/* The section modifiers are named for the section they first appeared in, but
-   what they actually carry is the edge ramp — so the Member Profiles sections
-   join whichever ramp they share rather than getting a fourth set of values. */
-.bbm-discover, .bbm-identity,
+/* What a section modifier actually carries is the edge ramp, so that is what
+   the class now says. The two pages built before this named their sections
+   instead; they stay listed here rather than being rewritten. New pages use
+   the --bbm-edge classes directly. */
+.bbm-edge--peach, .bbm-discover, .bbm-identity,
 .bbm-mcontrol { --bbm-edge-strong: var(--bbm-stroke-brand-strong); --bbm-edge-pale: var(--bbm-stroke-brand-primary); }
-.bbm-post, .bbm-directory { --bbm-edge-strong: #009bff;         --bbm-edge-pale: var(--bbm-blue-50); }
-.bbm-engage, .bbm-connect { --bbm-edge-strong: var(--bbm-green-400);--bbm-edge-pale: var(--bbm-green-100); }
+.bbm-edge--blue,  .bbm-post, .bbm-directory { --bbm-edge-strong: #009bff;          --bbm-edge-pale: var(--bbm-blue-50); }
+.bbm-edge--green, .bbm-engage, .bbm-connect { --bbm-edge-strong: var(--bbm-green-400); --bbm-edge-pale: var(--bbm-green-100); }
 
 .bbm-fcard--split { --bbm-edge-angle: 115deg; }   /* 1280 x 576 */
 .bbm-fcard--wide  { --bbm-edge-angle: 113deg; }   /* 1280 x 544 */
@@ -460,19 +467,15 @@
    it uses its own modifier rather than sharing this rule. */
 .bbm-control .bbm-fcard { border: 0; background: var(--bbm-bg-default-surface); }
 
-/* ---- Member Profiles card geometry ---- */
-/* Every split card on this page runs a 56px gutter facing the artwork, giving
-   the 460px text column the design draws; Activity Feeds varies 40/56/72. */
-.bbm-identity  .bbm-fcard--split, .bbm-directory .bbm-fcard--split,
-.bbm-connect   .bbm-fcard--split, .bbm-mcontrol  .bbm-fcard--split { --bbm-copy-gutter: 56px; }
 /* Angles measured off the comp, not derived — cards sharing a row inherit the
    widest card's gradient transform in Figma, so a narrow partner reads
-   shallower than its own diagonal implies. */
+   shallower than its own diagonal implies. The 616x592 duo measures the same
+   on every page that draws it, so it hangs off the ramp class. */
 .bbm-identity .bbm-fcard--wide,
-.bbm-mcontrol .bbm-fcard--wide                    { --bbm-edge-angle: 112deg; }  /* 1280 x 568 */
-.bbm-identity .bbm-fduo .bbm-fcard                    { --bbm-edge-angle: 134deg; }  /*  616 x 592 */
-.bbm-mcontrol .bbm-fduo .bbm-fcard                    { --bbm-edge-angle: 134deg; }
-.bbm-connect  .bbm-fduo .bbm-fcard                    { --bbm-edge-angle: 131deg; }
+.bbm-mcontrol .bbm-fcard--wide { --bbm-edge-angle: 112deg; }   /* 1280 x 568 */
+.bbm-edge--peach .bbm-fduo .bbm-fcard, .bbm-identity .bbm-fduo .bbm-fcard,
+.bbm-mcontrol    .bbm-fduo .bbm-fcard { --bbm-edge-angle: 134deg; }  /* 616 x 592 */
+.bbm-edge--green .bbm-fduo .bbm-fcard, .bbm-connect .bbm-fduo .bbm-fcard { --bbm-edge-angle: 131deg; }
 /* Identity's wide card caps its body at 1056; Control's runs the full 1232, so
    the cap belongs on the one card rather than on .fcard--wide. */
 .bbm-identity .bbm-fcard--wide .bbm-fcard__copy > p { max-width: 1056px; }
@@ -503,6 +506,30 @@
 .bbm-mcontrol .bbm-minicard  { min-height: 276px; }
 .bbm-mcontrol .bbm-minicard             { --bbm-edge-angle: 113deg; --bbm-edge-stop: 21%; }
 .bbm-mcontrol .bbm-minicard:first-child { --bbm-edge-angle: 119deg; }
+
+/* ---------- sub-head + three-up grid -------------------------------
+   A second, left-aligned head inside a section, over a grid of small cards.
+   The cards look like mini cards but are their own thing: a flat brand-tint
+   stroke rather than the gradient, a 16px radius, a 32px inset, and the
+   heading face at Regular rather than Medium. */
+.bbm-subhead { display: flex; flex-direction: column; gap: 12px; margin-top: 80px; }
+.bbm-subhead__title { font-size: var(--bbm-size-3xl); line-height: var(--bbm-lh-3xl); font-weight: 600; }
+
+.bbm-gridcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+.bbm-gridcard {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 31px;                                   /* + the inside border = 32 */
+  min-height: 180px;
+  border: 1px solid var(--bbm-stroke-brand-primary);
+  border-radius: var(--bbm-radius-2xl);
+  background: var(--bbm-bg-default-surface);
+}
+.bbm-gridcard img { width: 32px; height: 32px; margin-bottom: -4px; }   /* 12 under the icon */
+.bbm-gridcard__title {
+  font-family: var(--bbm-font-heading); letter-spacing: -0.022em;
+  font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); font-weight: 400;
+}
+.bbm-gridcard__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-secondary); }
 
 /* ---------- inline CTA band --------------------------------------- */
 .bbm-ctaband {
@@ -592,12 +619,13 @@
   .bbm-fcard--flip .bbm-fcard__art { order: 0; }
   .bbm-fduo, .bbm-fduo--wide { grid-template-columns: 1fr; gap: 32px; }
   .bbm-minicards, .bbm-modcards { grid-template-columns: 1fr; }
+  .bbm-gridcards { grid-template-columns: repeat(2, 1fr); }
   .bbm-rgrid { grid-template-columns: repeat(2, 1fr); }
   .bbm-ctaband { flex-direction: column; align-items: flex-start; padding: 32px; }
 }
 @media (max-width: 720px) {
   .bbm-jumpcards { grid-template-columns: 1fr; }
-  .bbm-rgrid { grid-template-columns: 1fr; }
+  .bbm-rgrid, .bbm-gridcards { grid-template-columns: 1fr; }
 }
 
 /* the hero's secondary action is a plain label — no trailing arrow */

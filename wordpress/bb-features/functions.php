@@ -118,7 +118,7 @@ function register_pattern_category(): void {
 		MODULE_CATEGORY,
 		array(
 			'label'       => __( 'BuddyBoss — Module pages', 'bb-features' ),
-			'description' => __( 'Sections for the per-module marketing pages: Activity Feeds and Member Profiles.', 'bb-features' ),
+			'description' => __( 'Sections for the per-module marketing pages: Activity Feeds, Member Profiles and Moderation.', 'bb-features' ),
 		)
 	);
 }

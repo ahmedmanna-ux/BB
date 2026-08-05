@@ -105,7 +105,7 @@
 
   /* --- radius / spacing ---------------------------------------- */
   --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px;
-  --radius-xl: 12px; --radius-3xl: 24px; --radius-full: 999px;
+  --radius-xl: 12px; --radius-2xl: 16px; --radius-3xl: 24px; --radius-full: 999px;
 
   /* --- layout -------------------------------------------------- */
   --page-max:   1600px;   /* Figma frame width          */
@@ -1109,6 +1109,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
                 width: 672px; max-width: 100%; aspect-ratio: 672 / 500; }
 .mp-hero__art img { position: absolute; left: -4.7619%; top: -6.6%;
                     width: 109.6726%; height: auto; max-width: none; }
+/* Not every hero export carries that halo — where the artwork fills the frame
+   Figma exports it tight, and the picture sits on the box instead. */
+.mp-hero__art--tight img { left: 0; top: 0; width: 100%; }
 /* both shapes bleed off the frame, so they carry their own overhang and
    anchor to the band edge rather than the centred content column */
 /* Both shapes are clipped by the 1600x720 frame, so each export is the
@@ -1139,6 +1142,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   font-size: var(--size-xl); line-height: var(--lh-xl); color: var(--text-primary);
 }
 .jumpcard__text { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-tertiary); }
+/* Where a description runs to two lines the design insets the card by 16 so it
+   breaks where it is drawn to break, and the row grows 188 -> 212. */
+.jumpcards--roomy .jumpcard { padding-inline: 16px; }
 
 /* ---------- section head ------------------------------------------ */
 /* The section eyebrow is the `sectionTag` *pill* variant — the heading face at
@@ -1193,6 +1199,10 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .fcard__copy > p { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-secondary); }
 /* Split cards carry a 36/44 title; the narrower stack and duo cards drop
    to 28/36 so three lines of body still fit the 592px card. */
+/* The copy column is 548 wide and the text sits 32 from the card's outer edge;
+   the gutter facing the artwork is 56 on almost every card, which leaves the
+   460px text column the design draws. Activity Feeds is the exception: its
+   Discover cards run 40 and its Control cards 72. */
 /* Stack cards inset their text by 24, not 32 — at 32 the Post pair's
    description wraps to a third line and the row runs 26 over. */
 .fcard--stack .fcard__copy { padding: 31px 23px 24px; }
@@ -1207,13 +1217,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 
 /* copy left, artwork flush to the card's right edge */
 .fcard--split { display: grid; grid-template-columns: 548px 1fr; align-items: stretch; }
-/* The copy column is 548 wide and the text sits 32 from the card's outer edge;
-   the gutter facing the artwork is what varies — 40 in Discover, 56 in Post
-   and Engage, 72 in Control — giving text columns of 476, 460 and 444. */
-.fcard--split              { --copy-gutter: 40px; }
-.mp-post    .fcard--split,
-.mp-engage  .fcard--split  { --copy-gutter: 56px; }
-.mp-control .fcard--split  { --copy-gutter: 72px; }
+.fcard--split              { --copy-gutter: 56px; }
+.mp-discover .fcard--split { --copy-gutter: 40px; }
+.mp-control  .fcard--split { --copy-gutter: 72px; }
 .fcard--split .fcard__copy { padding: 32px var(--copy-gutter) 32px 32px; align-self: center; }
 .fcard--flip  .fcard__copy { padding: 32px 32px 32px var(--copy-gutter); }
 /* the artwork sets the row height — stretching it to the copy instead let
@@ -1248,13 +1254,14 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
       var(--edge-strong), var(--edge-pale) var(--edge-stop, 26%),
       var(--edge-pale) calc(100% - var(--edge-stop, 26%)), var(--edge-strong)) border-box;
 }
-/* The section modifiers are named for the section they first appeared in, but
-   what they actually carry is the edge ramp — so the Member Profiles sections
-   join whichever ramp they share rather than getting a fourth set of values. */
-.mp-discover, .mp-identity,
+/* What a section modifier actually carries is the edge ramp, so that is what
+   the class now says. The two pages built before this named their sections
+   instead; they stay listed here rather than being rewritten. New pages use
+   the --edge classes directly. */
+.mp-edge--peach, .mp-discover, .mp-identity,
 .mp-mcontrol { --edge-strong: var(--stroke-brand-strong); --edge-pale: var(--stroke-brand-primary); }
-.mp-post, .mp-directory { --edge-strong: #009bff;         --edge-pale: var(--blue-50); }
-.mp-engage, .mp-connect { --edge-strong: var(--green-400);--edge-pale: var(--green-100); }
+.mp-edge--blue,  .mp-post, .mp-directory { --edge-strong: #009bff;          --edge-pale: var(--blue-50); }
+.mp-edge--green, .mp-engage, .mp-connect { --edge-strong: var(--green-400); --edge-pale: var(--green-100); }
 
 .fcard--split { --edge-angle: 115deg; }   /* 1280 x 576 */
 .fcard--wide  { --edge-angle: 113deg; }   /* 1280 x 544 */
@@ -1270,19 +1277,15 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
    it uses its own modifier rather than sharing this rule. */
 .mp-control .fcard { border: 0; background: var(--bg-default-surface); }
 
-/* ---- Member Profiles card geometry ---- */
-/* Every split card on this page runs a 56px gutter facing the artwork, giving
-   the 460px text column the design draws; Activity Feeds varies 40/56/72. */
-.mp-identity  .fcard--split, .mp-directory .fcard--split,
-.mp-connect   .fcard--split, .mp-mcontrol  .fcard--split { --copy-gutter: 56px; }
 /* Angles measured off the comp, not derived — cards sharing a row inherit the
    widest card's gradient transform in Figma, so a narrow partner reads
-   shallower than its own diagonal implies. */
+   shallower than its own diagonal implies. The 616x592 duo measures the same
+   on every page that draws it, so it hangs off the ramp class. */
 .mp-identity .fcard--wide,
-.mp-mcontrol .fcard--wide                    { --edge-angle: 112deg; }  /* 1280 x 568 */
-.mp-identity .fduo .fcard                    { --edge-angle: 134deg; }  /*  616 x 592 */
-.mp-mcontrol .fduo .fcard                    { --edge-angle: 134deg; }
-.mp-connect  .fduo .fcard                    { --edge-angle: 131deg; }
+.mp-mcontrol .fcard--wide { --edge-angle: 112deg; }   /* 1280 x 568 */
+.mp-edge--peach .fduo .fcard, .mp-identity .fduo .fcard,
+.mp-mcontrol    .fduo .fcard { --edge-angle: 134deg; }  /* 616 x 592 */
+.mp-edge--green .fduo .fcard, .mp-connect .fduo .fcard { --edge-angle: 131deg; }
 /* Identity's wide card caps its body at 1056; Control's runs the full 1232, so
    the cap belongs on the one card rather than on .fcard--wide. */
 .mp-identity .fcard--wide .fcard__copy > p { max-width: 1056px; }
@@ -1313,6 +1316,30 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .mp-mcontrol .minicard  { min-height: 276px; }
 .mp-mcontrol .minicard             { --edge-angle: 113deg; --edge-stop: 21%; }
 .mp-mcontrol .minicard:first-child { --edge-angle: 119deg; }
+
+/* ---------- sub-head + three-up grid -------------------------------
+   A second, left-aligned head inside a section, over a grid of small cards.
+   The cards look like mini cards but are their own thing: a flat brand-tint
+   stroke rather than the gradient, a 16px radius, a 32px inset, and the
+   heading face at Regular rather than Medium. */
+.subhead { display: flex; flex-direction: column; gap: 12px; margin-top: 80px; }
+.subhead__title { font-size: var(--size-3xl); line-height: var(--lh-3xl); font-weight: 600; }
+
+.gridcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+.gridcard {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 31px;                                   /* + the inside border = 32 */
+  min-height: 180px;
+  border: 1px solid var(--stroke-brand-primary);
+  border-radius: var(--radius-2xl);
+  background: var(--bg-default-surface);
+}
+.gridcard img { width: 32px; height: 32px; margin-bottom: -4px; }   /* 12 under the icon */
+.gridcard__title {
+  font-family: var(--font-heading); letter-spacing: -0.022em;
+  font-size: var(--size-xl); line-height: var(--lh-xl); font-weight: 400;
+}
+.gridcard__text { font-size: var(--size-md); line-height: var(--lh-md); color: var(--text-secondary); }
 
 /* ---------- inline CTA band --------------------------------------- */
 .ctaband {
@@ -1402,12 +1429,13 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   .fcard--flip .fcard__art { order: 0; }
   .fduo, .fduo--wide { grid-template-columns: 1fr; gap: 32px; }
   .minicards, .modcards { grid-template-columns: 1fr; }
+  .gridcards { grid-template-columns: repeat(2, 1fr); }
   .mp-rgrid { grid-template-columns: repeat(2, 1fr); }
   .ctaband { flex-direction: column; align-items: flex-start; padding: 32px; }
 }
 @media (max-width: 720px) {
   .jumpcards { grid-template-columns: 1fr; }
-  .mp-rgrid { grid-template-columns: 1fr; }
+  .mp-rgrid, .gridcards { grid-template-columns: 1fr; }
 }
 
 /* the hero's secondary action is a plain label — no trailing arrow */
