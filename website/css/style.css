@@ -143,7 +143,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* Heading face: when Stack Sans is missing, Inter needs a nudge to
    sit at the same optical weight/width as the Figma comps. */
-.h1, .h2, .h3, .h4, .h5, .h6, .stat__num, .eyebrow-lg {
+.h1, .h2, .h3, .h4, .h5, .h6, .stat__num, .eyebrow-lg, .subhead__title {
   font-family: var(--font-heading);
   letter-spacing: -0.022em;
 }
@@ -816,14 +816,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .fdemo span:hover { background: var(--bg-brand-subtle); }
 .fdemo img { width: 24px; height: 24px; }
 /* "View All" belongs to the list it follows — 8 below the last link, 34 tall —
-   not a fourth item on the group's own 16px rhythm. */
-.flink-more {
+   not a fourth item on the group's own 16px rhythm. It also needs the group in
+   its selector: `.fgroup a` is (0,1,1) and was quietly winning the colour. */
+.fgroup .flink-more {
   display: inline-flex; align-items: center; gap: 4px;
   font-size: var(--size-sm); line-height: var(--lh-sm); font-weight: 500;
   color: var(--text-brand); padding-block: 6px; margin-top: -8px;
 }
-.flink-more img { width: 16px; height: 16px; }
-.flink-more:hover { color: var(--bg-brand-secondary); }
+.fgroup .flink-more img { width: 16px; height: 16px; }
+.fgroup .flink-more:hover { color: var(--bg-brand-secondary); }
 
 .site-footer__mid {
   display: flex; align-items: center; justify-content: space-between;
@@ -923,6 +924,8 @@ img[src$="ft-arrow.svg"]   { width:16px; height:16px; padding:3.000px 2.000px 2.
 
 /* --- 20px boxes -------------------------------------------------- */
 img[src$="arrow-right.svg"]     { width:20px; height:20px; padding:3.750px 2.500px 3.749px 2.500px; }
+/* the 48px button draws the same arrow in a 24px frame — the leaf inset scales with it */
+.btn--lg img[src$="arrow-right.svg"] { width:24px; height:24px; padding:4.500px 3.000px 4.499px 3.000px; }
 img[src$="hdr-user.svg"]        { width:20px; height:20px; padding:1.872px 1.868px 2.486px 1.868px; }
 img[src$="star-20.svg"]         { width:20px; height:20px; padding:1.250px 1.256px 1.878px 1.254px; }
 img[src$="star-20-outline.svg"] { width:20px; height:20px; padding:1.250px 1.251px 1.875px 1.250px; }
@@ -1168,7 +1171,7 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
   font-size: var(--size-lg); line-height: var(--lh-lg); letter-spacing: 2.16px;
 }
 .secthead .tag::after {
-  content: ''; width: 24px; height: 2px; flex: none;
+  content: ''; width: 16px; height: 2px; flex: none;
   border-radius: var(--radius-full); background: var(--text-brand);
 }
 /* Every section head is one line in the design — the four text blocks measure

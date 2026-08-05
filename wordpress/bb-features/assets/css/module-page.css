@@ -120,7 +120,7 @@
 
 /* Heading face: when Stack Sans is missing, Inter needs a nudge to
    sit at the same optical weight/width as the Figma comps. */
-.bbm-h1, .bbm-h2, .bbm-h3, .bbm-h4, .bbm-h5, .bbm-h6, .bbm-stat__num, .bbm-eyebrow-lg {
+.bbm-h1, .bbm-h2, .bbm-h3, .bbm-h4, .bbm-h5, .bbm-h6, .bbm-stat__num, .bbm-eyebrow-lg, .bbm-subhead__title {
   font-family: var(--bbm-font-heading);
   letter-spacing: -0.022em;
 }
@@ -355,7 +355,7 @@
   font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); letter-spacing: 2.16px;
 }
 .bbm-secthead .bbm-tag::after {
-  content: ''; width: 24px; height: 2px; flex: none;
+  content: ''; width: 16px; height: 2px; flex: none;
   border-radius: var(--bbm-radius-full); background: var(--bbm-text-brand);
 }
 /* Every section head is one line in the design — the four text blocks measure
