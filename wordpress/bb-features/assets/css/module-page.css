@@ -83,7 +83,8 @@
 
   /* --- radius / spacing ---------------------------------------- */
   --bbm-radius-sm: 4px; --bbm-radius-md: 6px; --bbm-radius-lg: 8px;
-  --bbm-radius-xl: 12px; --bbm-radius-2xl: 16px; --bbm-radius-3xl: 24px; --bbm-radius-full: 999px;
+  --bbm-radius-xl: 12px; --bbm-radius-2xl: 16px; --bbm-radius-3xl: 24px; --bbm-radius-4xl: 32px;
+  --bbm-radius-full: 999px;
 
   /* --- layout -------------------------------------------------- */
   --bbm-page-max:   1600px;   /* Figma frame width          */
@@ -326,11 +327,11 @@
      composites to over white, the same trick the stat dividers need */
   border: 1px solid #fcded6; border-radius: var(--bbm-radius-xl);
 }
+/* The numeral is the Phosphor NumberCircle icon, not a CSS ring around type —
+   a 26px glyph inside a 32px frame, which is a 3px inset in the two-part
+   geometry the ICON METRICS block uses everywhere else. */
 .bbm-jumpcard__num {
-  width: 32px; height: 32px; border-radius: var(--bbm-radius-full);
-  border: 1.5px solid var(--bbm-text-brand); color: var(--bbm-text-brand);
-  display: flex; align-items: center; justify-content: center;
-  font-size: var(--bbm-size-sm); line-height: 1; font-weight: 600;
+  width: 32px; height: 32px; padding: 3px;
   margin-bottom: 4px;    /* Figma sets 12 under the icon and 8 under the title */
 }
 .bbm-jumpcard__title {
@@ -495,7 +496,7 @@
 .bbm-minicard {
   display: flex; flex-direction: column; gap: 16px;
   padding: 47px 31px;                     /* + the inside border = Figma's 48/32 */
-  border-radius: var(--bbm-radius-xl); min-height: 254px;
+  border-radius: var(--bbm-radius-2xl); min-height: 254px;
 }
 .bbm-minicard img { width: 32px; height: 32px; margin-bottom: -4px; }  /* 12 under the icon */
 .bbm-minicard__title {
@@ -539,7 +540,7 @@
 /* ---------- inline CTA band --------------------------------------- */
 .bbm-ctaband {
   display: flex; align-items: center; justify-content: space-between; gap: 40px;
-  padding: 72px 56px; min-height: 256px; border-radius: var(--bbm-radius-3xl);
+  padding: 72px 56px; min-height: 256px; border-radius: var(--bbm-radius-4xl);
   background: linear-gradient(90deg, #000000, #ce502c);   /* both bands, fitted to 1.5 */
   color: var(--bbm-text-light);
 }
@@ -572,7 +573,7 @@
 .bbm-modcard {
   display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
   padding: 23px; border-radius: var(--bbm-radius-xl); min-height: 280px;
-  border: 1px solid var(--bbm-stroke-brand-primary);   /* 23 + the border = 24 */
+  border: 1px solid #fcded6;   /* 23 + the border = 24; 0.5px #f9bead over white */
 }
 /* the filled card in the comp is the hover state, not a default */
 .bbm-modcard { transition: background-color .18s ease; }
@@ -601,7 +602,7 @@
   border: 1px solid #fbd6cc;
   /* 23 + the inside border = Figma's 24 inset, which also gives the text the
      362.67 it needs — at 361 the longest review takes an extra line */
-  border-radius: var(--bbm-radius-xl); padding: 23px;
+  border-radius: var(--bbm-radius-2xl); padding: 23px;
   display: flex; flex-direction: column; gap: 12px;
   position: relative;
 }
@@ -612,7 +613,7 @@
 .bbm-review__stars { display: flex; gap: 4px; margin-top: 4px; }   /* 16 below the name, not 12 */
 .bbm-review__stars img { width: 20px; height: 20px; }
 .bbm-review__text { font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); color: var(--bbm-text-primary); }
-.bbm-review__src { position: absolute; top: 16px; right: 16px; width: 34px; height: 32px; object-fit: contain; }
+.bbm-review__src { position: absolute; top: 14.5px; right: 14.2px; width: 34px; height: 32px; object-fit: contain; }
 
 /* ---------- module page responsive -------------------------------- */
 @media (max-width: 1100px) {

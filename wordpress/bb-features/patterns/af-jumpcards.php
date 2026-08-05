@@ -17,7 +17,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-jumpcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-jumpcard">
 			<!-- wp:html -->
-			<span class="bbm-jumpcard__num">1</span>
+			<img class="bbm-jumpcard__num" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/num-1.svg' ) ); ?>" alt="1" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":2,"className":"bbm-jumpcard__title"} -->
 			<h2 class="wp-block-heading bbm-jumpcard__title">Discover</h2>
@@ -30,7 +30,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-jumpcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-jumpcard">
 			<!-- wp:html -->
-			<span class="bbm-jumpcard__num">2</span>
+			<img class="bbm-jumpcard__num" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/num-2.svg' ) ); ?>" alt="2" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":2,"className":"bbm-jumpcard__title"} -->
 			<h2 class="wp-block-heading bbm-jumpcard__title">Post</h2>
@@ -43,7 +43,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-jumpcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-jumpcard">
 			<!-- wp:html -->
-			<span class="bbm-jumpcard__num">3</span>
+			<img class="bbm-jumpcard__num" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/num-3.svg' ) ); ?>" alt="3" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":2,"className":"bbm-jumpcard__title"} -->
 			<h2 class="wp-block-heading bbm-jumpcard__title">Engage</h2>
@@ -56,7 +56,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-jumpcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-jumpcard">
 			<!-- wp:html -->
-			<span class="bbm-jumpcard__num">4</span>
+			<img class="bbm-jumpcard__num" src="<?php echo esc_url( get_theme_file_uri( 'assets/icon/num-4.svg' ) ); ?>" alt="4" />
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":2,"className":"bbm-jumpcard__title"} -->
 			<h2 class="wp-block-heading bbm-jumpcard__title">Control</h2>
