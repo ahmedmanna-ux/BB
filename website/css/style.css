@@ -1227,7 +1227,6 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 /* copy left, artwork flush to the card's right edge */
 .fcard--split { display: grid; grid-template-columns: 548px 1fr; align-items: stretch; }
 .fcard--split              { --copy-gutter: 56px; }
-.mp-discover .fcard--split { --copy-gutter: 40px; }
 .mp-control  .fcard--split { --copy-gutter: 72px; }
 .fcard--split .fcard__copy { padding: 32px var(--copy-gutter) 32px 32px; align-self: center; }
 .fcard--flip  .fcard__copy { padding: 32px 32px 32px var(--copy-gutter); }
