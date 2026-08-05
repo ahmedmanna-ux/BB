@@ -33,7 +33,7 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 				<ul class="wp-block-list bbf-checks bbf-stagger">
 					<!-- wp:list-item --><li><strong>Member blocking</strong> — hide anyone, everywhere</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Content reporting</strong> — posts, photos, forums &amp; more</li><!-- /wp:list-item -->
-					<!-- wp:list-item --><li><strong>Reporting categories</strong> — define what's reportable</li><!-- /wp:list-item -->
+					<!-- wp:list-item --><li><strong>Reporting categories</strong> — define what’s reportable</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Auto-hide</strong> — content hides after enough reports</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Auto suspend</strong> — repeat offenders, handled automatically</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Reported content</strong> — review, hide, or restore</li><!-- /wp:list-item -->

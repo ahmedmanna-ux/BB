@@ -35,7 +35,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 				<h3 class="wp-block-heading bbm-h3">Control who can create activity posts</h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-				<p class="bbm-body-sm">Not every member should be able to post the same things. Access Controls decides who can create activity posts — so paying members, instructors, or your most active contributors get privileges others don’t. Set the rule once; administrators always keep full access.</p>
+				<p class="bbm-body-sm">Not every member should be able to post the same things. Access Controls decides who can create activity posts — so paying members, instructors, or your most active contributors get privileges others don't. Set the rule once; administrators always keep full access.</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:html -->
 				<ul class="bbm-checks"><li><img src="assets/icon/check.svg" alt=""><span><b>WordPress role</b> — what it does</span></li><li><img src="assets/icon/check.svg" alt=""><span><b>Profile type</b> — what it does</span></li><li><img src="assets/icon/check.svg" alt=""><span><b>Membership</b> — what it does</span></li><li><img src="assets/icon/check.svg" alt=""><span><b>GamiPress</b> — what it does</span></li><li><img src="assets/icon/check.svg" alt=""><span><b>Gender</b> — what it does</span></li></ul>

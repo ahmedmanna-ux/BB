@@ -57,7 +57,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					<h3 class="wp-block-heading bbm-h3">Timed comment editing</h3>
 					<!-- /wp:heading -->
 					<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-					<p class="bbm-body-sm">Members fix a typo in their comment inside the window you set. Once it’s over, the record stands — no silent rewrites.</p>
+					<p class="bbm-body-sm">Members fix a typo in their comment inside the window you set. Once it closes, the record stands — no silent rewrites.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -101,7 +101,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					<h3 class="wp-block-heading bbm-h3">Comments visible before the fold</h3>
 					<!-- /wp:heading -->
 					<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-					<p class="bbm-body-sm">Set the maximum comments displayed per post — three by default. The rest wait behind "View more comments," so long conversations stay tidy in the feed.</p>
+					<p class="bbm-body-sm">Set the maximum comments displayed per post — three by default. The rest wait behind “View more comments,” so long conversations stay tidy in the feed.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->

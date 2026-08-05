@@ -33,7 +33,7 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 				<ul class="wp-block-list bbf-checks bbf-stagger">
 					<!-- wp:list-item --><li><strong>Blog creator</strong> — write from the front end</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Block editor</strong> — text, images, galleries, video</li><!-- /wp:list-item -->
-					<!-- wp:list-item --><li><strong>Admin approval</strong> — review before it's live</li><!-- /wp:list-item -->
+					<!-- wp:list-item --><li><strong>Admin approval</strong> — review before it’s live</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Writer permissions</strong> — who publishes, by role</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Bookmarks</strong> — save posts for later</li><!-- /wp:list-item -->
 					<!-- wp:list-item --><li><strong>Scheduling</strong> — publish now or later</li><!-- /wp:list-item -->

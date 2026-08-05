@@ -37,7 +37,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					<h3 class="wp-block-heading bbm-h3">Write now, publish on time</h3>
 					<!-- /wp:heading -->
 					<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-					<p class="bbm-body-sm">Group owners and moderators write now and publish later. The "Scheduled posts" queue shows each post with its date — Edit post or Edit schedule any time before it goes live.</p>
+					<p class="bbm-body-sm">Group owners and moderators write now and publish later. The “Scheduled posts” queue shows each post with its date — Edit post or Edit schedule any time before it goes live.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -57,7 +57,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 					<h3 class="wp-block-heading bbm-h3">Pinned posts stays on top</h3>
 					<!-- /wp:heading -->
 					<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-					<p class="bbm-body-sm">Group owners and moderators can pin posts — one admin switch. "Pin to feed" sits right in the post menu.</p>
+					<p class="bbm-body-sm">Group owners and moderators can pin posts — one admin switch. “Pin to feed” sits right in the post menu.</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -99,7 +99,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 				<h3 class="wp-block-heading bbm-h3">Cover images that turn updates into articles</h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"className":"bbm-body-sm"} -->
-				<p class="bbm-body-sm">Group owners and moderators can add a featured image to a post. The composer’s "Add Feature Image" dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
+				<p class="bbm-body-sm">Group owners and moderators can add a featured image to a post. The composer’s “Add Feature Image” dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -134,7 +134,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 			<h3 class="wp-block-heading bbm-minicard__title">Close Comments</h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"bbm-minicard__text"} -->
-			<p class="bbm-minicard__text">Authors and admins hit "Turn off commenting" right in the post menu. The conversation ends on purpose.</p>
+			<p class="bbm-minicard__text">Authors and admins hit “Turn off commenting” right in the post menu. The conversation ends on purpose.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -147,7 +147,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 			<h3 class="wp-block-heading bbm-minicard__title">Post Title</h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"bbm-minicard__text"} -->
-			<p class="bbm-minicard__text">The composer carries a "Title (optional)" field you can make mandatory. Required titles turn the whole feed editorial.</p>
+			<p class="bbm-minicard__text">The composer carries a “Title (optional)” field you can make mandatory. Required titles turn the whole feed editorial.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
