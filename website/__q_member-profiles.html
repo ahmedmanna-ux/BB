@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member Profiles — BuddyBoss</title>
+<meta name="description" content="Rich member profiles with custom fields, profile types, a searchable member directory, connections and follows, and per-field privacy controls.">
+<link rel="icon" href="assets/icon/logo-buddyboss.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="mp">
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a href="index.html" aria-label="BuddyBoss home">
+      <img class="site-header__logo" src="assets/icon/logo-buddyboss.svg" alt="BuddyBoss">
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#">Products <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Pricing</a>
+      <a href="#">Integrations <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Resources <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+
+      <div class="navdrop">
+        <button type="button" class="navdrop__toggle" aria-expanded="false" aria-controls="navPreview">
+          Preview <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
+        </button>
+        <div class="navdrop__menu" id="navPreview" hidden>
+          <a href="index.html">Features (Top Modules)</a>
+          <a href="activity-feeds.html">Activity Feeds</a>
+          <a href="member-profiles.html" class="is-current">Member Profiles</a>
+          <a href="moderation.html">Moderation</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="#" class="btn btn--ghost"><img src="assets/icon/hdr-user.svg" alt="" aria-hidden="true">Log In</a>
+      <a href="#" class="btn btn--solid">Get BuddyBoss</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================= HERO ============================= -->
+<section class="mp-hero">
+  <img class="mp-hero__deco mp-hero__poly" src="assets/img/mp-hero-poly.svg" alt="" aria-hidden="true">
+  <img class="mp-hero__deco mp-hero__rect" src="assets/img/mp-hero-rect.svg" alt="" aria-hidden="true">
+  <div class="shell mp-hero__inner">
+    <div class="mp-hero__copy reveal reveal--left">
+      <div class="mp-hero__head">
+        <span class="tag"><span>Member Profiles</span></span>
+        <h1 class="h2">Where usernames become a community</h1>
+        <p class="body-sm">Rich profiles, a searchable member directory, and meaningful connections turn a simple user list into a thriving community—fully configurable to match your platform.</p>
+      </div>
+      <div class="mp-hero__actions">
+        <a href="#" class="btn btn--lg btn--solid">Get BuddyBoss Now</a>
+        <a href="#" class="btn btn--lg btn--ghost btn--noicon">Check Video Tutorials</a>
+      </div>
+    </div>
+    <div class="mp-hero__art reveal reveal--right">
+      <img src="assets/img/mp-hero.png" alt="A BuddyBoss member profile with its header, timeline and profile fields, and a video tutorial play button">
+    </div>
+  </div>
+</section>
+
+<!-- ========================== JUMP CARDS ========================== -->
+<section class="shell section">
+  <div class="jumpcards stagger">
+    <article class="jumpcard">
+      <span class="jumpcard__num">1</span>
+      <h2 class="jumpcard__title">Identity</h2>
+      <p class="jumpcard__text">Fields, types, avatars &amp; covers</p>
+    </article>
+    <article class="jumpcard">
+      <span class="jumpcard__num">2</span>
+      <h2 class="jumpcard__title">Discover</h2>
+      <p class="jumpcard__text">A directory members can search</p>
+    </article>
+    <article class="jumpcard">
+      <span class="jumpcard__num">3</span>
+      <h2 class="jumpcard__title">Connect</h2>
+      <p class="jumpcard__text">Follow, connect, message, invite</p>
+    </article>
+    <article class="jumpcard">
+      <span class="jumpcard__num">4</span>
+      <h2 class="jumpcard__title">Control</h2>
+      <p class="jumpcard__text">Visibility &amp; permissions, per field</p>
+    </article>
+  </div>
+</section>
+
+<!-- =========================== IDENTITY =========================== -->
+<section class="shell section mp-identity">
+  <div class="secthead reveal">
+    <span class="tag"><span>Identity</span></span>
+    <h2 class="h2 secthead__title">Profiles that show who members are</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Profile Header</span></span>
+        <h3 class="h3">First impressions, composed by you</h3>
+        <p class="body-sm">Run profile headers left-aligned or centered, and every profile in the network keeps the same shape. Cover images appear in the header only once you’ve enabled them.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-id-header.png" alt="Two member profile headers, one left-aligned and one centered, each with a Connect, Follow and Message button" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Custom Profile Fields</span></span>
+        <h3 class="h3">Ask for exactly the info your community needs</h3>
+        <p class="body-sm">Build field sets with dropdowns, dates, phone numbers, social networks, and more. Repeater fields let members add as many entries as their story needs, while every field can be required, assigned to specific profile types, and displayed during registration.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-id-fields.png" alt="A profile’s Contact, About and Work field groups showing phone, address, email, name, gender and job title" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Social Fields</span></span>
+          <h3 class="h3">Thirteen networks, one field</h3>
+          <p class="body-sm">Add the Social Networks field and profiles display a member’s presence as icons — Facebook to TikTok, Telegram to Twitch. Members add their links once; every profile shows where else they live online.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-id-social.png" alt="A list of social networks being selected, and the resulting row of social icons on a profile" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Profile Types</span></span>
+          <h3 class="h3">Members with their own rules</h3>
+          <p class="body-sm">Every profile type gets its own fields, directory visibility, group permissions and even an auto-assigned WordPress role. Color-coded labels tell members who they’re talking to.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-id-types.png" alt="Member cards labelled Moderator, Teacher and Student in colour-coded badges" loading="lazy">
+      </article>
+    </div>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Profile Link</span></span>
+          <h3 class="h3">Profile URLs that stay readable</h3>
+          <p class="body-sm">Members’ profile links read as /members/username or a unique identifier — your call. Both formats work, so switching the format never breaks a link members have already shared.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-id-link.png" alt="A Username or Unique Identifier choice above a readable profile URL" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Display Name</span></span>
+          <h3 class="h3">Names your community uses</h3>
+          <p class="body-sm">Choose how names appear across the whole network — First Name, First &amp; Last, or Nickname. Turn off the Last Name field and it disappears everywhere; run Repair Community to update existing members.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-id-name.png" alt="A menu choosing between First Name, Last Name and First &amp; Last Name on member cards" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--stack fcard--wide reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Profile Navigation</span></span>
+        <h3 class="h3">A profile laid out the way you want it read</h3>
+        <p class="body-sm">Drag to reorder the profile tabs — Timeline, Connections, Groups, Media, Forums, Documents — hide the ones you don’t need, and choose which loads first. Show the navigation down the side or across the top.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-id-nav.png" alt="A reorderable list of profile tabs with visibility toggles, beside the profile header they produce" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- =========================== DISCOVER =========================== -->
+<section class="shell section mp-directory">
+  <div class="secthead reveal">
+    <span class="tag"><span>Discover</span></span>
+    <h2 class="h2 secthead__title">Every member, one community directory</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Member Directory</span></span>
+        <h3 class="h3">Grid or list, sorted and filtered the way you decide</h3>
+        <p class="body-sm">Choose the views, the default, and the five card elements every member shows — from online status to profile type. Members sort by activity, name or join date, and filter by type or connection.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-dir-grid.png" alt="The member directory in grid view with sort and filter controls above the member cards" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Directory Elements</span></span>
+        <h3 class="h3">Know someone before you click</h3>
+        <p class="body-sm">The member directory keeps its own list of card elements, set separately from your profile headers. Turn on online status and last active so people see who’s around right now, or profile type and joined date so newcomers and long-timers are easy to tell apart.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-dir-elements.png" alt="Toggles for online status, profile type, followers, last active and joined date beside the member cards they change" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Profile Search</span></span>
+        <h3 class="h3">Search by the fields you created</h3>
+        <p class="body-sm">Advanced directory search built from your own profile fields — city, skills, industry, anything you’ve asked for. Members find each other by what actually matters in your community, not just by name.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-dir-search.png" alt="A profile search panel with first name, last name, city and custom field filters" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- =========================== CONNECT ============================ -->
+<section class="shell section mp-connect">
+  <div class="secthead reveal">
+    <span class="tag"><span>Connect</span></span>
+    <h2 class="h2 secthead__title">A real social graph, not just a member list</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Member Connections</span></span>
+        <h3 class="h3">Members connect, follow, and build their own network</h3>
+        <p class="body-sm">Members send connection requests, accept or decline them, and build a network of their own — with followers and following counts carried on every profile. Circle, Bettermode and Podia offer none of this.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-cn-connections.png" alt="Two member cards, one Connected and one being followed, under a switch allowing members to connect" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Auto Follow</span></span>
+          <h3 class="h3">Connecting is also following</h3>
+          <p class="body-sm">When two members connect, the follow happens on its own — no second step, no separate button. Their Followers and Following counts carry the relationship from that moment on.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-cn-autofollow.png" alt="An Auto follow switch beside a member card that now reads Following" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Profile Actions</span></span>
+          <h3 class="h3">Connect. Follow. Message.</h3>
+          <p class="body-sm">Choose which actions appear across member cards and profile headers, and which one leads as the primary button — the others tuck in as secondary. One decision, consistent everywhere members meet.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-cn-actions.png" alt="Follow, Connect and Send Message switches beside the member card they control" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Member Invites</span></span>
+        <h3 class="h3">Members grow the community for you</h3>
+        <p class="body-sm">An Invite button right in the directory: name, email, a personal message — and a profile type assigned before the invitee even signs up. New members arrive with the right fields, permissions and groups from day one.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-cn-invites.png" alt="A Send invite to add member dialog with name, email address, profile type, subject and message fields" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- =========================== CONTROL ============================ -->
+<section class="shell section mp-mcontrol">
+  <div class="secthead reveal">
+    <span class="tag"><span>Control</span></span>
+    <h2 class="h2 secthead__title">Member control on your terms</h2>
+  </div>
+
+  <div class="fcards">
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Field Visibility</span></span>
+          <h3 class="h3">Privacy, decided field by field</h3>
+          <p class="body-sm">Every profile field carries its own audience: Public, All Members, My Connections, or Only Me. Let members choose per field, or enforce a visibility they can’t override. No competitor hands members this control.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-ct-visibility.png" alt="A field visibility menu offering Public, All Members, My Connections and Only Me beside the Add New Field form" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Account Deletion</span></span>
+          <h3 class="h3">Members with their own rules</h3>
+          <p class="body-sm">Every profile type gets its own fields, directory visibility, group permissions and even an auto-assigned WordPress role. Color-coded labels tell members who they’re talking to.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-ct-deletion.png" alt="A switch allowing members to delete their profiles, above the Delete Account confirmation" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--stack fcard--wide reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Connection Access</span></span>
+        <h3 class="h3">Who can ask to connect</h3>
+        <p class="body-sm">Connection requests don’t have to flow in every direction. Set the rule per profile type — each type can send requests to all members, or only to the specific types you choose — so students can reach coaches without the whole network reaching them. Administrators aren’t bound by the restriction.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-ct-connect.png" alt="A rule letting the Investor profile type send connection requests to specific types only, beside the member cards it applies to" loading="lazy">
+    </article>
+  </div>
+
+  <div class="minicards stagger">
+    <article class="minicard">
+      <img src="assets/icon/mp-ic-messaging.svg" alt="">
+      <h3 class="minicard__title">Connection-Gated Messaging</h3>
+      <p class="minicard__text">Require members to be connected before they can message each other — and decide, per profile type, who can send connection requests at all. Cold spam never reaches an inbox, and administrators stay exempt.</p>
+    </article>
+    <article class="minicard">
+      <img src="assets/icon/mp-ic-approval.svg" alt="">
+      <h3 class="minicard__title">Group Type Approval</h3>
+      <p class="minicard__text">Pick the group types a profile type should join automatically, and members land in them the moment their account is activated — no request, no waiting on an organizer.</p>
+    </article>
+    <article class="minicard">
+      <img src="assets/icon/mp-ic-permissions.svg" alt="">
+      <h3 class="minicard__title">Group Create Permissions</h3>
+      <p class="minicard__text">Each profile type carries its own group rules. Let one type create any kind of group, hold another to a short list of group types, or take group creation away from a type entirely.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========================= TESTIMONIALS ========================= -->
+<section class="mp-reviews section">
+  <div class="shell">
+    <h2 class="h2 mp-reviews__title reveal">Trusted by 65,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+    <div class="mp-rgrid stagger">
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-dwayne.png" alt="">
+            <span class="mp-review__name">Dwayne Moore</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn’t have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-nate.png" alt="">
+            <span class="mp-review__name">Nate Walker</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">I have used the BuddyBoss theme, platform, mobile app, done-for-you, and agency services for nearly two years. I am constantly impressed with the product and services. The leaders model excellence in software development and communication, feverously making groundbreaking improvements while keeping its community informed. The support services are first-rate, and the employees are dedicated and hardworking. I don’t know what I would have done without BuddyBoss during this pandemic. Their software and support team have made it possible to build a custom multisite and mobile app from scratch. I’m incredibly grateful for BuddyBoss and look forward to investing in its continued success.</p>
+        </article>
+      </div>
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-ryan.png" alt="">
+            <span class="mp-review__name">Ryan Carlock</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 4 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20-outline.svg" alt="">
+          </div>
+          <p class="mp-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they’ve created. Bad reviews happen every day, but it’s not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I’m sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-dwayne.png" alt="">
+            <span class="mp-review__name">Kevin Castello</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">The BuddyBoss DFY Web process was very well laid out. It provided video explanations of each step and instructions for completing those steps. The questionnaires at the beginning of each stage help to set the expectations of the upcoming work. They also offer a full service agency approach if you would prefer to not be involved in the setup at all.</p>
+        </article>
+      </div>
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-capterra.svg" alt="Capterra">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-kyler.png" alt="">
+            <span class="mp-review__name">Kyler Boudreau</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">I’ve helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I’m an so excited to have moved my private community and training to this platform.</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-circle.png" alt="">
+            <span class="mp-review__name">Circle One</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">Their line of products are consistent, elegant, and well thought out to build social platforms. Their support team is one of the best I’ve ever experienced and we owe our success to their entire team, especially their support staff who are organized, prompt, and reliable. Their support team is above the rest and is essential to the operations of our business and the future of our company’s growth. The new releases and the continual improvements the BB team does is excellent! They really know what their doing, consistently deliver, and we’re so thankful to have partnered with them two years ago.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== BIG CTA ============================ -->
+<section class="shell section">
+  <div class="ctaband ctaband--center reveal reveal--zoom">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Give your community a feed worth checking daily</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ======================== EXPLORE MODULES ======================= -->
+<section class="shell section">
+  <div class="secthead reveal">
+    <h2 class="h3 secthead__title">Explore more feature modules</h2>
+  </div>
+  <div class="modcards stagger">
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
+      <h3 class="modcard__title">Member Profiles</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
+      <h3 class="modcard__title">Forum &amp; Group</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
+      <h3 class="modcard__title">Moderations</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cols">
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>BuddyBoss Web</h3>
+          <ul><li><a href="#">BuddyBoss Start</a></li><li><a href="#">BuddyBoss Launch</a></li><li><a href="#">BuddyBoss Scale</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>BuddyBoss App</h3>
+          <ul><li><a href="#">BuddyBoss App Solo</a></li><li><a href="#">BuddyBoss App Launch</a></li><li><a href="#">BuddyBoss App Managed</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Services</h3>
+          <ul><li><a href="#">Done For You</a></li><li><a href="#">Agency Program</a></li><li><a href="#">BuddyBoss Bundle</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Try The Demo</h3>
+          <div class="fdemo">
+            <span><img src="assets/icon/ft-apple.svg" alt="iOS demo"></span>
+            <span><img src="assets/icon/ft-android.svg" alt="Android demo"></span>
+            <span><img src="assets/icon/ft-globe.svg" alt="Web demo"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Online Communities</a></li><li><a href="#">Online Course</a></li>
+            <li><a href="#">Gamification</a></li><li><a href="#">Groups</a></li>
+            <li><a href="#">Messaging</a></li><li><a href="#">Media Sharing</a></li>
+            <li><a href="#">Access Control</a></li><li><a href="#">Automation</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Integrations</h3>
+          <ul>
+            <li><a href="#">WooCommerce</a></li><li><a href="#">LearnDash</a></li>
+            <li><a href="#">Zapier</a></li><li><a href="#">Tutor LMS</a></li><li><a href="#">Zoom</a></li>
+          </ul>
+          <a class="flink-more" href="#">View All <img src="assets/icon/ft-arrow.svg" alt="" aria-hidden="true"></a>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Online Courses</a></li><li><a href="#">Communities</a></li>
+            <li><a href="#">Education</a></li><li><a href="#">Coaching</a></li>
+            <li><a href="#">Club &amp; Associates</a></li><li><a href="#">Faith &amp; Non-Profits</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Comparisons</h3>
+          <ul>
+            <li><a href="#">BuddyBoss vs Might Networks</a></li><li><a href="#">BuddyBoss vs Circle</a></li>
+            <li><a href="#">BuddyBoss vs Kajabi</a></li><li><a href="#">BuddyBoss vs Skool</a></li>
+            <li><a href="#">BuddyBoss vs Fluent Community</a></li><li><a href="#">BuddyBoss vs Thinkific</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li><li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Release Notes</a></li><li><a href="#">Roadmap</a></li>
+            <li><a href="#">Developer Docs</a></li><li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Get Help</h3>
+          <ul><li><a href="#">Contact</a></li><li><a href="#">Knowledge Base</a></li><li><a href="#">Community</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Company</h3>
+          <ul><li><a href="#">About BuddyBoss</a></li><li><a href="#">Careers</a></li><li><a href="#">Media Kit</a></li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__mid">
+      <img class="logo" src="assets/icon/ft-logo.svg" alt="BuddyBoss">
+      <div class="fsocial">
+        <a href="#" aria-label="Facebook"><img src="assets/icon/ft-facebook.svg" alt=""></a>
+        <a href="#" aria-label="LinkedIn"><img src="assets/icon/ft-linkedin.svg" alt=""></a>
+        <a href="#" aria-label="X"><img src="assets/icon/ft-x.svg" alt=""></a>
+        <a href="#" aria-label="YouTube"><img src="assets/icon/ft-youtube.svg" alt=""></a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 BuddyBoss. All rights reserved.</p>
+      <nav class="fpolicies" aria-label="Policies">
+        <a href="#">Status</a><i></i>
+        <a href="#">Privacy Policy</a><i></i>
+        <a href="#">Refund Policy</a><i></i>
+        <a href="#">Terms &amp; Conditions</a><i></i>
+        <a href="#">Cookie Policy</a><i></i>
+        <a href="#">FTC Disclosure</a><i></i>
+        <a href="#">BuddyBoss Coupon</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){var o={};
+['.flink-more','.jumpcard__num','.subhead__title','.fgroup h3'].forEach(function(s){var e=document.querySelector(s);if(e){var r=e.getBoundingClientRect();o[s]=[Math.round(r.left),Math.round(r.top+window.scrollY),Math.round(r.width),Math.round(r.height)];}});
+document.title=JSON.stringify(o);})();
+</script></body>
+</html>

@@ -388,7 +388,9 @@
 .bbf-split {
   margin-top: 32px;
   display: flex; align-items: flex-start; gap: 40px;
-  padding: 12px 12px 12px 32px;
+  /* Figma centres the card stroke on the frame edge; CSS puts the border
+     inside, so each pad gives up the border's width to keep the box exact. */
+  padding: 11px 11px 11px 31px;
   border-radius: var(--bbf-radius-3xl);
 }
 .bbf-split__body {
@@ -428,7 +430,9 @@
 .bbf-stack {
   margin-top: 32px;
   display: flex; flex-direction: column; gap: 40px;
-  padding: 12px 12px 32px;
+  /* Figma centres the card stroke on the frame edge; CSS puts the border
+     inside, so each pad gives up the border's width to keep the box exact. */
+  padding: 11px 11px 31px;
   border-radius: var(--bbf-radius-3xl);
 }
 /* Media Uploads is the one card that isn't the full 1280 content width —
@@ -601,7 +605,7 @@
       var(--bbf-stroke-rule), var(--bbf-stroke-default) 19%,
       var(--bbf-stroke-default) 81%, var(--bbf-stroke-rule)) border-box;
   border-radius: var(--bbf-radius-3xl);
-  padding: 48px;
+  padding: 47px;
   /* stars sit 16px above the quote, then 32px down to the reviewer */
   display: flex; flex-direction: column; gap: 16px;
 }
@@ -652,7 +656,7 @@
 .bbf-tcard {
   position: relative;
   border: 1px solid var(--bbf-stroke-peach);
-  border-radius: 16px; padding: 24px;
+  border-radius: 16px; padding: 23px;
   display: flex; flex-direction: column; gap: 16px;
   transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, background-color .3s ease;
 }
