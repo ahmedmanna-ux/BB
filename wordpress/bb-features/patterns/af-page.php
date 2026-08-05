@@ -4,7 +4,7 @@
  * Slug: bb-features/af-page
  * Categories: bb-module-pages, pages
  * Block Types: core/post-content
- * Description: The whole Activity Feeds module page: hero, jump cards, the four feature sections with their CTA bands, reviews, closing CTA and the explore-more row.
+ * Description: The whole Activity Feeds module page, section by section.
  *
  * @package BB_Features
  */

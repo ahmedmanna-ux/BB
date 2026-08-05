@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Activity Feeds — BuddyBoss</title>
-<meta name="description" content="A personalized activity feed for every member: relevant activity, filters, topics, search, polls, scheduled and pinned posts, threaded comments and admin controls.">
+<title>Member Profiles — BuddyBoss</title>
+<meta name="description" content="Rich member profiles with custom fields, profile types, a searchable member directory, connections and follows, and per-field privacy controls.">
 <link rel="icon" href="assets/icon/logo-buddyboss.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,8 +34,8 @@
         </button>
         <div class="navdrop__menu" id="navPreview" hidden>
           <a href="index.html">Features (Top Modules)</a>
-          <a href="activity-feeds.html" class="is-current">Activity Feeds</a>
-          <a href="member-profiles.html">Member Profiles</a>
+          <a href="activity-feeds.html">Activity Feeds</a>
+          <a href="member-profiles.html" class="is-current">Member Profiles</a>
           <a href="#" aria-disabled="true">Moderation <span class="navdrop__soon">Soon</span></a>
         </div>
       </div>
@@ -59,9 +59,9 @@
   <div class="shell mp-hero__inner">
     <div class="mp-hero__copy reveal reveal--left">
       <div class="mp-hero__head">
-        <span class="tag"><span>Activity Feed</span></span>
-        <h1 class="h2">Keep members engaged with a personalized activity feed</h1>
-        <p class="body-sm">Give members a familiar social space to share updates, discover conversations, and stay connected with the people and communities that matter most.</p>
+        <span class="tag"><span>Member Profiles</span></span>
+        <h1 class="h2">Where usernames become a community</h1>
+        <p class="body-sm">Rich profiles, a searchable member directory, and meaningful connections turn a simple user list into a thriving community—fully configurable to match your platform.</p>
       </div>
       <div class="mp-hero__actions">
         <a href="#" class="btn btn--lg btn--solid">Get BuddyBoss Now</a>
@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="mp-hero__art reveal reveal--right">
-      <img src="assets/img/af-hero.png" alt="The BuddyBoss activity feed on desktop and mobile, with a video tutorial play button">
+      <img src="assets/img/mp-hero.png" alt="A BuddyBoss member profile with its header, timeline and profile fields, and a video tutorial play button">
     </div>
   </div>
 </section>
@@ -79,90 +79,99 @@
   <div class="jumpcards stagger">
     <article class="jumpcard">
       <span class="jumpcard__num">1</span>
-      <h2 class="jumpcard__title">Discover</h2>
-      <p class="jumpcard__text">A feed built around each member</p>
+      <h2 class="jumpcard__title">Identity</h2>
+      <p class="jumpcard__text">Fields, types, avatars &amp; covers</p>
     </article>
     <article class="jumpcard">
       <span class="jumpcard__num">2</span>
-      <h2 class="jumpcard__title">Post</h2>
-      <p class="jumpcard__text">Polls, pins, schedules &amp; more</p>
+      <h2 class="jumpcard__title">Discover</h2>
+      <p class="jumpcard__text">A directory members can search</p>
     </article>
     <article class="jumpcard">
       <span class="jumpcard__num">3</span>
-      <h2 class="jumpcard__title">Engage</h2>
-      <p class="jumpcard__text">Conversations that spread</p>
+      <h2 class="jumpcard__title">Connect</h2>
+      <p class="jumpcard__text">Follow, connect, message, invite</p>
     </article>
     <article class="jumpcard">
       <span class="jumpcard__num">4</span>
       <h2 class="jumpcard__title">Control</h2>
-      <p class="jumpcard__text">Every switch in one admin screen</p>
+      <p class="jumpcard__text">Visibility &amp; permissions, per field</p>
     </article>
   </div>
 </section>
 
-<!-- =========================== DISCOVER =========================== -->
-<section class="shell section mp-discover">
+<!-- =========================== IDENTITY =========================== -->
+<section class="shell section mp-identity">
   <div class="secthead reveal">
-    <span class="tag"><span>Discover</span></span>
-    <h2 class="h2 secthead__title">One feed, personalized for every member</h2>
+    <span class="tag"><span>Identity</span></span>
+    <h2 class="h2 secthead__title">Profiles that show who members are</h2>
   </div>
 
   <div class="fcards">
     <article class="fcard fcard--split reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Relevant Activity</span></span>
-        <h3 class="h3">A personalized feed of only the posts that matter</h3>
-        <p class="body-sm">Turn on Relevant Activity and each feed is assembled from that member’s timeline, connections, followed members, joined groups, subscribed forums and @mentions. No black-box algorithm deciding what they see — just their community.</p>
+        <span class="tag"><span>Profile Header</span></span>
+        <h3 class="h3">First impressions, composed by you</h3>
+        <p class="body-sm">Run profile headers left-aligned or centered, and every profile in the network keeps the same shape. Cover images appear in the header only once you’ve enabled them.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-personalized.png" alt="An activity feed showing posts from connections, groups and followed members" loading="lazy">
+      <img class="fcard__art" src="assets/img/mp-id-header.png" alt="Two member profile headers, one left-aligned and one centered, each with a Connect, Follow and Message button" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Custom Profile Fields</span></span>
+        <h3 class="h3">Ask for exactly the info your community needs</h3>
+        <p class="body-sm">Build field sets with dropdowns, dates, phone numbers, social networks, and more. Repeater fields let members add as many entries as their story needs, while every field can be required, assigned to specific profile types, and displayed during registration.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-id-fields.png" alt="A profile’s Contact, About and Work field groups showing phone, address, email, name, gender and job title" loading="lazy">
     </article>
 
     <div class="fduo">
       <article class="fcard fcard--stack reveal reveal--left">
         <div class="fcard__copy">
-          <span class="tag"><span>Feed Filters</span></span>
-          <h3 class="h3">One feed, filtered your way</h3>
-          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
+          <span class="tag"><span>Social Fields</span></span>
+          <h3 class="h3">Thirteen networks, one field</h3>
+          <p class="body-sm">Add the Social Networks field and profiles display a member’s presence as icons — Facebook to TikTok, Telegram to Twitch. Members add their links once; every profile shows where else they live online.</p>
         </div>
-        <img class="fcard__art" src="assets/img/af-filters.png" alt="The activity filter bar with options for updates, reactions, groups and mentions" loading="lazy">
+        <img class="fcard__art" src="assets/img/mp-id-social.png" alt="A list of social networks being selected, and the resulting row of social icons on a profile" loading="lazy">
       </article>
       <article class="fcard fcard--stack reveal reveal--right">
         <div class="fcard__copy">
-          <span class="tag"><span>Activity Topics</span></span>
-          <h3 class="h3">Activity topics that file every post</h3>
-          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
+          <span class="tag"><span>Profile Types</span></span>
+          <h3 class="h3">Members with their own rules</h3>
+          <p class="body-sm">Every profile type gets its own fields, directory visibility, group permissions and even an auto-assigned WordPress role. Color-coded labels tell members who they’re talking to.</p>
         </div>
-        <img class="fcard__art" src="assets/img/af-topics.png" alt="Activity topic chips filtering a feed by subject" loading="lazy">
+        <img class="fcard__art" src="assets/img/mp-id-types.png" alt="Member cards labelled Moderator, Teacher and Student in colour-coded badges" loading="lazy">
+      </article>
+    </div>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Profile Link</span></span>
+          <h3 class="h3">Profile URLs that stay readable</h3>
+          <p class="body-sm">Members’ profile links read as /members/username or a unique identifier — your call. Both formats work, so switching the format never breaks a link members have already shared.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-id-link.png" alt="A Username or Unique Identifier choice above a readable profile URL" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Display Name</span></span>
+          <h3 class="h3">Names your community uses</h3>
+          <p class="body-sm">Choose how names appear across the whole network — First Name, First &amp; Last, or Nickname. Turn off the Last Name field and it disappears everywhere; run Repair Community to update existing members.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-id-name.png" alt="A menu choosing between First Name, Last Name and First &amp; Last Name on member cards" loading="lazy">
       </article>
     </div>
 
     <article class="fcard fcard--stack fcard--wide reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Activity Search</span></span>
-        <h3 class="h3">Activity search that resurfaces any post in seconds</h3>
-        <p class="body-sm">Full-text search across every post and comment in the feed. That answer from three weeks ago resurfaces in seconds.</p>
+        <span class="tag"><span>Profile Navigation</span></span>
+        <h3 class="h3">A profile laid out the way you want it read</h3>
+        <p class="body-sm">Drag to reorder the profile tabs — Timeline, Connections, Groups, Media, Forums, Documents — hide the ones you don’t need, and choose which loads first. Show the navigation down the side or across the top.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-search.png" alt="Activity search results for posts and members" loading="lazy">
+      <img class="fcard__art" src="assets/img/mp-id-nav.png" alt="A reorderable list of profile tabs with visibility toggles, beside the profile header they produce" loading="lazy">
     </article>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Auto-Refresh</span></span>
-          <h3 class="h3">Activity feed that refreshes itself</h3>
-          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-refresh.png" alt="A toggle that automatically checks for new activity posts" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Sharing</span></span>
-          <h3 class="h3">Share activity post to anywhere</h3>
-          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-sharing.png" alt="Sharing an activity post to Messenger, Facebook, X, LinkedIn and WhatsApp" loading="lazy">
-      </article>
-    </div>
   </div>
 </section>
 
@@ -177,135 +186,97 @@
   </div>
 </section>
 
-<!-- ============================= POST ============================= -->
-<section class="shell section mp-post">
+<!-- =========================== DISCOVER =========================== -->
+<section class="shell section mp-directory">
   <div class="secthead reveal">
-    <span class="tag"><span>Post</span></span>
-    <h2 class="h2 secthead__title">Create better posts, build stronger communities</h2>
+    <span class="tag"><span>Discover</span></span>
+    <h2 class="h2 secthead__title">Every member, one community directory</h2>
   </div>
 
   <div class="fcards">
-    <div class="fduo fduo--wide">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Member Directory</span></span>
+        <h3 class="h3">Grid or list, sorted and filtered the way you decide</h3>
+        <p class="body-sm">Choose the views, the default, and the five card elements every member shows — from online status to profile type. Members sort by activity, name or join date, and filter by type or connection.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-dir-grid.png" alt="The member directory in grid view with sort and filter controls above the member cards" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Directory Elements</span></span>
+        <h3 class="h3">Know someone before you click</h3>
+        <p class="body-sm">The member directory keeps its own list of card elements, set separately from your profile headers. Turn on online status and last active so people see who’s around right now, or profile type and joined date so newcomers and long-timers are easy to tell apart.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-dir-elements.png" alt="Toggles for online status, profile type, followers, last active and joined date beside the member cards they change" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Profile Search</span></span>
+        <h3 class="h3">Search by the fields you created</h3>
+        <p class="body-sm">Advanced directory search built from your own profile fields — city, skills, industry, anything you’ve asked for. Members find each other by what actually matters in your community, not just by name.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-dir-search.png" alt="A profile search panel with first name, last name, city and custom field filters" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- =========================== CONNECT ============================ -->
+<section class="shell section mp-connect">
+  <div class="secthead reveal">
+    <span class="tag"><span>Connect</span></span>
+    <h2 class="h2 secthead__title">A real social graph, not just a member list</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Member Connections</span></span>
+        <h3 class="h3">Members connect, follow, and build their own network</h3>
+        <p class="body-sm">Members send connection requests, accept or decline them, and build a network of their own — with followers and following counts carried on every profile. Circle, Bettermode and Podia offer none of this.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mp-cn-connections.png" alt="Two member cards, one Connected and one being followed, under a switch allowing members to connect" loading="lazy">
+    </article>
+
+    <div class="fduo">
       <article class="fcard fcard--stack reveal reveal--left">
         <div class="fcard__copy">
-          <span class="tag"><span>Schedule Posts</span></span>
-          <h3 class="h3">Write now, publish on time</h3>
-          <p class="body-sm">Group owners and moderators write now and publish later. The "Scheduled posts" queue shows each post with its date — Edit post or Edit schedule any time before it goes live.</p>
+          <span class="tag"><span>Auto Follow</span></span>
+          <h3 class="h3">Connecting is also following</h3>
+          <p class="body-sm">When two members connect, the follow happens on its own — no second step, no separate button. Their Followers and Following counts carry the relationship from that moment on.</p>
         </div>
-        <img class="fcard__art" src="assets/img/af-schedule.png" alt="A date picker scheduling a post for a future date" loading="lazy">
+        <img class="fcard__art" src="assets/img/mp-cn-autofollow.png" alt="An Auto follow switch beside a member card that now reads Following" loading="lazy">
       </article>
       <article class="fcard fcard--stack reveal reveal--right">
         <div class="fcard__copy">
-          <span class="tag"><span>Pin Posts</span></span>
-          <h3 class="h3">Pinned posts stays on top</h3>
-          <p class="body-sm">Group owners and moderators can pin posts — one admin switch. "Pin to feed" sits right in the post menu.</p>
+          <span class="tag"><span>Profile Actions</span></span>
+          <h3 class="h3">Connect. Follow. Message.</h3>
+          <p class="body-sm">Choose which actions appear across member cards and profile headers, and which one leads as the primary button — the others tuck in as secondary. One decision, consistent everywhere members meet.</p>
         </div>
-        <img class="fcard__art" src="assets/img/af-pinned.png" alt="The post menu with Pin to feed and Report post" loading="lazy">
+        <img class="fcard__art" src="assets/img/mp-cn-actions.png" alt="Follow, Connect and Send Message switches beside the member card they control" loading="lazy">
       </article>
     </div>
 
     <article class="fcard fcard--split reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Polls</span></span>
-        <h3 class="h3">Polls the community answers right in the feed</h3>
-        <p class="body-sm">Group owners and moderators drop a poll straight into the composer — live vote counts, with a closing date. Votes land where the conversation already is.</p>
+        <span class="tag"><span>Member Invites</span></span>
+        <h3 class="h3">Members grow the community for you</h3>
+        <p class="body-sm">An Invite button right in the directory: name, email, a personal message — and a profile type assigned before the invitee even signs up. New members arrive with the right fields, permissions and groups from day one.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-polls.png" alt="A poll in the composer with live vote counts" loading="lazy">
-    </article>
-
-    <article class="fcard fcard--split fcard--flip reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Post Feature Image</span></span>
-        <h3 class="h3">Cover images that turn updates into articles</h3>
-        <p class="body-sm">Group owners and moderators can add a featured image to a post. The composer’s "Add Feature Image" dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-cover.png" alt="A post with a wide cover image above the text" loading="lazy">
-    </article>
-  </div>
-
-  <div class="minicards stagger">
-    <article class="minicard">
-      <img src="assets/icon/feat-filetext.svg" alt="">
-      <h3 class="minicard__title">Edit Activity</h3>
-      <p class="minicard__text">Members fix a typo or reword a post right from its menu, inside the edit window you set — thirty minutes up to forever. The feed stays accurate without a moderator in the loop.</p>
-    </article>
-    <article class="minicard">
-      <img src="assets/icon/mod-messaging.svg" alt="">
-      <h3 class="minicard__title">Close Comments</h3>
-      <p class="minicard__text">Authors and admins hit "Turn off commenting" right in the post menu. The conversation ends on purpose.</p>
-    </article>
-    <article class="minicard">
-      <img src="assets/icon/feat-filetext.svg" alt="">
-      <h3 class="minicard__title">Post Title</h3>
-      <p class="minicard__text">The composer carries a "Title (optional)" field you can make mandatory. Required titles turn the whole feed editorial.</p>
-    </article>
-  </div>
-</section>
-
-<!-- =========================== CTA BAND =========================== -->
-<section class="shell section">
-  <div class="ctaband reveal">
-    <div class="ctaband__copy">
-      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
-      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    </div>
-    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-  </div>
-</section>
-
-<!-- ============================ ENGAGE ============================ -->
-<section class="shell section mp-engage">
-  <div class="secthead reveal">
-    <span class="tag"><span>Engage</span></span>
-    <h2 class="h2 secthead__title">The feed that keeps conversations flowing</h2>
-  </div>
-
-  <div class="fcards">
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Enable Comments</span></span>
-          <h3 class="h3">Turn every post a conversation</h3>
-          <p class="body-sm">The master switch for commenting on activity posts. Turn it on and every post becomes a conversation members join right in the feed.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng1.png" alt="A comment box open beneath an activity post" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Edit Comments</span></span>
-          <h3 class="h3">Timed comment editing</h3>
-          <p class="body-sm">Members fix a typo in their comment inside the window you set. Once it’s over, the record stands — no silent rewrites.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng2.png" alt="A setting allowing members to edit their comment for a chosen duration" loading="lazy">
-      </article>
-    </div>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Comment Threading</span></span>
-          <h3 class="h3">Readable threaded comments</h3>
-          <p class="body-sm">Conversations organize into threads at the depth you choose. Decide how many comments show per post, how many load at a time, and how long members can edit their replies.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng3.png" alt="A setting organizing replies into threads a chosen number of levels deep" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Comment Visibility</span></span>
-          <h3 class="h3">Comments visible before the fold</h3>
-          <p class="body-sm">Set the maximum comments displayed per post — three by default. The rest wait behind "View more comments," so long conversations stay tidy in the feed.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng4.png" alt="A setting for how many comments display per post in activity feeds" loading="lazy">
-      </article>
-    </div>
-
-    <article class="fcard fcard--split fcard--flip reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Comments Loading</span></span>
-        <h3 class="h3">Comment batches sized for a fast feed</h3>
-        <p class="body-sm">Set how many more comments arrive with each load. Members pull deeper into a thread at their own pace, and the feed stays fast.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-engage-split.png" alt="A setting for how many additional comments load on each request" loading="lazy">
+      <img class="fcard__art" src="assets/img/mp-cn-invites.png" alt="A Send invite to add member dialog with name, email address, profile type, subject and message fields" loading="lazy">
     </article>
   </div>
 </section>
@@ -322,43 +293,57 @@
 </section>
 
 <!-- =========================== CONTROL ============================ -->
-<section class="shell section mp-control">
+<section class="shell section mp-mcontrol">
   <div class="secthead reveal">
     <span class="tag"><span>Control</span></span>
-    <h2 class="h2 secthead__title">Control built into the feed, not bolted on</h2>
+    <h2 class="h2 secthead__title">Member control on your terms</h2>
   </div>
 
   <div class="fcards">
-    <article class="fcard fcard--split reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Access Control</span></span>
-        <h3 class="h3">Control who can create activity posts</h3>
-        <p class="body-sm">Not every member should be able to post the same things. Access Controls decides who can create activity posts — so paying members, instructors, or your most active contributors get privileges others don’t. Set the rule once; administrators always keep full access.</p>
-        <ul class="checks">
-          <li><img src="assets/icon/check.svg" alt=""><span><b>WordPress role</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Profile type</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Membership</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>GamiPress</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Gender</b> — what it does</span></li>
-        </ul>
-      </div>
-      <img class="fcard__art" src="assets/img/af-ctrl1.png" alt="Access control settings for who can create activity posts" loading="lazy">
-    </article>
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Field Visibility</span></span>
+          <h3 class="h3">Privacy, decided field by field</h3>
+          <p class="body-sm">Every profile field carries its own audience: Public, All Members, My Connections, or Only Me. Let members choose per field, or enforce a visibility they can’t override. No competitor hands members this control.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-ct-visibility.png" alt="A field visibility menu offering Public, All Members, My Connections and Only Me beside the Add New Field form" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Account Deletion</span></span>
+          <h3 class="h3">Members with their own rules</h3>
+          <p class="body-sm">Every profile type gets its own fields, directory visibility, group permissions and even an auto-assigned WordPress role. Color-coded labels tell members who they’re talking to.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mp-ct-deletion.png" alt="A switch allowing members to delete their profiles, above the Delete Account confirmation" loading="lazy">
+      </article>
+    </div>
 
-    <article class="fcard fcard--split fcard--flip reveal">
+    <article class="fcard fcard--stack fcard--wide reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Posts Visibility</span></span>
-        <h3 class="h3">Show activity content to users that matters</h3>
-        <p class="body-sm">Decide which activities are published to the activity feed, including BuddyBoss events, WordPress posts, and custom post types. Enable comments where supported.</p>
-        <ul class="checks">
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        </ul>
+        <span class="tag"><span>Connection Access</span></span>
+        <h3 class="h3">Who can ask to connect</h3>
+        <p class="body-sm">Connection requests don’t have to flow in every direction. Set the rule per profile type — each type can send requests to all members, or only to the specific types you choose — so students can reach coaches without the whole network reaching them. Administrators aren’t bound by the restriction.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-ctrl2.png" alt="Toggles choosing which activity types appear in the feed" loading="lazy">
+      <img class="fcard__art" src="assets/img/mp-ct-connect.png" alt="A rule letting the Investor profile type send connection requests to specific types only, beside the member cards it applies to" loading="lazy">
+    </article>
+  </div>
+
+  <div class="minicards stagger">
+    <article class="minicard">
+      <img src="assets/icon/mp-ic-messaging.svg" alt="">
+      <h3 class="minicard__title">Connection-Gated Messaging</h3>
+      <p class="minicard__text">Require members to be connected before they can message each other — and decide, per profile type, who can send connection requests at all. Cold spam never reaches an inbox, and administrators stay exempt.</p>
+    </article>
+    <article class="minicard">
+      <img src="assets/icon/mp-ic-approval.svg" alt="">
+      <h3 class="minicard__title">Group Type Approval</h3>
+      <p class="minicard__text">Pick the group types a profile type should join automatically, and members land in them the moment their account is activated — no request, no waiting on an organizer.</p>
+    </article>
+    <article class="minicard">
+      <img src="assets/icon/mp-ic-permissions.svg" alt="">
+      <h3 class="minicard__title">Group Create Permissions</h3>
+      <p class="minicard__text">Each profile type carries its own group rules. Let one type create any kind of group, hold another to a short list of group types, or take group creation away from a type entirely.</p>
     </article>
   </div>
 </section>
@@ -462,7 +447,7 @@
   </div>
   <div class="modcards stagger">
     <article class="modcard">
-      <span class="modcard__icon"><img src="assets/icon/mod-profiles.svg" alt=""></span>
+      <span class="modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
       <h3 class="modcard__title">Member Profiles</h3>
       <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
       <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>

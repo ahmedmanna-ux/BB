@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Module — Review masonry
- * Slug: bb-features/af-reviews
+ * Slug: bb-features/mp-reviews
  * Categories: bb-module-pages
  * Description: Peach band with three columns of customer reviews.
  *
