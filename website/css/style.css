@@ -183,6 +183,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 600; color: var(--text-brand);
   text-transform: uppercase; white-space: nowrap;
 }
+/* The module pages use a different variant of the same component: a 16px rule
+   8px from the label, set in Medium. The Features page keeps 24/12 SemiBold.
+   Both render as an orange uppercase label after a dash, which is why this
+   went unnoticed — the geometry is the tell, not the type. */
+.mp .tag { gap: 8px; }
+.mp .tag::before, .mp .tag::after { width: 16px; }
 
 /* ---------- buttons ---------------------------------------------- */
 .btn {
@@ -1153,7 +1159,7 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
    Medium 14/22; the two are easy to conflate because both render as an orange
    uppercase label between dashes. */
 .secthead { display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; }
-.secthead .tag { justify-content: center; padding-block: 7px; }
+.secthead .tag { justify-content: center; padding: 7px 20px; }   /* the 40px pill */
 .secthead .tag span {
   font-family: var(--font-heading); font-weight: 500;
   font-size: var(--size-lg); line-height: var(--lh-lg); letter-spacing: 2.16px;
