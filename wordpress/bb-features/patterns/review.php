@@ -31,7 +31,7 @@ $bbf_icon = get_theme_file_uri( 'assets/icon/' );
 				<div class="bbf-review__person">
 					<img src="<?php echo esc_url( $bbf_icon . 'av-review.png' ); ?>" alt="" width="56" height="56" />
 					<span>
-						<span class="bbf-review__name">Ryan Carlock</span>
+						<span class="bbf-review__name">John Doe</span>
 						<span class="bbf-review__role">Managing Director</span>
 					</span>
 				</div>

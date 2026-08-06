@@ -91,7 +91,7 @@
   --bbm-header-h:   74px;     /* the bar overlays the hero  */
   --bbm-content-max:1280px;   /* Figma inner content width  */
   --bbm-gutter:     160px;    /* Figma side padding         */
-  --bbm-section-gap:104px;    /* Figma vertical rhythm      */
+  --bbm-section-gap: 80px;    /* Figma vertical rhythm      */
 
   /* --- effects ------------------------------------------------- */
   --bbm-shadow-img1: 0 0 32px rgba(0,0,0,.12);
@@ -134,6 +134,7 @@
   padding-inline: var(--bbm-gutter);
 }
 .bbm-section { margin-top: var(--bbm-section-gap); }
+/* the hero keeps its 104 while the rest of the page runs at 80 */
 
 /* ---------- type scale ------------------------------------------- */
 .bbm-h1 { font-size: var(--bbm-size-5xl); line-height: var(--bbm-lh-5xl); font-weight: 700; }
@@ -382,9 +383,9 @@
 /* This page runs a 140px section rhythm and an 80px rhythm inside each
    section — both wider than the Features page. Scoped to .mp so they
    cannot leak. */
-.bbm-section { margin-top: 140px; }
+.bbm-section { margin-top: 120px; }
 .bbm-section--tight { margin-top: 104px; }      /* hero -> jump cards */
-.bbm-site-footer { margin-top: 140px; }
+.bbm-site-footer { margin-top: 120px; }
 .bbm-fcards { display: flex; flex-direction: column; gap: 80px; margin-top: 80px; }
 /* Post is the one section whose card rows sit 104 apart, not 80 */
 .bbm-post .bbm-fcards { gap: 104px; }

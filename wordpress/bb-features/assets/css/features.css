@@ -95,7 +95,7 @@
   --bbf-page-max:   1600px;
   --bbf-content-max:1280px;
   --bbf-gutter:     160px;
-  --bbf-section-gap:104px;
+  --bbf-section-gap: 80px;
 
   font-family: var(--bbf-font-body);
   color: var(--bbf-text-primary);
@@ -120,6 +120,8 @@
 
 /* ---------- shell + rhythm ---------------------------------------- */
 .bbf-section { margin-block: var(--bbf-section-gap) 0; }
+/* the section that follows the hero keeps its 104 while the rest run at 80 */
+.bbf-section--lead { margin-block-start: 104px; }
 .bbf-section--flush { margin-block: 0; }
 .bbf-shell {
   width: 100%; max-width: var(--bbf-page-max);
@@ -753,7 +755,6 @@
   .bbf-app__inner { grid-template-columns: 38% 1fr; }
 }
 @media (max-width: 1180px) {
-  .bbf { --bbf-section-gap: 80px; }
   .bbf-modules { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
   .bbf-features { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .bbf-stack__split { grid-template-columns: 1fr; gap: 32px; padding: 24px; }

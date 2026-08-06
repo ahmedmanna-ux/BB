@@ -113,7 +113,7 @@
   --header-h:   74px;     /* the bar overlays the hero  */
   --content-max:1280px;   /* Figma inner content width  */
   --gutter:     160px;    /* Figma side padding         */
-  --section-gap:104px;    /* Figma vertical rhythm      */
+  --section-gap: 80px;    /* Figma vertical rhythm      */
 
   /* --- effects ------------------------------------------------- */
   --shadow-img1: 0 0 32px rgba(0,0,0,.12);
@@ -157,6 +157,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding-inline: var(--gutter);
 }
 .section { margin-top: var(--section-gap); }
+/* the hero keeps its 104 while the rest of the page runs at 80 */
+main > .hero + .section { margin-top: 104px; }
 
 /* ---------- type scale ------------------------------------------- */
 .h1 { font-size: var(--size-5xl); line-height: var(--lh-5xl); font-weight: 700; }
@@ -1203,9 +1205,9 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 /* This page runs a 140px section rhythm and an 80px rhythm inside each
    section — both wider than the Features page. Scoped to .mp so they
    cannot leak. */
-.mp main > .section { margin-top: 140px; }
+.mp main > .section { margin-top: 120px; }
 .mp main > .mp-hero + .section { margin-top: 104px; }      /* hero -> jump cards */
-.mp .site-footer { margin-top: 140px; }
+.mp .site-footer { margin-top: 120px; }
 .fcards { display: flex; flex-direction: column; gap: 80px; margin-top: 80px; }
 /* Post is the one section whose card rows sit 104 apart, not 80 */
 .mp-post .fcards { gap: 104px; }

@@ -63,6 +63,12 @@ PASSTHROUGH = {'js', 'reveal-all', 'bbm'}
 # Element selectors in the reset that need scoping.
 ELEMENTS = ['img, svg', 'p, figure, blockquote, dl, dd', 'h1,h2,h3,h4,h5,h6', 'ul', 'a', 'button']
 
+# Rules that only make sense in the static page's document and would be dead
+# markup-matching in a block pattern.
+DROP = [
+    'main > .hero + .section { margin-top: 104px; }',
+]
+
 # Rules that depend on the static page's document structure. Gutenberg has no
 # <main> and no page-level body class to hang these off, so each becomes a
 # class the pattern markup applies directly.
@@ -127,6 +133,10 @@ def transform(css: str) -> str:
 
     # --- custom properties -------------------------------------------------
     css = re.sub(r'(?<![\w-])--(?!bbm-)([a-z0-9-]+)', r'--bbm-\1', css)
+
+    # --- drop the rules that cannot apply here -----------------------------
+    for dead in DROP:
+        css = css.replace(dead + '\n', '')
 
     # --- structural rules --------------------------------------------------
     for old, new in STRUCTURAL.items():
