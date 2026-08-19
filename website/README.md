@@ -1,9 +1,26 @@
-# BuddyBoss — Features (Top Modules) · static build
+# BuddyBoss marketing pages · static build
 
-A hand-built HTML / CSS / JS reproduction of the Figma frame
-**BuddyBoss-Website → Features → `Features (Top Modules)` (`1008:8718`, 1600 × 15572)**.
+A hand-built HTML / CSS / JS reproduction of the fifteen page frames on the
+Figma **`Features`** canvas (`1001:8451`). Every page matches its frame exactly —
+each section on its y and its height, and the page total to the pixel:
 
-<https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1008-8718>
+| page | frame | height | page | frame | height |
+|---|---|---:|---|---|---:|
+| `index` | `1008:8718` | 16,532 | `gamifications` | `3182:24430` | 13,316 |
+| `activity-feeds` | `1886:10326` | 14,414 | `messaging` | `3218:30592` | 8,536 |
+| `member-profiles` | `2268:44480` | 15,100 | `reactions` | `3236:22643` | 7,228 |
+| `social-groups` | `2828:23628` | 12,684 | `offload-media` | `3264:23056` | 7,204 |
+| `forums` | `2960:29774` | 13,360 | `member-blog` | `3275:23618` | 14,768 |
+| `media-uploading` | `2891:21136` | 13,048 | `notifications` | `3465:45441` | 9,092 |
+| `moderation` | `2359:52842` | 12,184 | `courses` | `3498:55884` | 14,212 |
+| | | | `appearance` | `3563:62279` | 11,890 |
+
+<https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1001-8451>
+
+**A frame's reported height is not its content height.** Figma frames do not
+auto-resize when their content moves, so several of these report a stale number —
+Notifications says 9,076 and actually ends at 9,092. Always take the last
+section's `y + height`.
 
 ## Run it
 
@@ -20,16 +37,22 @@ but a server is preferred so the relative asset paths and the Inter webfont reso
 Add `?reveal` to the URL (<http://localhost:4321/?reveal>) to switch every scroll
 animation on at once — useful for full-page screenshots and design review.
 
+The header carries a **Preview** dropdown listing all fifteen pages and marking
+the current one. It is build scaffolding for moving between them during review —
+the design has no such control, and it should come out before handoff.
+
 ## Files
 
 ```
 website/
-├─ index.html          all 22 sections, in Figma order
-├─ css/style.css       tokens → components → icon metrics → responsive
-├─ js/main.js          scroll reveals, hero scaling, sticky header, mobile nav, counters
+├─ index.html          the Features page — all 22 sections, in Figma order
+├─ <module>.html       fourteen module pages, one file each
+├─ css/style.css       tokens → components → module page → per-page blocks → responsive
+├─ js/main.js          scroll reveals, hero scaling, sticky header, mobile nav,
+│                      counters, the app carousel and the integrations tabs
 └─ assets/
-   ├─ img/             23 PNGs — product panels @2× and the hero cards @3×
-   ├─ icon/            45 SVG/PNG icons, logos, avatars and review badges
+   ├─ img/             226 PNGs — product panels @2× and the hero cards @3×
+   ├─ icon/            75 SVG/PNG icons, logos, avatars and review badges
    └─ fonts/           drop Stack Sans Headline here (see below)
 ```
 

@@ -7,12 +7,35 @@ The BuddyBoss marketing pages as Gutenberg block patterns:
 | Features (Top Modules) | [`1008:8718`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1008-8718) | BuddyBoss — Features | `.bbf` |
 | Activity Feeds | [`1886:10326`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1886-10326) | BuddyBoss — Module pages | `.bbm` |
 | Member Profiles | [`2268:44480`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2268-44480) | BuddyBoss — Module pages | `.bbm` |
+| Social Groups | [`2828:23628`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2828-23628) | BuddyBoss — Module pages | `.bbm` |
+| Forums | [`2960:29774`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2960-29774) | BuddyBoss — Module pages | `.bbm` |
+| Media Uploading | [`2891:21136`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2891-21136) | BuddyBoss — Module pages | `.bbm` |
 | Moderation | [`2359:52842`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2359-52842) | BuddyBoss — Module pages | `.bbm` |
+| Gamifications | [`3182:24430`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3182-24430) | BuddyBoss — Module pages | `.bbm` |
+| Messaging | [`3218:30592`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3218-30592) | BuddyBoss — Module pages | `.bbm` |
+| Like & Reactions | [`3236:22643`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3236-22643) | BuddyBoss — Module pages | `.bbm` |
+| Offload Media | [`3264:23056`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3264-23056) | BuddyBoss — Module pages | `.bbm` |
+| Member Blog | [`3275:23618`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3275-23618) | BuddyBoss — Module pages | `.bbm` |
+| Notifications | [`3465:45441`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3465-45441) | BuddyBoss — Module pages | `.bbm` |
+| Courses | [`3498:55884`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3498-55884) | BuddyBoss — Module pages | `.bbm` |
+| Appearance | [`3563:62279`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3563-62279) | BuddyBoss — Module pages | `.bbm` |
+
+Every frame lives on the Figma **`Features`** canvas, `1001:8451`. Worth noting
+because the API will not enumerate that canvas — asking for the document's pages
+returns only `Components`, and neither of the other two it will hand back holds
+any of these frames. You need a node id from it to get in.
 
 The two scopes are independent: each declares its own tokens and prefixes its
-own class names, so neither reads from nor leaks into the other. All three
+own class names, so neither reads from nor leaks into the other. All fourteen
 module pages share one component set under `.bbm`; a section picks its card
-stroke with `bbm-edge--peach` / `--blue` / `--green`.
+stroke with `bbm-edge--peach` / `--blue` / `--green`, and each page adds a small
+page-scoped block (`.bbm-sg`, `.bbm-mu`, …) carrying the `--bbm-edge-angle` for
+whatever card geometries it introduces.
+
+Two page shapes exist. Most run a section head over a stack of cards. Messaging,
+Like & Reactions, Offload Media and Notifications instead put every feature card
+inside one wrapper with no per-chapter head, which is why they are five patterns
+where the others are ten or more.
 
 ## Install
 
@@ -38,7 +61,7 @@ patterns with `register_block_pattern()` — the patterns then survive a theme s
 | | |
 |---|---|
 | `theme.json` | The Figma variables as editor presets — brand palette, the `xs → 5xl` type scale, spacing steps. They appear in Gutenberg's own colour and typography pickers. |
-| `patterns/` | 20 Features sections + `features-page.php`; the module pages as `af-*` (12), `mp-*` (12) and `md-*` (10), each with a `*-page.php`. Each `*-page.php` composes its whole page in one insert. |
+| `patterns/` | 158 files. 21 Features sections + `features-page.php`; then the fourteen module pages — `af-*` (12), `mp-*` (12), `sg-*` (10), `fo-*` (10), `mu-*` (11), `md-*` (10), `ga-*` (10), `ms-*` (5), `lr-*` (5), `om-*` (5), `mb-*` (10), `nt-*` (5), `co-*` (10), `ap-*` (7) — each with a `*-page.php` that composes its whole page in one insert. |
 | `assets/css/features.css` | Every Features section style, scoped under `.bbf`. |
 | `assets/css/module-page.css` | Every module-page style, scoped under `.bbm`. |
 | `assets/js/features.js` | Scroll reveals, hero framing, stat counters, app carousel — drives both scopes. Front end only. |
@@ -54,14 +77,32 @@ drift. After changing that build, run:
 ```sh
 cd Website Redesign/wordpress
 python3 tools/gen-module-css.py
-python3 tools/gen-patterns.py activity-feeds
-python3 tools/gen-patterns.py member-profiles
-python3 tools/gen-patterns.py moderation
-python3 tools/gen-preview.py activity-feeds member-profiles moderation
+for p in activity-feeds member-profiles social-groups forums media-uploading \
+         moderation gamifications messaging reactions offload-media \
+         member-blog notifications courses appearance; do
+  python3 tools/gen-patterns.py $p
+done
+python3 tools/gen-preview.py activity-feeds member-profiles social-groups forums \
+  media-uploading moderation gamifications messaging reactions offload-media \
+  member-blog notifications courses appearance
+python3 tools/gen-preview-features.py
 ```
 
 Each script validates its own output (prefixing, brace balance, missing assets)
 and exits non-zero rather than writing something subtly wrong.
+
+Adding a page? `gen-patterns.py` refuses to run unless its `PAGES` entry
+describes exactly as many sections as the page has, in order. Draft that entry
+straight off the built markup rather than by hand:
+
+```sh
+python3 tools/scaffold-page-entry.py courses co "Courses"
+```
+
+It names each section from the component it contains, numbers repeated slugs
+(a page with two CTA bands would otherwise write one file over the other), and
+takes chapter names from their eyebrow. Read what it prints before pasting — it
+is a scaffold, not an oracle.
 
 ## The site header
 
@@ -69,14 +110,15 @@ Both designs put the nav **on** the hero with no fill of its own — the peach r
 up behind it. A WordPress header lives in the template, not in a pattern, so that
 is opt-in here: make the header transparent in the parent theme, then add
 `bbf-hero--under-header` / `bbm-hero--under-header` to the hero group. Override
-`--bbf-header-h` / `--bbm-header-h` if the bar is not 74px tall.
+`--bbf-header-h` / `--bbm-header-h` if the bar is not 72px tall.
 
 ## Patterns
 
 `hero` · `module-grid` · `activity-feeds` · `social-groups` · `forum-messaging` ·
 `member-profiles` · `review` · `reactions-notifications` · `media-uploads` ·
 `gamifications` · `moderation` · `offload-media` · `seo-settings` · `member-blogging` ·
-`mobile-app` · `courses` · `theme-readylaunch` · `stats` · `testimonials` · `cta`
+`mobile-app` · `courses` · `theme-readylaunch` · `integrations` · `stats` ·
+`testimonials` · `cta`
 
 Everything is built from **core blocks** — group, heading, paragraph, list, image,
 buttons. Editors change copy and swap images with the normal Gutenberg controls; there
@@ -91,6 +133,12 @@ parent theme.
 unknown attributes, so a hand-written `data-reveal` would make Gutenberg mark the block
 invalid the first time someone edits it. Reveals, stagger and the carousel are all
 driven by classes (`bbf-reveal`, `bbf-stagger`, `bbf-carousel`).
+
+There are **two** carousels on the Features page and they must not share a hook.
+`bbf-carousel` is the mobile-app phone strip; the Integrations section is
+`bbf-integrations`. They collided once, and the symptom was not obvious — the
+integrations shell silently bound to the phone strip's initialiser and measured
+122px short.
 
 **2. The stat counters read their target from the rendered text.** `65,000+` is parsed
 into `65000` + `+`, so an editor can change the number in Gutenberg and the count-up
@@ -154,16 +202,46 @@ render in Inter with `letter-spacing: -0.022em`, the closest optical match.
 To get the font into the editor as well, add a `fontFace` entry to the `heading` family
 in `theme.json`.
 
+### Integrations
+
+The Features page's Integrations section is a five-state carousel: the logo
+overview the section is drawn with, then the four integration tabs from
+[`3647:75306`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3647-75306)
+— Tutor LMS, Zoom, reCAPTCHA and Event Calendar Pro. A dot swaps the head, the
+slide and the shell's stroke together; the tabs carry a gradient ramp (blue, or
+green for Zoom) where the overview has a flat brand outline.
+
+The design draws those tabs as standalone sections with no pagination bar of
+their own. Here the bar stays inside the shell in every state and the content
+area is pinned to the overview's 600, so the section holds at 844 whichever tab
+is showing and nothing jumps.
+
 ## Carried over from the design
 
 Reproduced as-is rather than silently fixed:
 
-- **Courses** still has placeholder bullets (`Feature name — what it does`) and body copy
-  duplicated from Social Groups / Reactions.
-- **Offload Media** bullets 2–6 read `what it does`.
-- **Offload Media** and **SEO Settings** both use the button label
-  `Explore More Member Profiles`; **Gamifications** uses `Explore More Media Uploads`.
+- Every module page's **closing CTA** reads `Give your community a feed worth
+  checking daily` — Activity Feeds copy, on all fourteen.
+- Every **Explore more feature modules** trio repeats the Member Profiles blurb
+  (`Everything on a community website revolves around its members…`) under all
+  three titles.
+- All sixteen bullets across the **integration tabs** read
+  `Feature name — what it does`, and each tab's second paragraph is filler
+  pasted in from the Reactions module.
+- **Social Groups** ships ten unwritten `Feature name — what it does` bullets;
+  **Media Uploading** ten more, plus a jump-card strip numbered 1, 2, 2, 4.
+- **Forums** pastes the Favorites paragraph into the Discussion Tags card, and
+  two of its section headings read as Groups copy — `Every group, dressed for
+  your community` under FORUM FEATURES, `Who creates, who joins, who runs it`
+  under MANAGE.
 - Headline typos are verbatim: `Activity feeds that feels alive`,
   `Gamify your commmunity`, `Every member. more than a username`.
-- The frames named `Moderation` / `Offload Media` at `1565:17579` / `1720:20110` actually
-  contain **SEO Settings** and **Member Blogging** — stale layer names.
+- Layer names are routinely stale and were ignored in favour of content: frames
+  called `Moderation` / `Offload Media` at `1565:17579` / `1720:20110` hold
+  **SEO Settings** and **Member Blogging**; the Integrations section is named
+  `Gamifications`; and four separate frames on one page are all called
+  `Discover`.
+
+Fixed since, because the design fixed them: the `Explore More Member Profiles` /
+`Explore More Media Uploads` button labels are now `Explore Offload Media` and
+`Explore Gamifications`, and SEO Settings' button is hidden in the design.
