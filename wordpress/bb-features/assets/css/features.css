@@ -305,8 +305,11 @@
   width: 779px;
 }
 .bbf-hero__head { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+/* the redesign put the hero eyebrow on the same footing as the section pill:
+   the heading face at 24/32 Medium with 12% tracking, no rule either side */
 .bbf-hero__eyebrow {
-  font-weight: 500; font-size: var(--bbf-lg); line-height: var(--bbf-lh-lg);
+  font-family: var(--bbf-font-heading); font-weight: 500;
+  font-size: var(--bbf-xl); line-height: var(--bbf-lh-xl); letter-spacing: 2.88px;
   color: var(--bbf-text-brand);
 }
 .bbf-hero .wp-block-buttons { justify-content: center; }

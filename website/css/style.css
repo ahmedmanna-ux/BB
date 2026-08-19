@@ -399,9 +399,11 @@ main > .hero + .section { margin-top: 104px; }
   width: 779px; display: flex; flex-direction: column; gap: 24px;
   align-items: center; text-align: center;
 }
+/* the redesign put the hero eyebrow on the same footing as the section pill:
+   the heading face at 24/32 Medium with 12% tracking, no rule either side */
 .hero__eyebrow {
   font-family: var(--font-heading); font-weight: 500;
-  font-size: var(--size-lg); line-height: var(--lh-lg);
+  font-size: var(--size-xl); line-height: var(--lh-xl); letter-spacing: 2.88px;
   color: var(--text-brand);
 }
 .hero__title { color: var(--text-primary); }

@@ -23,7 +23,7 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 			<!-- wp:group {"className":"bbf-hero__head","layout":{"type":"default"}} -->
 			<div class="wp-block-group bbf-hero__head">
 				<!-- wp:paragraph {"className":"bbf-hero__eyebrow"} -->
-				<p class="bbf-hero__eyebrow">#1 Community Platform in WordPress</p>
+				<p class="bbf-hero__eyebrow">BuddyBoss Features</p>
 				<!-- /wp:paragraph -->
 				<!-- wp:heading {"level":1,"className":"bbf-h1"} -->
 				<h1 class="wp-block-heading bbf-h1">Build a community where people feel connected</h1>
