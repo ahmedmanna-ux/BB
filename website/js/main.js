@@ -122,11 +122,14 @@
         and this bows out.
      --------------------------------------------------------- */
   var stage = document.getElementById('heroStage');
-  var HERO_W = 1600, HERO_H = 606, HERO_MIN = 1100;
+  var HERO_W = 1600, HERO_BAND = 680, HERO_MIN = 1100;
   /* the header overlays the band, so the wrapper carries its height on top of
      the scaled stage — the stage's own coordinates already exclude it */
   var HEADER_H = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 74;
+    getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 72;
+  /* the stage is the band less the bar it sits under — the same sum the
+     stylesheet does, kept here so the two can never disagree */
+  var HERO_H = HERO_BAND - HEADER_H;
 
   function sizeHero() {
     if (!stage) return;
