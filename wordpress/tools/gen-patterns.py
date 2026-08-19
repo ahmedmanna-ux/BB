@@ -140,6 +140,30 @@ PAGES = {
   ('cta-big','Module — Closing CTA','Tall centred CTA band that closes the page.'),
   ('explore','Module — Explore more modules','Three cards linking on to the other module pages.'),
  ]),
+ 'social-groups': ('sg', 'Social Groups', [
+  ('hero','Module — Social Groups hero','Peach hero with the headline, two CTAs, groups artwork and the two background shapes.'),
+  ('jumpcards','Module — Jump cards','Four numbered cards summarising the sections below.'),
+  ('create','Module — Create','Section head and three split cards on group creation, group messaging and cover sizes.'),
+  ('identity','Module — Identity','Section head, a duo on default avatars and covers, then splits on header style, header elements and directory layout.'),
+  ('cta','Module — CTA band','Dark full-width CTA band.'),
+  ('discover','Module — Discover','Section head and three split cards on the group directory.'),
+  ('manage','Module — Manage','Section head and three split cards on who creates, who joins and group types.'),
+  ('reviews','Module — Review masonry','Peach band with three columns of customer reviews.'),
+  ('cta-big','Module — Closing CTA','Tall centred CTA band that closes the page.'),
+  ('explore','Module — Explore more modules','Three cards linking on to the other module pages.'),
+ ]),
+ 'forums': ('fo', 'Forums', [
+  ('hero','Module — Forums hero','Peach hero with the headline, two CTAs, forum artwork and the two background shapes.'),
+  ('jumpcards','Module — Jump cards','Four numbered cards summarising the sections below.'),
+  ('discuss','Module — Discuss','Section head and the cards on starting boards and conversations.'),
+  ('features','Module — Forum features','Section head and five cards: favorites, discussion tags, the revision log, search and post formatting.'),
+  ('cta','Module — CTA band','Dark full-width CTA band.'),
+  ('groups','Module — Groups and URLs','Section head and the cards on where boards live and how they are addressed.'),
+  ('manage','Module — Manage','Section head and the cards on edit windows, throttles, page sizes and the wp-admin list.'),
+  ('reviews','Module — Review masonry','Peach band with three columns of customer reviews.'),
+  ('cta-big','Module — Closing CTA','Tall centred CTA band that closes the page.'),
+  ('explore','Module — Explore more modules','Three cards linking on to the other module pages.'),
+ ]),
  'moderation': ('md', 'Moderation', [
   ('hero','Module — Moderation hero','Peach hero with the headline, two CTAs, feed artwork and the two background shapes.'),
   ('jumpcards','Module — Jump cards','Four numbered cards summarising the sections below.'),
@@ -174,7 +198,15 @@ if page not in PAGES:
 SLUG_PFX, PAGE_TITLE, META = PAGES[page]
 SRC = str(ROOT / 'website' / (page + '.html'))
 
-html=open(SRC).read(); body=html[html.index('<main>')+6:html.index('</main>')]
+html=open(SRC).read()
+m_main = re.search(r'<main\b[^>]*>', html)
+if not m_main:
+    sys.exit('gen-patterns: %s has no <main>' % page)
+body = html[m_main.end():html.index('</main>')]
+# a page-scope class on <main> has no counterpart in Gutenberg, so it rides on
+# every section's root group instead — that is what the page-scoped CSS hangs off
+m_scope = re.search(r'class="(mp-[a-z]{2})"', m_main.group(0))
+PAGE_SCOPE = (PFX + m_scope.group(1)[3:],) if m_scope else ()
 depth=0; start=None; sections=[]
 for m in re.finditer(r'<(/?)section\b[^>]*>',body):
     if m.group(1)=='':
@@ -193,7 +225,7 @@ for i,(sec,(name,title,desc)) in enumerate(zip(sections,META)):
     # The static sheet expresses the hero -> jump-cards gap as
     # `.mp main > .mp-hero + .section`. A pattern has no siblings to match on,
     # so the tighter rhythm rides on a class instead.
-    extra=('bbm-section--tight',) if i==1 else ()
+    extra=PAGE_SCOPE + (('bbm-section--tight',) if i==1 else ())
     open(os.path.join(OUT,slug+'.php'),'w').write(build(sec,slug,title,desc,extra))
 
 ASSEMBLER = '''<?php
