@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Media Uploading — BuddyBoss</title>
+<meta name="description" content="Photos, videos, documents and GIFs across profiles, groups, messages and forums: albums and folders members curate, per-type size and batch caps, an extension allowlist, and files served securely.">
+<link rel="icon" href="assets/icon/logo-buddyboss.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/_pending-media-uploading.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="mp">
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a href="index.html" aria-label="BuddyBoss home">
+      <img class="site-header__logo" src="assets/icon/logo-buddyboss.svg" alt="BuddyBoss">
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#">Products <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Pricing</a>
+      <a href="#">Integrations <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Resources <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+
+      <div class="navdrop">
+        <button type="button" class="navdrop__toggle" aria-expanded="false" aria-controls="navPreview">
+          Preview <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
+        </button>
+        <div class="navdrop__menu" id="navPreview" hidden>
+          <a href="index.html">Features (Top Modules)</a>
+          <a href="activity-feeds.html">Activity Feeds</a>
+          <a href="member-profiles.html">Member Profiles</a>
+          <a href="social-groups.html">Social Groups</a>
+          <a href="forums.html">Forums</a>
+          <a href="media-uploading.html" class="is-current">Media Uploading</a>
+          <a href="moderation.html">Moderation</a>
+          <a href="gamifications.html">Gamifications</a>
+          <a href="messaging.html">Messaging</a>
+          <a href="reactions.html">Like &amp; Reactions</a>
+          <a href="offload-media.html">Offload Media</a>
+          <a href="member-blog.html">Member Blog</a>
+          <a href="notifications.html">Notifications</a>
+          <a href="courses.html">Courses</a>
+          <a href="appearance.html">Appearance</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="#" class="btn btn--ghost"><img src="assets/icon/hdr-user.svg" alt="" aria-hidden="true">Log In</a>
+      <a href="#" class="btn btn--solid">Get BuddyBoss</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span></button>
+  </div>
+</header>
+
+<main class="mp-mu">
+
+<!-- ============================= HERO ============================= -->
+<section class="mp-hero">
+  <img class="mp-hero__deco mp-hero__poly" src="assets/img/mp-hero-poly.svg" alt="" aria-hidden="true">
+  <img class="mp-hero__deco mp-hero__rect" src="assets/img/mp-hero-rect.svg" alt="" aria-hidden="true">
+  <div class="shell mp-hero__inner">
+    <div class="mp-hero__copy reveal reveal--left">
+      <div class="mp-hero__head">
+        <span class="tag"><span>MEDIA UPLOADING</span></span>
+        <h1 class="h2">Photos, videos, documents &amp; GIFs across your community</h1>
+        <p class="body-sm">Let members share media in profiles, groups, messages, and forums — with albums and folders to keep it organized, limits you control, and files served securely.</p>
+      </div>
+      <div class="mp-hero__actions">
+        <a href="#" class="btn btn--lg btn--solid">Get BuddyBoss Now</a>
+        <a href="#" class="btn btn--lg btn--ghost btn--noicon">Check Video Tutorials</a>
+      </div>
+    </div>
+    <div class="mp-hero__art mp-hero__art--tight reveal reveal--right">
+      <img src="assets/img/mu-hero.png" alt="A feed post with a four-photo gallery from a member">
+    </div>
+  </div>
+</section>
+
+<!-- ========================== JUMP CARDS ========================== -->
+<section class="shell section">
+  <div class="jumpcards jumpcards--roomy stagger">
+    <article class="jumpcard">
+      <img class="jumpcard__num" src="assets/icon/num-1.svg" alt="1">
+      <h2 class="jumpcard__title">Photos &amp; Videos</h2>
+      <p class="jumpcard__text">Uploads, albums &amp; galleries</p>
+    </article>
+    <article class="jumpcard">
+      <img class="jumpcard__num" src="assets/icon/num-2.svg" alt="2">
+      <h2 class="jumpcard__title">Documents</h2>
+      <p class="jumpcard__text">Files, folders &amp; download links</p>
+    </article>
+    <article class="jumpcard">
+      <img class="jumpcard__num" src="assets/icon/num-2.svg" alt="2">
+      <h2 class="jumpcard__title">Emoji &amp; GIFs</h2>
+      <p class="jumpcard__text">GIPHY built in</p>
+    </article>
+    <article class="jumpcard">
+      <img class="jumpcard__num" src="assets/icon/num-4.svg" alt="4">
+      <h2 class="jumpcard__title">Security &amp; Access</h2>
+      <p class="jumpcard__text">Links, roles &amp; limits</p>
+    </article>
+  </div>
+</section>
+
+<!-- ======================= PHOTOS &amp; VIDEOS ====================== -->
+<section class="shell section mu-photos mp-edge--peach">
+  <div class="secthead reveal">
+    <span class="tag"><span>photos &amp; videos</span></span>
+    <h2 class="h2 secthead__title">Every picture in its place</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>photos</span></span>
+        <h3 class="h3">Photo uploads on every surface you allow</h3>
+        <p class="body-sm">Four toggles decide where photos live: profiles and activity posts, groups, private messages, and forum discussions and replies. In the feed, multi-photo posts lay out in smart galleries — two-up grids or one-large-plus-thumbnails.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        </ul>      </div>
+      <img class="fcard__art" src="assets/img/mu-photos.png" alt="A feed post with a two-up photo gallery and reactions" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>albums</span></span>
+        <h3 class="h3">Albums members curate themselves</h3>
+        <p class="body-sm">Nested “Enable albums” toggles switch curation on for profiles and groups. Album cards carry privacy, a created date, and separate photo and video counts — and members can create an album mid-upload without leaving the flow.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mu-albums.png" alt="An albums grid with privacy, dates and photo counts on each card" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>upload size</span></span>
+          <h3 class="h3">Set the ceiling, per media type</h3>
+          <p class="body-sm">Photos, videos, and documents each get their own cap in megabytes — “Set max file size for photo uploads… Your server’s maximum upload size is 256 MB.” Big enough for real work, small enough to protect your server.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mu-upload-size.png" alt="A max file size field over a composer warning that a file exceeds the limit" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>upload limit</span></span>
+          <h3 class="h3">Batches, not floods</h3>
+          <p class="body-sm">Cap how many items can join one activity post or upload — ten per batch by default. The composer shows every queued photo with one-tap remove, so members curate before they post.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mu-upload-limit.png" alt="A per-batch limit field over a composer with queued photos" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>videos</span></span>
+        <h3 class="h3">Native video in feeds, groups, messages, and forums</h3>
+        <p class="body-sm">The same four-context control as photos. Tiles get play overlays and duration badges, uploads land straight in the composer, and playback opens in the full theatre view.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        </ul>      </div>
+      <img class="fcard__art" src="assets/img/mu-videos.png" alt="A feed post with a video tile carrying a play overlay and duration badge" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>video file extensions</span></span>
+        <h3 class="h3">Choose the formats you trust</h3>
+        <p class="body-sm">Toggle .mp4, .webm, .ogg, .mov, .m4v, and .avi individually — “For best performance and compatibility, we recommend MP4 and WebM.” Add your own extensions, and remove the ones you added.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mu-video-formats.png" alt="Video extension toggles above a composer uploading a video" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- =========================== DOCUMENTS ========================== -->
+<section class="shell section mu-documents mp-edge--green">
+  <div class="secthead reveal">
+    <span class="tag"><span>documents</span></span>
+    <h2 class="h2 secthead__title">A file system inside your community</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>documents</span></span>
+        <h3 class="h3">Share files where the conversation happens</h3>
+        <p class="body-sm">Documents travel through the same four contexts — profiles, groups, messages, forums. Every file shows an icon, its name, and a “3.4 mb · ZIP Document” meta line, so nobody downloads a mystery.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        </ul>      </div>
+      <img class="fcard__art" src="assets/img/mu-documents.png" alt="Feed posts carrying a PDF, an audio track and a CSS file with size and type meta" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>DOCUMENT FILE EXTENSIONS</span></span>
+        <h3 class="h3">An allowlist you control, down to the MIME type</h3>
+        <p class="body-sm">Tick extensions on or off — .abw AbiWord to .htm HTML — or add your own with a description, an icon, and a MIME type. Not sure of the MIME? Upload a sample file and click “Get MIME Type.”</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mu-doc-extensions.png" alt="The file extensions admin list beside the Add New Extension panel" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- ========================= EMOJI &amp; GIFS ======================== -->
+<section class="shell section mu-emoji mp-edge--peach">
+  <div class="secthead reveal">
+    <span class="tag"><span>emoji &amp; gifs</span></span>
+    <h2 class="h2 secthead__title">Say it with more than words</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>emoji</span></span>
+        <h3 class="h3">Emoji in posts, replies, and messages</h3>
+        <p class="body-sm">Four toggles put emoji into profile activity posts, groups, private messages, and forum discussions and replies. The picker sits in every composer toolbar, right next to text formatting.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mu-emoji.png" alt="The emoji picker open on the Smileys &amp; People tab" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>animated gif</span></span>
+        <h3 class="h3">The whole GIPHY library in the composer</h3>
+        <p class="body-sm">The GIF button opens a “Search GIPHY...” picker with a masonry grid of results. Members drop the perfect reaction into feeds, groups, messages, and forums without leaving the page.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/mu-gif.png" alt="The Search GIPHY picker with a masonry grid of animated results" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ======================= SECURITY &amp; ACCESS ===================== -->
+<section class="shell section mu-security mp-edge--blue">
+  <div class="secthead reveal">
+    <span class="tag"><span>security &amp; access</span></span>
+    <h2 class="h2 secthead__title">Fast for members, locked for everyone else</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>Media access</span></span>
+        <h3 class="h3">Decide who can upload, per media type</h3>
+        <p class="body-sm">Photos, videos, and documents each gate uploads by WordPress Role or Profile Type — Investors on, Coordinators off; Teachers yes, Speakers no. These settings do not apply to administrators.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Upload Photos</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Upload Videos</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Upload Documents</b> — what it does</span></li>
+        </ul>      </div>
+      <img class="fcard__art" src="assets/img/mu-media-access.png" alt="A composer uploading photos and a PDF with an upload progress card" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>symbolic link</span></span>
+          <h3 class="h3">Secure shortcuts for fast media</h3>
+          <p class="body-sm">Symbolic links create secure “shortcuts” to member uploads, optimizing performance; if you turn them off, a fallback method protects your files. A green “Symbolic links are enabled” notice confirms the healthy state.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mu-symbolic-links.png" alt="The Enable symbolic links setting with a green enabled notice" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>direct links</span></span>
+          <h3 class="h3">Direct access, blocked by default</h3>
+          <p class="body-sm">The platform blocks direct access to your media files and folders and reports it in plain words — green when blocked, yellow when not, with a Media Permissions tutorial linked for the fix.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/mu-direct-links.png" alt="The Enable direct links setting with a blocked-access status notice" loading="lazy">
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= TESTIMONIALS ========================= -->
+<section class="mp-reviews section">
+  <div class="shell">
+    <h2 class="h2 mp-reviews__title reveal">Trusted by 65,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+    <div class="mp-rgrid stagger">
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-dwayne.png" alt="">
+            <span class="mp-review__name">Dwayne Moore</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-nate.png" alt="">
+            <span class="mp-review__name">Nate Walker</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">I have used the BuddyBoss theme, platform, mobile app, done-for-you, and agency services for nearly two years. I am constantly impressed with the product and services. The leaders model excellence in software development and communication, feverously making groundbreaking improvements while keeping its community informed. The support services are first-rate, and the employees are dedicated and hardworking. I don't know what I would have done without BuddyBoss during this pandemic. Their software and support team have made it possible to build a custom multisite and mobile app from scratch. I'm incredibly grateful for BuddyBoss and look forward to investing in its continued success.</p>
+        </article>
+      </div>
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-ryan.png" alt="">
+            <span class="mp-review__name">Ryan Carlock</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 4 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20-outline.svg" alt="">
+          </div>
+          <p class="mp-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-kevin.png" alt="">
+            <span class="mp-review__name">Kevin Castello</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">The BuddyBoss DFY Web process was very well laid out. It provided video explanations of each step and instructions for completing those steps. The questionnaires at the beginning of each stage help to set the expectations of the upcoming work. They also offer a full service agency approach if you would prefer to not be involved in the setup at all.</p>
+        </article>
+      </div>
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-capterra.svg" alt="Capterra">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-kyler.png" alt="">
+            <span class="mp-review__name">Kyler Boudreau</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">I've helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I'm an so excited to have moved my private community and training to this platform.</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-circle.png" alt="">
+            <span class="mp-review__name">Circle One</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">Their line of products are consistent, elegant, and well thought out to build social platforms. Their support team is one of the best I've ever experienced and we owe our success to their entire team, especially their support staff who are organized, prompt, and reliable. Their support team is above the rest and is essential to the operations of our business and the future of our company's growth. The new releases and the continual improvements the BB team does is excellent! They really know what their doing, consistently deliver, and we're so thankful to have partnered with them two years ago.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================== BIG CTA ============================ -->
+<section class="shell section">
+  <div class="ctaband ctaband--center reveal reveal--zoom">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Give your community a feed worth checking daily</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+<!-- ======================== EXPLORE MODULES ======================= -->
+<section class="shell section">
+  <div class="secthead reveal">
+    <h2 class="h3 secthead__title">Explore more feature modules</h2>
+  </div>
+  <div class="modcards stagger">
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
+      <h3 class="modcard__title">Member Profiles</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="member-profiles.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
+      <h3 class="modcard__title">Forum &amp; Group</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
+      <h3 class="modcard__title">Moderations</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="moderation.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+  </div>
+</section>
+</main>
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cols">
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>BuddyBoss Web</h3>
+          <ul><li><a href="#">BuddyBoss Start</a></li><li><a href="#">BuddyBoss Launch</a></li><li><a href="#">BuddyBoss Scale</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>BuddyBoss App</h3>
+          <ul><li><a href="#">BuddyBoss App Solo</a></li><li><a href="#">BuddyBoss App Launch</a></li><li><a href="#">BuddyBoss App Managed</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Services</h3>
+          <ul><li><a href="#">Done For You</a></li><li><a href="#">Agency Program</a></li><li><a href="#">BuddyBoss Bundle</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Try The Demo</h3>
+          <div class="fdemo">
+            <span><img src="assets/icon/ft-apple.svg" alt="iOS demo"></span>
+            <span><img src="assets/icon/ft-android.svg" alt="Android demo"></span>
+            <span><img src="assets/icon/ft-globe.svg" alt="Web demo"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Online Communities</a></li><li><a href="#">Online Course</a></li>
+            <li><a href="#">Gamification</a></li><li><a href="#">Groups</a></li>
+            <li><a href="#">Messaging</a></li><li><a href="#">Media Sharing</a></li>
+            <li><a href="#">Access Control</a></li><li><a href="#">Automation</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Integrations</h3>
+          <ul>
+            <li><a href="#">WooCommerce</a></li><li><a href="#">LearnDash</a></li>
+            <li><a href="#">Zapier</a></li><li><a href="#">Tutor LMS</a></li><li><a href="#">Zoom</a></li>
+          </ul>
+          <a class="flink-more" href="#">View All <img src="assets/icon/ft-arrow.svg" alt="" aria-hidden="true"></a>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Online Courses</a></li><li><a href="#">Communities</a></li>
+            <li><a href="#">Education</a></li><li><a href="#">Coaching</a></li>
+            <li><a href="#">Club &amp; Associates</a></li><li><a href="#">Faith &amp; Non-Profits</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Comparisons</h3>
+          <ul>
+            <li><a href="#">BuddyBoss vs Might Networks</a></li><li><a href="#">BuddyBoss vs Circle</a></li>
+            <li><a href="#">BuddyBoss vs Kajabi</a></li><li><a href="#">BuddyBoss vs Skool</a></li>
+            <li><a href="#">BuddyBoss vs Fluent Community</a></li><li><a href="#">BuddyBoss vs Thinkific</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li><li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Release Notes</a></li><li><a href="#">Roadmap</a></li>
+            <li><a href="#">Developer Docs</a></li><li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Get Help</h3>
+          <ul><li><a href="#">Contact</a></li><li><a href="#">Knowledge Base</a></li><li><a href="#">Community</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Company</h3>
+          <ul><li><a href="#">About BuddyBoss</a></li><li><a href="#">Careers</a></li><li><a href="#">Media Kit</a></li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__mid">
+      <img class="logo" src="assets/icon/ft-logo.svg" alt="BuddyBoss">
+      <div class="fsocial">
+        <a href="#" aria-label="Facebook"><img src="assets/icon/ft-facebook.svg" alt=""></a>
+        <a href="#" aria-label="LinkedIn"><img src="assets/icon/ft-linkedin.svg" alt=""></a>
+        <a href="#" aria-label="X"><img src="assets/icon/ft-x.svg" alt=""></a>
+        <a href="#" aria-label="YouTube"><img src="assets/icon/ft-youtube.svg" alt=""></a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 BuddyBoss. All rights reserved.</p>
+      <nav class="fpolicies" aria-label="Policies">
+        <a href="#">Status</a><i></i>
+        <a href="#">Privacy Policy</a><i></i>
+        <a href="#">Refund Policy</a><i></i>
+        <a href="#">Terms &amp; Conditions</a><i></i>
+        <a href="#">Cookie Policy</a><i></i>
+        <a href="#">FTC Disclosure</a><i></i>
+        <a href="#">BuddyBoss Coupon</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
+

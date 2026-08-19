@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appearance — BuddyBoss</title>
+<meta name="description" content="Two front ends, one setting: BuddyBoss Theme for deep design control over colours, typography, logo, BuddyPanel, sidebars, auth pages and maintenance mode, and ReadyLaunch for a finished interface that needs no theme at all.">
+<link rel="icon" href="assets/icon/logo-buddyboss.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/_pending-appearance.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="mp">
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a href="index.html" aria-label="BuddyBoss home">
+      <img class="site-header__logo" src="assets/icon/logo-buddyboss.svg" alt="BuddyBoss">
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#">Products <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Pricing</a>
+      <a href="#">Integrations <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <a href="#">Resources <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+
+      <div class="navdrop">
+        <button type="button" class="navdrop__toggle" aria-expanded="false" aria-controls="navPreview">
+          Preview <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
+        </button>
+        <div class="navdrop__menu" id="navPreview" hidden>
+          <a href="index.html">Features (Top Modules)</a>
+          <a href="activity-feeds.html">Activity Feeds</a>
+          <a href="member-profiles.html">Member Profiles</a>
+          <a href="social-groups.html">Social Groups</a>
+          <a href="forums.html">Forums</a>
+          <a href="media-uploading.html">Media Uploading</a>
+          <a href="moderation.html">Moderation</a>
+          <a href="gamifications.html">Gamifications</a>
+          <a href="messaging.html">Messaging</a>
+          <a href="reactions.html">Like &amp; Reactions</a>
+          <a href="offload-media.html">Offload Media</a>
+          <a href="member-blog.html">Member Blog</a>
+          <a href="notifications.html">Notifications</a>
+          <a href="courses.html">Courses</a>
+          <a href="appearance.html" class="is-current">Appearance</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="#" class="btn btn--ghost"><img src="assets/icon/hdr-user.svg" alt="" aria-hidden="true">Log In</a>
+      <a href="#" class="btn btn--solid">Get BuddyBoss</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span></button>
+  </div>
+</header>
+
+<main class="mp-ap">
+
+<!-- ============================= HERO ============================= -->
+<section class="mp-hero">
+  <img class="mp-hero__deco mp-hero__poly" src="assets/img/mp-hero-poly.svg" alt="" aria-hidden="true">
+  <img class="mp-hero__deco mp-hero__rect" src="assets/img/mp-hero-rect.svg" alt="" aria-hidden="true">
+  <div class="shell mp-hero__inner">
+    <div class="mp-hero__copy reveal reveal--left">
+      <div class="mp-hero__head">
+        <span class="tag"><span>BUDDYBOSS APPEARANCE</span></span>
+        <h1 class="h2">Choose the front end that fits your community</h1>
+        <p class="body-sm">BuddyBoss gives you two front ends. ReadyLaunch is built into the Platform and needs no extra theme. BuddyBoss Theme is a premium WordPress theme, sold separately, with deep design control. One setting in Appearance picks the one you want.</p>
+      </div>
+      <div class="mp-hero__actions">
+        <a href="#" class="btn btn--lg btn--solid">Get BuddyBoss Now</a>
+        <a href="#" class="btn btn--lg btn--ghost btn--noicon">Check Video Tutorials</a>
+      </div>
+    </div>
+    <div class="mp-hero__art mp-hero__art--tight reveal reveal--right">
+      <img src="assets/img/ap-hero.png" alt="A community profile page with the theme colour picker open beside it">
+    </div>
+  </div>
+</section>
+
+<!-- ======================= BUDDYBOSS THEME ======================== -->
+<section class="shell section mp-edge--peach">
+  <div class="secthead reveal">
+    <span class="tag"><span>buddyboss theme</span></span>
+    <h2 class="h2 secthead__title">A premium theme for deep design control</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>color</span></span>
+        <h3 class="h3">A colour scheme, not a single colour</h3>
+        <p class="body-sm">The Colors panel customises the theme’s colour scheme across all major theme elements — a wider surface than the single primary colour ReadyLaunch exposes under Branding.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-th-color.png" alt="The theme colour picker over a member profile" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>typography</span></span>
+          <h3 class="h3">Font sizes, weights and styles</h3>
+          <p class="body-sm">Typography sets font sizes, weights and styles for custom branding. Uploading your own faces happens in Custom Fonts, a separate item in the BuddyBoss menu sitting beside Theme Options rather than inside it.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/ap-th-typography.png" alt="The typography panel with its regular, bold and italic samples" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>logo</span></span>
+          <h3 class="h3">Panel of its own, just for the logo</h3>
+          <p class="body-sm">Logo handles custom logo configuration for branding. It sits directly beneath Styling in the rail and saves on its own, like every panel here — Save Changes, Reset Section and Reset All sit above each one.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/ap-th-logo.png" alt="The logo panel in the theme options rail" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>buddypanel</span></span>
+        <h3 class="h3">The side navigation rail</h3>
+        <p class="body-sm">BuddyPanel configures the theme’s side navigation panel — the vertical rail running down the left of every page, carrying the icons a member uses to move between feed, profile, groups and courses.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-th-buddypanel.png" alt="The BuddyPanel settings beside the rail they control" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>sidebars &amp; footer</span></span>
+        <h3 class="h3">Widget areas, top and bottom</h3>
+        <p class="body-sm">Typography sets font sizes, weights and styles for custom branding. Uploading your own faces happens in Custom Fonts, a separate item in the BuddyBoss menu sitting beside Theme Options rather than inside it.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-th-sidebars.png" alt="The sidebars and footer widget areas" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip mp-ap__card--577 reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>login &amp; registration</span></span>
+        <h3 class="h3">Auth pages with their own art direction</h3>
+        <p class="body-sm">The Login &amp; Registration panel takes custom logos, descriptions and background images for the auth pages — the same pages ReadyLaunch styles from a single Template Pages checkbox.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-th-login.png" alt="A themed sign-in card with its social sign-on buttons" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>404 page</span></span>
+        <h3 class="h3">Design your custom 404 page</h3>
+        <p class="body-sm">Blog carries layout styles and blog page appearance customisation. Forums covers forum display and community knowledge-sharing configuration. Each takes its own panel in the rail rather than sharing one.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-th-404.png" alt="A custom 404 page in the theme" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip mp-ap__card--577 reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>maintenance mode</span></span>
+        <h3 class="h3">Turn on maintenance mode on your community</h3>
+        <p class="body-sm">The Login &amp; Registration panel takes custom logos, descriptions and background images for the auth pages — the same pages ReadyLaunch styles from a single Template Pages checkbox.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-th-maintenance.png" alt="The maintenance mode screen a visitor sees" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ========================== READYLAUNCH ========================= -->
+<section class="shell section mp-edge--blue">
+  <div class="secthead reveal">
+    <span class="tag"><span>Readylaunch</span></span>
+    <h2 class="h2 secthead__title">The interface that ships with the Platform</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>readylaunch</span></span>
+        <h3 class="h3">A finished interface, no theme required</h3>
+        <p class="body-sm">ReadyLaunch is a theme-free community interface: a complete, ready-to-use UI wired straight to the BuddyBoss Platform backend. Its two ticks read "Simple management" and "No theme required", and the welcome card’s only action is a Setup Wizard button.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-rl-interface.png" alt="The ReadyLaunch activity feed with its sidebar and widgets" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>BRANDING</span></span>
+        <h3 class="h3">Light mode, dark mode, or both</h3>
+        <p class="body-sm body-sm--grey">Branding is a ReadyLaunch tab. Pick Light Mode, Dark Mode or Both. Choosing Both doubles the fields into light and dark pairs, so you set a logo and a primary colour for each, and members switch modes on BuddyBoss pages.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-rl-branding.png" alt="A ReadyLaunch profile in light and dark mode" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>menu</span></span>
+        <h3 class="h3">Header and sidebar, set from Appearance</h3>
+        <p class="body-sm">The Menus tab gives ReadyLaunch its own header menu location, then the left sidebar: switch the seven items — Activity Feed, Members, Groups, Forums, Courses, Messages, Notifications — on or off, drag them into order, and add your own custom links.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-rl-menu.png" alt="The ReadyLaunch menu settings with the sidebar items listed" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>sidebar widget</span></span>
+        <h3 class="h3">Contextual widget design turn on or off</h3>
+        <p class="body-sm body-sm--grey">Branding is a ReadyLaunch tab. Pick Light Mode, Dark Mode or Both. Choosing Both doubles the fields into light and dark pairs, so you set a logo and a primary colour for each, and members switch modes on BuddyBoss pages.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        </ul>
+      </div>
+      <img class="fcard__art" src="assets/img/ap-rl-widgets.png" alt="The contextual sidebar widgets ReadyLaunch can show" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- ========================= TESTIMONIALS ========================= -->
+<section class="mp-reviews section">
+  <div class="shell">
+    <h2 class="h2 mp-reviews__title reveal">Trusted by 65,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+    <div class="mp-rgrid stagger">
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-dwayne.png" alt="">
+            <span class="mp-review__name">Dwayne Moore</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-nate.png" alt="">
+            <span class="mp-review__name">Nate Walker</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">I have used the BuddyBoss theme, platform, mobile app, done-for-you, and agency services for nearly two years. I am constantly impressed with the product and services. The leaders model excellence in software development and communication, feverously making groundbreaking improvements while keeping its community informed. The support services are first-rate, and the employees are dedicated and hardworking. I don't know what I would have done without BuddyBoss during this pandemic. Their software and support team have made it possible to build a custom multisite and mobile app from scratch. I'm incredibly grateful for BuddyBoss and look forward to investing in its continued success.</p>
+        </article>
+      </div>
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-ryan.png" alt="">
+            <span class="mp-review__name">Ryan Carlock</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 4 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20-outline.svg" alt="">
+          </div>
+          <p class="mp-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-kevin.png" alt="">
+            <span class="mp-review__name">Kevin Castello</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">The BuddyBoss DFY Web process was very well laid out. It provided video explanations of each step and instructions for completing those steps. The questionnaires at the beginning of each stage help to set the expectations of the upcoming work. They also offer a full service agency approach if you would prefer to not be involved in the setup at all.</p>
+        </article>
+      </div>
+      <div class="mp-rcol">
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-capterra.svg" alt="Capterra">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-kyler.png" alt="">
+            <span class="mp-review__name">Kyler Boudreau</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">I've helped built a niche community on Drupal. Used Discourse, Mighty Networks and Circle. BuddyBoss blows all of them out of the water. ZERO contest. I'm an so excited to have moved my private community and training to this platform.</p>
+        </article>
+        <article class="mp-review">
+          <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
+          <div class="mp-review__who">
+            <img src="assets/icon/av-circle.png" alt="">
+            <span class="mp-review__name">Circle One</span>
+          </div>
+          <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
+            <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
+          </div>
+          <p class="mp-review__text">Their line of products are consistent, elegant, and well thought out to build social platforms. Their support team is one of the best I've ever experienced and we owe our success to their entire team, especially their support staff who are organized, prompt, and reliable. Their support team is above the rest and is essential to the operations of our business and the future of our company's growth. The new releases and the continual improvements the BB team does is excellent! They really know what their doing, consistently deliver, and we're so thankful to have partnered with them two years ago.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== BIG CTA ============================ -->
+<section class="shell section">
+  <div class="ctaband ctaband--center reveal reveal--zoom">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Give your community a feed worth checking daily</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ======================== EXPLORE MODULES ======================= -->
+<section class="shell section">
+  <div class="secthead reveal">
+    <h2 class="h3 secthead__title">Explore more feature modules</h2>
+  </div>
+  <div class="modcards stagger">
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
+      <h3 class="modcard__title">Member Profiles</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="member-profiles.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
+      <h3 class="modcard__title">Forum &amp; Group</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+    <article class="modcard">
+      <span class="modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
+      <h3 class="modcard__title">Moderations</h3>
+      <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+      <a href="moderation.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+    </article>
+  </div>
+</section>
+
+</main>
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cols">
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>BuddyBoss Web</h3>
+          <ul><li><a href="#">BuddyBoss Start</a></li><li><a href="#">BuddyBoss Launch</a></li><li><a href="#">BuddyBoss Scale</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>BuddyBoss App</h3>
+          <ul><li><a href="#">BuddyBoss App Solo</a></li><li><a href="#">BuddyBoss App Launch</a></li><li><a href="#">BuddyBoss App Managed</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Services</h3>
+          <ul><li><a href="#">Done For You</a></li><li><a href="#">Agency Program</a></li><li><a href="#">BuddyBoss Bundle</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Try The Demo</h3>
+          <div class="fdemo">
+            <span><img src="assets/icon/ft-apple.svg" alt="iOS demo"></span>
+            <span><img src="assets/icon/ft-android.svg" alt="Android demo"></span>
+            <span><img src="assets/icon/ft-globe.svg" alt="Web demo"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Online Communities</a></li><li><a href="#">Online Course</a></li>
+            <li><a href="#">Gamification</a></li><li><a href="#">Groups</a></li>
+            <li><a href="#">Messaging</a></li><li><a href="#">Media Sharing</a></li>
+            <li><a href="#">Access Control</a></li><li><a href="#">Automation</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Integrations</h3>
+          <ul>
+            <li><a href="#">WooCommerce</a></li><li><a href="#">LearnDash</a></li>
+            <li><a href="#">Zapier</a></li><li><a href="#">Tutor LMS</a></li><li><a href="#">Zoom</a></li>
+          </ul>
+          <a class="flink-more" href="#">View All <img src="assets/icon/ft-arrow.svg" alt="" aria-hidden="true"></a>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Online Courses</a></li><li><a href="#">Communities</a></li>
+            <li><a href="#">Education</a></li><li><a href="#">Coaching</a></li>
+            <li><a href="#">Club &amp; Associates</a></li><li><a href="#">Faith &amp; Non-Profits</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Comparisons</h3>
+          <ul>
+            <li><a href="#">BuddyBoss vs Might Networks</a></li><li><a href="#">BuddyBoss vs Circle</a></li>
+            <li><a href="#">BuddyBoss vs Kajabi</a></li><li><a href="#">BuddyBoss vs Skool</a></li>
+            <li><a href="#">BuddyBoss vs Fluent Community</a></li><li><a href="#">BuddyBoss vs Thinkific</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <div class="fgroup">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li><li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Release Notes</a></li><li><a href="#">Roadmap</a></li>
+            <li><a href="#">Developer Docs</a></li><li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Get Help</h3>
+          <ul><li><a href="#">Contact</a></li><li><a href="#">Knowledge Base</a></li><li><a href="#">Community</a></li></ul>
+        </div>
+        <div class="fgroup">
+          <h3>Company</h3>
+          <ul><li><a href="#">About BuddyBoss</a></li><li><a href="#">Careers</a></li><li><a href="#">Media Kit</a></li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__mid">
+      <img class="logo" src="assets/icon/ft-logo.svg" alt="BuddyBoss">
+      <div class="fsocial">
+        <a href="#" aria-label="Facebook"><img src="assets/icon/ft-facebook.svg" alt=""></a>
+        <a href="#" aria-label="LinkedIn"><img src="assets/icon/ft-linkedin.svg" alt=""></a>
+        <a href="#" aria-label="X"><img src="assets/icon/ft-x.svg" alt=""></a>
+        <a href="#" aria-label="YouTube"><img src="assets/icon/ft-youtube.svg" alt=""></a>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 BuddyBoss. All rights reserved.</p>
+      <nav class="fpolicies" aria-label="Policies">
+        <a href="#">Status</a><i></i>
+        <a href="#">Privacy Policy</a><i></i>
+        <a href="#">Refund Policy</a><i></i>
+        <a href="#">Terms &amp; Conditions</a><i></i>
+        <a href="#">Cookie Policy</a><i></i>
+        <a href="#">FTC Disclosure</a><i></i>
+        <a href="#">BuddyBoss Coupon</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
