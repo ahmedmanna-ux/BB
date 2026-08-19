@@ -729,43 +729,86 @@
    carrying the pagination dots and the prev/next pair. The border keeps
    stroke/brand — it is the one brand outline the redesign did not darken.
    Only slide one is drawn in the design, so the controls are inert. */
-.bbf-carousel {
+/* five states: the logo overview the section is drawn with, then the four
+   integration tabs (3647:75306). The content area is pinned to the overview's
+   600 so the section stays 844 whichever state is showing. */
+.bbf-integrations__heads { display: grid; }
+.bbf-integrations__heads > .bbf-head { grid-area: 1 / 1; }
+.bbf-integrations__heads > .bbf-head:not(.is-current) { visibility: hidden; }
+.bbf-head--wide { max-width: 1062px; }
+
+.bbf-integrations {
   margin-top: 32px;
   display: flex; flex-direction: column; gap: 16px;
   padding: 11px 11px 15px;
   border: 1px solid var(--bbf-stroke-brand);
   border-radius: var(--bbf-radius-3xl);
 }
-.bbf-carousel__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
-.bbf-carousel__bar {
+.bbf-integrations__slides { min-height: 600px; }
+.bbf-integrations__slide { display: none; }
+.bbf-integrations__slide.is-current { display: block; }
+.bbf-integrations__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
+.bbf-integrations__panel img { display: block; width: 100%; }
+
+/* a tab slide: the 424 copy column inset 20 from the shell, then the
+   772x576 artwork flush to the shell's right edge */
+.bbf-integrations__slide--tab.is-current { display: flex; gap: 40px; padding-left: 20px; }
+.bbf-integrations__copy {
+  flex: none; width: 424px;
+  display: flex; flex-direction: column; gap: 32px;
+  padding-block: 32px;
+}
+.bbf-integrations__copy > div { display: flex; flex-direction: column; gap: 16px; }
+.bbf-integrations__lead {
+  font-family: var(--bbf-font-heading); letter-spacing: -0.022em;
+  font-size: var(--bbf-xl); line-height: var(--bbf-lh-xl); font-weight: 400;
+  color: var(--bbf-text-primary);
+}
+.bbf-integrations__art { flex: none; width: 772px; border-radius: var(--bbf-radius-3xl); overflow: hidden; }
+.bbf-integrations__art img { display: block; width: 100%; }
+.bbf-integrations__bar {
   display: flex; align-items: center; justify-content: space-between;
   padding: 8px;
 }
-.bbf-carousel__dots { display: flex; gap: 8px; }
-.bbf-carousel__dot {
-  width: 12px; height: 12px; border-radius: var(--bbf-radius-full);
+.bbf-integrations__dots { display: flex; gap: 8px; }
+.bbf-integrations__dot {
+  width: 12px; height: 12px; padding: 0; border: 0; cursor: pointer; border-radius: var(--bbf-radius-full);
   background: var(--bbf-brand-tertiary);
 }
-.bbf-carousel__dot.is-active { background: var(--bbf-brand); }
-.bbf-carousel__nav { display: flex; gap: 16px; }
-.bbf-carousel__arrow {
+.bbf-integrations__dot.is-active { background: var(--bbf-brand); }
+.bbf-integrations__nav { display: flex; gap: 16px; }
+.bbf-integrations__arrow {
   display: inline-flex; align-items: center; justify-content: center;
   width: 52px; height: 52px; padding: 12px;
   border: 1px solid transparent; border-radius: var(--bbf-radius-full);
   background: transparent; cursor: pointer;
   transition: background-color .25s ease, border-color .25s ease;
 }
-.bbf-carousel__arrow::before {
+.bbf-integrations__arrow::before {
   content: ''; width: 28px; height: 28px;
   background-repeat: no-repeat; background-position: center;
   background-size: 21.001px 17.501px;
 }
-.bbf-carousel__arrow--prev { border-color: var(--bbf-stroke-brand); }
-.bbf-carousel__arrow--prev::before { background-image: url('../icon/carousel-arrow-left.svg'); }
-.bbf-carousel__arrow--next { background: var(--bbf-brand); }
-.bbf-carousel__arrow--next::before { background-image: url('../icon/carousel-arrow-right.svg'); }
-.bbf-carousel__arrow--prev:hover { background: var(--bbf-brand-subtle); }
-.bbf-carousel__arrow--next:hover { background: var(--bbf-brand-accent); }
+.bbf-integrations__arrow--prev { border-color: var(--bbf-stroke-brand); }
+.bbf-integrations__arrow--prev::before { background-image: url('../icon/carousel-arrow-left.svg'); }
+.bbf-integrations__arrow--next { background: var(--bbf-brand); }
+.bbf-integrations__arrow--next::before { background-image: url('../icon/carousel-arrow-right.svg'); }
+.bbf-integrations__arrow--prev:hover { background: var(--bbf-brand-subtle); }
+.bbf-integrations__arrow--next:hover { background: var(--bbf-brand-accent); }
+
+/* Each tab is stroked with a gradient ramp rather than the overview's flat
+   brand outline — blue for Tutor LMS, reCAPTCHA and Events, green for Zoom.
+   Figma draws the ramp on a 600-tall box; keeping the bar inside the shell
+   makes ours 712, so it takes the tilt for its own height. */
+.bbf-integrations--blue, .bbf-integrations--green {
+  --bbf-edge-tilt: 110deg;   /* 1280 x 712 */
+  border-color: transparent;
+  background:
+    linear-gradient(var(--bbf-surface), var(--bbf-surface)) padding-box,
+    var(--bbf-edge) border-box;
+}
+.bbf-integrations--blue  { --bbf-edge: linear-gradient(var(--bbf-edge-tilt), var(--bbf-stops-blue)); }
+.bbf-integrations--green { --bbf-edge: linear-gradient(var(--bbf-edge-tilt), var(--bbf-stops-green)); }
 
 /* =================================================================
    CTA

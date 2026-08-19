@@ -236,4 +236,49 @@
   if (/[?&]reveal\b/.test(window.location.search)) {
     root.classList.add('reveal-all');
   }
+
+  /* ---------------------------------------------------------
+     Integrations tabs
+        Five states: the logo overview the section is drawn
+        with, then the four integration tabs. A dot swaps the
+        head, the slide and the shell's stroke together.
+     --------------------------------------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.bbf-integrations'), function (car) {
+    var section = car.closest('.bbf');
+    if (!section) return;
+    var heads  = section.querySelectorAll('.bbf-integrations__heads > .bbf-head');
+    var slides = car.querySelectorAll('.bbf-integrations__slide');
+    var dots   = car.querySelectorAll('.bbf-integrations__dot');
+    if (slides.length < 2) return;
+
+    var at = 0;
+
+    function show(i) {
+      at = (i + slides.length) % slides.length;
+      Array.prototype.forEach.call(slides, function (el, n) {
+        el.classList.toggle('is-current', n === at);
+      });
+      Array.prototype.forEach.call(heads, function (el, n) {
+        el.classList.toggle('is-current', n === at);
+      });
+      Array.prototype.forEach.call(dots, function (el, n) {
+        el.classList.toggle('is-active', n === at);
+        el.setAttribute('aria-current', n === at ? 'true' : 'false');
+      });
+      var cur = slides[at];
+      car.classList.toggle('bbf-integrations--blue',  cur.classList.contains('bbf-integrations__slide--blue'));
+      car.classList.toggle('bbf-integrations--green', cur.classList.contains('bbf-integrations__slide--green'));
+    }
+
+    Array.prototype.forEach.call(dots, function (dot, n) {
+      dot.addEventListener('click', function () { show(n); });
+    });
+    var prev = car.querySelector('.bbf-integrations__arrow--prev');
+    var next = car.querySelector('.bbf-integrations__arrow--next');
+    if (prev) prev.addEventListener('click', function () { show(at - 1); });
+    if (next) next.addEventListener('click', function () { show(at + 1); });
+
+    show(0);
+  });
+
 })();

@@ -320,6 +320,52 @@
 
   Array.prototype.forEach.call(document.querySelectorAll('.phones'), initCarousel);
 
+  /* ---------------------------------------------------------
+     6. Integrations tabs
+        Five states: the logo collage the section is drawn with,
+        then the four integration tabs. A dot swaps the head and
+        the slide together; the shell and its bar stay put.
+     --------------------------------------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.integrations'), function (car) {
+    var section = car.closest('section');
+    if (!section) return;
+    var heads  = section.querySelectorAll('.integrations__heads > .block__head');
+    var slides = car.querySelectorAll('.integrations__slide');
+    var dots   = car.querySelectorAll('.integrations__dot');
+    if (slides.length < 2) return;
+
+    var at = 0;
+
+    function show(i) {
+      at = (i + slides.length) % slides.length;
+      Array.prototype.forEach.call(slides, function (el, n) {
+        el.classList.toggle('is-current', n === at);
+      });
+      Array.prototype.forEach.call(heads, function (el, n) {
+        el.classList.toggle('is-current', n === at);
+      });
+      Array.prototype.forEach.call(dots, function (el, n) {
+        el.classList.toggle('is-active', n === at);
+        el.setAttribute('aria-current', n === at ? 'true' : 'false');
+      });
+      /* the shell's stroke belongs to the slide: the overview keeps the flat
+         brand outline, each tab brings its own gradient ramp */
+      var cur = slides[at];
+      car.classList.toggle('integrations--blue',  cur.classList.contains('integrations__slide--blue'));
+      car.classList.toggle('integrations--green', cur.classList.contains('integrations__slide--green'));
+    }
+
+    Array.prototype.forEach.call(dots, function (dot, n) {
+      dot.addEventListener('click', function () { show(n); });
+    });
+    var prev = car.querySelector('.integrations__arrow--prev');
+    var next = car.querySelector('.integrations__arrow--next');
+    if (prev) prev.addEventListener('click', function () { show(at - 1); });
+    if (next) next.addEventListener('click', function () { show(at + 1); });
+
+    show(0);
+  });
+
   /* NOTE: no parallax on the product panels. Any translate needs a
      compensating scale, and that re-crops the exported Figma artwork —
      the framing has to stay pixel-identical to the design. */
