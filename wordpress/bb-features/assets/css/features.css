@@ -151,14 +151,14 @@
 /* ---------- section tag (rule + uppercase label) -------------------
    The Features and module pages used to draw two different eyebrows; the
    redesign collapsed them into one — a 20px rule 8px from a heading-face
-   SemiBold label at 18/26 with 12% tracking. The rule keeps the brand fill
+   SemiBold label at 18/26 with 8% tracking. The rule keeps the brand fill
    while the label takes the darkened brand text colour.
    ------------------------------------------------------------------ */
 .bbf-flink-more:hover { color: var(--bbf-brand-hover); }
 .bbf-tag {
   display: flex; align-items: center; gap: 8px;
   padding-block: 3px;
-  font-family: var(--bbf-font-heading); letter-spacing: 2.16px;
+  font-family: var(--bbf-font-heading); letter-spacing: 1.44px;
   font-size: var(--bbf-lg); line-height: var(--bbf-lh-lg); font-weight: 600;
   color: var(--bbf-text-brand); text-transform: uppercase; white-space: nowrap;
 }

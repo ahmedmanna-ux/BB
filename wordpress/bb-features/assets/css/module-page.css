@@ -156,8 +156,9 @@
 /* ---------- section tag ------------------------------------------ */
 /* The Features and module pages used to draw two different eyebrows; the
    redesign collapsed them into one — a 20px rule 8px from a heading-face
-   SemiBold label at 18/26 with 12% tracking. The rule keeps the brand fill
-   while the label takes the darkened brand text colour. */
+   SemiBold label at 18/26 with 8% tracking. The rule keeps the brand fill
+   while the label takes the darkened brand text colour. Only the centred
+   pill below runs 12%; do not carry that percentage up to here. */
 .bbm-tag {
   display: inline-flex; align-items: center; gap: 8px;
   padding-block: 3px;
@@ -168,7 +169,7 @@
   background: var(--bbm-bg-brand-primary);
 }
 .bbm-tag span {
-  font-family: var(--bbm-font-heading); letter-spacing: 2.16px;
+  font-family: var(--bbm-font-heading); letter-spacing: 1.44px;
   font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg);
   font-weight: 600; color: var(--bbm-text-brand);
   text-transform: uppercase; white-space: nowrap;
@@ -297,13 +298,14 @@
 }
 .bbm-hero__copy { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
 .bbm-hero__head { display: flex; flex-direction: column; gap: 12px; }
-/* the hero eyebrow is the 18/26 headline variant with no leading rule —
-   the section eyebrows further down the page keep the dash */
+/* the module hero eyebrow is a plain 24/32 Medium heading-face line with no
+   rule at all, tracked at 8% (1.92px) — NOT the Features hero's 12%/2.88px,
+   and not the 18/26 it used to be. The section eyebrows below keep the dash. */
 .bbm-hero__head .bbm-tag { padding-block: 0; gap: 0; }
 .bbm-hero__head .bbm-tag::before { display: none; }
 .bbm-hero__head .bbm-tag span {
   font-family: var(--bbm-font-heading); font-weight: 500;
-  font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); letter-spacing: 1.44px;
+  font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); letter-spacing: 1.92px;
 }
 .bbm-hero__head p { max-width: 507px;
                    font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); }
@@ -428,8 +430,14 @@
 .bbm-fcard--split .bbm-fcard__copy { padding: 32px var(--bbm-copy-gutter) 32px 32px; align-self: center; }
 .bbm-fcard--flip  .bbm-fcard__copy { padding: 32px 32px 32px var(--bbm-copy-gutter); }
 /* the artwork sets the row height — stretching it to the copy instead let
-   these cards collapse below the design's height */
-.bbm-fcard--split .bbm-fcard__art { width: 100%; height: auto; }
+   these cards collapse below the design's height. It also runs to the card's
+   OUTER edge in Figma with the stroke centred on it, exactly as the stack
+   variant above does; inside the border it comes out 2px narrow and the card
+   lands a fraction short. */
+.bbm-fcard--split .bbm-fcard__art { width: calc(100% + 2px); max-width: none;
+                            margin: -1px; height: auto; }
+/* Control's cards carry no border, so there is nothing to compensate for */
+.bbm-control .bbm-fcard--split .bbm-fcard__art { width: 100%; margin: 0; }
 .bbm-fcard--flip { grid-template-columns: 1fr 548px; }
 .bbm-fcard--flip .bbm-fcard__art { order: -1; }
 
@@ -583,7 +591,7 @@
 .bbm-modcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
 .bbm-modcard {
   display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
-  padding: 23px; border-radius: var(--bbm-radius-xl); min-height: 280px;
+  padding: 23px; border-radius: var(--bbm-radius-xl); min-height: 288px;
   border: 1px solid #fcded6;   /* 23 + the border = 24; 0.5px #f9bead over white */
 }
 /* the filled card in the comp is the hover state, not a default */
@@ -597,7 +605,9 @@
 .bbm-modcard__title { font-family: var(--bbm-font-heading); letter-spacing: -0.022em;
                   font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); font-weight: 500; }
 .bbm-modcard__text { font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); color: var(--bbm-text-tertiary); }
-.bbm-modcard .bbm-btn { margin-top: 16px; }   /* 8 gap + 16 = the 24 in the comp */
+/* the redesign grew this button to 48 like every other Explore button; the
+   base .btn clamps to 40, so the card's copy takes an explicit height */
+.bbm-modcard .bbm-btn { margin-top: 16px; height: 48px; max-height: 48px; }
 
 /* ---------- testimonial masonry ----------------------------------- */
 .bbm-reviews { background: var(--bbm-bg-brand-subtle); padding-block: 80px 88px; }

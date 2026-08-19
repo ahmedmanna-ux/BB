@@ -24,27 +24,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-modcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-modcard">
 			<!-- wp:html -->
-			<span class="bbm-modcard__icon"><img src="assets/icon/md-ic-explore-1.svg" alt=""></span>
-			<!-- /wp:html -->
-			<!-- wp:heading {"level":3,"className":"bbm-modcard__title"} -->
-			<h3 class="wp-block-heading bbm-modcard__title">Activity Feed</h3>
-			<!-- /wp:heading -->
-			<!-- wp:paragraph {"className":"bbm-modcard__text"} -->
-			<p class="bbm-modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
-			<!-- /wp:paragraph -->
-			<!-- wp:buttons -->
-			<div class="wp-block-buttons">
-				<!-- wp:button {"className":"bbm-btn bbm-btn--solid"} -->
-				<div class="wp-block-button bbm-btn bbm-btn--solid"><a class="wp-block-button__link wp-element-button" href="activity-feeds.html">Explore More</a></div>
-				<!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
-		</div>
-		<!-- /wp:group -->
-		<!-- wp:group {"className":"bbm-modcard","layout":{"type":"default"}} -->
-		<div class="wp-block-group bbm-modcard">
-			<!-- wp:html -->
-			<span class="bbm-modcard__icon"><img src="assets/icon/md-ic-explore-2.svg" alt=""></span>
+			<span class="bbm-modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":3,"className":"bbm-modcard__title"} -->
 			<h3 class="wp-block-heading bbm-modcard__title">Member Profiles</h3>
@@ -64,7 +44,7 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 		<!-- wp:group {"className":"bbm-modcard","layout":{"type":"default"}} -->
 		<div class="wp-block-group bbm-modcard">
 			<!-- wp:html -->
-			<span class="bbm-modcard__icon"><img src="assets/icon/md-ic-explore-3.svg" alt=""></span>
+			<span class="bbm-modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":3,"className":"bbm-modcard__title"} -->
 			<h3 class="wp-block-heading bbm-modcard__title">Forum &amp; Group</h3>
@@ -76,6 +56,26 @@ $bbm_img = get_theme_file_uri( 'assets/img/' );
 			<div class="wp-block-buttons">
 				<!-- wp:button {"className":"bbm-btn bbm-btn--solid"} -->
 				<div class="wp-block-button bbm-btn bbm-btn--solid"><a class="wp-block-button__link wp-element-button" href="#">Explore More</a></div>
+				<!-- /wp:button -->
+			</div>
+			<!-- /wp:buttons -->
+		</div>
+		<!-- /wp:group -->
+		<!-- wp:group {"className":"bbm-modcard","layout":{"type":"default"}} -->
+		<div class="wp-block-group bbm-modcard">
+			<!-- wp:html -->
+			<span class="bbm-modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
+			<!-- /wp:html -->
+			<!-- wp:heading {"level":3,"className":"bbm-modcard__title"} -->
+			<h3 class="wp-block-heading bbm-modcard__title">Moderations</h3>
+			<!-- /wp:heading -->
+			<!-- wp:paragraph {"className":"bbm-modcard__text"} -->
+			<p class="bbm-modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
+			<!-- /wp:paragraph -->
+			<!-- wp:buttons -->
+			<div class="wp-block-buttons">
+				<!-- wp:button {"className":"bbm-btn bbm-btn--solid"} -->
+				<div class="wp-block-button bbm-btn bbm-btn--solid"><a class="wp-block-button__link wp-element-button" href="moderation.html">Explore More</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
