@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Activity Feeds — BuddyBoss</title>
-<meta name="description" content="A personalized activity feed for every member: relevant activity, filters, topics, search, polls, scheduled and pinned posts, threaded comments and admin controls.">
+<title>Forums — BuddyBoss</title>
+<meta name="description" content="Structured boards for questions and answers that deserve better than a feed — threaded, tagged, searchable, and integrated into your social groups.">
 <link rel="icon" href="assets/icon/logo-buddyboss.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/_pending-forums.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="mp">
@@ -34,9 +35,9 @@
         </button>
         <div class="navdrop__menu" id="navPreview" hidden>
           <a href="index.html">Features (Top Modules)</a>
-          <a href="activity-feeds.html" class="is-current">Activity Feeds</a>
+          <a href="activity-feeds.html">Activity Feeds</a>
           <a href="social-groups.html">Social Groups</a>
-          <a href="forums.html">Forums</a>
+          <a href="forums.html" class="is-current">Forums</a>
           <a href="member-profiles.html">Member Profiles</a>
           <a href="moderation.html">Moderation</a>
         </div>
@@ -52,7 +53,7 @@
   </div>
 </header>
 
-<main>
+<main class="mp-fo">
 
 <!-- ============================= HERO ============================= -->
 <section class="mp-hero">
@@ -61,185 +62,127 @@
   <div class="shell mp-hero__inner">
     <div class="mp-hero__copy reveal reveal--left">
       <div class="mp-hero__head">
-        <span class="tag"><span>Activity Feed</span></span>
-        <h1 class="h2">Keep members engaged with a personalized activity feed</h1>
-        <p class="body-sm">Give members a familiar social space to share updates, discover conversations, and stay connected with the people and communities that matter most.</p>
+        <span class="tag"><span>FORUMS</span></span>
+        <h1 class="h2">Discussions with a long shelf life</h1>
+        <p class="body-sm">Structured boards for questions and answers that deserve better than a feed — threaded, tagged, searchable, and integrated into your social groups.</p>
       </div>
       <div class="mp-hero__actions">
         <a href="#" class="btn btn--lg btn--solid">Get BuddyBoss Now</a>
         <a href="#" class="btn btn--lg btn--ghost btn--noicon">Check Video Tutorials</a>
       </div>
     </div>
-    <div class="mp-hero__art reveal reveal--right">
-      <img src="assets/img/af-hero.png" alt="The BuddyBoss activity feed on desktop and mobile, with a video tutorial play button">
+    <div class="mp-hero__art mp-hero__art--tight reveal reveal--right">
+      <img src="assets/img/fo-hero.png" alt="A forum discussion thread with its opening post, tags and threaded replies">
     </div>
   </div>
 </section>
 
 <!-- ========================== JUMP CARDS ========================== -->
 <section class="shell section">
-  <div class="jumpcards stagger">
+  <div class="jumpcards jumpcards--roomy stagger">
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-1.svg" alt="1">
-      <h2 class="jumpcard__title">Discover</h2>
-      <p class="jumpcard__text">A feed built around each member</p>
+      <h2 class="jumpcard__title">Discuss</h2>
+      <p class="jumpcard__text">Create, post, reply &amp; browse</p>
     </article>
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-2.svg" alt="2">
-      <h2 class="jumpcard__title">Post</h2>
-      <p class="jumpcard__text">Polls, pins, schedules &amp; more</p>
+      <h2 class="jumpcard__title">Features</h2>
+      <p class="jumpcard__text">Eight switches, one screen</p>
     </article>
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-3.svg" alt="3">
-      <h2 class="jumpcard__title">Engage</h2>
-      <p class="jumpcard__text">Conversations that spread</p>
+      <h2 class="jumpcard__title">Groups &amp; URLs</h2>
+      <p class="jumpcard__text">Boards in groups, clean links</p>
     </article>
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-4.svg" alt="4">
-      <h2 class="jumpcard__title">Control</h2>
-      <p class="jumpcard__text">Every switch in one admin screen</p>
+      <h2 class="jumpcard__title">Admin &amp; Limits</h2>
+      <p class="jumpcard__text">Throttles, page sizes &amp; lists</p>
     </article>
   </div>
 </section>
 
-<!-- =========================== DISCOVER =========================== -->
-<section class="shell section mp-discover">
+<!-- =========================== DISCUSS ============================ -->
+<section class="shell section mp-edge--peach">
   <div class="secthead reveal">
-    <span class="tag"><span>Discover</span></span>
-    <h2 class="h2 secthead__title">One feed, personalized for every member</h2>
+    <span class="tag"><span>discuss</span></span>
+    <h2 class="h2 secthead__title">Start a board. Start a conversation.</h2>
   </div>
 
   <div class="fcards">
     <article class="fcard fcard--split reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Relevant Activity</span></span>
-        <h3 class="h3">A personalized feed of only the posts that matter</h3>
-        <p class="body-sm">Turn on Relevant Activity and each feed is assembled from that member’s timeline, connections, followed members, joined groups, subscribed forums and @mentions. No black-box algorithm deciding what they see — just their community.</p>
+        <span class="tag"><span>forum directory</span></span>
+        <h3 class="h3">A forums directory that leads with what matters</h3>
+        <p class="body-sm">Choose what the Forums directory shows: the Forum Index, or Discussions by Last Post. The frontend renders a card grid — covers, descriptions, tags, and activity meta on every forum.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-personalized.png" alt="An activity feed showing posts from connections, groups and followed members" loading="lazy">
-    </article>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Feed Filters</span></span>
-          <h3 class="h3">One feed, filtered your way</h3>
-          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-filters.png" alt="The activity filter bar with options for updates, reactions, groups and mentions" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Topics</span></span>
-          <h3 class="h3">Activity topics that file every post</h3>
-          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-topics.png" alt="Activity topic chips filtering a feed by subject" loading="lazy">
-      </article>
-    </div>
-
-    <article class="fcard fcard--stack fcard--wide reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Activity Search</span></span>
-        <h3 class="h3">Activity search that resurfaces any post in seconds</h3>
-        <p class="body-sm">Full-text search across every post and comment in the feed. That answer from three weeks ago resurfaces in seconds.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-search.png" alt="Activity search results for posts and members" loading="lazy">
-    </article>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Auto-Refresh</span></span>
-          <h3 class="h3">Activity feed that refreshes itself</h3>
-          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-refresh.png" alt="A toggle that automatically checks for new activity posts" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Sharing</span></span>
-          <h3 class="h3">Share activity post to anywhere</h3>
-          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-sharing.png" alt="Sharing an activity post to Messenger, Facebook, X, LinkedIn and WhatsApp" loading="lazy">
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- =========================== CTA BAND =========================== -->
-<section class="shell section">
-  <div class="ctaband reveal">
-    <div class="ctaband__copy">
-      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
-      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    </div>
-    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-  </div>
-</section>
-
-<!-- ============================= POST ============================= -->
-<section class="shell section mp-post">
-  <div class="secthead reveal">
-    <span class="tag"><span>Post</span></span>
-    <h2 class="h2 secthead__title">Create better posts, build stronger communities</h2>
-  </div>
-
-  <div class="fcards">
-    <div class="fduo fduo--wide">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Schedule Posts</span></span>
-          <h3 class="h3">Write now, publish on time</h3>
-          <p class="body-sm">Group owners and moderators write now and publish later. The “Scheduled posts” queue shows each post with its date — Edit post or Edit schedule any time before it goes live.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-schedule.png" alt="A date picker scheduling a post for a future date" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Pin Posts</span></span>
-          <h3 class="h3">Pinned posts stays on top</h3>
-          <p class="body-sm">Group owners and moderators can pin posts — one admin switch. “Pin to feed” sits right in the post menu.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-pinned.png" alt="The post menu with Pin to feed and Report post" loading="lazy">
-      </article>
-    </div>
-
-    <article class="fcard fcard--split reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Polls</span></span>
-        <h3 class="h3">Polls the community answers right in the feed</h3>
-        <p class="body-sm">Group owners and moderators drop a poll straight into the composer — live vote counts, with a closing date. Votes land where the conversation already is.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-polls.png" alt="A poll in the composer with live vote counts" loading="lazy">
+      <img class="fcard__art" src="assets/img/fo-ds-directory.png" alt="The Forums directory as a card grid, each forum with its cover, description and activity meta" loading="lazy">
     </article>
 
     <article class="fcard fcard--split fcard--flip reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Post Feature Image</span></span>
-        <h3 class="h3">Cover images that turn updates into articles</h3>
-        <p class="body-sm">Group owners and moderators can add a featured image to a post. The composer’s “Add Feature Image” dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
+        <span class="tag"><span>reply threading</span></span>
+        <h3 class="h3">Threaded replies that keep long arguments readable</h3>
+        <p class="body-sm">Enable threaded (nested) replies and choose how many levels deep they nest — two by default. In ReadyLaunch every reply quotes the message it answers, so long arguments stay readable at any depth.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-cover.png" alt="A post with a wide cover image above the text" loading="lazy">
+      <img class="fcard__art" src="assets/img/fo-ds-threading.png" alt="A discussion with nested replies, each quoting the message it answers" loading="lazy">
     </article>
   </div>
+</section>
 
-  <div class="minicards stagger">
-    <article class="minicard">
-      <img src="assets/icon/feat-notepencil.svg" alt="">
-      <h3 class="minicard__title">Edit Activity</h3>
-      <p class="minicard__text">Members fix a typo or reword a post right from its menu, inside the edit window you set — thirty minutes up to forever. The feed stays accurate without a moderator in the loop.</p>
+<!-- ======================== FORUM FEATURES ======================== -->
+<section class="shell section mp-edge--blue mp-ff">
+  <div class="secthead reveal">
+    <span class="tag"><span>forum features</span></span>
+    <h2 class="h2 secthead__title">Every group, dressed for your community</h2>
+  </div>
+
+  <div class="fcards">
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>favorites</span></span>
+          <h3 class="h3">Save your favorite discussions</h3>
+          <p class="body-sm">Allow members to mark discussions as favorites with one click in the thread header — and the forum header carries a Favorite button of its own, so whole boards can be bookmarked too.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/fo-ff-favorites.png" alt="A discussion header with its Favorite and Subscribe buttons" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>discussion tags</span></span>
+          <h3 class="h3">Tags that cross-cut every board</h3>
+          <p class="body-sm">Allow members to mark discussions as favorites with one click in the thread header — and the forum header carries a Favorite button of its own, so whole boards can be bookmarked too.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/fo-ff-tags.png" alt="Two discussions carrying shared topic tags under their titles" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>revision log</span></span>
+        <h3 class="h3">Revision logs for every discussion and reply</h3>
+        <p class="body-sm">Allow discussion and reply revision logging, so every edit leaves a trail. When members edit, the thread shows “Last edited 10 minutes ago” right beside the timestamp.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/fo-ff-revisions.png" alt="A discussion showing its edit history beside the post timestamp" loading="lazy">
     </article>
-    <article class="minicard">
-      <img src="assets/icon/feat-chattext.svg" alt="">
-      <h3 class="minicard__title">Close Comments</h3>
-      <p class="minicard__text">Authors and admins hit “Turn off commenting” right in the post menu. The conversation ends on purpose.</p>
+
+    <article class="fcard fcard--split reveal mp-fo__card--564">
+      <div class="fcard__copy">
+        <span class="tag"><span>search</span></span>
+        <h3 class="h3">Forum-wide search across every board</h3>
+        <p class="body-sm">Allow forum-wide search, and every forum, discussion, and reply becomes findable. It plugs into the community’s global search — one query, the whole archive.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/fo-ff-search.png" alt="A search panel returning forums, discussions and replies for one query" loading="lazy">
     </article>
-    <article class="minicard">
-      <img src="assets/icon/feat-textt.svg" alt="">
-      <h3 class="minicard__title">Post Title</h3>
-      <p class="minicard__text">The composer carries a “Title (optional)” field you can make mandatory. Required titles turn the whole feed editorial.</p>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>post formatting</span></span>
+        <h3 class="h3">A formatting toolbar for real writing</h3>
+        <p class="body-sm">Add a toolbar and buttons to text areas to help with HTML formatting — bold, italics, lists, quotes, links, and code. The frontend composer adds photos, video, attachments, GIFs, emoji, and @mentions.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/fo-ff-formatting.png" alt="The new-discussion composer with its formatting toolbar and attachment buttons" loading="lazy">
     </article>
   </div>
 </section>
@@ -255,116 +198,89 @@
   </div>
 </section>
 
-<!-- ============================ ENGAGE ============================ -->
-<section class="shell section mp-engage">
+<!-- ========================= GROUPS & URLS ======================== -->
+<section class="shell section mp-edge--green">
   <div class="secthead reveal">
-    <span class="tag"><span>Engage</span></span>
-    <h2 class="h2 secthead__title">The feed that keeps conversations flowing</h2>
+    <span class="tag"><span>groups &amp; urls</span></span>
+    <h2 class="h2 secthead__title">Where boards live, and what they’re called</h2>
   </div>
 
   <div class="fcards">
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Enable Comments</span></span>
-          <h3 class="h3">Turn every post a conversation</h3>
-          <p class="body-sm">The master switch for commenting on activity posts. Turn it on and every post becomes a conversation members join right in the feed.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng1.png" alt="A comment box open beneath an activity post" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Edit Comments</span></span>
-          <h3 class="h3">Timed comment editing</h3>
-          <p class="body-sm">Members fix a typo in their comment inside the window you set. Once it closes, the record stands — no silent rewrites.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng2.png" alt="A setting allowing members to edit their comment for a chosen duration" loading="lazy">
-      </article>
-    </div>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Comment Threading</span></span>
-          <h3 class="h3">Readable threaded comments</h3>
-          <p class="body-sm">Conversations organize into threads at the depth you choose. Decide how many comments show per post, how many load at a time, and how long members can edit their replies.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng3.png" alt="A setting organizing replies into threads a chosen number of levels deep" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Comment Visibility</span></span>
-          <h3 class="h3">Comments visible before the fold</h3>
-          <p class="body-sm">Set the maximum comments displayed per post — three by default. The rest wait behind “View more comments,” so long conversations stay tidy in the feed.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng4.png" alt="A setting for how many comments display per post in activity feeds" loading="lazy">
-      </article>
-    </div>
-
     <article class="fcard fcard--split fcard--flip reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Comments Loading</span></span>
-        <h3 class="h3">Comment batches sized for a fast feed</h3>
-        <p class="body-sm">Set how many more comments arrive with each load. Members pull deeper into a thread at their own pace, and the feed stays fast.</p>
+        <span class="tag"><span>group forums</span></span>
+        <h3 class="h3">A discussion board inside any social group</h3>
+        <p class="body-sm">Allow social groups to have their own forums — a structured Discussions tab beside the group feed, sub-forums included. Group context stays: the About panel, the members widget, and a New Discussion button.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-engage-split.png" alt="A setting for how many additional comments load on each request" loading="lazy">
+      <img class="fcard__art" src="assets/img/fo-gu-groupforums.png" alt="A social group’s Discussions tab listing its threads beside the group feed" loading="lazy">
     </article>
-  </div>
-</section>
 
-<!-- =========================== CTA BAND =========================== -->
-<section class="shell section">
-  <div class="ctaband reveal">
-    <div class="ctaband__copy">
-      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
-      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    </div>
-    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-  </div>
-</section>
-
-<!-- =========================== CONTROL ============================ -->
-<section class="shell section mp-control">
-  <div class="secthead reveal">
-    <span class="tag"><span>Control</span></span>
-    <h2 class="h2 secthead__title">Control built into the feed, not bolted on</h2>
-  </div>
-
-  <div class="fcards">
     <article class="fcard fcard--split reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Access Control</span></span>
-        <h3 class="h3">Control who can create activity posts</h3>
-        <p class="body-sm">Not every member should be able to post the same things. Access Controls decides who can create activity posts — so paying members, instructors, or your most active contributors get privileges others don't. Set the rule once; administrators always keep full access.</p>
-        <ul class="checks">
-          <li><img src="assets/icon/check.svg" alt=""><span><b>WordPress role</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Profile type</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Membership</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>GamiPress</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Gender</b> — what it does</span></li>
-        </ul>
+        <span class="tag"><span>forum permalinks</span></span>
+        <h3 class="h3">Six URL slugs, every one yours</h3>
+        <p class="body-sm">Custom URL slugs for forum content — forum, discussion, topic-tag, view, reply, and search. Lowercase letters, numbers, and hyphens; your information architecture, not ours.</p>
       </div>
-      <img class="fcard__art" src="assets/img/af-ctrl1.png" alt="Access control settings for who can create activity posts" loading="lazy">
-    </article>
-
-    <article class="fcard fcard--split fcard--flip reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Posts Visibility</span></span>
-        <h3 class="h3">Show activity content to users that matters</h3>
-        <p class="body-sm">Decide which activities are published to the activity feed, including BuddyBoss events, WordPress posts, and custom post types. Enable comments where supported.</p>
-        <ul class="checks">
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        </ul>
-      </div>
-      <img class="fcard__art" src="assets/img/af-ctrl2.png" alt="Toggles choosing which activity types appear in the feed" loading="lazy">
+      <img class="fcard__art" src="assets/img/fo-gu-permalinks.png" alt="The Forum Permalinks settings, each slug in its own field" loading="lazy">
     </article>
   </div>
 </section>
 
+<!-- ============================ MANAGE ============================ -->
+<section class="shell section mp-edge--peach mp-manage">
+  <div class="secthead reveal">
+    <span class="tag"><span>manage</span></span>
+    <h2 class="h2 secthead__title">Who creates, who joins, who runs it</h2>
+  </div>
+
+  <div class="fcards">
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>disallow editing after</span></span>
+          <h3 class="h3">An editing window that keeps threads honest</h3>
+          <p class="body-sm">Disallow editing after a set number of minutes (default 5), so replies can’t be rewritten after the conversation has moved on. Typos get fixed; history stays intact.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/fo-mg-editing.png" alt="The Disallow Editing After setting above an open Edit reply dialog" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>THROTTLE POSTING EVERY</span></span>
+          <h3 class="h3">Posting throttled to stop the flooders</h3>
+          <p class="body-sm">Throttle posting every few seconds (default 10) so no member — or bot — can flood a discussion. Regular typing never notices; rapid-fire spam hits a wall.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/fo-mg-throttle.png" alt="The Throttle Posting Every setting above an open reply composer" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>DISCUSSIONS AND REPLIES PER PAGE</span></span>
+        <h3 class="h3">Page sizes tuned for your board’s pace</h3>
+        <p class="body-sm">Choose how many forums (15), discussions (15), and replies (25) load per page. Long boards stay fast, and the frontend paginates with Prev · 1 2 3 … 15 · Next.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/fo-mg-pagesizes.png" alt="The Discussions and Replies Per Page settings over a paginated forum listing" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>PER RSS PAGE</span></span>
+        <h3 class="h3">RSS feeds sized separately from your pages</h3>
+        <p class="body-sm">Set how many discussions (15) and replies (25) appear per RSS page — feed readers get their own pagination, independent of the site. Subscribers stay current without hammering your server.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/fo-mg-rss.png" alt="The Discussions and Replies Per RSS Page settings" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>manage forums</span></span>
+        <h3 class="h3">Admin lists that run every board from wp-admin</h3>
+        <p class="body-sm">Forums, Discussions, Discussion Tags, and Replies — four managed lists with search, filters, sort, and bulk edit. Row quick-actions reach Spam, Close, and Trash without leaving the queue.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/fo-mg-adminlists.png" alt="The wp-admin Forums list with its filters, quick actions and row menus" loading="lazy">
+    </article>
+  </div>
+</section>
 <!-- ========================= TESTIMONIALS ========================= -->
 <section class="mp-reviews section">
   <div class="shell">
@@ -446,6 +362,7 @@
   </div>
 </section>
 
+
 <!-- =========================== BIG CTA ============================ -->
 <section class="shell section">
   <div class="ctaband ctaband--center reveal reveal--zoom">
@@ -467,7 +384,7 @@
       <span class="modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
       <h3 class="modcard__title">Member Profiles</h3>
       <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
-      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <a href="member-profiles.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
     </article>
     <article class="modcard">
       <span class="modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
@@ -479,7 +396,7 @@
       <span class="modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
       <h3 class="modcard__title">Moderations</h3>
       <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
-      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <a href="moderation.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
     </article>
   </div>
 </section>

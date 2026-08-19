@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Activity Feeds — BuddyBoss</title>
-<meta name="description" content="A personalized activity feed for every member: relevant activity, filters, topics, search, polls, scheduled and pinned posts, threaded comments and admin controls.">
+<title>Social Groups — BuddyBoss</title>
+<meta name="description" content="Public, private and hidden groups with their own feeds, members, media and messages: a five-step create wizard, group identity controls, a directory you shape, and admin rules for who creates and joins.">
 <link rel="icon" href="assets/icon/logo-buddyboss.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/_pending-social-groups.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="mp">
@@ -34,8 +35,8 @@
         </button>
         <div class="navdrop__menu" id="navPreview" hidden>
           <a href="index.html">Features (Top Modules)</a>
-          <a href="activity-feeds.html" class="is-current">Activity Feeds</a>
-          <a href="social-groups.html">Social Groups</a>
+          <a href="activity-feeds.html">Activity Feeds</a>
+          <a href="social-groups.html" class="is-current">Social Groups</a>
           <a href="forums.html">Forums</a>
           <a href="member-profiles.html">Member Profiles</a>
           <a href="moderation.html">Moderation</a>
@@ -52,7 +53,7 @@
   </div>
 </header>
 
-<main>
+<main class="mp-sg">
 
 <!-- ============================= HERO ============================= -->
 <section class="mp-hero">
@@ -61,297 +62,183 @@
   <div class="shell mp-hero__inner">
     <div class="mp-hero__copy reveal reveal--left">
       <div class="mp-hero__head">
-        <span class="tag"><span>Activity Feed</span></span>
-        <h1 class="h2">Keep members engaged with a personalized activity feed</h1>
-        <p class="body-sm">Give members a familiar social space to share updates, discover conversations, and stay connected with the people and communities that matter most.</p>
+        <span class="tag"><span>SOCIAL GROUPS</span></span>
+        <h1 class="h2">Spaces where your community lives</h1>
+        <p class="body-sm">Public, private, and hidden groups with their own feeds, members, media, and messages — created by members in a five-step wizard, governed by you from one admin.</p>
       </div>
       <div class="mp-hero__actions">
         <a href="#" class="btn btn--lg btn--solid">Get BuddyBoss Now</a>
         <a href="#" class="btn btn--lg btn--ghost btn--noicon">Check Video Tutorials</a>
       </div>
     </div>
-    <div class="mp-hero__art reveal reveal--right">
-      <img src="assets/img/af-hero.png" alt="The BuddyBoss activity feed on desktop and mobile, with a video tutorial play button">
+    <div class="mp-hero__art mp-hero__art--tight reveal reveal--right">
+      <img src="assets/img/sg-hero.png" alt="A group page with its cover, member grid and navigation">
     </div>
   </div>
 </section>
 
 <!-- ========================== JUMP CARDS ========================== -->
 <section class="shell section">
-  <div class="jumpcards stagger">
+  <div class="jumpcards jumpcards--roomy stagger">
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-1.svg" alt="1">
-      <h2 class="jumpcard__title">Discover</h2>
-      <p class="jumpcard__text">A feed built around each member</p>
+      <h2 class="jumpcard__title">Create</h2>
+      <p class="jumpcard__text">Groups, subgroups &amp; subscriptions</p>
     </article>
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-2.svg" alt="2">
-      <h2 class="jumpcard__title">Post</h2>
-      <p class="jumpcard__text">Polls, pins, schedules &amp; more</p>
+      <h2 class="jumpcard__title">Identity</h2>
+      <p class="jumpcard__text">Avatars, covers &amp; headers</p>
     </article>
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-3.svg" alt="3">
-      <h2 class="jumpcard__title">Engage</h2>
-      <p class="jumpcard__text">Conversations that spread</p>
+      <h2 class="jumpcard__title">Discover</h2>
+      <p class="jumpcard__text">Directory views &amp; navigation</p>
     </article>
     <article class="jumpcard">
       <img class="jumpcard__num" src="assets/icon/num-4.svg" alt="4">
-      <h2 class="jumpcard__title">Control</h2>
-      <p class="jumpcard__text">Every switch in one admin screen</p>
+      <h2 class="jumpcard__title">Manage</h2>
+      <p class="jumpcard__text">Access, types &amp; admin tools</p>
     </article>
+  </div>
+</section>
+
+<!-- ============================ CREATE ============================ -->
+<section class="shell section sg-create mp-edge--peach">
+  <div class="secthead reveal">
+    <span class="tag"><span>create</span></span>
+    <h2 class="h2 secthead__title">Groups your members build themselves</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>group creation</span></span>
+        <h3 class="h3">Group creation open to every member — or just your admins</h3>
+        <p class="body-sm">Enable social group creation by all members, or keep it admin-only — administrators can always create groups regardless. On the frontend, a five-step Create-a-Group wizard walks members through Details, Privacy, Photo, Invites, and Courses.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-create-wizard.png" alt="The five-step Create a Group wizard on the frontend" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>group message</span></span>
+        <h3 class="h3">Message every group member at once</h3>
+        <p class="body-sm">Allow for sending group messages to group members, straight from the group. The composer even switches between Group message and Private message, with every group member on the To: line.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-group-message.png" alt="The group message composer with every group member selected on the To line" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== IDENTITY =========================== -->
+<section class="shell section sg-identity mp-edge--blue">
+  <div class="secthead reveal">
+    <span class="tag"><span>identity</span></span>
+    <h2 class="h2 secthead__title">Every group, dressed for your community</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>cover image sizes</span></span>
+        <h3 class="h3">Cover sizes tuned to your directory’s density</h3>
+        <p class="body-sm">Set cover image Width (Full Width) and Height (Small) for the whole network from one row of dropdowns. Change carefully — resizing repositions covers members have already uploaded, and the admin warns you first.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-cover-sizes.png" alt="Cover image width and height dropdowns in the group settings" loading="lazy">
+    </article>
+
+    <div class="fduo">
+      <article class="fcard fcard--stack reveal reveal--left">
+        <div class="fcard__copy">
+          <span class="tag"><span>Default group avatar</span></span>
+          <h3 class="h3">A default avatar for groups that skip the upload</h3>
+          <p class="body-sm">Pick what new groups wear before anyone uploads: the BuddyBoss mark, the group’s name, or a custom image you provide (JPG or PNG, 300×300 px). No gray placeholders anywhere in your directory.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/sg-avatar.png" alt="The default group avatar setting with its BuddyBoss, group name and custom options" loading="lazy">
+      </article>
+      <article class="fcard fcard--stack reveal reveal--right">
+        <div class="fcard__copy">
+          <span class="tag"><span>Default group cover</span></span>
+          <h3 class="h3">Default covers so no group launches bare</h3>
+          <p class="body-sm">Choose the fallback for groups without a cover: BuddyBoss, none, or a custom image (JPG or PNG, 1950×450 px). Set it once in the admin, and every new group starts dressed.</p>
+        </div>
+        <img class="fcard__art" src="assets/img/sg-cover.png" alt="The default group cover image setting with a custom upload" loading="lazy">
+      </article>
+    </div>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>header style</span></span>
+        <h3 class="h3">A group header style that matches your brand</h3>
+        <p class="body-sm">Choose Left or Centered for every group header — avatars and covers appear only if you’ve enabled them. One radio in the admin restyles every group page (the App style keeps its own layout).</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-header-style.png" alt="Left and centered group header styles side by side" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>header elements</span></span>
+        <h3 class="h3">Header elements you switch on and off</h3>
+        <p class="body-sm">Five toggles decide what group headers show: Group Type, Last Activity, Group Description, Group Organizers, and Group Privacy. Type, activity, and privacy ship on by default — the rest is your call.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-header-elements.png" alt="Toggles for the elements shown in a group header" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- =========================== CTA BAND =========================== -->
+<section class="shell section">
+  <div class="ctaband reveal">
+    <div class="ctaband__copy">
+      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
+      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
+    </div>
+    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
   </div>
 </section>
 
 <!-- =========================== DISCOVER =========================== -->
-<section class="shell section mp-discover">
+<section class="shell section sg-discover mp-edge--green">
   <div class="secthead reveal">
-    <span class="tag"><span>Discover</span></span>
-    <h2 class="h2 secthead__title">One feed, personalized for every member</h2>
+    <span class="tag"><span>discover</span></span>
+    <h2 class="h2 secthead__title">A directory that sells your groups</h2>
+  </div>
+
+  <div class="fcards">
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>directory layout</span></span>
+        <h3 class="h3">A groups directory in grid, list, or both</h3>
+        <p class="body-sm">Display group directories in Grid View, List View, or let members toggle between both. The frontend keeps the switcher in the directory header, right next to the Type and Activity filters.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-dir-layout.png" alt="The groups directory in grid view with its layout switcher" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>directory elements</span></span>
+        <h3 class="h3">Eight directory elements, entirely your call</h3>
+        <p class="body-sm">Toggle what each directory card shows: Cover Images, Avatars, Group Privacy, Group Type, Last Activity, Members, Group Descriptions, and Join Buttons. Covers render only in grid view; descriptions only in list view.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-dir-elements.png" alt="Toggles for the eight elements a group directory card can show" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- ============================ MANAGE ============================ -->
+<section class="shell section sg-manage mp-edge--peach">
+  <div class="secthead reveal">
+    <span class="tag"><span>manage</span></span>
+    <h2 class="h2 secthead__title">Who creates, who joins, who runs it</h2>
   </div>
 
   <div class="fcards">
     <article class="fcard fcard--split reveal">
       <div class="fcard__copy">
-        <span class="tag"><span>Relevant Activity</span></span>
-        <h3 class="h3">A personalized feed of only the posts that matter</h3>
-        <p class="body-sm">Turn on Relevant Activity and each feed is assembled from that member’s timeline, connections, followed members, joined groups, subscribed forums and @mentions. No black-box algorithm deciding what they see — just their community.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-personalized.png" alt="An activity feed showing posts from connections, groups and followed members" loading="lazy">
-    </article>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Feed Filters</span></span>
-          <h3 class="h3">One feed, filtered your way</h3>
-          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-filters.png" alt="The activity filter bar with options for updates, reactions, groups and mentions" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Topics</span></span>
-          <h3 class="h3">Activity topics that file every post</h3>
-          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-topics.png" alt="Activity topic chips filtering a feed by subject" loading="lazy">
-      </article>
-    </div>
-
-    <article class="fcard fcard--stack fcard--wide reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Activity Search</span></span>
-        <h3 class="h3">Activity search that resurfaces any post in seconds</h3>
-        <p class="body-sm">Full-text search across every post and comment in the feed. That answer from three weeks ago resurfaces in seconds.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-search.png" alt="Activity search results for posts and members" loading="lazy">
-    </article>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Auto-Refresh</span></span>
-          <h3 class="h3">Activity feed that refreshes itself</h3>
-          <p class="body-sm">A reorderable filter bar lets members cut the feed to what they came for — mentions, connections, groups they follow. Eight views of one stream, in the order you choose.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-refresh.png" alt="A toggle that automatically checks for new activity posts" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Activity Sharing</span></span>
-          <h3 class="h3">Share activity post to anywhere</h3>
-          <p class="body-sm">Topics turn one busy feed into browsable conversations. Define the list, decide who can post to each, and require a topic so nothing lands unlabeled — in groups too.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-sharing.png" alt="Sharing an activity post to Messenger, Facebook, X, LinkedIn and WhatsApp" loading="lazy">
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- =========================== CTA BAND =========================== -->
-<section class="shell section">
-  <div class="ctaband reveal">
-    <div class="ctaband__copy">
-      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
-      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    </div>
-    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-  </div>
-</section>
-
-<!-- ============================= POST ============================= -->
-<section class="shell section mp-post">
-  <div class="secthead reveal">
-    <span class="tag"><span>Post</span></span>
-    <h2 class="h2 secthead__title">Create better posts, build stronger communities</h2>
-  </div>
-
-  <div class="fcards">
-    <div class="fduo fduo--wide">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Schedule Posts</span></span>
-          <h3 class="h3">Write now, publish on time</h3>
-          <p class="body-sm">Group owners and moderators write now and publish later. The “Scheduled posts” queue shows each post with its date — Edit post or Edit schedule any time before it goes live.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-schedule.png" alt="A date picker scheduling a post for a future date" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Pin Posts</span></span>
-          <h3 class="h3">Pinned posts stays on top</h3>
-          <p class="body-sm">Group owners and moderators can pin posts — one admin switch. “Pin to feed” sits right in the post menu.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-pinned.png" alt="The post menu with Pin to feed and Report post" loading="lazy">
-      </article>
-    </div>
-
-    <article class="fcard fcard--split reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Polls</span></span>
-        <h3 class="h3">Polls the community answers right in the feed</h3>
-        <p class="body-sm">Group owners and moderators drop a poll straight into the composer — live vote counts, with a closing date. Votes land where the conversation already is.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-polls.png" alt="A poll in the composer with live vote counts" loading="lazy">
-    </article>
-
-    <article class="fcard fcard--split fcard--flip reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Post Feature Image</span></span>
-        <h3 class="h3">Cover images that turn updates into articles</h3>
-        <p class="body-sm">Group owners and moderators can add a featured image to a post. The composer’s “Add Feature Image” dropzone takes a click or a drag-and-drop — the post lands looking editorial.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-cover.png" alt="A post with a wide cover image above the text" loading="lazy">
-    </article>
-  </div>
-
-  <div class="minicards stagger">
-    <article class="minicard">
-      <img src="assets/icon/feat-notepencil.svg" alt="">
-      <h3 class="minicard__title">Edit Activity</h3>
-      <p class="minicard__text">Members fix a typo or reword a post right from its menu, inside the edit window you set — thirty minutes up to forever. The feed stays accurate without a moderator in the loop.</p>
-    </article>
-    <article class="minicard">
-      <img src="assets/icon/feat-chattext.svg" alt="">
-      <h3 class="minicard__title">Close Comments</h3>
-      <p class="minicard__text">Authors and admins hit “Turn off commenting” right in the post menu. The conversation ends on purpose.</p>
-    </article>
-    <article class="minicard">
-      <img src="assets/icon/feat-textt.svg" alt="">
-      <h3 class="minicard__title">Post Title</h3>
-      <p class="minicard__text">The composer carries a “Title (optional)” field you can make mandatory. Required titles turn the whole feed editorial.</p>
-    </article>
-  </div>
-</section>
-
-<!-- =========================== CTA BAND =========================== -->
-<section class="shell section">
-  <div class="ctaband reveal">
-    <div class="ctaband__copy">
-      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
-      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    </div>
-    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-  </div>
-</section>
-
-<!-- ============================ ENGAGE ============================ -->
-<section class="shell section mp-engage">
-  <div class="secthead reveal">
-    <span class="tag"><span>Engage</span></span>
-    <h2 class="h2 secthead__title">The feed that keeps conversations flowing</h2>
-  </div>
-
-  <div class="fcards">
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Enable Comments</span></span>
-          <h3 class="h3">Turn every post a conversation</h3>
-          <p class="body-sm">The master switch for commenting on activity posts. Turn it on and every post becomes a conversation members join right in the feed.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng1.png" alt="A comment box open beneath an activity post" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Edit Comments</span></span>
-          <h3 class="h3">Timed comment editing</h3>
-          <p class="body-sm">Members fix a typo in their comment inside the window you set. Once it closes, the record stands — no silent rewrites.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng2.png" alt="A setting allowing members to edit their comment for a chosen duration" loading="lazy">
-      </article>
-    </div>
-
-    <div class="fduo">
-      <article class="fcard fcard--stack reveal reveal--left">
-        <div class="fcard__copy">
-          <span class="tag"><span>Comment Threading</span></span>
-          <h3 class="h3">Readable threaded comments</h3>
-          <p class="body-sm">Conversations organize into threads at the depth you choose. Decide how many comments show per post, how many load at a time, and how long members can edit their replies.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng3.png" alt="A setting organizing replies into threads a chosen number of levels deep" loading="lazy">
-      </article>
-      <article class="fcard fcard--stack reveal reveal--right">
-        <div class="fcard__copy">
-          <span class="tag"><span>Comment Visibility</span></span>
-          <h3 class="h3">Comments visible before the fold</h3>
-          <p class="body-sm">Set the maximum comments displayed per post — three by default. The rest wait behind “View more comments,” so long conversations stay tidy in the feed.</p>
-        </div>
-        <img class="fcard__art" src="assets/img/af-eng4.png" alt="A setting for how many comments display per post in activity feeds" loading="lazy">
-      </article>
-    </div>
-
-    <article class="fcard fcard--split fcard--flip reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Comments Loading</span></span>
-        <h3 class="h3">Comment batches sized for a fast feed</h3>
-        <p class="body-sm">Set how many more comments arrive with each load. Members pull deeper into a thread at their own pace, and the feed stays fast.</p>
-      </div>
-      <img class="fcard__art" src="assets/img/af-engage-split.png" alt="A setting for how many additional comments load on each request" loading="lazy">
-    </article>
-  </div>
-</section>
-
-<!-- =========================== CTA BAND =========================== -->
-<section class="shell section">
-  <div class="ctaband reveal">
-    <div class="ctaband__copy">
-      <p class="ctaband__title">Build your community’s home on BuddyBoss</p>
-      <p class="ctaband__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    </div>
-    <a href="#" class="btn btn--lg btn--white">Get BuddyBoss Now <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-  </div>
-</section>
-
-<!-- =========================== CONTROL ============================ -->
-<section class="shell section mp-control">
-  <div class="secthead reveal">
-    <span class="tag"><span>Control</span></span>
-    <h2 class="h2 secthead__title">Control built into the feed, not bolted on</h2>
-  </div>
-
-  <div class="fcards">
-    <article class="fcard fcard--split reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Access Control</span></span>
-        <h3 class="h3">Control who can create activity posts</h3>
-        <p class="body-sm">Not every member should be able to post the same things. Access Controls decides who can create activity posts — so paying members, instructors, or your most active contributors get privileges others don't. Set the rule once; administrators always keep full access.</p>
-        <ul class="checks">
-          <li><img src="assets/icon/check.svg" alt=""><span><b>WordPress role</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Profile type</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Membership</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>GamiPress</b> — what it does</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Gender</b> — what it does</span></li>
-        </ul>
-      </div>
-      <img class="fcard__art" src="assets/img/af-ctrl1.png" alt="Access control settings for who can create activity posts" loading="lazy">
-    </article>
-
-    <article class="fcard fcard--split fcard--flip reveal">
-      <div class="fcard__copy">
-        <span class="tag"><span>Posts Visibility</span></span>
-        <h3 class="h3">Show activity content to users that matters</h3>
-        <p class="body-sm">Decide which activities are published to the activity feed, including BuddyBoss events, WordPress posts, and custom post types. Enable comments where supported.</p>
+        <span class="tag"><span>create groups</span></span>
+        <h3 class="h3">Decide who can create social groups</h3>
+        <p class="body-sm">Select which members can create groups based on WordPress Role or Profile Type, with a per-role toggle list. Administrators are always exempt — these controls never apply to them.</p>
         <ul class="checks">
           <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
           <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
@@ -360,7 +247,32 @@
           <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
         </ul>
       </div>
-      <img class="fcard__art" src="assets/img/af-ctrl2.png" alt="Toggles choosing which activity types appear in the feed" loading="lazy">
+      <img class="fcard__art" src="assets/img/sg-create-groups.png" alt="Group creation access settings with a per-role toggle list" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split fcard--flip reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>join groups</span></span>
+        <h3 class="h3">Joining rules for public and private groups</h3>
+        <p class="body-sm">Select which members can join public groups or request to join private groups, by WordPress Role or Profile Type. On the frontend it’s one button: Join Group on public groups, Request Access on private ones.</p>
+        <ul class="checks">
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+          <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+        </ul>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-join-groups.png" alt="Group joining access settings beside a group card with its Join Group button" loading="lazy">
+    </article>
+
+    <article class="fcard fcard--split reveal">
+      <div class="fcard__copy">
+        <span class="tag"><span>group types</span></span>
+        <h3 class="h3">Group types that organize the whole network</h3>
+        <p class="body-sm">When enabled, group types let you better organize groups — custom labels, per-type role names, directory visibility, and label colors, plus a shortcode to list any type on its own page. Five types or fifty, each one badge-coded.</p>
+      </div>
+      <img class="fcard__art" src="assets/img/sg-group-types.png" alt="The Group Types admin list with labels, colors and visibility" loading="lazy">
     </article>
   </div>
 </section>
@@ -467,7 +379,7 @@
       <span class="modcard__icon"><img src="assets/icon/mp-ic-profiles.svg" alt=""></span>
       <h3 class="modcard__title">Member Profiles</h3>
       <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
-      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <a href="member-profiles.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
     </article>
     <article class="modcard">
       <span class="modcard__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
@@ -479,13 +391,12 @@
       <span class="modcard__icon"><img src="assets/icon/mod-flag.svg" alt=""></span>
       <h3 class="modcard__title">Moderations</h3>
       <p class="modcard__text">Everything on a community website revolves around its members. Every user receives a member profile.</p>
-      <a href="#" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <a href="moderation.html" class="btn btn--solid">Explore More <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
     </article>
   </div>
 </section>
 
 </main>
-
 <!-- ============================ FOOTER ============================ -->
 <footer class="site-footer">
   <div class="shell">

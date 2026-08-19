@@ -1551,6 +1551,61 @@ img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
 .mp-review__text { font-size: var(--size-sm); line-height: var(--lh-sm); color: var(--text-primary); }
 .mp-review__src { position: absolute; top: 14.5px; right: 14.2px; width: 34px; height: 32px; object-fit: contain; }
 
+
+/* =================================================================
+   SOCIAL GROUPS  (social-groups.html)
+   Page-scoped additions only — everything else comes from the
+   MODULE PAGE block in style.css. Every selector leads with .mp-sg,
+   the class on this page's <main>.
+   ================================================================= */
+
+/* Manage's three cards set 16 between the headline and the body, then a
+   full 24 down to the check list — the same rhythm Activity Feeds' Control
+   cards use. The .fcard__copy gap is 24, so the body pulls itself up 8. */
+.mp-sg .sg-manage .fcard__copy > p { margin-top: -8px; }
+
+/* Card edge angles. Same ramp as every other module page; only the angle
+   changes, because a corner-to-corner gradient in CSS is 180 - atan(w/h)
+   and these cards are their own sizes.
+   The 1280x576 splits keep the sheet's own 115deg default. */
+.mp-sg .fduo .fcard { --edge-angle: 136deg; }              /*  616 x 640 */
+.mp-sg .sg-identity .fcards > .fcard:nth-child(3) {
+  --edge-angle: 116deg;                                    /* 1280 x 564 */
+}
+
+/* Jump cards. Figma insets the text 16 from the card's 296 edge, which leaves
+   a 264 text column, and every description is drawn on one line — the row is
+   188 tall. "Groups, subgroups & subscriptions" measures 265.7 in the
+   Google-Fonts Inter this build ships, so at 264 it breaks and the row runs
+   212. Two more pixels of column keep the design's single line; the inset
+   lands on 15 instead of 16. */
+.mp-sg .jumpcards--roomy .jumpcard { padding-inline: 14px; }
+
+/* =================================================================
+   FORUMS — page-scoped additions
+   Everything the shared MODULE PAGE block does not already carry for
+   this page's card geometry. Scoped to .mp-fo (on <main>) so nothing
+   here can reach another page.
+   ================================================================= */
+
+/* The card edge ramp is a corner-to-corner gradient, so each card
+   geometry needs its own angle. The shared sheet already covers the
+   1280x576 split (115deg) and the 616x596 duo (the 134deg default).
+   These two are the geometries this page adds. */
+
+/* Manage's duo runs 616 x 640, one line of copy taller than the
+   616 x 592 pair the peach ramp is written for. */
+.mp-fo .mp-manage .fduo .fcard { --edge-angle: 136deg; }
+
+/* Forum Features' search card is the one split row drawn 564 tall
+   rather than 576 — the same geometry the Post section elsewhere
+   carries, and the same measured angle. */
+.mp-fo .mp-fo__card--564 { --edge-angle: 116deg; }
+
+/* Manage sets 16 between a card's headline and its body, not the 24
+   the other sections use. */
+.mp-fo .mp-manage .fcard--split .fcard__copy > p { margin-top: -8px; }
+
 /* ---------- module page responsive -------------------------------- */
 @media (max-width: 1100px) {
   .mp-hero__inner { grid-template-columns: 1fr; grid-template-rows: auto; gap: 40px;
