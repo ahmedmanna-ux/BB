@@ -691,6 +691,263 @@
    the other sections use. */
 .bbm-fo .bbm-manage .bbm-fcard--split .bbm-fcard__copy > p { margin-top: -8px; }
 
+
+/* =================================================================
+   APPEARANCE — page-scoped additions
+   Everything else comes from the MODULE PAGE block in style.css.
+   Every selector leads with .bbm-ap, the class on this page's <main>.
+   ================================================================= */
+
+/* Two of the BuddyBoss Theme split rows are drawn 577 tall, not 576:
+   Figma centres the 732x576 artwork inside them at y=0.5 and drops the
+   copy to y=162.5. The artwork keeps its own height and centres, so the
+   extra pixel splits evenly above and below exactly as the comp does. */
+.bbm-ap .bbm-ap__card--577 { min-height: 577px; }
+.bbm-ap .bbm-ap__card--577 .bbm-fcard__art { align-self: center; }
+
+/* ReadyLaunch's Branding and Sidebar Widget cards set their body in the
+   one-off #595961 the sheet already carries as .body-sm--grey; the
+   .fcard__copy > p rule outranks that class, so it is restated here. */
+.bbm-ap .bbm-fcard__copy > p.bbm-body-sm--grey { color: #595961; }
+
+/* Card edge angles. A corner-to-corner ramp in CSS is 180 - atan(w/h),
+   so each card geometry needs its own angle. The 1280x576/577 splits keep
+   the sheet's 115deg default, and the 616x596 duo lands on the peach
+   ramp's own 134deg — nothing on this page needs a new angle. */
+
+/* =================================================================
+   COURSES  (courses.html)
+   Page-scoped additions only — everything else comes from the
+   MODULE PAGE block in style.css. Every selector leads with .bbm-co,
+   the class on this page's <main>.
+   ================================================================= */
+
+/* Card edge angles. Same ramp as every other module page; only the
+   angle changes, because a corner-to-corner gradient in CSS is
+   180 - atan(w/h) and these cards are their own sizes.
+   The 1280x576 splits keep the sheet's own 115deg default. */
+
+/* Choose closes on the one split row drawn 564 tall rather than 576. */
+.bbm-co .bbm-co-card--564 { --bbm-edge-angle: 116deg; }              /* 1280 x 564 */
+
+/* Every duo card on this page carries three lines of body and runs
+   616 x 640 — one line taller than the 616 x 592 pair the peach ramp
+   in the shared sheet is written for. */
+.bbm-co .bbm-fduo .bbm-fcard { --bbm-edge-angle: 136deg; }               /*  616 x 640 */
+
+/* Connect's first duo card takes a fourth line and runs 664. Figma
+   leaves its 640 partner at its own height, centred in the row, rather
+   than stretching it to the taller card — so the row is centred here
+   instead of using the sheet's default stretch. */
+.bbm-co .bbm-co-connect__duo { align-items: center; }
+.bbm-co .bbm-co-connect__duo > .bbm-fcard:first-child { --bbm-edge-angle: 137deg; }  /* 616 x 664 */
+
+/* Connect's reviews card sets 16 between its headline and its body,
+   not the 24 every other split card on the page uses. */
+.bbm-co .bbm-co-card--tight .bbm-fcard__copy > p { margin-top: -8px; }
+
+/* =================================================================
+   GAMIFICATIONS — page-scoped additions
+   Everything else comes from the MODULE PAGE block in style.css.
+   Every selector leads with .bbm-ga, the class on this page's <main>.
+   ================================================================= */
+
+/* Card edge angles. The ramp is corner-to-corner, so each card geometry
+   needs its own angle (180 - atan(w/h), verified against the comp by
+   sampling where the ramp reaches its pale plateau).
+   The 1280x576 splits keep the sheet's own 115deg default. */
+
+/* Achievement triggers is the one split row drawn 564 tall, not 576 —
+   the same geometry, and the same measured angle, the Post section
+   elsewhere carries. */
+.bbm-ga .bbm-ga-card--564 { --bbm-edge-angle: 116deg; }
+
+/* Ranks' duo cards run 616 x 596. The shared green ramp is written for
+   the 616 x 592 pair another page draws, so this row sets its own. */
+.bbm-ga .bbm-ga-ranks .bbm-fduo .bbm-fcard { --bbm-edge-angle: 134deg; }
+
+/* Recognition sets 16 between a card's headline, its body and its check
+   list — not the 24 the other sections use. */
+.bbm-ga .bbm-ga-recognition .bbm-fcard__copy > p,
+.bbm-ga .bbm-ga-recognition .bbm-fcard__copy > .bbm-checks { margin-top: -8px; }
+
+/* =================================================================
+   MEDIA UPLOADING  (media-uploading.html)
+   Everything the shared MODULE PAGE block does not already carry for
+   this page. Every selector leads with .bbm-mu.
+   ================================================================= */
+
+/* The Emoji & GIFs cards wrap their title block and body in one 16-gap
+   frame, so the body sits 16 under the heading rather than the 24 every
+   other split card on this page uses. */
+.bbm-mu .bbm-mu-emoji .bbm-fcard__copy > p { margin-top: -8px; }
+
+/* ---------- card edge ramps ---------------------------------------
+   Angles and stops measured off the comp, the way the shared sheet's
+   own ramps were: the pale plateau's first pixel on the top edge fixes
+   the start stop, its last pixel on the bottom edge the end stop, and
+   the two together fix the angle. The 1280x576 split cards match the
+   sheet's 115deg / 26 / 74 on the peach and blue sections and need
+   nothing; the three below do not.                                   */
+
+/* Documents holds the same 115deg diagonal but starts and ends its
+   plateau later than the peach and blue rows do. */
+.bbm-mu .bbm-mu-documents .bbm-fcard--split { --bbm-edge-stop-a: 27.25%; --bbm-edge-stop-b: 75.75%; }
+
+/* The duo rows on this page are 616 x 596, one row taller than the
+   616 x 592 the shared rule was measured on. Peach lands within a few
+   px of the shared ramp; blue is drawn on a much shallower transform
+   than its own diagonal and has no shared rule at all. */
+.bbm-mu .bbm-edge--peach .bbm-fduo .bbm-fcard {
+  --bbm-edge-angle: 133.75deg;                                 /*  616 x 596 */
+  --bbm-edge-stop-a: 26.8%; --bbm-edge-stop-b: 78.9%;
+}
+.bbm-mu .bbm-edge--blue .bbm-fduo .bbm-fcard {
+  --bbm-edge-angle: 121.5deg;                                  /*  616 x 596 */
+  --bbm-edge-stop-a: 21.7%; --bbm-edge-stop-b: 74.7%;
+}
+
+/* =================================================================
+   MEMBER BLOGGING — page-scoped additions
+   Everything else comes from the MODULE PAGE block in style.css.
+   Every selector leads with .bbm-mb, the class on this page's <main>.
+   ================================================================= */
+
+/* ---------- card edge angles --------------------------------------
+   The edge ramp is a corner-to-corner gradient, so each card geometry
+   needs its own angle: 180 - atan(w/h). The shared sheet already
+   carries the 1280x576 split (115deg); these are the two geometries
+   this page adds. */
+
+/* Publish draws two of its four split rows 564 tall rather than 576. */
+.bbm-mb .bbm-mb-card--564 { --bbm-edge-angle: 116deg; }              /* 1280 x 564 */
+
+/* Both duo rows run 616 x 640 — one line of copy taller than the
+   616 x 592 pair the peach ramp is written for, so Control's duo has
+   to shed that ramp's 27.5/79 stops as well as its angle. */
+.bbm-mb .bbm-fduo .bbm-fcard { --bbm-edge-angle: 136deg;                 /*  616 x 640 */
+                      --bbm-edge-stop-a: 26%; --bbm-edge-stop-b: 74%; }
+
+/* ---------- copy rhythm -------------------------------------------
+   Control's two split cards set 16 between the headline and the body,
+   not the 24 every other section uses; the .fcard__copy gap is 24, so
+   the body pulls itself up 8. */
+.bbm-mb .bbm-mb-control .bbm-fcard--split .bbm-fcard__copy > p { margin-top: -8px; }
+
+/* =================================================================
+   MESSAGING — page-scoped additions
+   Everything else comes from the MODULE PAGE block in style.css.
+   Every selector leads with .bbm-ms, the class on this page's <main>.
+   ================================================================= */
+
+/* This frame ships its section head hidden (node 3218:30632, hidden="true")
+   and carries no jump-card row at all, so the card stack is the first thing
+   in the section and starts flush against the 104 that follows the hero.
+   The shared .fcards rule sets 80 for the head it would normally sit under. */
+.bbm-ms .bbm-ms-discover .bbm-fcards { margin-top: 0; }
+
+/* Card edge angles. Same corner-to-corner ramp as every other module page;
+   only the angle changes, because in CSS that ramp is 180 - atan(w/h) and
+   these cards are their own sizes. The five 1280x576 splits keep the
+   sheet's own 115deg default. */
+
+/* The notification pair runs 616 x 664 — 72 taller than the 616 x 592 the
+   peach ramp is written for. */
+.bbm-ms .bbm-fduo .bbm-fcard { --bbm-edge-angle: 137deg; }
+
+/* Message access is the one full-width stack card, drawn 1280 x 572 — four
+   pixels off the splits above it, so it shares their measured angle rather
+   than the 134deg fallback .fcard--stack would otherwise inherit. */
+.bbm-ms .bbm-fcards > .bbm-fcard--stack { --bbm-edge-angle: 115deg; }
+
+/* The messages-popup card sets 16 between its headline and its body where the
+   three splits around it set 24 (Figma wraps its copy in an extra 16-gap
+   frame). The .fcard__copy gap is 24, so the body pulls itself up 8. */
+.bbm-ms .bbm-fcards > .bbm-fcard:nth-child(4) .bbm-fcard__copy > p { margin-top: -8px; }
+
+/* =================================================================
+   NOTIFICATIONS — page-scoped additions
+   Everything else comes from the MODULE PAGE block in style.css.
+   Every selector leads with .bbm-nt, the class on this page's <main>.
+   ================================================================= */
+
+/* This page carries no section head at all: the Discover stack is
+   the section, and its first card starts on the section's own top
+   edge. The shared .fcards reserves 80 for the head that isn't here. */
+.bbm-nt .bbm-nt-discover .bbm-fcards { margin-top: 0; }
+
+/* Card edge angles. The 1280 x 576 splits keep the sheet's 115deg
+   default — measured off the comp at 115.3 with the ramp reaching the
+   pale tint at 26.3%, exactly what the shared rule draws.
+   The duo pair is 616 x 572, and its ramp measures a true 45deg in
+   screen space (the top and left edges fade over an identical 320px),
+   so 135deg — not the 134/27.5/79 the peach ramp carries for the
+   616 x 592 pair other pages draw. Stops measured back at 26/74. */
+.bbm-nt .bbm-edge--peach .bbm-fduo .bbm-fcard {
+  --bbm-edge-angle: 135deg; --bbm-edge-stop-a: 26%; --bbm-edge-stop-b: 74%;
+}
+
+/* Explore cards. Figma draws this page's cardAddon 280 tall over a
+   40px Explore More button, not the 288/48 the other module pages
+   use, so both numbers are re-set rather than inherited. */
+.bbm-nt .bbm-modcard { min-height: 280px; }
+.bbm-nt .bbm-modcard .bbm-btn { height: 40px; max-height: 40px; }
+
+/* =================================================================
+   OFFLOAD MEDIA  (offload-media.html)
+   Page-scoped additions only — everything else comes from the
+   MODULE PAGE block in style.css. Every selector leads with .bbm-om,
+   the class on this page's <main>.
+   ================================================================= */
+
+/* This page draws no section head at all: the Discover frame in Figma
+   carries a hidden `text` layer and starts straight on the first card
+   row at the section's own top edge. The shared .fcards rule opens with
+   80 for the head it normally sits under, so it is zeroed here. */
+.bbm-om .bbm-om-discover .bbm-fcards { margin-top: 0; }
+
+/* Card edge angles. Same ramp as every other module page; only the
+   angle changes, because a corner-to-corner gradient in CSS is
+   180 - atan(w/h) and these cards are their own sizes. The four
+   1280x576 splits keep the sheet's own 115deg default.
+
+   The duo runs 616 x 640 — one line of copy taller than the 616 x 592
+   pair the peach ramp in style.css is written for, so both the angle
+   and that pair's measured 27.5/79 stops are restated here. */
+.bbm-om .bbm-fduo .bbm-fcard {
+  --bbm-edge-angle: 136deg;                                    /*  616 x 640 */
+  --bbm-edge-stop-a: 26%; --bbm-edge-stop-b: 74%;
+}
+
+/* Media Types sets 16 between its headline and its body, not the 24
+   the other three split rows use. The .fcard__copy gap is 24, so the
+   body pulls itself up 8. */
+.bbm-om .bbm-om-discover .bbm-fcards > .bbm-fcard:last-child .bbm-fcard__copy > p { margin-top: -8px; }
+
+/* =================================================================
+   LIKE & REACTIONS — page-scoped additions
+   Everything else comes from the MODULE PAGE block in style.css.
+   Every selector leads with .bbm-lr, the class on this page's <main>.
+   ================================================================= */
+
+/* This page's one content section opens straight onto its first card —
+   the section head above it is hidden in Figma, so the 80 the shared
+   sheet reserves for it has nothing to sit under. */
+.bbm-lr .bbm-lr-react .bbm-fcards { margin-top: 0; }
+
+/* Card edge angles. Same corner-to-corner ramp as every other module
+   page (180 - atan(w/h)); only the geometry changes. The three
+   1280x576 splits and the 1280x600 one both land on the sheet's own
+   115deg default, so the duo is the only override this page needs. */
+.bbm-lr .bbm-fduo .bbm-fcard { --bbm-edge-angle: 136deg; }              /*  616 x 640 */
+
+/* Custom reactions and Convert existing likes set 16 between the
+   headline and the body, not the 24 the two cards above them use.
+   The .fcard__copy gap is 24, so the body pulls itself up 8 — the same
+   rhythm the duo cards get from .fcard--stack. */
+.bbm-lr .bbm-lr-react .bbm-fcards > .bbm-fcard:nth-child(4) .bbm-fcard__copy > p,
+.bbm-lr .bbm-lr-react .bbm-fcards > .bbm-fcard:nth-child(5) .bbm-fcard__copy > p { margin-top: -8px; }
+
 /* ---------- module page responsive -------------------------------- */
 @media (max-width: 1100px) {
   .bbm-hero__inner { grid-template-columns: 1fr; grid-template-rows: auto; gap: 40px;

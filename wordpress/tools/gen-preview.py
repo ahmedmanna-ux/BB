@@ -26,8 +26,11 @@ HEAD = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name=
 <script>document.documentElement.classList.add('js');</script></head><body>
 """
 
-PAGES = {'activity-feeds': 'af', 'social-groups': 'sg', 'forums': 'fo',
-         'member-profiles': 'mp', 'moderation': 'md'}
+PAGES = {'activity-feeds': 'af', 'member-profiles': 'mp', 'social-groups': 'sg',
+         'forums': 'fo', 'media-uploading': 'mu', 'moderation': 'md',
+         'gamifications': 'ga', 'messaging': 'ms', 'reactions': 'lr',
+         'offload-media': 'om', 'member-blog': 'mb', 'notifications': 'nt',
+         'courses': 'co', 'appearance': 'ap'}
 
 
 def render(prefix: str) -> str:

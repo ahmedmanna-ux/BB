@@ -111,9 +111,25 @@ def main() -> None:
         sys.exit(f'scaffold-page-entry: {src} not found — build the page first')
 
     secs = sections(src.read_text())
+    rows = [describe(sec, prefix) for sec in secs]
+
+    # A page with two CTA bands yields the same slug twice, and gen-patterns
+    # names its files from the slug — the second would silently overwrite the
+    # first. Number any slug that repeats, the way the hand-written
+    # activity-feeds entry already does with cta-1 / cta-2.
+    counts = {}
+    for slug, *_ in rows:
+        counts[slug] = counts.get(slug, 0) + 1
+    seen = {}
+    numbered = []
+    for slug, name, desc, title in rows:
+        if counts[slug] > 1:
+            seen[slug] = seen.get(slug, 0) + 1
+            slug = f'{slug}-{seen[slug]}'
+        numbered.append((slug, name, desc, title))
+
     print(f" '{page}': ('{prefix}', '{label}', [")
-    for sec in secs:
-        slug, name, desc, title = describe(sec, prefix)
+    for slug, name, desc, title in numbered:
         if title and desc != title:
             desc = f'{desc} ({title})' if not desc.endswith('.') else desc
         print(f"  ('{slug}','Module — {name}','{desc}'),")
