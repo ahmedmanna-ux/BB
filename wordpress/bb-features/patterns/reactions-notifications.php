@@ -36,8 +36,8 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 					<!-- /wp:group -->
 					<!-- wp:buttons -->
 					<div class="wp-block-buttons">
-						<!-- wp:button {"className":"bbf-btn bbf-btn--ghost"} -->
-						<div class="wp-block-button bbf-btn bbf-btn--ghost"><a class="wp-block-button__link wp-element-button" href="#">Explore Like &amp; Reactions</a></div>
+						<!-- wp:button {"className":"bbf-btn bbf-btn--ghost bbf-btn--md"} -->
+						<div class="wp-block-button bbf-btn bbf-btn--ghost bbf-btn--md"><a class="wp-block-button__link wp-element-button" href="#">Explore Like &amp; Reactions</a></div>
 						<!-- /wp:button -->
 					</div>
 					<!-- /wp:buttons -->
@@ -65,8 +65,8 @@ $bbf_img = get_theme_file_uri( 'assets/img/' );
 					<!-- /wp:group -->
 					<!-- wp:buttons -->
 					<div class="wp-block-buttons">
-						<!-- wp:button {"className":"bbf-btn bbf-btn--ghost"} -->
-						<div class="wp-block-button bbf-btn bbf-btn--ghost"><a class="wp-block-button__link wp-element-button" href="#">Explore Notifications</a></div>
+						<!-- wp:button {"className":"bbf-btn bbf-btn--ghost bbf-btn--md"} -->
+						<div class="wp-block-button bbf-btn bbf-btn--ghost bbf-btn--md"><a class="wp-block-button__link wp-element-button" href="#">Explore Notifications</a></div>
 						<!-- /wp:button -->
 					</div>
 					<!-- /wp:buttons -->

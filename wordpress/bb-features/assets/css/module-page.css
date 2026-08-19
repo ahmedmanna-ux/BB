@@ -15,9 +15,11 @@
   --bbm-text-secondary:      #2f2f2f;
   --bbm-text-tertiary:       #666666;
   --bbm-text-light:          #ffffff;
-  --bbm-text-brand:          #ef5d33;
+  /* brand text and outlines darkened to #d7542e; brand FILLS stay #ef5d33 */
+  --bbm-text-brand:          #d7542e;
 
   --bbm-bg-brand-primary:    #ef5d33;
+  --bbm-bg-brand-accent:     #d7542e;   /* filled buttons */
   --bbm-bg-brand-secondary:  #fe724a;
   --bbm-bg-brand-subtle:     #fdefeb;
   --bbm-bg-brand-muted:      #fcdfd6;
@@ -27,6 +29,7 @@
   --bbm-bg-default-black:    #0c0c0d;
 
   --bbm-stroke-brand-strong: #ef5d33;
+  --bbm-stroke-brand-highest:#d7542e;   /* outlined buttons */
   --bbm-stroke-brand-primary:#fcdfd6;
   --bbm-stroke-brand-second: #f9bead;
   --bbm-stroke-default-prim: #e8e8e8;
@@ -88,7 +91,7 @@
 
   /* --- layout -------------------------------------------------- */
   --bbm-page-max:   1600px;   /* Figma frame width          */
-  --bbm-header-h:   74px;     /* the bar overlays the hero  */
+  --bbm-header-h:   72px;     /* the bar overlays the hero  */
   --bbm-content-max:1280px;   /* Figma inner content width  */
   --bbm-gutter:     160px;    /* Figma side padding         */
   --bbm-section-gap: 80px;    /* Figma vertical rhythm      */
@@ -151,26 +154,25 @@
 .bbm-body-sm--grey { color: #595961; }
 
 /* ---------- section tag ------------------------------------------ */
+/* The Features and module pages used to draw two different eyebrows; the
+   redesign collapsed them into one — a 20px rule 8px from a heading-face
+   SemiBold label at 18/26 with 12% tracking. The rule keeps the brand fill
+   while the label takes the darkened brand text colour. */
 .bbm-tag {
-  display: inline-flex; align-items: center; gap: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
   padding-block: 3px;
 }
 .bbm-tag::before {
-  content: ''; width: 24px; height: 2px; flex: none;
+  content: ''; width: 20px; height: 2px; flex: none;
   border-radius: var(--bbm-radius-full);
   background: var(--bbm-bg-brand-primary);
 }
 .bbm-tag span {
-  font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm);
+  font-family: var(--bbm-font-heading); letter-spacing: 2.16px;
+  font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg);
   font-weight: 600; color: var(--bbm-text-brand);
   text-transform: uppercase; white-space: nowrap;
 }
-/* The module pages use a different variant of the same component: a 16px rule
-   8px from the label, set in Medium. The Features page keeps 24/12 SemiBold.
-   Both render as an orange uppercase label after a dash, which is why this
-   went unnoticed — the geometry is the tell, not the type. */
-.bbm .bbm-tag { gap: 8px; }
-.bbm .bbm-tag::before, .bbm .bbm-tag::after { width: 16px; }
 
 /* ---------- buttons ---------------------------------------------- */
 .bbm-btn {
@@ -182,20 +184,23 @@
      unbordered sibling with it. */
   border: 1px solid transparent; padding: 9px 15px;
   border-radius: var(--bbm-radius-lg);
-  font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); font-weight: 500;
+  font-size: var(--bbm-size-sm); line-height: var(--bbm-lh-sm); font-weight: 600;
   white-space: nowrap; overflow: hidden;
   transition: background-color .18s ease, color .18s ease, border-color .18s ease;
 }
 .bbm-btn img, .bbm-btn svg { width: 20px; height: 20px; flex: none; }
-.bbm-btn--ghost { border-color: var(--bbm-stroke-brand-strong); color: var(--bbm-text-brand); }
+.bbm-btn--ghost { border-color: var(--bbm-stroke-brand-highest); color: var(--bbm-text-brand); }
 .bbm-btn--ghost:hover { background: var(--bbm-bg-brand-subtle); }
-.bbm-btn--solid { background: var(--bbm-bg-brand-primary); color: var(--bbm-text-light); }
+.bbm-btn--solid { background: var(--bbm-bg-brand-accent); color: var(--bbm-text-light); }
 .bbm-btn--solid:hover { background: var(--bbm-bg-brand-secondary); }
 /* the arrow ships brand-coloured; on the brand fill it has to flip to white */
 .bbm-btn--solid img { filter: brightness(0) invert(1); }
 .bbm-btn--white { background: var(--bbm-bg-default-surface); color: var(--bbm-text-brand); }
 .bbm-btn--white:hover { background: var(--bbm-bg-brand-subtle); }
-.bbm-btn--lg { min-height: 48px; max-height: none; padding: 11px 23px;
+/* three button sizes: 40 in the header, 48 after a feature section, 56 in the
+   hero and the closing CTA. Each padding is the design's minus the 1px border. */
+.bbm-btn--md { height: 48px; max-height: 48px; }
+.bbm-btn--lg { min-height: 56px; max-height: none; padding: 15px 23px;
            font-size: var(--bbm-size-md); line-height: var(--bbm-lh-md); }
 .bbm-btn--lg img, .bbm-btn--lg svg { width: 24px; height: 24px; }
 /* Buttons never move on hover — nothing shifts, not the button and not the
@@ -281,13 +286,14 @@
 }
 /* The art's frame is 672x500 in Figma, but its children and shadows spill
    past it, so the export comes back 737x565 whichever way it is fetched.
-   Pinning the row to 500 keeps the band exactly 720 tall (74 header + 64 +
-   500 + 82) and lets the shadow overhang crop against the band. */
+   Pinning the row to 500 keeps the band exactly 720 tall and lets the shadow
+   overhang crop against the band. The copy starts at y=138 in that band
+   whatever the bar overlaying it is, so the top pad is written as that. */
 .bbm-hero__inner {
   position: relative; z-index: 2;
   display: grid; grid-template-columns: 547px minmax(0, 1fr); grid-template-rows: 500px;
   gap: 61px; align-items: start;
-  padding-block: 64px 82px;
+  padding-block: calc(138px - var(--bbm-header-h)) 82px;
 }
 .bbm-hero__copy { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
 .bbm-hero__head { display: flex; flex-direction: column; gap: 12px; }
@@ -348,20 +354,19 @@
 .bbm-jumpcards--roomy .bbm-jumpcard { padding-inline: 16px; }
 
 /* ---------- section head ------------------------------------------ */
-/* The section eyebrow is the `sectionTag` *pill* variant — the heading face at
-   18/26 Medium with 12% tracking, in a 40px-tall pill. It is a different
-   component from the "Section Tag" inside a feature card, which is Inter
-   Medium 14/22; the two are easy to conflate because both render as an orange
-   uppercase label between dashes. */
+/* The section eyebrow is the `sectionTag` *pill*: the heading face at 24/32
+   Medium with 12% tracking, between two 24px rules. The instance is fixed at
+   40 tall, so the label's 32 leaves 4 above and below — not the component's 7. */
 .bbm-secthead { display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; }
-.bbm-secthead .bbm-tag { justify-content: center; padding: 7px 20px; }   /* the 40px pill */
+.bbm-secthead .bbm-tag { justify-content: center; padding: 4px 20px; }
 .bbm-secthead .bbm-tag span {
-  font-family: var(--bbm-font-heading); font-weight: 500;
-  font-size: var(--bbm-size-lg); line-height: var(--bbm-lh-lg); letter-spacing: 2.16px;
+  font-weight: 500;
+  font-size: var(--bbm-size-xl); line-height: var(--bbm-lh-xl); letter-spacing: 2.88px;
 }
+.bbm-secthead .bbm-tag::before,
 .bbm-secthead .bbm-tag::after {
-  content: ''; width: 16px; height: 2px; flex: none;
-  border-radius: var(--bbm-radius-full); background: var(--bbm-text-brand);
+  content: ''; width: 24px; height: 2px; flex: none;
+  border-radius: var(--bbm-radius-full); background: var(--bbm-bg-brand-primary);
 }
 /* Every section head is one line in the design — the four text blocks measure
    956 / 1090 / 1048 / 996, which is just each title shrink-wrapped. Cap at the
@@ -375,9 +380,9 @@
    is scoped rather than moved into the shared type scale. */
 .bbm .bbm-h2            { font-weight: 700; }
 .bbm .bbm-secthead__title { font-weight: 700; }
-/* Card headlines stay SemiBold — the .h3 default is already right. */
-/* The eyebrow inside a feature card is Inter Medium, not SemiBold. */
-.bbm .bbm-tag span { font-weight: 500; }
+/* Card headlines stay SemiBold — the .h3 default is already right.
+   The card eyebrow is SemiBold on both page families now, so the Medium
+   override the module pages carried is gone. */
 
 /* ---------- feature cards ----------------------------------------- */
 /* This page runs a 140px section rhythm and an 80px rhythm inside each
@@ -596,13 +601,13 @@
 
 /* ---------- testimonial masonry ----------------------------------- */
 .bbm-reviews { background: var(--bbm-bg-brand-subtle); padding-block: 80px 88px; }
-.bbm-reviews__title { max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px; }
+.bbm-reviews__title { max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px;
+                     font-weight: 700; }   /* Heading/h2-bold, on both page families */
 /* Figma sets the columns explicitly rather than balancing them, and the split
    it chose is not the one CSS multi-column arrives at — so three real columns. */
 .bbm-rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
 .bbm-rcol  { display: flex; flex-direction: column; gap: 24px; }
 .bbm-review {
-  padding-block: 28px;
   /* no fill — the card is the band's own colour, outlined only */
   /* 0.5px stroke/brand/secondary over the peach band, not over white */
   border: 1px solid #fbd6cc;

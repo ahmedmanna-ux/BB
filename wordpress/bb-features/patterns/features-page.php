@@ -27,6 +27,7 @@ $bbf_sections = array(
 	'mobile-app',
 	'courses',
 	'theme-readylaunch',
+	'integrations',
 	'stats',
 	'testimonials',
 	'cta',

@@ -25,9 +25,10 @@
   --bbf-text-secondary: #2f2f2f;
   --bbf-text-tertiary:  #666666;
   --bbf-text-light:     #ffffff;
-  --bbf-text-brand:     #ef5d33;
+  --bbf-text-brand:     #d7542e;
 
   --bbf-brand:          #ef5d33;
+  --bbf-brand-accent:   #d7542e;   /* filled buttons */
   --bbf-brand-hover:    #fe724a;
   --bbf-brand-subtle:   #fdefeb;
   --bbf-brand-muted:    #fcdfd6;
@@ -36,6 +37,7 @@
   --bbf-surface-subtle: #f5f5f5;
 
   --bbf-stroke-brand:   #ef5d33;
+  --bbf-stroke-brand-highest: #d7542e;   /* outlined buttons */
   --bbf-stroke-muted:   #fcdfd6;
   --bbf-stroke-peach:   #f9bead;
   --bbf-stroke-default: #e8e8e8;
@@ -131,7 +133,7 @@
 /* ---------- type -------------------------------------------------- */
 .bbf-h1, .bbf-h2, .bbf-h3, .bbf-h4, .bbf-h5, .bbf-h6,
 .bbf-stat__num, .bbf-hero__eyebrow, .bbf-review__quote,
-.bbf-review__name, .bbf-tcard__name, .bbf-cta__text, .bbf-feature__title {
+.bbf-review__name, .bbf-rcard__name, .bbf-cta__text, .bbf-feature__title {
   font-family: var(--bbf-font-heading);
   letter-spacing: -0.022em;
 }
@@ -146,16 +148,22 @@
 .bbf-body--muted { color: var(--bbf-text-tertiary); }
 .bbf-body--md { font-size: var(--bbf-md); line-height: var(--bbf-lh-md); color: var(--bbf-text-tertiary); }
 
-/* ---------- section tag (dash + uppercase label) ------------------- */
+/* ---------- section tag (rule + uppercase label) -------------------
+   The Features and module pages used to draw two different eyebrows; the
+   redesign collapsed them into one — a 20px rule 8px from a heading-face
+   SemiBold label at 18/26 with 12% tracking. The rule keeps the brand fill
+   while the label takes the darkened brand text colour.
+   ------------------------------------------------------------------ */
 .bbf-flink-more:hover { color: var(--bbf-brand-hover); }
 .bbf-tag {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: 8px;
   padding-block: 3px;
-  font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); font-weight: 600;
-  color: var(--bbf-text-brand); text-transform: uppercase;
+  font-family: var(--bbf-font-heading); letter-spacing: 2.16px;
+  font-size: var(--bbf-lg); line-height: var(--bbf-lh-lg); font-weight: 600;
+  color: var(--bbf-text-brand); text-transform: uppercase; white-space: nowrap;
 }
 .bbf-tag::before {
-  content: ''; flex: none; width: 24px; height: 2px;
+  content: ''; flex: none; width: 20px; height: 2px;
   border-radius: var(--bbf-radius-full); background: var(--bbf-brand);
 }
 
@@ -178,7 +186,7 @@
   border: 1px solid transparent; padding: 9px 15px; max-height: 40px; overflow: hidden;
   border-radius: var(--bbf-radius-lg);
   font-family: var(--bbf-font-body);
-  font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); font-weight: 500;
+  font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); font-weight: 600;
   white-space: nowrap;
   transition: background-color .18s ease, color .18s ease, border-color .18s ease;
 }
@@ -192,12 +200,12 @@
 
 .bbf-btn--ghost .wp-block-button__link {
   background: transparent; color: var(--bbf-text-brand);
-  border-color: var(--bbf-stroke-brand);
+  border-color: var(--bbf-stroke-brand-highest);
 }
 .bbf-btn--ghost .wp-block-button__link:hover { background: var(--bbf-brand-subtle); }
 
 .bbf-btn--solid .wp-block-button__link {
-  background: var(--bbf-brand); color: var(--bbf-text-light);
+  background: var(--bbf-brand-accent); color: var(--bbf-text-light);
 }
 .bbf-btn--solid .wp-block-button__link:hover { background: var(--bbf-brand-hover); }
 .bbf-btn--solid .wp-block-button__link::after { filter: brightness(0) invert(1); }
@@ -205,8 +213,12 @@
 .bbf-btn--white .wp-block-button__link {
   background: var(--bbf-surface); color: var(--bbf-text-brand);
 }
+/* three button sizes: 40 in the header, 48 after a feature section, 56 in
+   the hero and the closing CTA. Each padding is the design's minus the
+   1px border every button carries. */
+.bbf-btn--md .wp-block-button__link { height: 48px; max-height: 48px; }
 .bbf-btn--lg .wp-block-button__link {
-  max-height: 48px; padding: 11px 23px;
+  min-height: 56px; max-height: none; padding: 15px 23px;
   font-size: var(--bbf-md); line-height: var(--bbf-lh-md);
 }
 .bbf-btn--lg .wp-block-button__link::after {
@@ -244,10 +256,10 @@
    A WordPress header lives in the template, not in this pattern set, so that
    is opt-in: make the header transparent in the parent theme, then add
    bbf-hero--under-header to the hero group (and override --bbf-header-h if
-   the bar is not 74px tall). */
+   the bar is not 72px tall). */
 .bbf-hero--under-header {
-  margin-top: calc(-1 * var(--bbf-header-h, 74px));
-  padding-top: var(--bbf-header-h, 74px);
+  margin-top: calc(-1 * var(--bbf-header-h, 72px));
+  padding-top: var(--bbf-header-h, 72px);
 }
 .bbf-hero__stage {
   position: relative;
@@ -259,7 +271,7 @@
    so every floating card lands on its exact Figma coordinate. */
 .bbf-hero__stage.is-scaled {
   position: absolute; left: 50%; top: 0;
-  width: 1600px; max-width: none; height: 566px;
+  width: 1600px; max-width: none; height: calc(680px - var(--bbf-header-h, 72px));
   padding: 0; display: block;
   transform-origin: top center;
 }
@@ -275,11 +287,11 @@
    panel's right edge at 100vw + 109, at every width. */
 .bbf-hero__deco { position: absolute; z-index: 0; pointer-events: none; }
 .bbf-hero__glow {                             /* frame -184,349 */
-  top: 275px; width: 534px; height: 535px;
+  top: calc(349px - var(--bbf-header-h, 72px)); width: 534px; height: 535px;
   left: calc(-184px - max(0px, 100vw - var(--bbf-page-max)) / 2);
 }
 .bbf-hero__panel {                            /* frame 1350,310 */
-  top: 236px; width: 359px; height: 441px;
+  top: calc(310px - var(--bbf-header-h, 72px)); width: 359px; height: 441px;
   right: calc(-109px - max(0px, 100vw - var(--bbf-page-max)) / 2);
 }
 
@@ -289,7 +301,7 @@
   align-items: center; text-align: center;
 }
 .is-scaled .bbf-hero__copy {
-  position: absolute; left: 50%; top: 80px; transform: translateX(-50%);
+  position: absolute; left: 50%; top: calc(154px - var(--bbf-header-h, 72px)); transform: translateX(-50%);
   width: 779px;
 }
 .bbf-hero__head { display: flex; flex-direction: column; gap: 12px; width: 100%; }
@@ -304,12 +316,12 @@
 .bbf-float { position: absolute; pointer-events: none; display: none; }
 .is-scaled .bbf-float { display: block; }
 .bbf-float img { width: 100%; }
-.bbf-float--composer     { left: 70px;     top: 61px;   width: 333px; }
-.bbf-float--avatars      { left: 1270.2px; top: 63.4px; width: 197px; }
-.bbf-float--notification { left: 1198px;   top: 277px;  width: 402px; }
-.bbf-float--message      { left: 61px;     top: 378px;  width: 504px; }
-.bbf-float--update       { left: 713px;    top: 432px;  width: 360px; }
-.bbf-float--reactions    { left: 1257px;   top: 451px;  width: 236.8px; }  /* 6 reactions */
+.bbf-float--composer     { left: 70px;     top: calc(147px - var(--bbf-header-h, 72px) - 12px);   width: 333px; }
+.bbf-float--avatars      { left: 1270.2px; top: calc(148px - var(--bbf-header-h, 72px) - 10.6px); width: 197px; }
+.bbf-float--notification { left: 1198px;   top: calc(351px - var(--bbf-header-h, 72px));  width: 402px; }
+.bbf-float--message      { left: 61px;     top: calc(452px - var(--bbf-header-h, 72px));  width: 504px; }
+.bbf-float--update       { left: 713px;    top: calc(518px - var(--bbf-header-h, 72px) - 12px);  width: 360px; }
+.bbf-float--reactions    { left: 1257px;   top: calc(525px - var(--bbf-header-h, 72px));  width: 236.8px; }  /* 6 reactions */
 
 @media (prefers-reduced-motion: no-preference) {
   .is-scaled .bbf-float--composer     { animation: bbf-bob 7.5s ease-in-out infinite; }
@@ -369,6 +381,7 @@
    SPLIT  (headline + bordered card: copy left, artwork right)
    ================================================================= */
 .bbf-head { display: flex; flex-direction: column; gap: 12px; max-width: 851px; }
+.bbf-head--wide { max-width: 1062px; }
 /* A gradient stroke can't be a border-color, so the border is left
    transparent and painted by a second background layer clipped to the
    border box, with the card's own surface clipped to the padding box
@@ -413,11 +426,16 @@
 .bbf-duo { display: flex; align-items: stretch; gap: 32px; }
 .bbf-duo__card {
   flex: 1 1 0; min-width: 0;
-  display: flex; flex-direction: column; gap: 32px; padding-bottom: 32px;
+  display: flex; flex-direction: column; gap: 32px;
+  /* the stroke is centred on the frame edge in Figma, so the bottom pad
+     gives up the border's width to keep the box exact */
+  padding-bottom: 31px;
   border-radius: var(--bbf-radius-3xl);
 }
 /* the card itself has no hover — only the button inside it reacts */
-.bbf-duo__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
+/* and the artwork runs to the card's outer edge, over the border it would
+   otherwise sit inside — left in, it scales the image down by 2px of width */
+.bbf-duo__panel { margin: -1px -1px 0; border-radius: var(--bbf-radius-3xl); overflow: hidden; }
 .bbf-duo__body {
   padding-inline: 24px; flex: 1 1 auto;
   display: flex; flex-direction: column; gap: 32px; align-items: flex-start;
@@ -438,8 +456,9 @@
   border-radius: var(--bbf-radius-3xl);
 }
 /* Media Uploads is the one card that isn't the full 1280 content width —
-   the design has its wrapper at 1240, still flush left at the gutter. */
-.bbf-stack--narrow { max-width: 1240px; }
+   the design has its wrapper at 1240, still flush left at the gutter — and
+   the redesign closed its two inner gaps from 40 to 24. */
+.bbf-stack--narrow { max-width: 1240px; gap: 24px; }
 .bbf-stack__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
 
 .bbf-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; padding: 8px 24px; }
@@ -585,11 +604,11 @@
    ================================================================= */
 .bbf-products { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bbf-product {
-  display: flex; flex-direction: column; gap: 32px; padding-bottom: 32px;
+  display: flex; flex-direction: column; gap: 32px; padding-bottom: 31px;
   border-radius: var(--bbf-radius-3xl);
 }
 /* the card itself has no hover — only the button inside it reacts */
-.bbf-product__art { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
+.bbf-product__art { margin: -1px -1px 0; border-radius: var(--bbf-radius-3xl); overflow: hidden; }
 .bbf-product__body { padding-inline: 24px; display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
 .bbf-product__copy { display: flex; flex-direction: column; gap: 16px; }
 
@@ -651,39 +670,99 @@
 
 /* =================================================================
    TESTIMONIALS
-   ================================================================= */
-.bbf-testimonials { background: var(--bbf-brand-subtle); padding-block: 80px; }
-.bbf-testimonials__title { max-width: 795px; margin-bottom: 40px; }
-.bbf-tcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
-.bbf-tcard {
-  position: relative;
-  border: 1px solid var(--bbf-stroke-peach);
-  border-radius: 16px; padding: 23px;
-  display: flex; flex-direction: column; gap: 16px;
-  transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, background-color .3s ease;
+   =================================================================
+   The redesign replaced the three-card row with the module pages' six-card
+   masonry. Figma sets the columns explicitly rather than balancing them, and
+   the split it chose is not the one CSS multi-column arrives at — so three
+   real columns. */
+.bbf-testimonials { background: var(--bbf-brand-subtle); padding-block: 80px 88px; }
+.bbf-testimonials__title {
+  max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px;
+  font-weight: 700;   /* Heading/h2-bold, on both page families */
 }
-.bbf-tcard:hover { background: rgba(255,255,255,.55); }   /* colour only, no shadow */
-.bbf-tcard::after {
-  content: ''; position: absolute; top: 15px; right: 15px;
+.bbf-rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.bbf-rcol  { display: flex; flex-direction: column; gap: 24px; }
+.bbf-rcard {
+  position: relative;
+  /* no fill — the card is the band's own colour, outlined only. The stroke is
+     a 0.5px stroke/brand/secondary over the peach band, not over white. */
+  border: 1px solid #fbd6cc;
+  /* 23 + the inside border = Figma's 24 inset, which also gives the text the
+     362.67 it needs — at 361 the longest review takes an extra line */
+  border-radius: var(--bbf-radius-2xl); padding: 23px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: background-color .3s ease;
+}
+.bbf-rcard:hover { background: rgba(255,255,255,.55); }   /* colour only, no shadow */
+.bbf-rcard::after {
+  content: ''; position: absolute; top: 14.5px; right: 14.2px;
   width: 34px; height: 32px; background-repeat: no-repeat; background-size: contain;
   background-position: center;
 }
-.bbf-tcard--trustpilot::after { background-image: url('../icon/badge-trustpilot.png'); }
-.bbf-tcard--capterra::after   { background-image: url('../icon/badge-capterra.svg'); width: 32px; }
-.bbf-tcard__who { display: flex; align-items: center; gap: 12px; }
-.bbf-tcard__who img { width: 56px; height: 56px; border-radius: var(--bbf-radius-full); object-fit: cover; }
-.bbf-tcard__name { font-size: var(--bbf-lg); line-height: var(--bbf-lh-lg); font-weight: 400; }
-.bbf-tcard__content { display: flex; flex-direction: column; gap: 12px; }
-.bbf-tcard__stars { display: flex; gap: 4px; }
-.bbf-tcard__stars span {
+.bbf-rcard--trustpilot::after { background-image: url('../icon/badge-trustpilot.png'); }
+.bbf-rcard--capterra::after   { background-image: url('../icon/badge-capterra.svg'); }
+.bbf-rcard--wordpress::after  { background-image: url('../icon/badge-wordpress.svg'); }
+.bbf-rcard__who { display: flex; align-items: center; gap: 12px; }
+.bbf-rcard__who img { width: 56px; height: 56px; border-radius: var(--bbf-radius-full); object-fit: cover; }
+.bbf-rcard__name {
+  font-family: var(--bbf-font-heading); letter-spacing: -0.022em;
+  font-size: var(--bbf-lg); line-height: var(--bbf-lh-lg); font-weight: 400;
+}
+.bbf-rcard__stars { display: flex; gap: 4px; margin-top: 4px; }   /* 16 below the name, not 12 */
+.bbf-rcard__stars span {
   width: 20px; height: 20px;
   background: url('../icon/star-20.svg') no-repeat 1.254px 1.25px / 17.49px 16.872px;
 }
-.bbf-tcard__stars span.is-empty {
+.bbf-rcard__stars span.is-empty {
   background-image: url('../icon/star-20-outline.svg');
   background-position: 1.25px 1.25px; background-size: 17.499px 16.875px;
 }
-.bbf-tcard__text { font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); color: var(--bbf-text-primary); }
+.bbf-rcard__text { font-size: var(--bbf-sm); line-height: var(--bbf-lh-sm); color: var(--bbf-text-primary); }
+
+/* =================================================================
+   INTEGRATIONS CAROUSEL
+   =================================================================
+   An outlined shell round the artwork: the panel, then a 68-tall bar
+   carrying the pagination dots and the prev/next pair. The border keeps
+   stroke/brand — it is the one brand outline the redesign did not darken.
+   Only slide one is drawn in the design, so the controls are inert. */
+.bbf-carousel {
+  margin-top: 32px;
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 11px 11px 15px;
+  border: 1px solid var(--bbf-stroke-brand);
+  border-radius: var(--bbf-radius-3xl);
+}
+.bbf-carousel__panel { border-radius: var(--bbf-radius-3xl); overflow: hidden; }
+.bbf-carousel__bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px;
+}
+.bbf-carousel__dots { display: flex; gap: 8px; }
+.bbf-carousel__dot {
+  width: 12px; height: 12px; border-radius: var(--bbf-radius-full);
+  background: var(--bbf-brand-tertiary);
+}
+.bbf-carousel__dot.is-active { background: var(--bbf-brand); }
+.bbf-carousel__nav { display: flex; gap: 16px; }
+.bbf-carousel__arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; padding: 12px;
+  border: 1px solid transparent; border-radius: var(--bbf-radius-full);
+  background: transparent; cursor: pointer;
+  transition: background-color .25s ease, border-color .25s ease;
+}
+.bbf-carousel__arrow::before {
+  content: ''; width: 28px; height: 28px;
+  background-repeat: no-repeat; background-position: center;
+  background-size: 21.001px 17.501px;
+}
+.bbf-carousel__arrow--prev { border-color: var(--bbf-stroke-brand); }
+.bbf-carousel__arrow--prev::before { background-image: url('../icon/carousel-arrow-left.svg'); }
+.bbf-carousel__arrow--next { background: var(--bbf-brand); }
+.bbf-carousel__arrow--next::before { background-image: url('../icon/carousel-arrow-right.svg'); }
+.bbf-carousel__arrow--prev:hover { background: var(--bbf-brand-subtle); }
+.bbf-carousel__arrow--next:hover { background: var(--bbf-brand-accent); }
 
 /* =================================================================
    CTA
@@ -777,7 +856,7 @@
   .bbf-halves__art, .bbf-halves--flip .bbf-halves__art { order: -1; }
   .bbf-app__inner { grid-template-columns: 1fr; gap: 24px; }
   .bbf-products { grid-template-columns: 1fr; }
-  .bbf-tcards { grid-template-columns: 1fr; }
+  .bbf-rgrid { grid-template-columns: 1fr; }
   .bbf-cta { padding: 64px 28px; border-radius: 24px; }
 }
 @media (max-width: 720px) {

@@ -36,8 +36,8 @@ $bbf_icon = get_theme_file_uri( 'assets/icon/' );
 			<!-- /wp:list -->
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
-				<!-- wp:button {"className":"bbf-btn bbf-btn--solid"} -->
-				<div class="wp-block-button bbf-btn bbf-btn--solid"><a class="wp-block-button__link wp-element-button" href="#">Explore More Mobile App</a></div>
+				<!-- wp:button {"className":"bbf-btn bbf-btn--ghost bbf-btn--md"} -->
+				<div class="wp-block-button bbf-btn bbf-btn--ghost bbf-btn--md"><a class="wp-block-button__link wp-element-button" href="#">Explore More Mobile App</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

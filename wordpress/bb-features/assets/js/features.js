@@ -23,7 +23,13 @@
         the floating cards keep their exact Figma coordinates.
         Under 1100px the CSS reflows it and this bows out.
      --------------------------------------------------------- */
-  var HERO_W = 1600, HERO_H = 606, HERO_MIN = 1100;
+  var HERO_W = 1600, HERO_BAND = 680, HERO_MIN = 1100;
+  /* the band is 680 in the design and the bar overlays its top, so the part
+     this script sizes is whatever the bar leaves — kept as the same sum the
+     stylesheet does so the two can never disagree */
+  var HEADER_H = parseInt(
+    getComputedStyle(root).getPropertyValue('--bbf-header-h'), 10) || 72;
+  var HERO_H = HERO_BAND - HEADER_H;
   var stages = document.querySelectorAll('.bbf-hero__stage');
 
   function sizeHeroes() {
