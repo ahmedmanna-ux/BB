@@ -318,9 +318,16 @@
                 width: 672px; max-width: 100%; aspect-ratio: 672 / 500; }
 .bbm-hero__art img { position: absolute; left: -4.7619%; top: -6.6%;
                     width: 109.6726%; height: auto; max-width: none; }
-/* Not every hero export carries that halo — where the artwork fills the frame
-   Figma exports it tight, and the picture sits on the box instead. */
-.bbm-hero__art--tight img { left: 0; top: 0; width: 100%; }
+/* Not every hero export carries that halo. Those frames clip their content, so
+   Figma exports them tight AND the artwork's drop shadow is cut off with
+   everything else that overflowed — the picture sits on the box instead, and
+   the shadow has to be drawn here. Matched to the halo the Activity Feeds and
+   Member Profiles exports do carry: no offset, ~25px reach, peaking at 14/253
+   of the band at the edge. drop-shadow follows the artwork's real alpha, which
+   is why the heroes have to be un-composited first (tools/uncomposite.py) — on
+   an opaque export it would draw a rectangle. */
+.bbm-hero__art--tight img { left: 0; top: 0; width: 100%;
+                           filter: drop-shadow(0 0 14px rgba(0, 0, 0, .11)); }
 /* both shapes bleed off the frame, so they carry their own overhang and
    anchor to the band edge rather than the centred content column */
 /* Both shapes are clipped by the 1600x720 frame, so each export is the
