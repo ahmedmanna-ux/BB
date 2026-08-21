@@ -594,13 +594,15 @@ main > .hero + .section { margin-top: 104px; }
    ================================================================= */
 .app-band {
   position: relative; overflow: hidden;
-  background: var(--bg-brand-muted);          /* #fcdfd6 — flat, per the design */
-  padding-block: 64px;
+  /* fitted off the comp against 2,488 samples that miss both cards and both
+     decorations: 245deg from near-black to the brand fill, rmse 2.7 */
+  background: linear-gradient(245deg, #030101, var(--bg-brand-primary));
+  padding-block: 68px;
 }
 /* Two decorative shapes on their Figma coordinates within the 1600 × 752
    frame. Both sit behind the content. */
 .app-band__deco { position: absolute; pointer-events: none; z-index: 0; }
-.app-band__poly    { left: -84.08px;  top: 216px;    width: 671.17px; height: 582px; }
+.app-band__poly    { left: -84.08px;  top: 216px;    width: 612.81px; height: 541.92px; }
 /* The ellipse is rotated 180deg in Figma, and the export already bakes that
    in — rotating it again in CSS flipped its gradient, putting the strong end
    at the top instead of the bottom. This is the clipped visible piece, so it
@@ -612,13 +614,20 @@ main > .hero + .section { margin-top: 104px; }
 .app-band__inner { position: relative; z-index: 2; display: grid;
   grid-template-columns: 436px 1fr; gap: 16px; align-items: stretch; }
 .app-card {
-  background: rgba(255,255,255,.7);
+  background: var(--bg-default-surface);
   border: 1px solid var(--bg-brand-muted);
   border-radius: var(--radius-3xl);
-  padding: 24px 32px;
+  /* the stroke is centred on the frame edge in Figma, so each pad gives up
+     the border's width to land the content on 32 / 24 from the outer edge */
+  padding: 23px 31px;
   display: flex; flex-direction: column; gap: 24px; align-items: flex-start;
 }
+/* Figma groups the head and its paragraph in one 12-gap frame; the card's own
+   24 applies between that group, the check list, the button and the stores. */
+.app-card__intro { display: flex; flex-direction: column; gap: 12px;
+                   align-self: stretch; }
 .app-card__head { display: flex; flex-direction: column; gap: 12px; }
+.app-card .checks { align-self: stretch; }
 .app-card__stores { display: flex; gap: 16px; }
 .app-card__stores img { width: 48px; height: 48px; }
 /* ---- app screen carousel ---------------------------------------
@@ -627,63 +636,39 @@ main > .hero + .section { margin-top: 104px; }
    thing scales with the column instead of breaking at 1440px.       */
 .app-art {
   position: relative; aspect-ratio: 828 / 624;
-  background: rgba(255,255,255,.7);
-  border: 1px solid var(--bg-brand-muted);
-  border-radius: var(--radius-3xl); overflow: hidden;
+  background: var(--bg-default-surface);
+  border-radius: var(--radius-3xl);
 }
-.phones { position: absolute; inset: 0; overflow: hidden; }
-.phones__track {
-  display: flex; height: 100%;
-  transition: transform .7s cubic-bezier(.22,.61,.36,1);
-  will-change: transform;
+/* Group 56 is 566x522 at (131,36) in the 828x624 panel; its export carries a
+   ~34px shadow halo on every side, so the picture is pinned by that overhang
+   rather than by the box. Percentages keep it scaling with the column. */
+.app-art__stage { position: absolute; inset: 0; overflow: hidden;
+                  border-radius: var(--radius-3xl); }
+.app-art__phones { position: absolute; left: 11.775%; top: .160%;
+                   width: 76.449%; height: auto; max-width: none; }
+/* three dots, 12 wide on a 20 pitch, centred 588 down the 624 panel */
+.app-art__dots { position: absolute; left: 50%; transform: translateX(-50%);
+                 top: 94.231%; display: flex; gap: 8px; z-index: 2; }
+.app-art__dot {
+  width: 12px; height: 12px; padding: 0; border: 0; cursor: pointer;
+  border-radius: var(--radius-full); background: var(--bg-brand-tertiary);
+  transition: background-color .25s ease;
 }
-.phone-set { position: relative; flex: 0 0 100%; height: 100%; }
+.app-art__dot.is-active { background: var(--bg-brand-primary); }
+/* the arrows straddle the panel's left and right edges, centred vertically */
+.app-art__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 8px;
+  border: 0; border-radius: var(--radius-full);
+  background: var(--bg-brand-primary); cursor: pointer;
+  transition: background-color .25s ease;
+}
+.app-art__arrow img { width: 24px; height: 24px; }
+.app-art__arrow:hover { background: var(--bg-brand-accent); }
+.app-art__arrow--prev { left: 1.932%; }
+.app-art__arrow--next { left: 93.237%; }
 
-/* Each phone is a device shell — white body, dark bezel, rounded corners —
-   with the screen bitmap clipped inside it. That is how the design builds
-   them: the bezel belongs to the container, not to the exported screen.
-   All geometry is a percentage of the 828 × 624 panel so the trio scales
-   with the column. Corner radii are expressed as horizontal/vertical
-   percentages so they stay proportional as the panel shrinks. */
-.phone {
-  position: absolute; overflow: hidden;
-  background: #fff;
-  border: 3px solid #101828;
-  box-shadow: 0 0 31.38px rgba(0,0,0,.12);
-}
-.phone img { position: absolute; left: 50%; transform: translateX(-50%); height: auto; }
-
-.phone--left, .phone--right {
-  top: 10.782%; width: 26.371%; height: 73.148%;
-  border-radius: 15% / 7.18%;
-}
-.phone--left  { left: 6.884%; }
-.phone--right { left: 66.546%; }
-.phone--left img  { top: .888%; width: 99.83%; }
-.phone--right img { top: .888%; width: 96.40%; }
-
-.phone--center {
-  left: 35.739%; top: 7.532%;
-  width: 28.569%; height: 79.647%; z-index: 2;
-  border-radius: 13.85% / 6.59%;
-}
-.phone--center img { top: 0; width: 97.60%; }
-
-.phones__dots {
-  position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 5;
-}
-.phones__dot {
-  width: 12px; height: 12px; padding: 0; border-radius: var(--radius-full);
-  background: var(--bg-brand-tertiary);
-  transition: background-color .3s ease, transform .3s ease;
-}
-.phones__dot:hover { background: var(--bg-brand-secondary); }
-.phones__dot[aria-selected='true'] { background: var(--bg-brand-primary); }
-
-@media (prefers-reduced-motion: reduce) {
-  .phones__track { transition: none; }
-}
 
 /* =================================================================
    THEME / READYLAUNCH pair

@@ -499,16 +499,17 @@
   <img class="app-band__deco app-band__ellipse" src="assets/img/app-ellipse.svg" alt="" aria-hidden="true">
   <div class="shell app-band__inner">
     <div class="app-card reveal reveal--left">
-      <div class="app-card__head">
-        <span class="tag"><span>Mobile App</span></span>
-        <h2 class="h3 h3--bold">Native app, built entirely with Flutter</h2>
+      <div class="app-card__intro">
+        <div class="app-card__head">
+          <span class="tag"><span>Mobile App</span></span>
+          <h2 class="h3 h3--bold">Get your own branded app</h2>
+        </div>
+        <p class="body-sm">Launch a fully white-label native community app under your own App Store and Google Play developer accounts—your brand, your icon, your community.</p>
       </div>
-      <p class="body-sm">Launch a fully white-label native community app under your own App Store and Google Play developer accounts—your brand, your icon, your community.</p>
       <ul class="checks stagger">
         <li><img src="assets/icon/check.svg" alt=""><span><b>White-label publishing</b> — your brand, your store</span></li>
         <li><img src="assets/icon/check.svg" alt=""><span><b>Rebuilt on Flutter</b> — up to 3× faster loads</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Modern UI/UX</b> — clean &amp; fluid</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Dark mode</b> — from day one</span></li>
+        <li><img src="assets/icon/check.svg" alt=""><span><b>Light &amp; dark mode</b> — from day one</span></li>
         <li><img src="assets/icon/check.svg" alt=""><span><b>In-app purchases</b> — courses &amp; memberships</span></li>
         <li><img src="assets/icon/check.svg" alt=""><span><b>App blocks</b> — native screens, no code</span></li>
       </ul>
@@ -519,33 +520,20 @@
       </div>
     </div>
     <div class="app-art reveal reveal--right">
-      <!-- Four slides to match the four pagination dots in the design. Each slide
-           swaps all three phones at once. Slides 2-4 are placeholders reusing the
-           same three screens until the real ones are exported. -->
-      <div class="phones" aria-roledescription="integrations" aria-label="BuddyBoss native app screens">
-        <div class="phones__track">
-          <div class="phone-set">
-            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="Writing a post in the BuddyBoss app"></span>
-            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="The activity feed in the BuddyBoss app"></span>
-            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="A post with comments in the BuddyBoss app"></span>
-          </div>
-          <div class="phone-set">
-            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="" loading="lazy"></span>
-            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="" loading="lazy"></span>
-            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="" loading="lazy"></span>
-          </div>
-          <div class="phone-set">
-            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="" loading="lazy"></span>
-            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="" loading="lazy"></span>
-            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="" loading="lazy"></span>
-          </div>
-          <div class="phone-set">
-            <span class="phone phone--left"><img src="assets/img/app-screen-1.png" alt="" loading="lazy"></span>
-            <span class="phone phone--center"><img src="assets/img/app-screen-2.png" alt="" loading="lazy"></span>
-            <span class="phone phone--right"><img src="assets/img/app-screen-3.png" alt="" loading="lazy"></span>
-          </div>
-        </div>
+      <div class="app-art__stage">
+        <img class="app-art__phones" src="assets/img/app-store-phones.png" alt="The BuddyBoss app on the App Store, in two brandings">
       </div>
+      <div class="app-art__dots">
+        <button type="button" class="app-art__dot is-active" aria-label="First app branding"></button>
+        <button type="button" class="app-art__dot" aria-label="Second app branding"></button>
+        <button type="button" class="app-art__dot" aria-label="Third app branding"></button>
+      </div>
+      <button type="button" class="app-art__arrow app-art__arrow--prev" aria-label="Previous app branding">
+        <img src="assets/icon/app-arrow-left.svg" alt="" aria-hidden="true">
+      </button>
+      <button type="button" class="app-art__arrow app-art__arrow--next" aria-label="Next app branding">
+        <img src="assets/icon/carousel-arrow-right.svg" alt="" aria-hidden="true">
+      </button>
     </div>
   </div>
 </section>

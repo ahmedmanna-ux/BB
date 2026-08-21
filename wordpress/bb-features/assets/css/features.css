@@ -502,8 +502,10 @@
    ================================================================= */
 .bbf-app {
   position: relative; overflow: hidden;
-  background: var(--bbf-brand-muted);        /* #fcdfd6 — flat, per the design */
-  padding-block: 64px;
+  /* fitted off the comp against 2,488 samples that miss both cards and both
+     decorations: 245deg from near-black to the brand fill, rmse 2.7 */
+  background: linear-gradient(245deg, #030101, var(--bbf-brand));
+  padding-block: 68px;
 }
 /* Two decorative shapes on their Figma coordinates within the 1600 × 752
    frame. Pseudo-elements so the patterns stay free of decorative markup. */
@@ -512,7 +514,7 @@
   background-repeat: no-repeat; background-size: 100% 100%;
 }
 .bbf-app::before {
-  left: -84.08px; top: 216px; width: 671.17px; height: 582px;
+  left: -84.08px; top: 216px; width: 612.81px; height: 541.92px;
   background-image: url('../img/app-polygon.svg');
 }
 /* Rotated 180deg in Figma, and the export bakes that in — rotating it again
@@ -529,12 +531,18 @@
   display: grid; grid-template-columns: 436px 1fr; gap: 16px; align-items: stretch;
 }
 .bbf-app__card {
-  background: rgba(255,255,255,.7);
+  background: var(--bbf-surface);
   border: 1px solid var(--bbf-brand-muted);
   border-radius: var(--bbf-radius-3xl);
-  padding: 24px 32px;
+  /* the stroke is centred on the frame edge in Figma, so each pad gives up
+     the border's width to land the content on 32 / 24 from the outer edge */
+  padding: 23px 31px;
   display: flex; flex-direction: column; gap: 24px; align-items: flex-start;
 }
+/* Figma groups the head and its paragraph in one 12-gap frame; the card's own
+   24 applies between that group, the check list, the button and the stores. */
+.bbf-app__intro { display: flex; flex-direction: column; gap: 12px; align-self: stretch; }
+.bbf-app__card .bbf-checks { align-self: stretch; }
 .bbf-app__head { display: flex; flex-direction: column; gap: 12px; }
 .bbf-app__stores { display: flex; gap: 16px; }
 .bbf-app__stores img { width: 48px; height: 48px; }
@@ -543,64 +551,44 @@
    slot value is a percentage of it, so it scales with the column */
 .bbf-app__art {
   position: relative; aspect-ratio: 828 / 624;
-  background: rgba(255,255,255,.7);
-  border: 1px solid var(--bbf-brand-muted);
-  border-radius: var(--bbf-radius-3xl); overflow: hidden;
+  background: var(--bbf-surface);
+  border-radius: var(--bbf-radius-3xl);
 }
-.bbf-phones { position: absolute; inset: 0; overflow: hidden; }
-.bbf-phones__track {
-  display: flex; height: 100%;
-  transition: transform .7s cubic-bezier(.22,.61,.36,1);
-  will-change: transform;
-}
-.bbf-phone-set { position: relative; flex: 0 0 100%; height: 100%; }
-
-/* Each phone is a device shell — white body, dark bezel, rounded corners —
-   with the screen bitmap clipped inside it. That is how the design builds
-   them: the bezel belongs to the container, not to the exported screen.
-   All geometry is a percentage of the 828 × 624 panel so the trio scales
-   with the column. Corner radii use horizontal/vertical percentages so
-   they stay proportional as the panel shrinks. */
-.bbf-phone {
-  position: absolute; margin: 0; overflow: hidden;
-  background: #fff;
-  border: 3px solid #101828;
-  box-shadow: 0 0 31.38px rgba(0,0,0,.12);
-}
-.bbf-phone img { position: absolute; left: 50%; transform: translateX(-50%); height: auto; }
-
-.bbf-phone--left, .bbf-phone--right {
-  top: 10.782%; width: 26.371%; height: 73.148%;
-  border-radius: 15% / 7.18%;
-}
-.bbf-phone--left  { left: 6.884%; }
-.bbf-phone--right { left: 66.546%; }
-.bbf-phone--left img  { top: .888%; width: 99.83%; }
-.bbf-phone--right img { top: .888%; width: 96.40%; }
-
-.bbf-phone--center {
-  left: 35.739%; top: 7.532%;
-  width: 28.569%; height: 79.647%; z-index: 2;
-  border-radius: 13.85% / 6.59%;
-}
-.bbf-phone--center img { top: 0; width: 97.60%; }
-
-@media (prefers-reduced-motion: reduce) {
-  .bbf-phones__track { transition: none; }
-}
-
-.bbf-phones__dots {
-  position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 5;
-}
-.bbf-phones__dot {
+/* Group 56 is 566x522 at (131,36) in the 828x624 panel; its export carries a
+   ~34px shadow halo on every side, so the picture is pinned by that overhang
+   rather than by the box. Percentages keep it scaling with the column. */
+.bbf-app__stage { position: absolute; inset: 0; overflow: hidden;
+                  border-radius: var(--bbf-radius-3xl); }
+.bbf-app__phones { position: absolute; left: 11.775%; top: .160%;
+                   width: 76.449%; height: auto; max-width: none; }
+/* three dots, 12 wide on a 20 pitch, centred 588 down the 624 panel */
+.bbf-app__dots { position: absolute; left: 50%; transform: translateX(-50%);
+                 top: 94.231%; display: flex; gap: 8px; z-index: 2; }
+.bbf-app__dot {
   width: 12px; height: 12px; padding: 0; border: 0; cursor: pointer;
-  border-radius: var(--bbf-radius-full);
-  background: var(--bbf-brand-tertiary);
-  transition: background-color .3s ease, transform .3s ease;
+  border-radius: var(--bbf-radius-full); background: var(--bbf-brand-tertiary);
+  transition: background-color .25s ease;
 }
-.bbf-phones__dot:hover { background: var(--bbf-brand-hover); }
-.bbf-phones__dot[aria-selected='true'] { background: var(--bbf-brand); }
+.bbf-app__dot.is-active { background: var(--bbf-brand); }
+/* the arrows straddle the panel's left and right edges, centred vertically */
+.bbf-app__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 8px;
+  border: 0; border-radius: var(--bbf-radius-full);
+  background: var(--bbf-brand); cursor: pointer;
+  transition: background-color .25s ease;
+}
+.bbf-app__arrow::before {
+  content: ''; width: 24px; height: 24px;
+  background-repeat: no-repeat; background-position: center;
+  background-size: 21.001px 17.501px;
+}
+.bbf-app__arrow:hover { background: var(--bbf-brand-accent); }
+.bbf-app__arrow--prev { left: 1.932%; }
+.bbf-app__arrow--prev::before { background-image: url('../icon/app-arrow-left.svg'); }
+.bbf-app__arrow--next { left: 93.237%; }
+.bbf-app__arrow--next::before { background-image: url('../icon/carousel-arrow-right.svg'); }
 
 /* =================================================================
    PRODUCT PAIR  (Theme / ReadyLaunch)
