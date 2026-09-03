@@ -26,6 +26,7 @@ $bbf_sections = array(
 	'member-blogging',
 	'mobile-app',
 	'courses',
+	'membership',
 	'theme-readylaunch',
 	'integrations',
 	'stats',

@@ -423,6 +423,37 @@
 }
 .bbf-split__panel img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ---------- membership panel -------------------------------------
+   The Membership row's panel is not one flat screenshot like the rest:
+   it is a green-to-white ramp carrying two overlapping crops of the
+   product and a soft shape behind them. Each crop is a window with the
+   screenshot oversized and offset inside it, which is how Figma stores
+   the framing — reproducing the offsets keeps the crop rather than
+   re-deciding it. The shape is 1%-opacity white lit by two inset
+   shadows; a flat green fill is visibly heavier.                    */
+.bbf-memb-art {
+  position: relative;
+  background: linear-gradient(246.29deg, var(--bbf-green-200) .617%, #ffffff 104.91%);
+}
+.bbf-memb-art__glow {
+  position: absolute; left: 384px; top: -61px; width: 280px; height: 706px;
+  border-radius: 40px; background: rgba(255, 255, 255, .01);
+  box-shadow: inset -16px -68px 40px 0 var(--bbf-green-400),
+              inset  16px  20px 40px 0 var(--bbf-green-400);
+}
+.bbf-memb-art__shot { position: absolute; overflow: hidden; margin: 0; }
+.bbf-memb-art__shot img { position: absolute; max-width: none; width: auto; height: auto; }
+.bbf-memb-art__shot--back {
+  left: 68px; top: 41px; width: 705px; height: 553px;
+  border-radius: var(--bbf-radius-2xl); box-shadow: 0 0 32px 0 rgba(0, 0, 0, .12);
+}
+.bbf-memb-art__shot--back img { left: -18.95%; top: -9.05%; width: 181.89%; height: 130.52%; }
+.bbf-memb-art__shot--front {
+  left: 298px; top: 149px; width: 732px; height: 527px;
+  border-radius: var(--bbf-radius-xl); box-shadow: -16px 0 32px 0 rgba(0, 0, 0, .2);
+}
+.bbf-memb-art__shot--front img { left: -7.15%; top: -29.54%; width: 110.48%; height: 129.54%; }
+
 /* =================================================================
    DUO  (two stacked cards side by side)
    ================================================================= */

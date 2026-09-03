@@ -4,6 +4,7 @@ The BuddyBoss marketing pages as Gutenberg block patterns:
 
 | page | Figma frame | pattern category | scope |
 |---|---|---|---|
+| Home | [`3780:57831`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3780-57831) | BuddyBoss — Home | `.bbh` |
 | Features (Top Modules) | [`1008:8718`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1008-8718) | BuddyBoss — Features | `.bbf` |
 | Activity Feeds | [`1886:10326`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=1886-10326) | BuddyBoss — Module pages | `.bbm` |
 | Member Profiles | [`2268:44480`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=2268-44480) | BuddyBoss — Module pages | `.bbm` |
@@ -20,13 +21,14 @@ The BuddyBoss marketing pages as Gutenberg block patterns:
 | Courses | [`3498:55884`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3498-55884) | BuddyBoss — Module pages | `.bbm` |
 | Appearance | [`3563:62279`](https://www.figma.com/design/EnWGQLBhpMDkOR7YqMmv28/BuddyBoss-Website?node-id=3563-62279) | BuddyBoss — Module pages | `.bbm` |
 
-Every frame lives on the Figma **`Features`** canvas, `1001:8451`. Worth noting
+Every frame but the homepage lives on the Figma **`Features`** canvas,
+`1001:8451`; the homepage lives on its own **`Home`** canvas, `5:2`. Worth noting
 because the API will not enumerate that canvas — asking for the document's pages
 returns only `Components`, and neither of the other two it will hand back holds
 any of these frames. You need a node id from it to get in.
 
-The two scopes are independent: each declares its own tokens and prefixes its
-own class names, so neither reads from nor leaks into the other. All fourteen
+The three scopes are independent: each declares its own tokens and prefixes its
+own class names, so none reads from or leaks into another. All fourteen
 module pages share one component set under `.bbm`; a section picks its card
 stroke with `bbm-edge--peach` / `--blue` / `--green`, and each page adds a small
 page-scoped block (`.bbm-sg`, `.bbm-mu`, …) carrying the `--bbm-edge-angle` for
@@ -44,7 +46,8 @@ where the others are ten or more.
    (it currently says `buddyboss-theme`). Getting this wrong is the one thing that
    stops the theme activating.
 3. Activate **BB Features** in Appearance → Themes.
-4. Edit any page → **+** → **Patterns** → **BuddyBoss — Features** or **BuddyBoss — Module pages**.
+4. Edit any page → **+** → **Patterns** → **BuddyBoss — Home**, **BuddyBoss — Features**
+   or **BuddyBoss — Module pages**.
 
 Requires WordPress 6.0+ (that's when patterns in `/patterns/` began auto-registering).
 No build step, no npm, no dependencies.
@@ -61,21 +64,26 @@ patterns with `register_block_pattern()` — the patterns then survive a theme s
 | | |
 |---|---|
 | `theme.json` | The Figma variables as editor presets — brand palette, the `xs → 5xl` type scale, spacing steps. They appear in Gutenberg's own colour and typography pickers. |
-| `patterns/` | 158 files. 21 Features sections + `features-page.php`; then the fourteen module pages — `af-*` (12), `mp-*` (12), `sg-*` (10), `fo-*` (10), `mu-*` (11), `md-*` (10), `ga-*` (10), `ms-*` (5), `lr-*` (5), `om-*` (5), `mb-*` (10), `nt-*` (5), `co-*` (10), `ap-*` (7) — each with a `*-page.php` that composes its whole page in one insert. |
+| `patterns/` | 179 files. 21 Features sections + `features-page.php`; the homepage — `hp-*` (19) + `hp-page.php`; then the fourteen module pages — `af-*` (12), `mp-*` (12), `sg-*` (10), `fo-*` (10), `mu-*` (11), `md-*` (10), `ga-*` (10), `ms-*` (5), `lr-*` (5), `om-*` (5), `mb-*` (10), `nt-*` (5), `co-*` (10), `ap-*` (7) — each with a `*-page.php` that composes its whole page in one insert. |
 | `assets/css/features.css` | Every Features section style, scoped under `.bbf`. |
 | `assets/css/module-page.css` | Every module-page style, scoped under `.bbm`. |
-| `assets/js/features.js` | Scroll reveals, hero framing, stat counters, app carousel — drives both scopes. Front end only. |
+| `assets/css/home.css` | Every homepage style, scoped under `.bbh`. |
+| `assets/js/features.js` | Scroll reveals, hero framing, stat counters, app carousel — drives all three scopes. Front end only. |
 | `assets/img`, `assets/icon` | Panel and hero PNGs plus the icon set, exported from Figma. |
-| `preview.html`, `preview-module.html` | Static renders of each page's patterns, for design review without a WP install. Safe to delete. |
+| `preview.html`, `preview-module.html`, `preview-home.html` | Static renders of each page's patterns, for design review without a WP install. Safe to delete. |
 
 ## Regenerating
 
-`assets/css/module-page.css`, the `af-*`/`mp-*` patterns and `preview-module.html`
-are **generated** from the static build in `../../website/`, so the two cannot
-drift. After changing that build, run:
+`assets/css/module-page.css`, `assets/css/home.css`, the `af-*`/`mp-*`/`hp-*`
+patterns and `preview-module.html` / `preview-home.html` are **generated** from
+the static build in `../../website/`, so the two cannot drift. After changing
+that build, run:
 
 ```sh
 cd Website Redesign/wordpress
+python3 tools/gen-home-css.py
+python3 tools/gen-patterns.py home
+python3 tools/gen-preview-home.py
 python3 tools/gen-module-css.py
 for p in activity-feeds member-profiles social-groups forums media-uploading \
          moderation gamifications messaging reactions offload-media \
@@ -90,6 +98,13 @@ python3 tools/gen-preview-features.py
 
 Each script validates its own output (prefixing, brace balance, missing assets)
 and exits non-zero rather than writing something subtly wrong.
+
+`gen-patterns.py` generates both page **families** — the module pages under
+`.bbm` and the homepage under `.bbh` — from one code path. A `Family` holds
+everything that differs: the class prefix, the page prefix it strips, the root
+class, the inserter category and the two PHP variables. Add a family rather
+than forking the script, and regenerate all fourteen module pages afterwards to
+confirm their output is still byte-identical.
 
 Adding a page? `gen-patterns.py` refuses to run unless its `PAGES` entry
 describes exactly as many sections as the page has, in order. Draft that entry
@@ -111,6 +126,60 @@ up behind it. A WordPress header lives in the template, not in a pattern, so tha
 is opt-in here: make the header transparent in the parent theme, then add
 `bbf-hero--under-header` / `bbm-hero--under-header` to the hero group. Override
 `--bbf-header-h` / `--bbm-header-h` if the bar is not 72px tall.
+
+## The homepage
+
+Nineteen sections under `.bbh`, in page order: `hero` · `logowall` · `bento1` ·
+`courses` · `memberships` · `review-1` · `gamification` · `facts` · `bento2` ·
+`review-2` · `migration` · `app` · `integrations` · `themerl` · `review-3` ·
+`difference` · `bento3` · `testimonials` · `pricing`. `hp-page.php` inserts all
+nineteen at once.
+
+A few things about it are not in the static sheet, because they answer to
+Gutenberg's markup rather than the design's:
+
+**The 88px rhythm is an adjacency between section roots.** The static page says
+it once as `.hp > * + *`, matching on `<main>`'s children — which a pattern
+being authored does not have. Every section root wears `.bbh`, and in the
+assembled post they are siblings, so it is stated as
+`.bbh + :where(.bbh)`. The `:where()` is load-bearing: `.hp > * + *` weighs one
+class, which ties it with every per-section `margin-top` and lets source order
+decide, and the sections are all declared below it. Written as a bare
+`.bbh + .bbh` it weighs two, outranks all of them, and the one section that
+overrides the rhythm — `.bbh-facts` drops to 64px under 1024px — never gets its
+64 back.
+
+**`core/buttons` gets `display: contents`.** Its wrapper div would otherwise sit
+between the hero's flex row and its two buttons and swallow the 24px gap — the
+pair lands 20px too close with nothing else out of place.
+
+**Three paint fixes the geometry probe cannot see.** Every section root carries
+the page background and the body rule's `overflow-x`, because both are declared
+on `.bbh` rather than on `:root`/`<body>`. That made each root hide its own
+`z-index: -1` pseudo-element (the gradient ring round all three split cards) and
+clip the 2px it bleeds below the section; `isolation: isolate` and
+`overflow-x: clip` put both back. And `core/image` puts the design's class on the
+`<figure>`, so a `border-radius` rounded a box the picture ignored — the reviewer
+portraits came out square. All three move nothing, so only a pixel diff finds
+them.
+
+**A `core/image` figure with no class of its own gets `display: contents`.**
+Where the design put no class on the `<img>`, that figure is a box the static
+page never had, sitting between a sized wrapper and the picture it sizes.
+`.bbh-split__panel img` and `.bbh-dfy__panel img` both say `height: 100%`, and
+the percentage resolves against the figure — auto — rather than the panel, so
+five artwork panels stopped filling their frame. Nothing shows at 1600px, where
+the frames happen to be the images' own 740×528; below 1080 the panel stretches
+to the card and the picture came up as much as 300px short. Dropping the
+unclassed figure out of the box tree makes the picture a direct child of the
+wrapper those rules were written for. Where the class *did* land on the figure,
+that box is the one the design sizes, and it stays.
+
+**The button arrow is a `::after`.** `core/button` keeps plain text, so the
+`<img>` inside the anchor cannot survive the port. `gen-patterns.py` marks a
+button that had no icon in the design with `bbh-btn--noicon`, and `home.css`
+draws `arrow-right.svg` on the rest at the Figma inset — the same trick, and the
+same vocabulary, `features.css` already uses.
 
 ## Patterns
 

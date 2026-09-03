@@ -18,6 +18,7 @@ const VERSION   = '1.0.0';
 const PREFIX    = 'bb-features';
 const PATTERN_CATEGORY = 'bb-features';
 const MODULE_CATEGORY  = 'bb-module-pages';
+const HOME_CATEGORY    = 'bb-home';
 
 /**
  * Cache-bust on file mtime in development, fall back to VERSION in production.
@@ -50,6 +51,16 @@ function enqueue_styles(): void {
 		get_theme_file_uri( 'assets/css/module-page.css' ),
 		array(),
 		asset_version( 'assets/css/module-page.css' )
+	);
+
+	/* And the homepage is a third — .bbh. Same bargain again: its own tokens
+	   on its own root class, so the three sheets cannot read from or leak
+	   into one another. */
+	wp_enqueue_style(
+		PREFIX . '-home',
+		get_theme_file_uri( 'assets/css/home.css' ),
+		array(),
+		asset_version( 'assets/css/home.css' )
 	);
 }
 
@@ -119,6 +130,14 @@ function register_pattern_category(): void {
 		array(
 			'label'       => __( 'BuddyBoss — Module pages', 'bb-features' ),
 			'description' => __( 'Sections for the per-module marketing pages: Activity Feeds, Member Profiles and Moderation.', 'bb-features' ),
+		)
+	);
+
+	register_block_pattern_category(
+		HOME_CATEGORY,
+		array(
+			'label'       => __( 'BuddyBoss — Home', 'bb-features' ),
+			'description' => __( 'Sections from the BuddyBoss homepage design.', 'bb-features' ),
 		)
 	);
 }

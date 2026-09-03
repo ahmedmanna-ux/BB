@@ -1,0 +1,3311 @@
+/* =============================================================
+   BB Features — homepage sections
+   Built from Figma: BuddyBoss-Website / Home / 3780:57831
+
+   GENERATED — do not edit. Run wordpress/tools/gen-home-css.py after
+   changing website/css/style.css (which is itself generated for the
+   homepage block — edit website/home-parts/*.css and re-run
+   tools/assemble-home.py first).
+
+   Everything is prefixed bbh- and every token is declared on .bbh, so it
+   neither reads from nor leaks into the Features or module-page styles.
+   ============================================================= */
+.bbh {
+  /* --- colour -------------------------------------------------- */
+  --bbh-text-primary:        #000000;
+  --bbh-text-secondary:      #2f2f2f;
+  --bbh-text-tertiary:       #666666;
+  --bbh-text-light:          #ffffff;
+  /* brand text and outlines darkened to #d7542e; brand FILLS stay #ef5d33 */
+  --bbh-text-brand:          #d7542e;
+
+  --bbh-bg-brand-primary:    #ef5d33;
+  --bbh-bg-brand-accent:     #d7542e;   /* filled buttons */
+  --bbh-bg-brand-secondary:  #fe724a;
+  --bbh-bg-brand-subtle:     #fdefeb;
+  --bbh-bg-brand-muted:      #fcdfd6;
+  --bbh-bg-brand-tertiary:   #f9bead;
+  --bbh-bg-default-surface:  #ffffff;
+  --bbh-bg-default-subtle:   #f5f5f5;
+  --bbh-bg-default-black:    #0c0c0d;
+
+  --bbh-stroke-brand-strong: #ef5d33;
+  --bbh-stroke-brand-highest:#d7542e;   /* outlined buttons */
+  --bbh-stroke-brand-primary:#fcdfd6;
+  --bbh-stroke-brand-second: #f9bead;
+  --bbh-stroke-default-prim: #e8e8e8;
+  --bbh-stroke-default-sec:  #d9d9d9;
+  --bbh-stroke-default-tert: #b2b2b2;
+  /* the stat dividers are a 0.5px stroke/default/secondary hairline in
+     Figma; #ececec is what that composites to over white */
+  --bbh-stroke-hairline:     #ececec;
+  --bbh-stroke-positive-sec: #aff4c6;
+
+  --bbh-blue-50:  #ccebff;
+  --bbh-blue-200: #66c4ff;
+  --bbh-blue-300: #33b1ff;
+  --bbh-green-100:#cff7d3;
+  --bbh-green-200:#aff4c6;
+  --bbh-green-400:#14ae5c;
+
+  /* --- card edges ----------------------------------------------
+     Module cards are stroked with a gradient, not a flat colour: full
+     strength at two opposite corners, fading to the pale tint across
+     the middle. Figma defines the gradient in object space, so its axis
+     stays a constant 0.83/0.17 mix of the card's two axes no matter how
+     tall the card is. CSS gradients are angular instead, so each card
+     height needs the angle that reproduces that mix:
+         tan(angle) = -4.88 * height / width
+     Hence one --bbh-edge-tilt per card size below. The 624px duo and product
+     cards are the exception: their axis measures 0.5, which is exactly
+     what `to bottom right` yields at any aspect, so they can stay
+     keyword-based and keep adapting on their own.                  */
+  --bbh-edge-tilt: 114deg;                 /* 1280 x 599 cards */
+
+  --bbh-stops-peach: var(--bbh-stroke-brand-strong), var(--bbh-stroke-brand-primary) 26%,
+                 var(--bbh-stroke-brand-primary) 74%, var(--bbh-stroke-brand-strong);
+  --bbh-stops-blue:  var(--bbh-blue-300), var(--bbh-blue-50) 26%,
+                 var(--bbh-blue-50) 74%, var(--bbh-blue-300);
+  --bbh-stops-green: var(--bbh-green-400), var(--bbh-green-100) 26%,
+                 var(--bbh-green-100) 74%, var(--bbh-green-400);
+  --bbh-stops-soft:  var(--bbh-bg-brand-secondary), var(--bbh-bg-brand-subtle) 26%,
+                 var(--bbh-bg-brand-subtle) 74%, var(--bbh-bg-brand-secondary);
+
+  /* --- type ---------------------------------------------------- */
+  --bbh-font-heading: 'Stack Sans Headline', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --bbh-font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --bbh-size-xs:  12px;  --bbh-lh-xs:  18px;
+  --bbh-size-sm:  14px;  --bbh-lh-sm:  22px;
+  --bbh-size-md:  16px;  --bbh-lh-md:  24px;
+  --bbh-size-lg:  18px;  --bbh-lh-lg:  26px;
+  --bbh-size-xl:  24px;  --bbh-lh-xl:  32px;
+  --bbh-size-2xl: 28px;  --bbh-lh-2xl: 36px;
+  --bbh-size-3xl: 36px;  --bbh-lh-3xl: 44px;
+  --bbh-size-4xl: 46px;  --bbh-lh-4xl: 56px;
+  --bbh-size-5xl: 56px;  --bbh-lh-5xl: 68px;
+
+  /* --- radius / spacing ---------------------------------------- */
+  --bbh-radius-sm: 4px; --bbh-radius-md: 6px; --bbh-radius-lg: 8px;
+  --bbh-radius-xl: 12px; --bbh-radius-2xl: 16px; --bbh-radius-3xl: 24px; --bbh-radius-4xl: 32px;
+  --bbh-radius-full: 999px;
+
+  /* --- layout -------------------------------------------------- */
+  --bbh-page-max:   1600px;   /* Figma frame width          */
+  --bbh-header-h:   72px;     /* the bar overlays the hero  */
+  --bbh-content-max:1280px;   /* Figma inner content width  */
+  --bbh-gutter:     160px;    /* Figma side padding         */
+  --bbh-section-gap: 80px;    /* Figma vertical rhythm      */
+
+  /* --- effects ------------------------------------------------- */
+  --bbh-shadow-img1: 0 0 32px rgba(0,0,0,.12);
+  --bbh-shadow-img2: -16px 0 32px rgba(0,0,0,.24);
+}
+
+/* ---------- reset ------------------------------------------------- */
+.bbh, .bbh *, .bbh *::before, .bbh *::after { box-sizing: border-box; }
+.bbh {
+  margin: 0;
+  font-family: var(--bbh-font-body);
+  font-size: var(--bbh-size-md);
+  line-height: var(--bbh-lh-md);
+  color: var(--bbh-text-primary);
+  background: var(--bbh-bg-default-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+.bbh :where(img, svg) { display: block; max-width: 100%; }
+.bbh :where(p, figure, blockquote, dl, dd) { margin: 0; }   /* figure ships with 1em 40px in every UA */
+.bbh :where(h1,h2,h3,h4,h5,h6) { margin: 0; font-weight: inherit; }
+.bbh :where(ul) { margin: 0; padding: 0; list-style: none; }
+.bbh :where(a) { color: inherit; text-decoration: none; }
+.bbh :where(button) { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.bbh :focus-visible { outline: 2px solid var(--bbh-text-brand); outline-offset: 2px; border-radius: 4px; }
+
+/* Heading face: when Stack Sans is missing, Inter needs a nudge to
+   sit at the same optical weight/width as the Figma comps. */
+.bbh-h1, .bbh-h2, .bbh-h3, .bbh-h4, .bbh-h5, .bbh-h6, .bbh-stat__num, .bbh-eyebrow-lg, .bbh-subhead__title {
+  font-family: var(--bbh-font-heading);
+  letter-spacing: -0.022em;
+}
+
+/* ---------- layout helpers --------------------------------------- */
+.bbh-shell {                       /* full-bleed band, 160px gutters      */
+  width: 100%;
+  max-width: var(--bbh-page-max);
+  margin-inline: auto;
+  padding-inline: var(--bbh-gutter);
+}
+.bbh-section { margin-top: var(--bbh-section-gap); }
+/* the hero keeps its 104 while the rest of the page runs at 80 */
+
+/* ---------- type scale ------------------------------------------- */
+.bbh-h1 { font-size: var(--bbh-size-5xl); line-height: var(--bbh-lh-5xl); font-weight: 700; }
+.bbh-h2 { font-size: var(--bbh-size-4xl); line-height: var(--bbh-lh-4xl); font-weight: 600; }
+.bbh-h3 { font-size: var(--bbh-size-3xl); line-height: var(--bbh-lh-3xl); font-weight: 600; }
+.bbh-h4 { font-size: var(--bbh-size-2xl); line-height: var(--bbh-lh-2xl); font-weight: 600; }
+.bbh-h5 { font-size: var(--bbh-size-xl);  line-height: var(--bbh-lh-xl);  font-weight: 400; }
+.bbh-h6 { font-size: var(--bbh-size-lg);  line-height: var(--bbh-lh-lg);  font-weight: 600; }
+
+.bbh-body-sm { font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm); color: var(--bbh-text-secondary); }
+.bbh-body-md { font-size: var(--bbh-size-md); line-height: var(--bbh-lh-md); color: var(--bbh-text-tertiary); }
+/* Offload Media and Member Blogging set their body in a one-off #595961 rather
+   than the text/default/secondary token the other two halves sections use. */
+.bbh-body-sm--grey { color: #595961; }
+
+/* ---------- section tag ------------------------------------------ */
+/* The Features and module pages used to draw two different eyebrows; the
+   redesign collapsed them into one — a 20px rule 8px from a heading-face
+   SemiBold label at 18/26 with 8% tracking. The rule keeps the brand fill
+   while the label takes the darkened brand text colour. Only the centred
+   pill below runs 12%; do not carry that percentage up to here. */
+.bbh-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding-block: 3px;
+}
+.bbh-tag::before {
+  content: ''; width: 20px; height: 2px; flex: none;
+  border-radius: var(--bbh-radius-full);
+  background: var(--bbh-bg-brand-primary);
+}
+.bbh-tag span {
+  font-family: var(--bbh-font-heading); letter-spacing: 1.44px;
+  font-size: var(--bbh-size-lg); line-height: var(--bbh-lh-lg);
+  font-weight: 600; color: var(--bbh-text-brand);
+  text-transform: uppercase; white-space: nowrap;
+}
+
+/* ---------- buttons ---------------------------------------------- */
+.bbh-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; max-height: 40px;
+  /* Figma draws button strokes inside the box, so every button carries the
+     border and takes it out of its own padding. Without this an outlined
+     button lands 2px over on both axes and, in a stretch row, drags its
+     unbordered sibling with it. */
+  border: 1px solid transparent; padding: 9px 15px;
+  border-radius: var(--bbh-radius-lg);
+  font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm); font-weight: 600;
+  white-space: nowrap; overflow: hidden;
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.bbh-btn img, .bbh-btn svg { width: 20px; height: 20px; flex: none; }
+.bbh-btn--ghost { border-color: var(--bbh-stroke-brand-highest); color: var(--bbh-text-brand); }
+.bbh-btn--ghost:hover { background: var(--bbh-bg-brand-subtle); }
+.bbh-btn--solid { background: var(--bbh-bg-brand-accent); color: var(--bbh-text-light); }
+.bbh-btn--solid:hover { background: var(--bbh-bg-brand-secondary); }
+/* the arrow ships brand-coloured; on the brand fill it has to flip to white */
+.bbh-btn--solid img { filter: brightness(0) invert(1); }
+.bbh-btn--white { background: var(--bbh-bg-default-surface); color: var(--bbh-text-brand); }
+.bbh-btn--white:hover { background: var(--bbh-bg-brand-subtle); }
+/* three button sizes: 40 in the header, 48 after a feature section, 56 in the
+   hero and the closing CTA. Each padding is the design's minus the 1px border. */
+.bbh-btn--md { height: 48px; max-height: 48px; }
+.bbh-btn--lg { min-height: 56px; max-height: none; padding: 15px 23px;
+           font-size: var(--bbh-size-md); line-height: var(--bbh-lh-md); }
+.bbh-btn--lg img, .bbh-btn--lg svg { width: 24px; height: 24px; }
+/* Buttons never move on hover — nothing shifts, not the button and not the
+   icon inside it. Colour is the only hover feedback. */
+
+/* icon recolouring for exported single-colour vectors */
+.bbh-ico-arrow--brand { filter: none; }
+
+/* ---------- feature check list ----------------------------------- */
+.bbh-checks { display: flex; flex-direction: column; gap: 8px; }
+.bbh-checks--roomy { gap: 12px; }
+.bbh-checks li {
+  display: flex; align-items: flex-start; gap: 8px; padding-block: 1px;
+  font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm);
+  color: var(--bbh-text-secondary);
+}
+.bbh-checks li img { width: 16px; height: 16px; flex: none; margin-top: 3px; }
+.bbh-checks b { font-weight: 600; color: var(--bbh-text-primary); }
+
+/* =================================================================
+   APP SECTION
+   ================================================================= */
+.bbh-app-band {
+  position: relative; overflow: hidden;
+  /* fitted off the comp against 2,488 samples that miss both cards and both
+     decorations: 245deg from near-black to the brand fill, rmse 2.7 */
+  background: linear-gradient(245deg, #030101, var(--bbh-bg-brand-primary));
+  padding-block: 68px;
+}
+/* Two decorative shapes on their Figma coordinates within the 1600 × 752
+   frame. Both sit behind the content. */
+.bbh-app-band__deco { position: absolute; pointer-events: none; z-index: 0; }
+.bbh-app-band__poly    { left: -84.08px;  top: 216px;    width: 612.81px; height: 541.92px; }
+/* The ellipse is rotated 180deg in Figma, and the export already bakes that
+   in — rotating it again in CSS flipped its gradient, putting the strong end
+   at the top instead of the bottom. This is the clipped visible piece, so it
+   sits at its true bounds with no transform. */
+/* Runs 169.5px past the frame's right edge in Figma. The band is full-bleed,
+   so anchoring to its right edge keeps that bleed off-screen at every width —
+   a left offset would pin it to the viewport and cut it short past 1600. */
+.bbh-app-band__ellipse { right: -169.54px; top: -73.87px; width: 545.8px; height: 547.15px; }
+.bbh-app-band__inner { position: relative; z-index: 2; display: grid;
+  grid-template-columns: 436px 1fr; gap: 16px; align-items: stretch; }
+.bbh-app-card {
+  background: var(--bbh-bg-default-surface);
+  border: 1px solid var(--bbh-bg-brand-muted);
+  border-radius: var(--bbh-radius-3xl);
+  /* the stroke is centred on the frame edge in Figma, so each pad gives up
+     the border's width to land the content on 32 / 24 from the outer edge */
+  padding: 23px 31px;
+  display: flex; flex-direction: column; gap: 24px; align-items: flex-start;
+}
+/* Figma groups the head and its paragraph in one 12-gap frame; the card's own
+   24 applies between that group, the check list, the button and the stores. */
+.bbh-app-card__intro { display: flex; flex-direction: column; gap: 12px;
+                   align-self: stretch; }
+.bbh-app-card__head { display: flex; flex-direction: column; gap: 12px; }
+.bbh-app-card .bbh-checks { align-self: stretch; }
+.bbh-app-card__stores { display: flex; gap: 16px; }
+.bbh-app-card__stores img { width: 48px; height: 48px; }
+/* ---- app screen carousel ---------------------------------------
+   The stage keeps the 828 × 624 Figma panel as its aspect box, and
+   every slot value below is a percentage of that box, so the whole
+   thing scales with the column instead of breaking at 1440px.       */
+.bbh-app-art {
+  position: relative; aspect-ratio: 828 / 624;
+  background: var(--bbh-bg-default-surface);
+  border-radius: var(--bbh-radius-3xl);
+}
+/* Group 56 is 566x522 at (131,36) in the 828x624 panel; its export carries a
+   ~34px shadow halo on every side, so the picture is pinned by that overhang
+   rather than by the box. Percentages keep it scaling with the column. */
+.bbh-app-art__stage { position: absolute; inset: 0; overflow: hidden;
+                  border-radius: var(--bbh-radius-3xl); }
+.bbh-app-art__phones { position: absolute; left: 11.775%; top: .160%;
+                   width: 76.449%; height: auto; max-width: none; }
+/* three dots, 12 wide on a 20 pitch, centred 588 down the 624 panel */
+.bbh-app-art__dots { position: absolute; left: 50%; transform: translateX(-50%);
+                 top: 94.231%; display: flex; gap: 8px; z-index: 2; }
+.bbh-app-art__dot {
+  width: 12px; height: 12px; padding: 0; border: 0; cursor: pointer;
+  border-radius: var(--bbh-radius-full); background: var(--bbh-bg-brand-tertiary);
+  transition: background-color .25s ease;
+}
+.bbh-app-art__dot.is-active { background: var(--bbh-bg-brand-primary); }
+/* the arrows straddle the panel's left and right edges, centred vertically */
+.bbh-app-art__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 8px;
+  border: 0; border-radius: var(--bbh-radius-full);
+  background: var(--bbh-bg-brand-primary); cursor: pointer;
+  transition: background-color .25s ease;
+}
+.bbh-app-art__arrow img { width: 24px; height: 24px; }
+.bbh-app-art__arrow:hover { background: var(--bbh-bg-brand-accent); }
+.bbh-app-art__arrow--prev { left: 1.932%; }
+.bbh-app-art__arrow--next { left: 93.237%; }
+
+/* ---------- reviewer credit (from the shared review card) --------- */
+.bbh-review__name {
+  font-family: var(--bbh-font-heading); letter-spacing: -0.022em;
+  font-size: var(--bbh-size-lg); line-height: var(--bbh-lh-lg); font-weight: 500;
+}
+.bbh-review__role { font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm); color: var(--bbh-text-secondary); }
+
+/* small one-off utilities, so nothing needs an inline style attribute */
+.bbh-review__name--block  { display: block; }
+.bbh-h3--bold             { font-weight: 700; }
+
+/* =================================================================
+   SCROLL ANIMATIONS
+   ================================================================= */
+/* The hidden start state is scoped to .js so the page is fully readable
+   if the script never runs; main.js also force-reveals after 2.5s. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .bbh-reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition: opacity .7s cubic-bezier(.22,.61,.36,1),
+                transform .7s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  .js .bbh-reveal--left  { transform: translate3d(-32px, 0, 0); }
+  .js .bbh-reveal--right { transform: translate3d(32px, 0, 0); }
+  .js .bbh-reveal--zoom  { transform: scale(.965); }
+  .js .bbh-reveal.is-visible { opacity: 1; transform: none; }
+
+  .js .bbh-stagger > * {
+    opacity: 0; transform: translate3d(0, 22px, 0);
+    transition: opacity .55s cubic-bezier(.22,.61,.36,1),
+                transform .55s cubic-bezier(.22,.61,.36,1);
+  }
+  .js .bbh-stagger.is-visible > * { opacity: 1; transform: none; }
+  /* the step is spelled out per child rather than carried in an inline
+     custom property — Gutenberg keeps classes, not inline styles */
+  .js .bbh-stagger > *:nth-child(1)  { transition-delay:   0ms; }
+  .js .bbh-stagger > *:nth-child(2)  { transition-delay:  55ms; }
+  .js .bbh-stagger > *:nth-child(3)  { transition-delay: 110ms; }
+  .js .bbh-stagger > *:nth-child(4)  { transition-delay: 165ms; }
+  .js .bbh-stagger > *:nth-child(5)  { transition-delay: 220ms; }
+  .js .bbh-stagger > *:nth-child(6)  { transition-delay: 275ms; }
+  .js .bbh-stagger > *:nth-child(7)  { transition-delay: 330ms; }
+  .js .bbh-stagger > *:nth-child(8)  { transition-delay: 385ms; }
+  .js .bbh-stagger > *:nth-child(9)  { transition-delay: 440ms; }
+  .js .bbh-stagger > *:nth-child(10) { transition-delay: 495ms; }
+  .js .bbh-stagger > *:nth-child(11) { transition-delay: 550ms; }
+  .js .bbh-stagger > *:nth-child(12) { transition-delay: 605ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bbh-reveal, .bbh-stagger > * { opacity: 1 !important; transform: none !important; }
+}
+/* failsafe: never leave content stuck invisible */
+.reveal-all .bbh-reveal,
+.reveal-all .bbh-stagger > * {
+  opacity: 1 !important; transform: none !important;
+  transition: none !important; transition-delay: 0s !important;
+}
+
+/* =================================================================
+   ICON METRICS
+   Figma exports each icon as the bare vector *leaf* at its true size
+   with preserveAspectRatio="none" — stretching it to the icon-box
+   size would distort it. Every rule below restores the original
+   two-part geometry: the outer icon box (width/height) and the leaf
+   inside it (box minus padding), taken straight from the Figma insets.
+
+   The mod-* module icons are the exception: they are exported from the
+   32x32 `iconFrame` instance itself, so they already carry the icon box
+   in their viewBox and need no inset at all.
+   ================================================================= */
+:where(.bbh) img[src$=".svg"] { box-sizing: border-box; }
+
+:where(.bbh) img[src*="/mod-"] { width:32px; height:32px; padding:0; }
+
+/* --- 16px boxes -------------------------------------------------- */
+:where(.bbh) img[src$="hdr-caret.svg"]  { width:16px; height:16px; padding:5.500px 2.500px 4.499px 2.500px; }
+:where(.bbh) img[src$="check.svg"]      { width:16px; height:16px; padding:3.749px 1.248px 2.749px 1.749px; }
+:where(.bbh) img[src$="ft-arrow.svg"]   { width:16px; height:16px; padding:3.000px 2.000px 2.999px 2.000px; }
+
+/* --- 20px boxes -------------------------------------------------- */
+:where(.bbh) img[src$="arrow-right.svg"]     { width:20px; height:20px; padding:3.750px 2.500px 3.749px 2.500px; }
+/* the 48px button draws the same arrow in a 24px frame — the leaf inset scales with it */
+.bbh-btn--lg img[src$="arrow-right.svg"] { width:24px; height:24px; padding:4.500px 3.000px 4.499px 3.000px; }
+:where(.bbh) img[src$="hdr-user.svg"]        { width:20px; height:20px; padding:1.872px 1.868px 2.486px 1.868px; }
+
+/* --- 32px boxes: the mini-card glyphs ------------------------------ */
+:where(.bbh) img[src$="feat-notepencil.svg"] { width:32px; height:32px; padding:3.500px; }
+:where(.bbh) img[src$="feat-chattext.svg"]   { width:32px; height:32px; padding:4px 3px; }
+:where(.bbh) img[src$="feat-textt.svg"]      { width:32px; height:32px; padding:6px; }
+:where(.bbh) img[src$="star-20.svg"]         { width:20px; height:20px; padding:1.250px 1.256px 1.878px 1.254px; }
+:where(.bbh) img[src$="star-20-outline.svg"] { width:20px; height:20px; padding:1.250px 1.251px 1.875px 1.250px; }
+
+/* --- 24px boxes -------------------------------------------------- */
+:where(.bbh) img[src$="play-circle.svg"] { width:24px; height:24px; padding:2.251px 2.251px 2.249px 2.249px; }
+:where(.bbh) img[src$="cta-arrow.svg"]   { width:24px; height:24px; padding:4.500px 3.000px 4.499px 2.999px; }
+:where(.bbh) img[src$="ft-apple.svg"]    { width:24px; height:24px; padding:0 2.998px 3.000px 1.498px; }
+:where(.bbh) img[src$="ft-android.svg"]  { width:24px; height:24px; padding:3.749px 1.500px 5.250px 1.500px; }
+:where(.bbh) img[src$="ft-globe.svg"]    { width:24px; height:24px; padding:2.251px 2.251px 2.249px 2.249px; }
+
+/* --- 32px boxes -------------------------------------------------- */
+:where(.bbh) img[src$="feat-video.svg"],
+:where(.bbh) img[src$="feat-images.svg"]        { width:32px; height:32px; padding:5.002px 3.002px 5.000px 2.998px; }
+:where(.bbh) img[src$="ft-facebook.svg"],
+:where(.bbh) img[src$="ft-linkedin.svg"]        { width:32px; height:32px; padding:3.002px 3.002px 2.998px 2.998px; }
+:where(.bbh) img[src$="feat-upload.svg"]        { width:32px; height:32px; padding:2.998px 4.000px 5.001px 4.000px; }
+:where(.bbh) img[src$="feat-filetext.svg"]      { width:32px; height:32px; padding:2.998px 5.002px 3.002px 4.998px; }
+:where(.bbh) img[src$="star-32.svg"]            { width:32px; height:32px; padding:2.000px 2.010px 3.004px 2.006px; }
+:where(.bbh) img[src$="ft-x.svg"]               { width:32px; height:32px; padding:4.000px 5.001px 3.985px 4.991px; }
+:where(.bbh) img[src$="ft-youtube.svg"]         { width:32px; height:32px; padding:4.998px 2.000px 5.002px 2.000px; }
+
+/* --- full-bleed marks -------------------------------------------- */
+:where(.bbh) img[src$="store-android.svg"],
+:where(.bbh) img[src$="store-apple.svg"]   { width:48px; height:48px; padding:0; }
+:where(.bbh) img[src$="logo-buddyboss.svg"],
+:where(.bbh) img[src$="ft-logo.svg"]       { width:160px; height:40px; padding:0; }
+:where(.bbh) img[src$="badge-capterra.svg"]{ width:32px; height:32px; padding:0; }
+
+/* ---------- testimonial masonry ----------------------------------- */
+.bbh-mp-reviews { background: var(--bbh-bg-brand-subtle); padding-block: 80px 88px; }
+.bbh-mp-reviews__title { max-width: 1018px; margin-inline: auto; text-align: center; margin-bottom: 40px;
+                     font-weight: 700; }   /* Heading/h2-bold, on both page families */
+/* Figma sets the columns explicitly rather than balancing them, and the split
+   it chose is not the one CSS multi-column arrives at — so three real columns. */
+.bbh-mp-rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.bbh-mp-rcol  { display: flex; flex-direction: column; gap: 24px; }
+.bbh-mp-review {
+  /* no fill — the card is the band's own colour, outlined only */
+  /* 0.5px stroke/brand/secondary over the peach band, not over white */
+  border: 1px solid #fbd6cc;
+  /* 23 + the inside border = Figma's 24 inset, which also gives the text the
+     362.67 it needs — at 361 the longest review takes an extra line */
+  border-radius: var(--bbh-radius-2xl); padding: 23px;
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative;
+}
+.bbh-mp-review__who { display: flex; align-items: center; gap: 12px; }
+.bbh-mp-review__who img { width: 56px; height: 56px; border-radius: var(--bbh-radius-full); }
+.bbh-mp-review__name { font-family: var(--bbh-font-heading); letter-spacing: -0.022em;
+                   font-size: var(--bbh-size-lg); line-height: var(--bbh-lh-lg); font-weight: 400; }
+.bbh-mp-review__stars { display: flex; gap: 4px; margin-top: 4px; }   /* 16 below the name, not 12 */
+.bbh-mp-review__stars img { width: 20px; height: 20px; }
+.bbh-mp-review__text { font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm); color: var(--bbh-text-primary); }
+.bbh-mp-review__src { position: absolute; top: 14.5px; right: 14.2px; width: 34px; height: 32px; object-fit: contain; }
+
+/* ============ HOMEPAGE — generated by tools/assemble-home.py ============ */
+
+/* ---------- page rhythm ----------
+   Every row of the homepage sits exactly 88px below the one before it — one
+   gap, no exceptions, from the hero to the last band.
+
+   The static page says `.hp > * + *`, matching on <main>'s children. A block
+   pattern has no siblings while it is being authored, so that cannot survive
+   the port. What does survive is the assembled page: every section root wears
+   .bbh, and in the post content they are each other's siblings — so the same
+   single gap is stated as an adjacency between two section roots.
+
+   The target sits in :where() so the rule weighs exactly what it weighs on the
+   static page — one class. `.hp > * + *` counts .hp and nothing else, which
+   ties it with every per-section `margin-top` and lets source order decide;
+   the sections are all declared below it, so a section that sets its own gap
+   wins. Written as a bare `.bbh + .bbh` it counts TWO classes, quietly
+   outranks all of them, and the one section that overrides the rhythm
+   (.bbh-facts drops to 64 under 1024px) never got its 64 back.
+
+   The footer is a template part in WordPress, not a sibling of anything here,
+   so the rule that gapped it off <main> is dropped with the footer. */
+.bbh + :where(.bbh) { margin-top: 88px; }
+
+/* ---------- 00-hero ---------- */
+/* =================================================================
+   HOMEPAGE 00 — HERO        Figma `hero` 3780:57832, 1600 x 800
+   -----------------------------------------------------------------
+   The 72px `navMenu` (3780:57919) is a sibling laid OVER this band, so
+   the section owns the full 800 and pulls itself up under the sticky
+   bar — the same trick .hero uses on the Features page, anchored to
+   --bbh-header-h rather than a hard 72 so the two stay in step.
+
+   Everything sits on the 1600 frame by absolute coordinate:
+     glow  -153,484  479x480   (Ellipse 110, clipped left and bottom)
+     art    716, 76  884x724   (frame `img`, clipped right and bottom)
+     copy   160,144  513x532
+   ================================================================= */
+.bbh-hero {
+  position: relative; overflow: hidden;
+  background: var(--bbh-bg-brand-subtle);
+}
+/* opt-in: make the header transparent in the parent theme, then add this class
+   to the hero group so the peach runs up behind the bar as it does in Figma */
+.bbh-hero--under-header {
+  margin-top: calc(-1 * var(--bbh-header-h));
+  padding-top: var(--bbh-header-h);
+}
+.bbh-hero__stage {
+  position: relative;
+  width: 100%; max-width: var(--bbh-page-max); margin-inline: auto;
+  height: calc(800px - var(--bbh-header-h));   /* the 800 band, less the bar */
+}
+
+/* --- decoration ---------------------------------------------------
+   Ellipse 110 is a 479x480 circle filled at 1% white and lit by a
+   #ef5d33 INNER shadow offset (-16,-40) at blur 68 — which is why the
+   glow pools on its lower-right arc and fades to nothing top-left. The
+   circle is flipped in Figma, so its reported origin (326,964) is the
+   far corner: the visible box runs -153..326 by 484..964 and the band
+   clips the rest. The SVG carries the filter, so it stays one asset.
+
+   The stage is capped at 1600 and centred, so past that width its
+   edges pull inward and a bleeding shape would come away from the
+   viewport. The subtracted overflow cancels that. */
+.bbh-hero__glow {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: calc(484px - var(--bbh-header-h));
+  left: calc(-153px - max(0px, 100vw - var(--bbh-page-max)) / 2);
+  width: 479px; height: 480px;
+}
+
+/* --- the collage --------------------------------------------------
+   Figma's `img` frame is one clipped composition — an orange plate, the
+   activity post, the member card, the reaction bubble, the group card
+   and the two course-price cards, several of which run past the frame
+   and are cut by it. Exported whole at 2x and un-composited, so the two
+   rounded left corners are real alpha and the peach reads through. */
+.bbh-hero__art {
+  position: absolute; z-index: 1; pointer-events: none;
+  top: calc(76px - var(--bbh-header-h));
+  right: calc(0px - max(0px, 100vw - var(--bbh-page-max)) / 2);
+  width: 884px; height: 724px;
+  border-radius: var(--bbh-radius-2xl) 0 0 var(--bbh-radius-2xl);
+}
+
+/* --- copy column -------------------------------------------------- */
+.bbh-hero__copy {
+  position: absolute; z-index: 2;
+  left: var(--bbh-gutter); top: calc(144px - var(--bbh-header-h));
+  width: 513px;
+  display: flex; flex-direction: column; gap: 40px; align-items: flex-start;
+}
+.bbh-hero__intro { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; width: 100%; }
+.bbh-hero__head  { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+
+/* The homepage eyebrow is a third variant again: the heading face at
+   24/32 Medium tracked 4% (0.96px), no rule and no pill. It is NOT the
+   Features hero's 12%/2.88px and NOT the .tag rule-and-label. */
+.bbh-hero__eyebrow {
+  font-family: var(--bbh-font-heading); font-weight: 500;
+  font-size: var(--bbh-size-xl); line-height: var(--bbh-lh-xl); letter-spacing: 0.96px;
+  color: var(--bbh-text-brand);
+}
+.bbh-hero__title { color: var(--bbh-text-primary); }
+/* The lede runs on text/default/secondary, a step darker than the
+   text/default/tertiary .body-md carries everywhere else.
+
+   Both faces here are Inter, so the first two lines break exactly where
+   the design breaks them. The third does not: Chrome sets that string
+   about 0.5% wider than Figma does and needs 515 where the design's box
+   is 513, which would drop "apps" onto a fourth line and push the CTAs
+   and the chips 24px down the column. The paragraph is given those two
+   pixels rather than inventing letter-spacing to claw them back —
+   nothing else in the column moves. */
+.bbh-hero__lede { color: var(--bbh-text-secondary); width: calc(100% + 2px); }
+.bbh-hero__actions { display: flex; gap: 24px; }
+
+/* --- review-platform chips ---------------------------------------- */
+.bbh-hero__ratings { display: flex; align-items: center; gap: 16px; }
+.bbh-rating {
+  display: flex; align-items: center; gap: 12px;
+  height: 72px; padding: 12px 16px;
+  background: var(--bbh-bg-default-surface);
+  border-radius: var(--bbh-radius-2xl);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+}
+/* Both marks sit on the same plate: radius 8, logo inset 6, ringed by a
+   0.5px stroke/default/secondary hairline.
+
+   That hairline is not a CSS border. Figma CENTRES the 0.5px stroke on
+   the 44px edge, so its render lays a half-strength line — #ececec, the
+   --bbh-stroke-hairline the project already keeps for exactly this composite
+   — one pixel OUTSIDE the box: the plate reads 46px wide at 175..220.
+   `border: 0.5px solid #d9d9d9` gets snapped by Chrome to a full 1px at
+   full strength (217 against the design's 236) and laid INSIDE, so the
+   plate reads 44 wide and twice as dark. Neither error moves a box, so
+   the geometry probe cannot see it. A 1px box-shadow ring restores both
+   the tone and the position and leaves the 44px layout box untouched. */
+.bbh-rating__logo {
+  flex: none; width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--bbh-radius-lg);
+  box-shadow: 0 0 0 1px var(--bbh-stroke-hairline);
+  overflow: hidden;
+}
+.bbh-rating__logo img { width: 32px; height: 32px; }
+/* Trustpilot's mark is a raster laid into a 32x31 slot, not a square */
+.bbh-rating__logo img[src$="badge-trustpilot.png"] { height: 31px; object-fit: cover; }
+.bbh-rating__body { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.bbh-rating__stars { display: flex; align-items: center; gap: 4px; }
+.bbh-rating__stars img { width: 16px; height: 16px; }
+.bbh-rating__score {
+  font-size: var(--bbh-size-md); line-height: var(--bbh-lh-md); font-weight: 600;
+  color: var(--bbh-text-secondary); white-space: nowrap;
+}
+
+/* =================================================================
+   RESPONSIVE
+   ================================================================= */
+/* Below the frame width the copy column keeps its 513 while the gutter
+   goes fluid, so the collage has to give ground or it would reach the
+   text. It shrinks on its own aspect and stays welded to the right. */
+@media (max-width: 1600px) {
+  .bbh-hero__art {
+    width: min(884px, calc(100vw - 700px));
+    height: auto; aspect-ratio: 884 / 724;
+  }
+}
+
+/* below the reflow threshold the band stacks like a normal section */
+@media (max-width: 1099px) {
+  .bbh-hero__stage {
+    height: auto; padding: 64px var(--bbh-gutter) 0;
+    display: flex; flex-direction: column; align-items: center; gap: 48px;
+  }
+  .bbh-hero__glow { display: none; }
+  .bbh-hero__copy { position: static; width: min(513px, 100%); }
+  .bbh-hero__art {
+    position: static; width: min(884px, 100%);
+    border-radius: var(--bbh-radius-2xl) var(--bbh-radius-2xl) 0 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .bbh-hero__stage { padding-top: 48px; gap: 40px; }
+  .bbh-hero__actions { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; max-width: 320px; }
+  .bbh-hero__actions .bbh-btn { width: 100%; }
+  .bbh-hero__ratings { flex-wrap: wrap; }
+}
+
+/* ---------- 01-logowall ---------- */
+/* =============================================================
+   Homepage — 01 LOGO WALL
+   Figma: Home / 3780:57831 / 4179:66170 — 1600 x 292
+   A centred heading over a single wrapping row of customer logos.
+   ============================================================= */
+
+/* The frame is a centred column: heading, 56 gap, the logo row, then a
+   40px pad on the bottom edge only — 36 + 56 + 160 + 40 = 292.
+   88 on top is the homepage's row rhythm (hero ends 800, this starts 888). */
+.bbh-logowall {
+  margin-top: 88px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+}
+
+/* Heading/h4-bold: the 28/36 heading face at Bold, where the shared .h4
+   default is SemiBold. Everything else about .h4 is already right. */
+.bbh-logowall__title {
+  font-weight: 700;
+  text-align: center;
+}
+
+/* One wrapping row across the 1280 content width — 48 between logos,
+   32 between the two lines. Row one measures 1159 with its gaps, so the
+   sixth logo wraps on its own: the two-row break in the design is the
+   wrap doing its job, not a hard split, and it needs no markup of its
+   own. Each line centres its logos on its 64px cross axis, which is
+   what drops the short 48 and 40 tall marks onto their Figma y. */
+.bbh-logowall__logos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 32px 48px;
+}
+
+/* Each logo keeps the exact box Figma gives it; the exports are cropped
+   to those boxes already, so contain is a no-op that only guards against
+   a re-export at a different aspect. */
+.bbh-logowall__logo {
+  flex: none;
+  display: block;
+  object-fit: contain;
+}
+
+.bbh-logowall__logo--bossbabe    { width: 199px; height: 48px; }
+.bbh-logowall__logo--stanford    { width: 168px; height: 64px; }
+.bbh-logowall__logo--fea         { width: 168px; height: 64px; }
+.bbh-logowall__logo--mit         { width: 204px; height: 64px; }
+.bbh-logowall__logo--lifemastery { width: 228px; height: 64px; }
+.bbh-logowall__logo--yale        { width: 228px; height: 64px; }
+.bbh-logowall__logo--chalene     { width: 126px; height: 48px; }
+.bbh-logowall__logo--foundr      { width: 132px; height: 40px; }
+
+/* 1024 is where style.css steps the type scale down (--bbh-size-2xl 28 -> 24),
+   so the 56px column gap and the 48px logo gap tighten on the same step
+   rather than on a breakpoint of this section's own. */
+@media (max-width: 1024px) {
+  .bbh-logowall { gap: 40px; }
+  .bbh-logowall__logos { gap: 24px 32px; }
+}
+
+/* ---------- 02-bento1 ---------- */
+/* =================================================================
+   HOME — COMMUNITY-FEATURES BENTO
+   Figma: Home / 3780:57831 / bento1 (3930:66113), 1600 x 1227.
+
+   Head (172) + 40 + a 1280-wide seven-tile bento (919) + 40 +
+   the "See All Features" button (56).
+
+   Nothing in style.css draws this: .minicards is a 3-up equal grid
+   with an icon and no artwork, .duo is a two-card row with a body
+   button, and neither carries the tile's 8px artwork inset. So the
+   tile is its own component; everything else here — .shell, .tag,
+   .h2/.h5/.h6, .body-sm/.body-md, .btn — is reused as it stands.
+   ================================================================= */
+
+.bbh-bento { display: flex; flex-direction: column; gap: 40px; }
+
+/* ---------- head -------------------------------------------------
+   align-items:flex-start makes each row hug its own text, which is
+   what Figma's 973-wide title frame is — a shrink-wrap, not a cap. */
+.bbh-bento__head {
+  display: flex; flex-direction: column; gap: 16px; align-items: flex-start;
+}
+/* The homepage sets its 46/56 section heads in Bold; .h2 ships SemiBold,
+   which is the Features-page weight. Same split the module pages have. */
+.bbh-bento__title { font-weight: 700; white-space: nowrap; }
+/* Body/large-medium — 16/24 at Medium in text/default/secondary. The
+   scale has the size but not this weight/colour pairing, and the box is
+   956 x 52 so the two lines break where the design breaks them. */
+.bbh-bento__lede {
+  width: 956px; height: 52px;
+  font-size: var(--bbh-size-md); line-height: var(--bbh-lh-md); font-weight: 500;
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- the bento ---------------------------------------------
+   Row A is 600 tall: a 630-wide tall tile beside a 630-wide column of
+   the 299 profile tile over a 281 pair. Row B is three equal tiles.
+   Every gap in the grid is 20. */
+.bbh-bento__grid { display: flex; flex-direction: column; gap: 20px; }
+.bbh-bento__row  { display: flex; gap: 20px; }
+.bbh-bento__row--a { height: 600px; }
+.bbh-bento__row--b { height: 299px; }
+.bbh-bento__col {
+  width: 630px; flex: none;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.bbh-bento__pair { display: flex; gap: 20px; flex: 1 1 auto; min-height: 0; }
+.bbh-bento__pair > .bbh-tile { flex: 1 1 0; min-width: 0; }
+.bbh-bento__row--b > .bbh-tile { flex: 1 1 0; min-width: 0; }
+
+/* ---------- one tile ---------------------------------------------
+   A gradient stroke can't be a border-color, so the border is left
+   transparent and painted by a second background layer clipped to the
+   border box, with the card's own surface clipped to the padding box
+   on top — the same construction .split and .fcard use.
+
+   This ramp is NOT --bbh-stops-peach: measured off the render at 1:1 the
+   flat pale band runs 15.1%-84.9%, not 26%-74%, and it reaches both
+   corners exactly (stroke/brand/strong at 0 and 100). Figma holds the
+   gradient in object space with a fixed 0.819/0.181 mix of the card's
+   two axes, so each tile size needs the CSS angle that reproduces it:
+       angle = 180 - atan(4.516 * height / width)
+   Hence one --bbh-hp-tile-angle per tile size below.
+
+   These strokes are drawn INSIDE the frame edge, not centred on it:
+   in the 1:1 render the profile card's top stroke fills row 212 whole
+   and leaves row 211 white, which a centred stroke could not do. So
+   the 8px Figma inset is 1px border + 7px padding on every tile, and
+   the artwork panel lands on its Figma coordinate. */
+.bbh-tile {
+  --bbh-hp-tile-angle: 107deg;
+  position: relative;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 7px;
+  border: 1px solid transparent;
+  border-radius: var(--bbh-radius-3xl);
+  background:
+    linear-gradient(var(--bbh-bg-default-surface), var(--bbh-bg-default-surface)) padding-box,
+    linear-gradient(var(--bbh-hp-tile-angle),
+      var(--bbh-stroke-brand-strong),
+      var(--bbh-stroke-brand-primary) 15.1%,
+      var(--bbh-stroke-brand-primary) 84.9%,
+      var(--bbh-stroke-brand-strong)) border-box;
+  overflow: hidden;
+}
+/* The tiles are static — the whole bento has no hover state in the
+   design, and the only control in the section is the button below it. */
+
+.bbh-tile__wrap {
+  flex: none;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 8px 16px;
+}
+.bbh-tile__title { color: var(--bbh-text-primary); }
+/* .body-md carries text/default/tertiary; every tile description here is
+   text/default/secondary, which .body-sm already is. */
+.bbh-tile__text { color: var(--bbh-text-secondary); }
+
+/* The artwork panel is one flattened export per tile — the peach plate,
+   its inset-shadow gradient shapes and the product screen composited as
+   Figma clips them. It takes the rest of the tile's height, and the
+   exports carry the panel's own 16px corners baked opaque, so the radius
+   has to be re-cut here. */
+.bbh-tile__art {
+  flex: 1 1 0; min-height: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top left;
+  border-radius: var(--bbh-radius-2xl);
+}
+
+/* ---------- tile variants ----------------------------------------- */
+/* 630 x 600, and the one tile with a fill of its own: a white ->
+   background/brand/muted -> white sweep running up-left. */
+.bbh-tile--feed {
+  --bbh-hp-tile-angle: 103.1deg;
+  width: 630px; flex: none;
+  background:
+    linear-gradient(-80.37deg,
+      var(--bbh-bg-default-surface) 0.63%,
+      var(--bbh-bg-brand-muted) 40.08%,
+      var(--bbh-bg-default-surface) 101.15%) padding-box,
+    linear-gradient(var(--bbh-hp-tile-angle),
+      var(--bbh-stroke-brand-strong),
+      var(--bbh-stroke-brand-primary) 15.1%,
+      var(--bbh-stroke-brand-primary) 84.9%,
+      var(--bbh-stroke-brand-strong)) border-box;
+}
+/* the tall tile insets its copy by 24/16 rather than 16/8, and sets the
+   title one step up the scale at Heading/h5-semiBold */
+.bbh-tile--feed .bbh-tile__wrap  { padding: 16px 24px; }
+.bbh-tile--feed .bbh-tile__title { font-weight: 600; }
+
+/* This card alone is stroked at 1.5, not 1 (node 3930:66119). Chrome floors
+   a used border-width to whole device pixels, so a 1.5px border paints as
+   1px AND costs the artwork panel its Figma inset. Draw the missing half
+   instead: a 1px ring on the padding box — the pixel column just inside the
+   border — carrying the same gradient at 50% alpha. Half-covering a pixel
+   with colour C is what a 1.5px stroke does to it, and over the border's own
+   column C composited on C is still C, so the outer pixel stays solid. The
+   1:1 render agrees to within 2/255 on all four edges. */
+.bbh-tile--feed::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  border-radius: calc(var(--bbh-radius-3xl) - 1px); padding: 1px; opacity: .5;
+  background: linear-gradient(var(--bbh-hp-tile-angle),
+    var(--bbh-stroke-brand-strong),
+    var(--bbh-stroke-brand-primary) 15.1%,
+    var(--bbh-stroke-brand-primary) 84.9%,
+    var(--bbh-stroke-brand-strong));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+}
+
+.bbh-tile--profile { --bbh-hp-tile-angle: 115deg;   height: 299px; flex: none; }  /* 630 x 299 */
+.bbh-tile--groups,
+.bbh-tile--forums  { --bbh-hp-tile-angle: 103.5deg; }                             /* 305 x 281 */
+.bbh-tile--wide    { --bbh-hp-tile-angle: 107deg; }                               /* 413 x 299 */
+
+/* ---------- the button -------------------------------------------- */
+.bbh-bento__cta { display: flex; }
+
+/* ---------- 03-courses ---------- */
+/* =================================================================
+   HOMEPAGE — SPLIT CARD  (shared rules live here; 04 and 06 add deltas)
+   03 courses      3863:63177  1600 x 772  green
+   04 memberships  3863:63099  1600 x 772  peach
+   06 gamification 3922:65583  1600 x 770  blue
+
+   Not an extension of .split. That component is the Features-page card:
+   1px stroke centred on the frame, flat white fill, 12/32 padding, 40 gap,
+   a 772 x 576 panel and a 114deg / 26-74 edge. Every one of those numbers
+   is different here (1.5px stroke drawn OUTSIDE the frame, a three-stop
+   tinted fill, 16/32 padding, 48 gap, a 740 x 528 panel, 116.565deg edge
+   with the pale run at 15.3-84.7), so overriding .split would have meant
+   replacing all of it and then fighting its four breakpoint blocks. This
+   is its own component; the colour variants below are the only deltas.
+   ================================================================= */
+
+/* Content rows on this page run on an exact 88px rhythm. */
+.bbh-split { margin-top: 88px; }
+
+/* ---------- section head: eyebrow + headline + lede --------------- */
+.bbh-split__head {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 16px; width: 956px; max-width: 100%;
+}
+.bbh-split__head > .bbh-h2,
+.bbh-split__lede { width: 100%; }
+/* Courses and Memberships set the 46/56 headline Bold; Gamification runs
+   the same size at SemiBold. See 06-gamification.css. */
+.bbh-split__head > .bbh-h2 { font-weight: 700; }
+.bbh-split__lede {
+  font-size: var(--bbh-size-md); line-height: var(--bbh-lh-md);
+  font-weight: 500; color: var(--bbh-text-secondary);
+  /* Figma fixes this text box at 52 for its two 24px lines. The spare 4px
+     is real: it is what puts the card on y=212 rather than y=208. */
+  height: 52px;
+}
+
+/* ---------- the card ---------------------------------------------- */
+.bbh-split__card {
+  position: relative;
+  margin-top: 40px;
+  display: flex; gap: 48px;
+  padding: 16px 16px 16px 32px;
+  border-radius: var(--bbh-radius-3xl);
+  /* Fill is a three-stop diagonal, near-white at both ends of the axis with
+     the tint peaking part-way along it. These are Figma's own numbers, read
+     off the frame, not a fit: all three variants declare the same angle and
+     the same three stop positions and vary only the middle colour. Both end
+     stops sit outside 0-100%, which is why the near-white corners never
+     quite reach pure white. */
+  background: linear-gradient(-69.72474deg,
+              #ffffff 0.62888%, var(--bbh-hp-split-tint) 40.083%, #ffffff 101.15%);
+}
+/* Figma draws this card's stroke 1.5px OUTSIDE the frame — not centred on
+   it, not inside. That is why the Figma export is 774 tall for a 772 frame.
+   A CSS border would eat 3px out of the card's own width and height, so the
+   ring is drawn by pseudo-elements sitting BEHIND the card's opaque fill
+   (z-index -1 on a box that is only position:relative, so they land after
+   the section's background and before the card's own). The card box stays
+   exactly 1280 x 560 and the section keeps its Figma height.
+
+   The ring cannot simply be laid out at inset -1.5px: Chrome snaps a
+   fractional inset on a positioned box to whole pixels and the outer
+   half-row Figma antialiases disappears. It CAN be CLIPPED at a fractional
+   offset — clip-path takes float geometry and antialiases the result — so
+   the box is laid out at a whole -2px and cut back to -1.5px, with the
+   25.5px outer radius the stroke actually has (24 fill + 1.5 stroke,
+   concentric).
+
+   A two-ring stand-in (1px at full strength plus a second 1px at 50%) is
+   exact on the straight edges but spreads 1.5px of ink over 2px at the
+   corners, so all the arcs read a third paler and a pixel wider. */
+.bbh-split__card::before {
+  content: '';
+  position: absolute; z-index: -1;
+  inset: -2px;
+  clip-path: inset(0.5px round calc(var(--bbh-radius-3xl) + 1.5px));
+  background: var(--bbh-hp-split-edge);
+  pointer-events: none;
+}
+
+.bbh-split__copy {
+  flex: none; width: 444px;
+  display: flex; flex-direction: column; gap: 24px;
+  padding-block: 40px;
+}
+.bbh-split__intro { display: flex; flex-direction: column; gap: 16px; }
+
+/* Dot bullets, not the check icons .checks draws: a 6px disc in the
+   variant's saturated colour, centred on a 22px line. */
+.bbh-split__list { display: flex; flex-direction: column; gap: 8px; }
+.bbh-split__list li {
+  display: flex; align-items: center; gap: 8px; padding-block: 1px;
+  font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm);
+  font-weight: 500; color: var(--bbh-text-primary);
+}
+.bbh-split__list li::before {
+  content: ''; flex: none; width: 6px; height: 6px;
+  border-radius: var(--bbh-radius-full);
+  background: var(--bbh-hp-split-dot);
+}
+
+.bbh-split__actions { display: flex; align-items: flex-start; gap: 16px; }
+
+/* The artwork frame clips its contents in Figma and its corners come back
+   with the card fill baked in, so the radius is re-cut here and the baked
+   pixels are clipped away. */
+.bbh-split__panel {
+  flex: none; width: 740px; height: 528px;
+  border-radius: 20px; overflow: hidden;
+}
+.bbh-split__panel img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- green variant (Courses) ------------------------------- */
+/* The fill tint is Figma's green/50 and the stroke's saturated colour is
+   green/500 — both read off the frame. style.css carries neither, so they
+   are literals here; green-100 (the pale run) and green-400 (the bullet)
+   are tokens and are used as such. Note the fill tint is a LIGHTER green
+   than the pale stroke colour: peach and blue both reuse one colour for
+   fill and stroke, this variant deliberately does not.
+   The stroke's stop positions are the one fitted number in this file —
+   Figma's codegen flattens a gradient stroke to its first stop, so the
+   run below was solved off the 1:1 render instead and then checked back
+   against it (worst pixel 3/255 along all four edges). */
+.bbh-split--green {
+  --bbh-hp-split-tint: #ebffee;              /* green/50  */
+  --bbh-hp-split-dot:  var(--bbh-green-400);
+  --bbh-hp-split-edge: linear-gradient(116.565deg,
+                   #009951 0.39%, var(--bbh-green-100) 15.3%,   /* green/500 */
+                   var(--bbh-green-100) 84.7%, #009951 99.61%);
+}
+
+/* ---------- narrower viewports ------------------------------------ */
+@media (max-width: 1439px) {
+  .bbh-split__head { width: 100%; }
+  .bbh-split__lede { height: auto; }
+  .bbh-split__card { gap: 32px; }
+  .bbh-split__copy { width: 38%; min-width: 340px; }
+  .bbh-split__panel { flex: 1 1 auto; width: auto; height: auto; aspect-ratio: 740 / 528; }
+}
+@media (max-width: 1023px) {
+  .bbh-split { margin-top: 64px; }
+  .bbh-split__card { flex-direction: column; gap: 0; padding: 16px; }
+  .bbh-split__copy { width: 100%; min-width: 0; order: 2; padding: 24px 8px 8px; }
+  .bbh-split__panel { width: 100%; order: 1; }
+}
+@media (max-width: 599px) {
+  .bbh-split__card { padding: 8px; margin-top: 32px; }
+  .bbh-split__copy { padding: 20px 8px 8px; }
+  .bbh-split__actions { flex-wrap: wrap; }
+}
+
+/* ---------- 04-memberships ---------- */
+/* =================================================================
+   HOMEPAGE — 04 memberships   Figma 3863:63099, 1600 x 772
+   The peach variant of the split card. Everything structural lives in
+   03-courses.css, which the assembler loads first; this file is only the
+   colour delta. The section is identical to Courses down to the pixel —
+   same 956 head, same 40 gap, same 1280 x 560 card, same 444 copy column
+   and 740 x 528 panel — so it deliberately adds no geometry.
+   ================================================================= */
+
+/* Figma declares the fill tint as background/brand/muted and the stroke as
+   stroke/brand/strong; both are tokens here. The stroke's stop positions
+   are the fitted pair described in 03-courses.css — the pale run is
+   stroke/brand/primary, which is the same colour as the fill tint, so this
+   variant reuses one peach for both. The artwork panel underneath is a
+   different, lighter colour again (background/brand/secondary #fe724a),
+   and it is baked into the exported PNG rather than set here. */
+.bbh-split--peach {
+  --bbh-hp-split-tint: var(--bbh-bg-brand-muted);
+  --bbh-hp-split-dot:  var(--bbh-bg-brand-primary);
+  --bbh-hp-split-edge: linear-gradient(116.565deg,
+                   var(--bbh-stroke-brand-strong) 0.39%, var(--bbh-stroke-brand-primary) 15.3%,
+                   var(--bbh-stroke-brand-primary) 84.7%, var(--bbh-stroke-brand-strong) 99.61%);
+}
+
+/* ---------- 05-review-1 ---------- */
+/* =============================================================
+   Homepage — 05 / 09 / 14 REVIEW BANDS
+   Figma: Home / 3780:57831 / 4443:82613, 4443:82653, 4443:82699
+   Three instances of one band, 1600 x 432 each.
+   Every shared rule lives here; 09 and 14 carry only their deltas.
+
+   What actually differs between the three: the portrait, and — on 09
+   only — the gap under the quote mark (20 instead of 16). The band
+   tint, the quote, the name, the role and every measurement are
+   identical in all three, so nothing else is parameterised.
+   ============================================================= */
+
+/* A tinted full-bleed row: 64 top and bottom around a 304-tall content
+   band — 64 + 304 + 64 = 432. 88 above is the homepage's row rhythm.
+   The tint is the band's own fill, so .shell sits inside it rather than
+   on the section, which is the opposite of the untinted rows. */
+.bbh-review {
+  margin-top: 88px;
+  padding-block: 64px;
+  background: var(--bbh-bg-default-subtle);
+}
+
+/* The portrait is the tall element, so the copy centres against it.
+   Figma rounds the copy block's top to a whole pixel — 224 tall in a
+   304 box lands on 40 — and align-items: center does the same. */
+.bbh-review__row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.bbh-review__media {
+  position: relative;
+  flex: none;
+  width: 304px;
+  height: 304px;
+}
+
+.bbh-review__portrait {
+  width: 304px;
+  height: 304px;
+  border-radius: var(--bbh-radius-3xl);
+  object-fit: cover;
+}
+
+/* 56px badge inset 16 from the portrait's bottom-right corner: a 48px
+   icon in 4px of padding. The fill is the brand orange at 60%, NOT the
+   --bbh-bg-brand-primary token flat — the portrait reads through it. The
+   glyph is a solid white disc with the triangle punched out of it, so
+   the play mark itself is that translucent orange showing through.
+
+   The badge also blurs what it sits on. Figma's background blur is not
+   in the MCP payload — no backdrop-blur class comes back — but the 1:1
+   renders settle it: on band 14 the portrait has a hard black/white
+   edge running under the badge and Figma smooths it to an even
+   terracotta, while an unblurred 60% fill lets the edge cut straight
+   through as a salmon wedge. Sweeping the radius against all three
+   renders bottoms out at 16px (measured across the annulus between the
+   white disc and the badge rim: 24.8 -> 16.0 mean abs on 14, 18.1 ->
+   11.7 on 09; 05 sits on a low-contrast backdrop and cannot
+   discriminate). Neither gate sees this: it moves no box, and the
+   annulus is too thin to light an 8px pagediff cell. */
+.bbh-review__play {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  padding: 4px;
+  border-radius: var(--bbh-radius-full);
+  background: rgba(239, 93, 51, .6);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+.bbh-review__play img { width: 48px; height: 48px; }
+
+/* Both marks are exported from the icon FRAME, so the 32/48 box is
+   already inside the viewBox and neither takes the leaf inset that
+   style.css hands every other svg. The file names matter as much as
+   this rule: those insets are applied by an [src$=] suffix match, so an
+   asset called hp-play-circle.svg is caught by the 24px play-circle.svg
+   rule and renders 4.5px small inside a box that still measures 48 —
+   invisible to a geometry probe. The hp-review-* names sidestep the
+   match and the explicit zero keeps a later rule from re-creating it. */
+.bbh-review__play img,
+.bbh-review__mark { padding: 0; }
+
+/* 687 is authored, not derived: the quote breaks after "with", "our"
+   and "reality." at that width and the three lines are what make the
+   copy block 156 tall. */
+.bbh-review__body {
+  flex: none;
+  width: 687px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bbh-review__quote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.bbh-review__mark { width: 32px; height: 32px; }
+
+/* Heading/h4-semiBold on text/default/primary — .h4 already draws it,
+   and the quote takes the full primary black rather than the secondary
+   grey the .review card's quote uses. */
+.bbh-review__text { color: var(--bbh-text-primary); }
+
+/* Heading/h6-medium over Body/small-regular, 4 apart: exactly what
+   .review__name and .review__role already carry, so they are reused
+   as-is and only the stacking is new. */
+.bbh-review__by {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Below 1180 the 687px measure no longer fits beside the 304px portrait,
+   so the copy column has to become fluid. `width: auto` alone is not
+   enough: `flex: none` is `0 0 auto`, so the item takes its max-content
+   width — the whole quote on one 1949px line — and refuses to shrink,
+   and `overflow-x: hidden` on body then clips the sentence mid-word.
+   It has to grow AND shrink, and min-width: 0 is what lets a flex item
+   go below its min-content width so the text wraps instead. */
+@media (max-width: 1180px) {
+  .bbh-review__body { flex: 1 1 auto; width: auto; min-width: 0; }
+}
+
+@media (max-width: 900px) {
+  .bbh-review { margin-top: 64px; padding-block: 48px; }
+  .bbh-review__row { flex-direction: column; align-items: flex-start; gap: 32px; }
+}
+
+/* ---------- 06-gamification ---------- */
+/* =================================================================
+   HOMEPAGE — 06 gamification   Figma 3922:65583, 1600 x 770
+   The blue variant of the split card. Structure comes from
+   03-courses.css; this file carries the colour delta and the one real
+   difference in the component: the copy column is three stacked
+   heading + paragraph blocks (Points / Achievements / Ranks) instead of
+   a lead-in and a bullet list.
+   ================================================================= */
+
+/* Figma declares the fill tint as blue/50 and the stroke as blue/500. Only
+   blue-50 exists in style.css, so blue/500 is a literal. The stroke's stop
+   positions are the fitted pair described in 03-courses.css; its pale run is
+   blue-50, the same colour as the fill tint. #008de6 is also the fill of the
+   artwork panel, which is baked into the exported PNG. */
+.bbh-split--blue {
+  --bbh-hp-split-tint: var(--bbh-blue-50);
+  --bbh-hp-split-edge: linear-gradient(116.565deg,
+                   #008de6 0.39%, var(--bbh-blue-50) 15.3%,
+                   var(--bbh-blue-50) 84.7%, #008de6 99.61%);
+}
+
+/* This section is 770, not 772: its head runs a 15px gap where the other
+   two run 16, and its headline is SemiBold where theirs is Bold. */
+.bbh-split--blue .bbh-split__head { gap: 15px; }
+.bbh-split--blue .bbh-split__head > .bbh-h2 { font-weight: 600; }
+
+/* Copy column: 32 between the block stack and the buttons, 24 between
+   blocks, 8 inside one. */
+.bbh-split--blue .bbh-split__copy { gap: 32px; }
+.bbh-split__blocks { display: flex; flex-direction: column; gap: 24px; }
+.bbh-split__block  { display: flex; flex-direction: column; gap: 8px; }
+/* .h5 is the right 24/32 heading but ships at Regular; here it is SemiBold. */
+.bbh-split__block > .bbh-h5 { font-weight: 600; }
+.bbh-split__block > p {
+  font-size: var(--bbh-size-md); line-height: var(--bbh-lh-md);
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- 07-facts ---------- */
+/* =================================================================
+   HOME — FACTS BAND
+   Figma: Home / 3780:57831 / facts (4225:67481), 1600 x 446.
+   A tinted price card holding the "$0" figure and five outlined
+   fact tiles. Nothing in style.css draws this: .stats/.stat is the
+   Features page's 4-up divider grid with the animated bar, a
+   different component in every respect but the name.
+   ================================================================= */
+
+/* Content rows on this page run on an exact 88px rhythm: gamification
+   ends at 5593, this band starts at 5681. Every other part carries its
+   own gap — the assembler only concatenates — and .section would put an
+   80 here, so the 88 is set directly. */
+.bbh-facts { margin-top: 88px; }
+
+.bbh-facts__card {
+  /* The card's stroke is a gradient, not a flat colour — full
+     stroke/default/tertiary at the top-left and bottom-right corners,
+     fading to the stroke/default/primary tint across the middle. Same
+     trick the module cards use: the border is left transparent and
+     painted by a second background layer clipped to the border box,
+     with the card's own surface clipped to the padding box on top.
+     Angle and stop positions are solved off the Figma render at 1:1
+     (107deg, flat band 18%-82%) — this card is 446 tall, so it does
+     not share --bbh-edge-tilt with the 599px module cards. */
+  --bbh-hp-edge: linear-gradient(107deg,
+              var(--bbh-stroke-default-tert), var(--bbh-stroke-default-prim) 18%,
+              var(--bbh-stroke-default-prim) 82%, var(--bbh-stroke-default-tert));
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bbh-bg-default-subtle), var(--bbh-bg-default-subtle)) padding-box,
+    var(--bbh-hp-edge) border-box;
+  border-radius: var(--bbh-radius-3xl);
+  /* This card's stroke measures INSIDE the frame edge, not centred on it:
+     in the 1:1 render x=159 is still page white, x=160 is the full stroke
+     and x=161 is the fill. So 1280x446 already includes the stroke, and
+     the pad gives up the border's width to keep the 24/40 content inset. */
+  padding: 39px 23px;
+  overflow: hidden;
+  display: flex; flex-direction: column; gap: 32px;
+}
+
+/* ---------- the figure ------------------------------------------- */
+.bbh-facts__head { display: flex; flex-direction: column; align-items: center; }
+
+.bbh-facts__label {
+  font-size: var(--bbh-size-xs); line-height: var(--bbh-lh-xs); font-weight: 500;
+  color: var(--bbh-text-tertiary); white-space: nowrap;
+}
+/* the 56/68 figure sits in its own 10px-padded, clipped frame */
+.bbh-facts__figure { padding-block: 10px; overflow: hidden; }
+.bbh-facts__price { color: var(--bbh-text-brand); white-space: nowrap; }
+/* gray/90 — this one line is the only place the page uses it, and
+   style.css has no token for it */
+.bbh-facts__lede { color: #1a1a1a; white-space: nowrap; }
+
+/* ---------- the five tiles --------------------------------------- */
+/* the row clips: Figma's clipsContent cuts the one tile shadow flat at
+   the row's bottom edge, and the render confirms it */
+.bbh-facts__tiles { display: flex; gap: 16px; overflow: hidden; }
+
+.bbh-facts__tile {
+  flex: 1 1 0; min-width: 0; height: 192px;
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bbh-bg-default-surface);
+  border: 1px solid var(--bbh-stroke-default-prim);
+  border-radius: var(--bbh-radius-2xl);
+  padding: 23px;              /* 24 less the border, as above */
+  overflow: hidden;
+}
+/* Figma hangs a soft shadow on the second tile only. Reproduced as drawn
+   rather than normalised away — it is 3/255 at its darkest. */
+.bbh-facts__tile--lift { box-shadow: 0 8px 24px -12px rgba(17, 35, 55, .1); }
+
+.bbh-facts__tile-head { display: flex; flex-direction: column; gap: 4px; }
+.bbh-facts__icon { width: 40px; height: 40px; }
+/* .h6 is SemiBold; the tile titles run the heading/h6-medium style */
+.bbh-facts__tile-title { font-weight: 500; white-space: nowrap; }
+
+/* ---------- narrower viewports ------------------------------------ */
+/* No mobile frame is drawn for this band, so these follow the house
+   pattern the other parts use. Both blocks are max-width, so the 1600
+   layout the gates measure is untouched.
+
+   The five tiles are the constraint: below ~1024 a fifth of the shell no
+   longer holds a 14/22 paragraph inside a fixed 192, and the tile's own
+   clip would swallow the last line. So the row wraps and the tiles size
+   to their copy instead. */
+@media (max-width: 1024px) {
+  .bbh-facts { margin-top: 64px; }
+  .bbh-facts__tiles { flex-wrap: wrap; }
+  .bbh-facts__tile { flex: 1 1 240px; height: auto; min-height: 192px; }
+  /* the head centres boxes, not text, so a lede that wraps needs this */
+  .bbh-facts__lede { white-space: normal; text-align: center; }
+}
+
+@media (max-width: 720px) {
+  .bbh-facts__card { padding: 31px 23px; }
+  .bbh-facts__tile { flex-basis: 100%; min-height: 0; }
+}
+
+/* ---------- 08-bento2 ---------- */
+/* =================================================================
+   HOME — 08 WHO IT IS FOR  ("Ten kinds of community, one platform")
+   Figma: Home / 3780:57831 / Feature Bento (3922:64299), 1600 x 882.
+
+   A peach band carrying an eyebrow + h2, then a carousel track of
+   equal cards — a tinted artwork panel over a title and a blurb —
+   with a "See All Features" button and the dot/arrow control cluster
+   below. Nothing in style.css draws this: .modcards and .gridcards
+   are bordered white tiles, and the .integrations carousel bar runs a
+   52px outlined prev against a filled next, which this one does not.
+
+   Geometry, straight off the frame: 64 top pad, head 102, 40, track
+   516, 40, control row 56, 64 bottom pad = 882.
+   ================================================================= */
+
+.bbh-bento2 {
+  margin-top: 88px;                       /* the homepage's 88px row rhythm */
+  background: var(--bbh-bg-brand-subtle);
+}
+
+/* The band is full-bleed but its contents are pinned to the 1600 frame.
+   Only the LEFT gutter is padding here: the card track is 1609 wide and
+   is meant to run off the frame's right edge, third card half-cut, the
+   way the comp draws it. The clip therefore belongs on this box (which
+   stops at 1600) and not on the section, which keeps growing with the
+   viewport. The control row puts its own 160 back on the right. */
+.bbh-bento2__inner {
+  max-width: var(--bbh-page-max);
+  margin-inline: auto;
+  padding: 64px 0 64px var(--bbh-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  overflow: hidden;
+}
+
+/* ---------- head -------------------------------------------------- */
+.bbh-bento2__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+/* Heading/h2-bold — this frame takes the 700 cut of 46/56, not the 600
+   the Features page uses at the same size. */
+.bbh-bento2__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- the carousel track ------------------------------------ */
+/* Three 515 cards on a 32 gap = 1609, which is 169 wider than the 1440
+   the gutter leaves. That overflow is the design: it is what tells you
+   the row scrolls. Only these three cards exist in the frame, so the
+   markup carries three; `is-current` marks the slide the comp shows. */
+.bbh-bento2__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  width: max-content;
+}
+
+.bbh-bento2__card {
+  flex: none;
+  width: 515px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* Figma hangs the shadow off the Cell frame, not off the artwork, so
+     it is a drop-shadow filter on the whole card rather than a box-shadow
+     on the panel — the same soft halo reaches the copy below. */
+  filter: drop-shadow(0 8px 12px rgba(17, 35, 55, .1));
+}
+
+.bbh-bento2__art {
+  position: relative;
+  height: 380px;
+  border-radius: var(--bbh-radius-2xl);
+  overflow: hidden;
+  background: var(--bbh-bg-brand-secondary);
+}
+
+/* The rounded triangle is an 833-square layer centred on the panel and
+   nudged 16.5 down; the artwork itself sits at 13.71%/9.6% inside that
+   square, i.e. 604.51 x 544.75 at (-44.797, -130.032) from the panel's
+   top-left:
+       left = 50% - (833/2 - 0.1371*833) = 257.5 - 302.297 = -44.797
+       top  = 50% + 16.5 - (833/2 - 0.096*833) = 190 - 320.032 = -130.032
+   Those four numbers are then expressed as percentages of the 515 x 380
+   panel, so the artwork scales WITH the panel rather than just staying
+   centred on it — the media queries below shrink the panel and the shape
+   has to come with it or the composition breaks. At 515 x 380 the
+   percentages resolve to the pixel values above exactly.
+   It carries its own inner shadows in the SVG — there is no fill to
+   recolour, the light edges ARE the shape. */
+.bbh-bento2__poly {
+  position: absolute;
+  left: -8.6985%;                         /* -44.797 / 515  */
+  top: -34.2189%;                         /* -130.032 / 380 */
+  width: 117.3806%;                       /*  604.51 / 515  */
+  height: 143.3553%;                      /*  544.75 / 380  */
+  max-width: none;
+  pointer-events: none;
+}
+
+.bbh-bento2__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* Heading/h5-semiBold: .h5 ships at 400, this one is the 600 cut */
+.bbh-bento2__card-title { font-weight: 600; }
+/* 16/24 on text/default/secondary — .body-md is the same metrics on the
+   lighter tertiary grey, so the colour is the only delta worth a class */
+.bbh-bento2__card-text {
+  font-size: var(--bbh-size-md);
+  line-height: var(--bbh-lh-md);
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- button + carousel controls ----------------------------- */
+.bbh-bento2__cta {
+  width: 100%;
+  padding-right: var(--bbh-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.bbh-bento2__controls {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.bbh-bento2__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bbh-bento2__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bbh-radius-full);
+  background: var(--bbh-bg-brand-tertiary);
+  transition: background-color .25s ease;
+}
+/* the comp lights the SECOND dot, not the first — reproduced as drawn */
+.bbh-bento2__dot.is-active { background: var(--bbh-bg-brand-primary); }
+
+.bbh-bento2__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Both arrows are filled discs here, unlike the outlined prev the
+   integrations bar uses. 40 disc, 8 pad, a 24 icon box, an 18 x 15
+   glyph centred in it. Colour-only hover — nothing moves. */
+.bbh-bento2__arrow {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--bbh-radius-full);
+  background: var(--bbh-bg-brand-primary);
+  transition: background-color .25s ease;
+}
+.bbh-bento2__arrow:hover { background: var(--bbh-bg-brand-accent); }
+/* Both shared white arrow files are bare 21 x 17.5 leaves exported from a
+   28px iconFrame (0.75 / 0.625 of the box, the same ratios arrow-right.svg
+   keeps in its 20px box). Figma frames these in a 24px iconFrame, so the
+   asset box is 24 and the glyph inside it is 18 x 15 — both have to
+   survive, which is what style.css's own icon table does with a box size
+   plus a leaf inset. The extra class in the selector is load-bearing:
+   style.css sizes every `img[src$="arrow-right.svg"]` into a 20px box and
+   carousel-arrow-right.svg matches that suffix; left alone it squeezed the
+   next arrow to 13 x 7.5 while the prev arrow stayed correct. */
+.bbh-bento2__nav .bbh-bento2__arrow img {
+  width: 24px;
+  height: 24px;
+  padding: 4.500px 3.000px 4.499px 3.000px;
+}
+
+/* ---------- narrower viewports -------------------------------------
+   Below the frame width the band keeps its clipped-track reading; past
+   1099 the gutter and the card width come in together so two cards and
+   a sliver still fit, and the head stops forcing one line. */
+@media (max-width: 1099px) {
+  .bbh-bento2__inner { padding: 56px 0 56px 40px; gap: 32px; }
+  .bbh-bento2__cta { padding-right: 40px; }
+  .bbh-bento2__title { white-space: normal; }
+  .bbh-bento2__card { width: 420px; }
+  .bbh-bento2__art { height: 310px; }
+}
+
+@media (max-width: 720px) {
+  .bbh-bento2__inner { padding: 48px 0 48px 24px; }
+  .bbh-bento2__cta { padding-right: 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .bbh-bento2__controls { width: 100%; justify-content: space-between; }
+  .bbh-bento2__card { width: 300px; }
+  .bbh-bento2__art { height: 222px; }
+}
+
+/* ---------- 09-review-2 ---------- */
+/* =============================================================
+   Homepage — 09 REVIEW BAND 2
+   Figma: Home / 3780:57831 / 4443:82653 — 1600 x 432
+   Delta only. Everything else comes from 05-review-1.css.
+   ============================================================= */
+
+/* This instance alone sets 20 under the quote mark instead of 16, which
+   makes its copy block 228 tall and drops the whole right-hand column
+   2px against the other two. It is a real difference in the design, not
+   a rounding artefact, so it is reproduced rather than normalised. */
+.bbh-review--roomy .bbh-review__quote { gap: 20px; }
+
+/* ---------- 10-migration ---------- */
+/* =============================================================
+   Homepage — 10 MIGRATION
+   Figma: Home / 3780:57831 / migration (4257:68639) — 1600 x 700.
+   Eyebrow + 46/56 heading, then one outlined card split into a
+   peach "map" panel (platform logos wired to the BuddyBoss mark)
+   and two SEPARATE labelled chip groups. The two groups carry the
+   whole point of the section — WordPress sources are handled by
+   built-in tools, hosted platforms by the agency team — so they
+   stay two blocks with two headings, never one merged list.
+   Nothing in style.css draws any of this.
+   ============================================================= */
+
+/* 100 (head) + 40 + 560 (card) = 700. 88 is the homepage row rhythm. */
+.bbh-migration {
+  margin-top: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Figma hugs the heading at 851; the h1 layer is a Heading/h2-bold,
+   i.e. 46/56 at Bold where the shared .h2 default is SemiBold. */
+.bbh-migration__head {
+  width: 851px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.bbh-migration__title { font-weight: 700; }
+
+/* ---------- the card --------------------------------------------
+   The 1.5px stroke is a gradient, not a flat colour: stroke/brand/strong
+   at the top-left and bottom-right corners, flattening to the
+   stroke/brand/primary tint across the middle. Solved off the Figma
+   render at 1:1 — the ink profile along all four edges fits a
+   116.565deg axis (dx:dy exactly 2:1 on this 1280x560 box) with the
+   flat band running 15%-85%, and the floor pixel reads #fcdfd6 on the
+   nose. This card is 560 tall, so it shares neither --bbh-edge-tilt nor
+   the 26%/74% of --bbh-stops-peach.
+   The stroke is NOT the usual inside border. Reading the render's ink
+   profile off all four edges: the pixel just outside the 1280x560 box
+   is at full strength and the one beyond it at exactly half, on every
+   edge — an OUTSIDE stroke of 1.5px, which is also why Figma exports
+   the frame at 702 rather than 700. So the card's own box and its
+   16/32/16 padding are the Figma numbers untouched, with nothing to
+   eat out of the pads.
+   Drawing that 1.5 is the awkward part: Chrome snaps a used border to
+   a whole device pixel (`border: 1.5px` paints 1px, two thirds of the
+   density) and snaps a 1.5px padding up to 2. So the ring is built as
+   two 1px masked rings instead — a solid one hard against the box, a
+   half-opacity one outside it — which lands the same 1.0 / 0.5 pair of
+   pixels the render has. The card must therefore NOT clip its overflow;
+   nothing inside it needs clipping anyway, since the map and both chip
+   rows clip themselves. */
+.bbh-migration__card {
+  --bbh-hp-mig-edge: linear-gradient(116.565deg,
+                  var(--bbh-stroke-brand-strong), var(--bbh-stroke-brand-primary) 15%,
+                  var(--bbh-stroke-brand-primary) 85%, var(--bbh-stroke-brand-strong));
+  position: relative;
+  width: 100%;
+  height: 560px;
+  border-radius: var(--bbh-radius-3xl);
+  padding: 16px 32px 16px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+.bbh-migration__card::before,
+.bbh-migration__card::after {
+  content: '';
+  position: absolute;
+  padding: 1px;
+  background: var(--bbh-hp-mig-edge);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+          mask-image: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+  -webkit-mask-clip: content-box, border-box;
+          mask-clip: content-box, border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+.bbh-migration__card::before {
+  inset: -1px;
+  border-radius: calc(var(--bbh-radius-3xl) + 1px);
+}
+.bbh-migration__card::after {
+  inset: -2px;
+  border-radius: calc(var(--bbh-radius-3xl) + 2px);
+  opacity: 0.5;
+}
+
+/* ---------- the map panel ---------------------------------------
+   Figma's fill is a two-stop linear gradient whose CSS form the plugin
+   hands over exactly; checked against the render, the sampled corners
+   land within one 8-bit step, so the odd stop percentages are kept
+   verbatim rather than rounded. */
+.bbh-migration__map {
+  position: relative;
+  flex: none;
+  width: 740px;
+  height: 528px;
+  border-radius: var(--bbh-radius-3xl);
+  overflow: hidden;
+  background: linear-gradient(245.334deg,
+              #ff9779 0.617%, #ffffff 104.91%);
+}
+
+/* One overlay carries all six dashed connectors: they are authored as
+   six separate vectors in Figma but they meet at shared junctions, so
+   composing them into a single 740x528 sheet keeps those joins exact
+   instead of leaving them to six independent offsets. They paint above
+   the logo plates, as five of the six do in Figma. */
+.bbh-migration__wires {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 740px;
+  height: 528px;
+  z-index: 1;
+}
+
+/* Every logo sits on its own translucent white plate. Figma pads each
+   plate 12 and lets the plate hug the logo, so the plate size is the
+   logo size + 24 and each one is a different box — 11 + 1px of rim here,
+   which keeps the outer box and the logo's origin on their Figma pixel.
+   The rim is the one thing the plugin's code drops: every plate carries a
+   1px light edge, and the render puts it at ~72-78% white over the panel,
+   so the fill is clipped to the padding box and the rim composites
+   against the gradient rather than on top of the fill.
+   Note the plate fill is NOT the flat white/0.4 the plugin reports: solved
+   against the panel gradient, the effective alpha ramps ~0.36 at a plate's
+   top-left to ~0.43 at its bottom-right (~0.04 to ~0.18 on the BuddyBoss
+   plate, whose nominal is 0.1) and the R channel sits ~1.3 BELOW the
+   backdrop, which no white overlay can do. There is an unemitted Figma
+   effect on every plate; the flat value is the closest CSS can get. */
+.bbh-migration__node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-clip: padding-box;
+}
+.bbh-migration__node-logo {
+  flex: none;
+  border-radius: var(--bbh-radius-sm);
+  object-fit: contain;
+}
+/* The panel and the chips share a logo wherever Figma shares the source
+   node, but three of the panel plates draw from a HIGHER-resolution export
+   than the 64px chip copy on disk, and each of those takes its own file:
+   Fluent Community (68px plate, 512px source), Circle (56px plate, 96px
+   source) and Mighty Networks (48px plate, 96px source). Feeding those
+   plates the 64px chip export costs real sharpness — the wordmark on the
+   Mighty plate goes visibly blocky at 64->48 where Figma runs 96->48 — so
+   the panel gets the Figma-sized copy and the chip keeps the shared file.
+   Kajabi, Skool and BuddyPress genuinely share one source and reuse it.
+   Fluent Community's plate additionally carries the -integrationLogos
+   component, which clips the same rounded-square favicon to a circle; the
+   circle is cut here rather than shipping a second drawing of it. */
+.bbh-migration__node-logo--round { border-radius: 50%; }
+
+.bbh-migration__node--buddypress { left: 274px; top:  52px; }
+.bbh-migration__node--buddypress .bbh-migration__node-logo { width: 40px; height: 40px; }
+
+.bbh-migration__node--mighty     { left:  75px; top: 152px; }
+.bbh-migration__node--mighty .bbh-migration__node-logo { width: 48px; height: 48px; }
+
+.bbh-migration__node--kajabi     { left: 562px; top: 220px; }
+.bbh-migration__node--kajabi .bbh-migration__node-logo { width: 44px; height: 44px; }
+
+.bbh-migration__node--circle     { left: 562px; top:  44px; }
+.bbh-migration__node--circle .bbh-migration__node-logo { width: 56px; height: 56px; }
+
+.bbh-migration__node--skool      { left: 582px; top: 394px; }
+.bbh-migration__node--skool .bbh-migration__node-logo { width: 48px; height: 48px; }
+
+.bbh-migration__node--fluent     { left: 106px; top: 370px; border-radius: var(--bbh-radius-3xl); }
+.bbh-migration__node--fluent .bbh-migration__node-logo { width: 68px; height: 68px; }
+
+/* The BuddyBoss plate is the odd one out twice over: a 24 radius and a
+   tenth-opacity white rather than four tenths. */
+.bbh-migration__node--bb {
+  left: 318px; top: 212px;
+  border-radius: var(--bbh-radius-3xl);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.bbh-migration__bb-mark { flex: none; width: 88px; height: 88px; }
+
+/* ---------- the two groups --------------------------------------
+   The column stretches to the card's 528 and centres its two groups
+   inside a 40px inset, which is what puts the first heading on y 103. */
+.bbh-migration__lists {
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding-block: 40px;
+}
+
+.bbh-migration__group { display: flex; flex-direction: column; }
+/* the two groups do not share a heading gap in the design — 8 above the
+   WordPress chips, 16 above the hosted ones */
+.bbh-migration__group--wp     { gap:  8px; }
+.bbh-migration__group--hosted { gap: 16px; }
+
+.bbh-migration__group-title { font-weight: 500; }
+
+.bbh-migration__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* 14/20 Inter Medium, not the 14/22 of .body-sm — the chips set their own
+   line height. The chip stroke is the one stroke on this section the render
+   puts INSIDE its box, so the 10/16 pads give up its 1px and read 9 and 15;
+   that lands every chip edge on the render's own pixel. */
+.bbh-migration__chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 15px 8px 9px;
+  border: 1px solid var(--bbh-stroke-brand-primary);
+  border-radius: var(--bbh-radius-lg);
+  background: var(--bbh-bg-default-surface);
+  overflow: hidden;
+  font-size: var(--bbh-size-sm);
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--bbh-text-brand);
+  white-space: nowrap;
+}
+/* the four label-only chips lose the logo and pad evenly */
+.bbh-migration__chip--plain { padding-left: 15px; }
+
+/* the hosted-platform labels drop to text/default/secondary; only the
+   WordPress group keeps the brand colour */
+.bbh-migration__chips--muted .bbh-migration__chip { color: var(--bbh-text-secondary); }
+
+.bbh-migration__chip-logo {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--bbh-radius-sm);
+  object-fit: contain;
+}
+
+/* ---------- narrow ------------------------------------------------
+   Below the 1280 content width the split stops fitting, so the two
+   groups drop under the map. The map is an absolutely positioned
+   diagram on a fixed 740x528 field, so it is stepped down whole with
+   zoom — which scales its layout box too — rather than by re-solving
+   seven plate positions per breakpoint. The two groups stay two
+   labelled blocks all the way down. */
+@media (max-width: 1180px) {
+  .bbh-migration__card {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 16px;
+  }
+  .bbh-migration__lists { align-self: stretch; padding-block: 0 16px; }
+}
+
+@media (max-width: 820px) {
+  .bbh-migration__map { zoom: 0.68; }
+}
+
+@media (max-width: 560px) {
+  .bbh-migration__map { zoom: 0.5; }
+  .bbh-migration__head { width: auto; }
+}
+
+/* ---------- 11-app ---------- */
+/* The Mobile App band is the same component the Features page carries, and
+   all of its styling already lives in style.css under .app-band. Nothing to
+   add here — the file exists so the part list reads complete. */
+
+/* ---------- 12-integrations ---------- */
+/* =============================================================
+   Homepage — 12 INTEGRATIONS
+   Figma: Home / 3780:57831 / integrations (4257:68198) — 1600 x 692
+
+   NOT the Features page's `.integrations` component. That one is the
+   tabbed carousel with copy, artwork and arrow nav; this is a flat
+   two-row logo grid ruled like graph paper. Nothing is shared but the
+   word, so everything below is its own `hp-` component.
+
+   The frame is three stacked blocks with an 8px gap between them:
+   head 0-172, the ruled grid 180-628, the button 636-692.
+   ============================================================= */
+
+.bbh-integrations {
+  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  max-width: var(--bbh-page-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- head -------------------------------------------------- */
+/* 956 wide and centred on the 1600 frame, not on the 1280 content
+   column — so it sets its own width rather than sitting in .shell.
+   Its own column runs at 16, where the shared .secthead runs 12; and
+   the eyebrow here is the plain 18/26 `.tag` rule-and-label, not the
+   two-rule pill .secthead swaps in. Hence a local head. */
+.bbh-integrations__head {
+  width: 100%;
+  max-width: 956px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Heading/h2-bold — the shared .h2 is SemiBold. The title shrink-wraps
+   to 786 in the design and is one line there, so it must not wrap. */
+.bbh-integrations__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Body/large-regular in text/default/secondary. .body-md is the right
+   16/24 but carries text/default/tertiary, so only the colour changes.
+   The Figma text box is a fixed 52 tall over two 24px lines — the extra
+   4 is the design's, not a rounding artefact, and it is what puts the
+   grid below on its 180. */
+.bbh-integrations__lede {
+  width: 100%;
+  height: 52px;
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- the ruled grid ---------------------------------------- */
+/* Two layers on one 448-tall box: the vertical rules span the whole 448
+   behind, the rows sit 70 down from the top and 71 up from the bottom.
+   The rows are their own frame in Figma rather than a child of the rule
+   frame, which is why this is padding on the parent and not a gap. */
+.bbh-integrations__grid {
+  position: relative;
+  width: 100%;
+  padding-block: 70px 71px;
+}
+
+/* Ten hairlines across the 1280 content column, first flush left and
+   last flush right — space-between reproduces the design's 142.111
+   pitch exactly. (Figma reports each one an x of 1 greater than it
+   draws: the rules are 448x1 rects rotated 90deg, and the reported x is
+   the rotated origin corner, not the visual left edge.) */
+.bbh-integrations__vrules {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  width: 100%;
+  max-width: var(--bbh-content-max);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Every rule in this section is the same fade: stroke/default/secondary
+   at the middle, running out to stroke/default/highest — which is pure
+   white, not transparent — at both ends. Figma puts the midpoint at
+   49.519%, so keep the stop off-centre rather than rounding it to 50. */
+.bbh-integrations__vrule {
+  flex: none;
+  width: 1px;
+  background: linear-gradient(to bottom,
+              var(--bbh-bg-default-surface),
+              var(--bbh-stroke-default-sec) 49.519%,
+              var(--bbh-bg-default-surface));
+}
+
+.bbh-integrations__rows {
+  position: relative;            /* paints over the rules layer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* The horizontals are full-bleed 1600, unlike the verticals: they run
+   past the content column to the frame edge. 1 + 16 + 120 + 16 + 1 + 16
+   + 120 + 16 + 1 = 307. */
+.bbh-integrations__rule {
+  flex: none;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right,
+              var(--bbh-bg-default-surface),
+              var(--bbh-stroke-default-sec) 49.519%,
+              var(--bbh-bg-default-surface));
+}
+
+/* 9 tiles across the 1280 column with 8px of end padding: 1264 of track
+   less 9 x 120 leaves 184, and space-between splits it into eight 23px
+   gaps — the 143 pitch the design lists tile by tile. */
+.bbh-integrations__row {
+  width: 100%;
+  max-width: var(--bbh-content-max);
+  margin: 0;
+  padding: 0 8px;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* The tile box and the glyph box are two different sizes: a 120 square
+   with a 12 radius, holding a 64 square of artwork. The tile carries no
+   fill in this design — the radius is the component's, and it is kept so
+   the box stays the one the design draws. */
+.bbh-integrations__tile {
+  flex: none;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--bbh-radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Each logo is exported from its own instance node at 3x, already
+   composed with whatever crop and mask that logo carries in the
+   component. contain keeps a re-export at another aspect from being
+   stretched to the square. */
+.bbh-integrations__logo {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+/* ---------- the button -------------------------------------------- */
+/* .btn--solid .btn--lg is already the design's fill button at 56 tall
+   with 24px side padding; it just needs to stop stretching to the
+   column's width as a flex item. */
+.bbh-integrations__cta {
+  flex: none;
+  align-self: center;
+}
+
+/* ---------- narrow ------------------------------------------------- */
+/* Below the content column the nine-up row cannot hold, so the rows wrap
+   and centre and the ruled backdrop drops out — a graph-paper grid whose
+   columns no longer line up with anything is worse than none. */
+@media (max-width: 1024px) {
+  .bbh-integrations__head { padding-inline: 24px; }
+  .bbh-integrations__title { white-space: normal; }
+  .bbh-integrations__lede { height: auto; }
+  .bbh-integrations__grid { padding-block: 40px; }
+  .bbh-integrations__vrules { display: none; }
+  .bbh-integrations__row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    padding-inline: 24px;
+  }
+  .bbh-integrations__tile { width: 96px; height: 96px; }
+  .bbh-integrations__logo { width: 56px; height: 56px; }
+}
+
+/* ---------- 13-themerl ---------- */
+/* =================================================================
+   HOMEPAGE — 13 DONE FOR YOU   Figma "Theme / RL" 4319:61445, 1600 x 1356
+
+   Eyebrow + 46/56 headline + a two-line lede, then two 1280 x 560 cards
+   stacked 32 apart. The first (4406:81078) puts the artwork LEFT and a
+   peach copy panel RIGHT; the second (4406:80248) flips it — copy LEFT,
+   artwork RIGHT — and runs blue. Confirmed against both nodes: the flip
+   is real, and it is carried by the asymmetric padding (16 on the artwork
+   side, 32 on the copy side), not by a row-reverse.
+
+   Geometry off the frame: head 172 (32 tag + 16 + 56 h2 + 16 + 52 lede),
+   32, card 560, 32, card 560 = 1356.
+
+   Nothing in style.css draws this card. .split is the Features-page shape
+   (stroke centred on the frame, flat white fill, 12/32 padding, 40 gap,
+   772 x 576 panel); .product-card and .duo__card are the 624-tall outlined
+   tiles. Every number here is different, so this is its own component.
+
+   It IS the same recipe the homepage's split cards (03/04/06) use — same
+   1.5px outside stroke, same three-stop tinted fill, same 740 x 528 panel,
+   same 444 copy column, same dot bullets. The constants below were fitted
+   independently off this node's render and agree with theirs to within a
+   degree; they are repeated rather than inherited so this fragment styles
+   and verifies on its own. Worth factoring into one shared block when the
+   page is assembled.
+   ================================================================= */
+
+.bbh-dfy {
+  margin-top: 88px;                     /* the homepage's 88px row rhythm */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ---------- section head: eyebrow + headline + lede --------------- */
+.bbh-dfy__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+/* Heading/h2-bold: 46/56 at the 700 cut, not the 600 .h2 ships. The frame
+   sets this line to 993 with no wrap, so it must not be allowed to break —
+   a second line would push both cards 56px down the section. */
+.bbh-dfy__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* Body/large-regular — 16/24 at 400 in text/default/secondary, NOT the
+   .body-md tertiary grey. Figma fixes the box at 52 for its two 24px
+   lines; that spare 4px is what puts the first card on y=204, not 200. */
+.bbh-dfy__lede {
+  width: 956px;
+  max-width: 100%;
+  height: 52px;
+  font-size: var(--bbh-size-md);
+  line-height: var(--bbh-lh-md);
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- the card ---------------------------------------------- */
+/* Fill is a three-stop diagonal: white at both ends of the axis with the
+   tint peaking at 59.8% along it, on a 110.3deg axis for this 1280 x 560
+   box. Measured off the comp at rmse 2.5/255 on the peach card and 1.1 on
+   the blue one — well under a visible step. */
+.bbh-dfy__card {
+  position: relative;
+  margin-top: 32px;
+  display: flex;
+  gap: 48px;
+  border-radius: var(--bbh-radius-3xl);
+  background: linear-gradient(110.3deg,
+              #ffffff 0%, var(--bbh-hp-dfy-tint) 59.8%, #ffffff 100%);
+}
+/* Artwork left / copy right, so the 16 pad is on the left and the 32 on
+   the right. The App card is the mirror. */
+.bbh-dfy__card--web { padding: 16px 32px 16px 16px; }
+.bbh-dfy__card--app { padding: 16px 16px 16px 32px; }
+
+/* Figma draws the stroke 1.5px OUTSIDE the frame — not centred on it and
+   not inside: the fill starts at x=160 exactly while the stroke's outer
+   edge measures 158.5. A CSS border would eat 3px out of the card's own
+   1280 x 560 and drag the section off its Figma height, so the ring is
+   drawn by a pseudo-element sitting BEHIND the card's opaque fill (z-index
+   -1 against a merely position:relative box, so it paints after the page
+   and before the card).
+
+   The ring cannot simply be laid out at inset -1.5px: Chrome snaps a
+   fractional inset on a positioned box to whole pixels, and the outer
+   half-row Figma antialiases disappears. It CAN be CLIPPED at a fractional
+   offset — clip-path takes float geometry and antialiases the result — so
+   the box is laid out at a whole -2px and cut back to -1.5px with the
+   25.5px outer radius the stroke actually has (24 fill + 1.5 stroke,
+   concentric; the outer arc was fitted off a 1:1 export of the card node at
+   R = 25.5 +/- 0.05).
+
+   The earlier two-ring stand-in — a full-strength 1px at -1px plus a second
+   1px at 50% at -2px — matched the straight edges exactly but spread the
+   stroke's 1.5px of ink over 2px at the corners, so all eight arcs read a
+   third paler and visibly softer than Figma's. Sampled along the corner
+   diagonal, its coverage error against the render was 0.077; this is
+   0.021. */
+.bbh-dfy__card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  clip-path: inset(0.5px round calc(var(--bbh-radius-3xl) + 1.5px));
+  z-index: -1;
+  background: var(--bbh-hp-dfy-edge);
+  pointer-events: none;
+}
+
+/* ---------- copy column ------------------------------------------- */
+/* 444 wide, 40 top and bottom inside the 528 row, and top-aligned: the
+   frame is a fixed 528 with only 374 (Web) / 406 (App) of content, so the
+   slack falls at the bottom. Do not centre it. */
+.bbh-dfy__copy {
+  flex: none;
+  width: 444px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 40px;
+}
+.bbh-dfy__intro { display: flex; flex-direction: column; gap: 16px; }
+
+/* Dot bullets, not the 16px check icons .checks draws: a 6px disc in the
+   card's saturated colour, centred on a 22px line inside a 24px row. */
+.bbh-dfy__list { display: flex; flex-direction: column; gap: 8px; }
+.bbh-dfy__list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 1px;
+  font-size: var(--bbh-size-sm);
+  line-height: var(--bbh-lh-sm);
+  font-weight: 500;
+  color: var(--bbh-text-primary);
+}
+.bbh-dfy__list li::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--bbh-radius-full);
+  background: var(--bbh-hp-dfy-dot);
+}
+
+.bbh-dfy__actions { display: flex; align-items: flex-start; gap: 16px; }
+
+/* ---------- artwork ----------------------------------------------- */
+/* The artwork frame clips its contents in Figma at a 20px radius, and its
+   corners come back from the export with the card fill baked in opaque.
+   Re-cutting the radius here clips those baked pixels away, so there is
+   nothing for uncomposite.py to solve. */
+.bbh-dfy__panel {
+  flex: none;
+  width: 740px;
+  height: 528px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.bbh-dfy__panel img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- peach variant (Web DFY) -------------------------------- */
+/* Pale run is stroke/brand/primary from 15.3% to 84.7% on a 116.565deg
+   axis, saturated ends stroke/brand/strong. The fill tint is that same
+   pale peach; the artwork panel underneath is the lighter brand secondary
+   and is baked into the export, not set here. */
+.bbh-dfy__card--web {
+  --bbh-hp-dfy-tint: var(--bbh-bg-brand-muted);
+  --bbh-hp-dfy-dot:  var(--bbh-bg-brand-primary);
+  --bbh-hp-dfy-edge: linear-gradient(116.565deg,
+                 var(--bbh-stroke-brand-strong) 0.39%, var(--bbh-stroke-brand-primary) 15.3%,
+                 var(--bbh-stroke-brand-primary) 84.7%, var(--bbh-stroke-brand-strong) 99.61%);
+}
+
+/* ---------- blue variant (App DFY) --------------------------------- */
+/* Same axis and stops in blue. The saturated end is Figma's blue/500,
+   #008de6 — the same fill the app artwork sits on — which style.css does
+   not mirror (it carries blue/50, /200, /300 only), so it is written out
+   here rather than invented as a token in a file this fragment may not
+   own. The pale run is blue/50. */
+.bbh-dfy__card--app {
+  --bbh-hp-dfy-tint: var(--bbh-blue-50);
+  --bbh-hp-dfy-dot:  #008de6;
+  --bbh-hp-dfy-edge: linear-gradient(116.565deg,
+                 #008de6 0.39%, var(--bbh-blue-50) 15.3%,
+                 var(--bbh-blue-50) 84.7%, #008de6 99.61%);
+}
+
+/* ---------- narrower viewports ------------------------------------ */
+@media (max-width: 1439px) {
+  .bbh-dfy__title { white-space: normal; }
+  .bbh-dfy__lede  { width: 100%; height: auto; }
+  .bbh-dfy__card  { gap: 32px; }
+  .bbh-dfy__copy  { flex: 0 1 38%; width: auto; min-width: 340px; }
+  .bbh-dfy__panel { flex: 1 1 auto; width: auto; height: auto; aspect-ratio: 740 / 528; }
+}
+@media (max-width: 1023px) {
+  .bbh-dfy__card--web,
+  .bbh-dfy__card--app { flex-direction: column; gap: 0; padding: 16px; }
+  /* artwork on top in both cards, whichever side it starts on */
+  .bbh-dfy__copy  { flex: none; width: 100%; min-width: 0; order: 2; padding: 24px 8px 8px; }
+  .bbh-dfy__panel { width: 100%; order: 1; }
+}
+@media (max-width: 599px) {
+  .bbh-dfy__card--web,
+  .bbh-dfy__card--app { padding: 8px; margin-top: 24px; }
+  .bbh-dfy__copy    { padding: 20px 8px 8px; }
+  .bbh-dfy__actions { flex-wrap: wrap; }
+}
+
+/* ---------- 14-review-3 ---------- */
+/* =============================================================
+   Homepage — 14 REVIEW BAND 3
+   Figma: Home / 3780:57831 / 4443:82699 — 1600 x 432
+   No deltas: this instance is geometrically identical to 05 and
+   differs only in its portrait, which the fragment supplies.
+   Every rule it needs is in 05-review-1.css.
+   ============================================================= */
+
+/* ---------- 15-difference ---------- */
+/* =================================================================
+   Homepage — 15 THE DIFFERENCE
+   Figma: Home / 3780:57831 / Frame 1000004971 (4319:59147) — 1600 x 779
+
+   A left-aligned head over one 1280 x 568 comparison table: a narrow
+   row-label column, three competitor columns and a highlighted
+   BuddyBoss column. Nothing in style.css draws a table — .stats is the
+   Features page's divider grid and .gridcards is a tile row — so the
+   whole component is local.
+
+   Geometry off the frame: head 0-171, table 211-779. Row heights are
+   NOT authored: every row is 16 + n*22 + 16 tall (54 for one line, 76
+   for two), which is why this is a real <table> and not a five-column
+   grid with fixed track heights — the columns that wrap are what set
+   the height of the row they sit in.
+
+   Two things the section render can mislead you about, both checked
+   against the node rather than the picture:
+
+   * The BuddyBoss column is NOT a raised card sitting proud of the
+     table. It is background/brand/accent on the header cell and
+     background/brand/subtle on the eight body cells, clipped by the
+     table's own 20px corners — top-right and bottom-right arcs are the
+     TABLE's radius, not the column's. There is no offset, no second
+     radius and no shadow: sampled at 1:1 the fill starts at y=211 and
+     x=1024 dead flush with the header row and the third column.
+   * The table's 1px stroke is a gradient and it sits OUTSIDE the frame
+     edge, not centred on it: the table box is 160..1440 / 211..779 and
+     the stroke paints 159..160 and 1440..1441, wholly outside. That is
+     why the stroke cannot be a CSS `border` here — a border would push
+     the section to 781. It is drawn as a ring behind the table instead,
+     which keeps the section on its 779.
+   ================================================================= */
+
+.bbh-diff {
+  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  /* Figma's background/default/primary. style.css carries the same hex
+     as --bbh-stroke-default-prim but has no background token for it, and
+     borrowing a stroke token for a fill would be a lie in the code. */
+  --bbh-hp-diff-head-bg: #e8e8e8;
+
+  /* The table stroke: stroke/brand/strong at the top-left and
+     bottom-right corners, flat stroke/brand/primary across the middle.
+     Solved off the render at 1:1 rather than guessed. Each of the four
+     edges gives an independent least-squares line through its ~200-480
+     ramp pixels; the two slopes fix the axis at 112.46deg (dx:dy =
+     2.419:1) and the four zero/one crossings fix the stops. Restated on
+     THIS ring's 1282 x 570 box — 0.19% longer a gradient line than the
+     1280 x 568 frame Figma solves on — they land at 0.7 / 15.6 / 84.9 /
+     99.8. The two end offsets are not rounding slack: dropping them to
+     0 and 100 widens both ramps by 5% and the ink runs 6 levels light at
+     the dark end. Floor pixel reads #fcdfd6 exactly. So this stroke
+     shares neither the --bbh-edge-tilt of the 599-tall module cards nor the
+     26%/74% of --bbh-stops-peach. */
+  --bbh-hp-diff-edge: linear-gradient(112.46deg,
+                    var(--bbh-stroke-brand-strong) 0.7%,
+                    var(--bbh-stroke-brand-primary) 15.6%,
+                    var(--bbh-stroke-brand-primary) 84.9%,
+                    var(--bbh-stroke-brand-strong) 99.8%);
+}
+
+/* ---------- head -------------------------------------------------- */
+/* The Head frame hugs its widest child, the lede at 956; the heading
+   shrink-wraps to 731 on one line. The eyebrow is the plain 18/26
+   rule-and-label `.tag`, not the centred pill .secthead swaps in. */
+.bbh-diff__head {
+  width: 956px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Heading/h2-bold — 46/56 at Bold, where the shared .h2 runs SemiBold. */
+.bbh-diff__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Body/large-regular: .body-md is already the right 16/24 but carries
+   text/default/tertiary, so only the colour changes. The node is fixed
+   at 52 over two 24px lines — the same 4px of slack the other homepage
+   ledes carry, and it is what puts the table on its 211. */
+.bbh-diff__lede {
+  width: 100%;
+  height: 52px;
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- the table --------------------------------------------- */
+/* 39, not 40: Figma reports the Head frame as 171 while its three
+   children stack to 172 (auto-layout rounding down off fractional text
+   boxes). The table still lands on y=211 and the section on 779. */
+.bbh-diff__tablewrap {
+  position: relative;
+  width: 100%;
+  margin-top: 39px;
+}
+
+/* The stroke ring. It is a plain filled rounded rect one pixel bigger
+   than the table on every side, painted underneath it: the cells tile
+   the table box edge to edge and are all opaque, so the only place the
+   ring shows is the 1px it sticks out — which is exactly where Figma's
+   outside stroke sits. Concentric radii (21 outside, 20 inside) keep
+   that 1px even around the corners. */
+.bbh-diff__edge {
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  background: var(--bbh-hp-diff-edge);
+}
+
+.bbh-diff__table {
+  position: relative;            /* paints over the ring */
+  width: 100%;
+  table-layout: fixed;           /* header row sets the five tracks */
+  border-collapse: separate;     /* so each row keeps its own 1px rule */
+  border-spacing: 0;
+  font-size: var(--bbh-size-sm);
+  line-height: var(--bbh-lh-sm);
+}
+
+/* Column tracks: 168 + 232 + 232 + 232 + 416 = 1280, written as the
+   share of 1280 each one is. On the 1600 frame they resolve to those
+   exact pixels; below it they shrink with the content column instead of
+   forcing the table wider than the box it sits in, which is what fixed
+   pixel tracks do under `table-layout: fixed`. */
+.bbh-diff__c0 { width: 13.125%; }   /* 168  */
+.bbh-diff__c1,
+.bbh-diff__c2,
+.bbh-diff__c3 { width: 18.125%; }   /* 232  */
+.bbh-diff__c4 { width: 32.5%; }     /* 416  */
+
+.bbh-diff__hcell,
+.bbh-diff__cell {
+  vertical-align: top;           /* Figma stacks every cell from the top */
+  text-align: left;              /* <th> defaults to centre */
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+
+/* ---------- header row -------------------------------------------- */
+/* 22 + 26 + 22 = 70. The 26 is the brand lockup, and the empty label
+   cell carries a zero-width space at the same 26 so the row keeps its
+   height even if the lockup is edited out. */
+.bbh-diff__hcell {
+  padding: 22px 16px 22px 0;
+  background: var(--bbh-hp-diff-head-bg);
+  font-weight: 600;
+  color: var(--bbh-text-primary);
+}
+.bbh-diff__hcell--label { padding-left: 28px; }
+
+.bbh-diff__spacer {
+  display: block;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #b8b8bf;                /* the design's own placeholder grey */
+}
+
+.bbh-diff__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* The mark is a 32px vector overflowing a 26px frame by 3 on every side
+   — Figma draws it that way, so the image keeps its 32 and gives the
+   overflow back as negative margin. The 10px gap then measures off the
+   26 the layout box is worth, putting the wordmark on its 1084. */
+.bbh-diff__mark {
+  width: 32px;
+  height: 32px;
+  margin: -3px;
+  flex: none;
+}
+.bbh-diff__brandname {
+  font-size: var(--bbh-size-lg);
+  line-height: var(--bbh-lh-lg);
+  font-weight: 700;
+  color: var(--bbh-text-light);
+  white-space: nowrap;
+}
+
+/* ---------- body rows --------------------------------------------- */
+/* 16 + 22 + 16 = 54 for a one-line row, 76 where a cell wraps. Figma
+   draws the row rule inside the frame edge without spending any of the
+   16, so the top pad gives the border its pixel back. */
+.bbh-diff__cell {
+  padding: 15px 16px 16px 0;
+  border-top: 1px solid var(--bbh-stroke-brand-primary);
+  background: var(--bbh-bg-default-surface);
+  color: var(--bbh-text-secondary);
+}
+.bbh-diff__label {
+  padding-left: 24px;
+  font-weight: 600;
+  color: var(--bbh-text-primary);
+}
+
+/* ---------- the BuddyBoss column ---------------------------------- */
+.bbh-diff__hcell.bbh-diff__bb {
+  padding: 22px 28px 22px 24px;
+  background: var(--bbh-bg-brand-accent);
+}
+.bbh-diff__cell.bbh-diff__bb {
+  padding: 15px 28px 16px 24px;
+  background: var(--bbh-bg-brand-subtle);
+  font-weight: 600;
+  color: var(--bbh-text-primary);
+}
+
+/* The table's own 20px corners. There is no clip on the table box —
+   the four corner cells carry the radius themselves, which is both
+   what Figma draws and what keeps the 1px ring visible behind them. */
+.bbh-diff__table thead .bbh-diff__hcell:first-child { border-top-left-radius: 20px; }
+.bbh-diff__table thead .bbh-diff__hcell:last-child { border-top-right-radius: 20px; }
+.bbh-diff__table tbody tr:last-child .bbh-diff__label { border-bottom-left-radius: 20px; }
+.bbh-diff__table tbody tr:last-child .bbh-diff__bb { border-bottom-right-radius: 20px; }
+
+/* ---------- narrow ------------------------------------------------ */
+@media (max-width: 1439px) {
+  .bbh-diff__head { width: 100%; }
+  .bbh-diff__title { white-space: normal; }
+  .bbh-diff__lede { height: auto; }
+}
+
+/* Below the content column the five tracks cannot compress without
+   crushing the copy into stacks of single words, so the table scrolls
+   inside its own box instead. The gradient ring goes with it: an
+   outside stroke on a scroller would be clipped away on three sides,
+   and a flat stroke/brand/primary edge is the honest degradation. */
+@media (max-width: 1023px) {
+  .bbh-diff__tablewrap {
+    overflow-x: auto;
+    border: 1px solid var(--bbh-stroke-brand-primary);
+    border-radius: 20px;
+  }
+  .bbh-diff__edge { display: none; }
+  .bbh-diff__table { min-width: 900px; }
+}
+
+/* ---------- 16-bento3 ---------- */
+/* =================================================================
+   Homepage — 16 BUILT YOUR WAY
+   Figma: Home / 3780:57831 / "Feature Bento" (4408:81312) — 1600 x 1052
+
+   A head block over a 2x2 bento: two rows of 408-tall cards, 24 apart,
+   each card a copy wrap over a full-bleed artwork panel. Nothing in
+   style.css draws this — .modcards/.gridcards are the module pages'
+   3-up icon tiles, and .split is the 1280-wide two-column band.
+   ================================================================= */
+
+.bbh-bento3 {
+  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* ---------- head -------------------------------------------------- */
+/* The Head frame hugs its widest child, which is the lede at 956. */
+.bbh-bento3__head {
+  width: 956px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Heading/h2-bold — 46/56 at Bold, where the shared .h2 runs SemiBold.
+   Figma sets the node to hug on one line. */
+.bbh-bento3__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Body/large-medium: the same 16/24 as .body-md but Medium, and on
+   text/default/secondary rather than the tertiary .body-md defaults to.
+   The node is fixed at 52 over two 24px lines — 4px of slack Figma
+   leaves under the second line, so it is set rather than derived. */
+.bbh-bento3__lede {
+  height: 52px;
+  font-weight: 500;
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- the bento grid ---------------------------------------- */
+.bbh-bento3__grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.bbh-bento3__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ---------- one card ----------------------------------------------
+   Two gradients per card, and both are angle-sensitive:
+
+   FILL — white -> background/brand/muted at 40% -> white, drawn on an
+   axis Figma stores in object space, so the CSS angle is different for
+   every card width. The three widths here (438 / 818 / 628) get the
+   three angles Figma resolves to.
+
+   EDGE — the stroke is a gradient too, not the flat stroke/brand/strong
+   Figma's codegen flattens it to: full brand at the top-left corner,
+   fading to stroke/brand/primary across a wide flat middle, full brand
+   again at the bottom-right. Solved off the 1:1 render on all three card
+   widths: the flat band runs 15%-85% (not the 26%-74% the module cards
+   in style.css use), and the axis is a constant object-space mix that
+   comes out as tan(angle) = -4.545 * height / width. That is a
+   different handle from --bbh-edge-tilt, so this section carries its own.
+
+   Figma's stroke sits INSIDE the frame and does not push the children —
+   the render confirms it (the card title's glyphs start at x+24, and the
+   card-2 screenshot at x+82, neither offset by the stroke). So the ring
+   is drawn as a masked overlay rather than a CSS border: a border would
+   both eat the padding and, at 1.5px on a 1x screen, get snapped by
+   Chrome to a whole pixel and come out a third too thin. */
+.bbh-bcard {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 408px;
+  border-radius: var(--bbh-radius-3xl);
+  background: var(--bbh-hp-b3-fill);
+  padding-top: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+/* The stroke: a gradient ring punched out with a content-box mask, so it
+   stays a ring around the 24px corners. z-index lifts it over the
+   artwork, which is where Figma paints it.
+
+   It takes two rings to land on 1.5px. Chrome snaps a mask's box to whole
+   device pixels, so a single 1.5px ring paints 2px solid — a third too
+   heavy. An opaque 1px ring under a half-opacity 2px one composites to
+   exactly what Figma antialiases: the first pixel at full strength, the
+   second at half. */
+.bbh-bcard::before,
+.bbh-bcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: var(--bbh-hp-b3-edge);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+.bbh-bcard::before { padding: 1px; }
+.bbh-bcard::after  { padding: 2px; opacity: .5; }
+
+.bbh-bcard--privacy {
+  flex: 0 0 438px;
+  --bbh-hp-b3-fill: linear-gradient(-80.157deg,
+                 var(--bbh-bg-default-surface) 0.629%,
+                 var(--bbh-bg-brand-muted) 40.083%,
+                 var(--bbh-bg-default-surface) 101.15%);
+  --bbh-hp-b3-edge: linear-gradient(103.29deg, var(--bbh-hp-b3-stops));
+}
+.bbh-bcard--appearance {
+  --bbh-hp-b3-fill: linear-gradient(-72.046deg,
+                 var(--bbh-bg-default-surface) 0.629%,
+                 var(--bbh-bg-brand-muted) 40.083%,
+                 var(--bbh-bg-default-surface) 101.15%);
+  --bbh-hp-b3-edge: linear-gradient(113.80deg, var(--bbh-hp-b3-stops));
+}
+.bbh-bcard--editors,
+.bbh-bcard--custom {
+  --bbh-hp-b3-fill: linear-gradient(-76.030deg,
+                 var(--bbh-bg-default-surface) 0.629%,
+                 var(--bbh-bg-brand-muted) 40.083%,
+                 var(--bbh-bg-default-surface) 101.15%);
+  --bbh-hp-b3-edge: linear-gradient(108.71deg, var(--bbh-hp-b3-stops));
+}
+.bbh-bcard {
+  --bbh-hp-b3-stops: var(--bbh-stroke-brand-strong),
+                 var(--bbh-stroke-brand-primary) 15%,
+                 var(--bbh-stroke-brand-primary) 85%,
+                 var(--bbh-stroke-brand-strong);
+}
+
+/* ---------- card copy --------------------------------------------- */
+.bbh-bcard__wrap {
+  width: 100%;
+  flex: none;
+  height: 120px;                            /* 16 + 32 + 8 + 48 + 16 */
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Heading/h5-semiBold — .h5 carries the 24/32 but defaults to Regular. */
+.bbh-bcard__title {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Body/large-regular on text/default/secondary. */
+.bbh-bcard__text {
+  margin: 0;
+  font-size: var(--bbh-size-md);
+  line-height: var(--bbh-lh-md);
+  color: var(--bbh-text-secondary);
+}
+
+/* ---------- the artwork panel --------------------------------------
+   The panel runs to the card's outer edge on three sides; its own 16px
+   radius never shows, because the card clips first at 24. Everything
+   inside is placed absolutely from the panel's top-left, exactly as
+   Figma reports it. */
+.bbh-bcard__art {
+  align-self: stretch;
+  height: 272px;
+  flex: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--bbh-radius-2xl);
+}
+
+/* The soft orange arc behind the screenshots: a 326 circle with almost
+   no fill, lit by two opposed inset shadows in background/brand/primary.
+   Only the sliver that misses the artwork above it is ever visible. */
+.bbh-b3-glow {
+  position: absolute;
+  width: 326px;
+  height: 326px;
+  border-radius: var(--bbh-radius-full);
+  background: rgba(255, 255, 255, .01);
+  box-shadow: inset -16px -20px 40px 0 var(--bbh-bg-brand-primary),
+              inset  16px  20px 40px 0 var(--bbh-bg-brand-primary);
+}
+.bbh-b3-glow--appearance { left: 628px;  top: 90px; }
+.bbh-b3-glow--editors    { left: -102px; top: 90px; }
+.bbh-b3-glow--custom     { left: -102px; top: 66px; }
+
+/* Every screenshot is an image fill Figma crops inside its frame, so the
+   frame is the clip and the img keeps the fill's own scale and offset. */
+.bbh-b3-shot {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+}
+.bbh-b3-shot img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+/* --- card 1: the shield -------------------------------------------- */
+.bbh-b3-privacy {
+  position: absolute;
+  left: -44px;
+  top: -15px;
+  width: 528px;
+  height: 352px;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* --- card 2: the community screenshot ------------------------------ */
+.bbh-b3-shot--appearance {
+  left: 82px;
+  top: 24px;
+  width: 655px;
+  height: 431px;
+  border-radius: var(--bbh-radius-2xl);
+  box-shadow: var(--bbh-shadow-img1);
+}
+.bbh-b3-shot--appearance img {
+  left: -14.97%;
+  top: -20.02%;
+  width: 131.62%;
+  height: 120.02%;
+}
+
+/* --- card 3: the editor screenshot, the tool pill, the block panel -- */
+.bbh-b3-shot--editors {
+  left: 67.274px;
+  top: 32px;
+  width: 525.452px;
+  height: 331px;
+}
+.bbh-b3-shot--editors img {
+  left: -4.07%;
+  top: -13.32%;
+  width: 106.98%;
+  height: 113.22%;
+}
+
+/* This one takes img2's offset and blur but at 20% black, not the 24%
+   --bbh-shadow-img2 in style.css carries — so it is written out. */
+.bbh-b3-shot--blocks {
+  left: 419px;
+  top: 24px;
+  width: 185px;
+  height: 321px;
+  border-radius: var(--bbh-radius-2xl);
+  box-shadow: -16px 0 32px rgba(0, 0, 0, .2);
+}
+.bbh-b3-shot--blocks img {
+  left: -142.24%;
+  top: -9.13%;
+  width: 380.18%;
+  height: 109.13%;
+}
+
+.bbh-b3-tools {
+  position: absolute;
+  left: 24px;
+  top: 113px;
+  width: 228px;
+  height: 64px;
+  padding: 8px 12px;
+  background: var(--bbh-bg-default-surface);
+  border-radius: var(--bbh-radius-xl);
+  /* Figma casts this one as a DROP_SHADOW rather than the layer shadow the
+     other four use, and the two are not interchangeable in Chrome: a
+     box-shadow is blurred with Skia's three-box approximation, a filter
+     goes through the real Gaussian. Measured against the render, the
+     filter halves the error on every side of the pill (MAE 4.97 -> 2.54
+     right, 5.61 -> 3.89 above, 4.73 -> 3.36 below), so it is the
+     primitive the design actually asks
+     for. The other four shadows here are layer shadows and stay box. */
+  filter: drop-shadow(12px 0 16px rgba(0, 0, 0, .24));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bbh-b3-tools__row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+/* Figma's 1px tile stroke sits inside the 48 square and paints over the
+   logo rather than shrinking it, so it is drawn as an inset outline —
+   a real border would crop 1px off every mark. */
+.bbh-b3-tool {
+  position: relative;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--bbh-radius-lg);
+  background: var(--bbh-bg-default-surface);
+  outline: 1px solid #eee;
+  outline-offset: -1px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* No object-fit here on purpose. Figma's codegen emits object-cover for
+   these fills, but tile 4's 340-square source goes into a 48x49 box and
+   the render shows it stretched to that box, not cropped to it — cover
+   measures worse against the render (8.15 -> 9.05 MAE over the tile), so
+   the leaf keeps the two explicit dimensions Figma reports for it. */
+.bbh-b3-tool img { display: block; max-width: none; }
+.bbh-b3-tool--1 img { width: 48.001px; height: 48.001px; }
+.bbh-b3-tool--3     { box-shadow: 0 10px 22px -8px rgba(17, 35, 55, .3); }
+.bbh-b3-tool--3 img { width: 48.178px; height: 48.178px; }
+.bbh-b3-tool--4 img { width: 48px; height: 49px; }
+
+.bbh-b3-tool__crop {
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 45px;
+  overflow: hidden;
+}
+.bbh-b3-tool__crop img {
+  position: absolute;
+  left: -76.26%;
+  top: 0;
+  width: 252.85%;
+  height: 100%;
+}
+
+/* --- card 4: the code editor ---------------------------------------
+   The one panel that is not on the peach tint: a #232323 window with a
+   #d7d7d7 hairline, 895 wide against a 628 card, so its right half is
+   clipped away. Like the tile strokes, its border is inside and does
+   not move the title bar, which is why it is an outline. */
+.bbh-b3-code {
+  position: absolute;
+  left: 57px;
+  top: 16px;
+  width: 895px;
+  height: 285px;
+  background: #232323;
+  border-radius: var(--bbh-radius-2xl);
+  outline: 1px solid #d7d7d7;
+  outline-offset: -1px;
+  box-shadow: var(--bbh-shadow-img1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* The rule under the bar is a 1.286 stroke that Figma likewise draws
+   without displacing anything — a border-bottom would pull the traffic
+   lights 0.6px off centre, so it is painted rather than laid out.
+
+   It cannot be an inset shadow either. The bar is 47.571 tall, so its
+   Figma edge falls at y=843.571 and the stroke covers 842.285-843.571:
+   71% of row 842, 57% of row 843. Chrome snaps the painted border box to
+   844 first and then insets the shadow from there, which lands the rule
+   on 842.71-844 — a whole row low, and the biggest non-font region in the
+   diff. Anchoring a two-stop gradient to the same snapped bottom edge
+   puts the two coverages back on the rows Figma antialiases them onto. */
+.bbh-b3-code__bar {
+  width: 100%;
+  flex: none;
+  height: 47.571px;
+  padding: 11.571px 16.714px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(to top,
+                rgba(121, 121, 121, .571) 0 1px,
+                rgba(121, 121, 121, .715) 1px 2px,
+                rgba(121, 121, 121, 0) 2px);
+}
+.bbh-b3-code__dot {
+  flex: none;
+  width: 10.286px;
+  height: 10.286px;
+  border-radius: var(--bbh-radius-full);
+}
+.bbh-b3-code__dot--red   { background: #ca5252; }
+.bbh-b3-code__dot--amber { background: #ffcc4d; }
+.bbh-b3-code__dot--green { background: #14ae5c; }
+
+.bbh-b3-code__body {
+  width: 100%;
+  flex: none;
+  padding-block: 11.571px;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  font-family: var(--bbh-font-body);
+  font-size: 14.786px;
+  line-height: 1.9;
+  font-weight: 500;
+}
+.bbh-b3-code__gutter {
+  flex: none;
+  padding-left: 16.714px;
+  padding-right: 14.143px;
+  color: var(--bbh-text-light);
+  text-align: right;
+}
+.bbh-b3-code__gutter span { display: block; }
+.bbh-b3-code__lines { flex: none; color: rgba(255, 255, 255, .82); }
+.bbh-b3-code__lines p { margin: 0; white-space: pre; }
+.bbh-b3-code__comment { color: rgba(255, 255, 255, .3); }
+.bbh-b3-code__fn      { color: #f5a56c; }
+.bbh-b3-code__str     { color: #8ed0a8; }
+
+/* ---------- 17-testimonials ---------- */
+/* =================================================================
+   HOME — TESTIMONIALS
+   Figma: Home / 3780:57831 / "Testimonial Header" (4431:82022),
+   1600 x 1524 — the tallest band on the page.
+
+   A peach full-bleed band: the centred two-line h2, a row of four
+   expert cards (4437:82291, 1280 x 380), then the three-column
+   review masonry (4431:82024, 1280 x 768).
+
+   The masonry is the same component the module pages ship, so it
+   runs on .mp-reviews / .mp-rgrid / .mp-rcol / .mp-review straight
+   out of style.css — only the band's own rhythm and the card stroke
+   are different here, and only those are restated below.
+   ================================================================= */
+
+/* Content rows run on an exact 88px rhythm and every part carries its
+   own gap — bento3 ends at 14004, this band starts at 14092. */
+.bbh-testimonials { margin-top: 88px; }
+
+/* The module pages set 40 under the headline; this band sets 48 —
+   the h2 ends at 192 and the expert row starts at 240. */
+.bbh-testimonials .bbh-mp-reviews__title { margin-bottom: 48px; }
+
+/* The masonry is 48 below the expert row: 620 -> 668. */
+.bbh-experts { margin-bottom: 48px; }
+
+/* ---------- expert cards (4437:82291) -----------------------------
+   Four equal columns that size to the tallest card: (1280 - 3*24)/4
+   = 302 each, and Stephen James' six-line quote sets all four to 380.
+   ------------------------------------------------------------------ */
+.bbh-experts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.bbh-expert {
+  /* stroke/regular 1px, and it is a RAMP, not a flat colour: the same
+     card edge the module pages draw — stroke/brand/strong at the
+     top-left and bottom-right corners, easing into stroke/brand/primary
+     and holding it flat across the middle. A 4x export of 4437:82292
+     reads #fcdfd6 straight down the top and bottom edges and climbs to
+     #ef5d33 at the two live corners, so the flat orange outline was
+     wrong on every edge. All four cards share one gradient transform in
+     Figma, so one rule serves the row.
+
+     Same two-layer recipe as .fcard: the fill paints to the padding box,
+     the ramp to the border box, and the border itself is transparent.
+     Angle and stops are measured off the export, not derived — these
+     cards inherit the row's transform, which is why 302 x 380 reads far
+     shallower than its own diagonal would give. */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bbh-bg-default-surface), var(--bbh-bg-default-surface)) padding-box,
+    linear-gradient(94.6deg,
+      var(--bbh-stroke-brand-strong), var(--bbh-stroke-brand-primary) 17.25%,
+      var(--bbh-stroke-brand-primary) 81%, var(--bbh-stroke-brand-strong)) border-box;
+  border-radius: 20px;
+  /* Figma's insets are 24 / 20 / 40 / 20 measured to the middle of the
+     stroke; CSS puts the border inside, so each edge gives back its 1px
+     and the content column still measures 302 - 40 - 2 = 262 wide,
+     which is what keeps the quotes on the design's line counts. */
+  padding: 23px 19px 39px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+/* The logo is right-aligned to the content column and top-aligned with
+   the portrait. Figma lets it overlap the name block (the details
+   column is up to 95px wider than the space left over) — the collision
+   is only ever horizontal, because the logo sits above the name rows.
+   Taking the logo out of flow reproduces that without squeezing the
+   text, which a flex row would do. */
+.bbh-expert__info { position: relative; min-height: 136px; }
+.bbh-expert__who { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.bbh-expert__portrait { width: 72px; height: 72px; border-radius: var(--bbh-radius-full); object-fit: cover; }
+.bbh-expert__id { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.bbh-expert__name { font-weight: 600; color: var(--bbh-text-primary); white-space: nowrap; }
+
+/* Body/small-regular + Body/small-semiBold, 4px apart — a flex row, not
+   a word space, so the gap stays exactly 4 whatever the face. */
+.bbh-expert__role {
+  display: flex; gap: 4px; white-space: nowrap;
+  font-size: var(--bbh-size-sm); line-height: var(--bbh-lh-sm);
+}
+.bbh-expert__role-pre { color: var(--bbh-text-secondary); }
+.bbh-expert__org { font-weight: 600; color: var(--bbh-text-primary); }
+
+.bbh-expert__logo { position: absolute; top: 0; right: 0; }
+/* Each logo is exported at its own displayed box — the Figma frames crop
+   the source art differently, so the sizes are not interchangeable. */
+.bbh-expert__logo--wpcrafter { width: 131px; height: 44px; }
+.bbh-expert__logo--plm       { width: 150px; height: 36px; }
+.bbh-expert__logo--atarim    { width: 104px; height: 30px; }
+.bbh-expert__logo--learndash { width: 141px; height: 28px; }
+
+/* Heading/h6-regular, black — the quote is set in the heading face at
+   the body's 18/26, not in Inter. */
+.bbh-expert__quote { margin: 0; }
+.bbh-expert__text {
+  font-family: var(--bbh-font-heading); letter-spacing: -0.022em;
+  font-size: var(--bbh-size-lg); line-height: var(--bbh-lh-lg);
+  font-weight: 400; color: var(--bbh-text-primary);
+}
+
+/* ---------- review masonry (4431:82024) ---------------------------
+   The homepage outlines these cards in stroke/brand/tertiary (#f59e85)
+   where the module pages use stroke/brand/secondary. At Figma's 0.5px
+   the stroke composites over the band's #fdefeb to #f9c6b8, which is
+   what the 1:1 render measures; style.css carries the module pages'
+   paler #fbd6cc, so it is restated here.
+   ------------------------------------------------------------------ */
+.bbh-testimonials .bbh-mp-review { border-color: #f9c6b8; }
+
+/* Figma fills every reviewer avatar with object-cover; the shared rule in
+   style.css only sizes the box, which is invisible while every avatar is
+   square — and av-dwayne.png is 1200 x 992, so it was being stretched 21%
+   taller than the design draws it. Scoped here rather than fixed in the
+   component, which this section may not touch. */
+.bbh-testimonials .bbh-mp-review__who img { object-fit: cover; }
+
+/* ---------- 18-pricing ---------- */
+/* =================================================================
+   HOME — PRICING CTA
+   Figma: Home / 3780:57831 / pricing (4443:82777), 1600 x 331.
+   The last band before the footer: a head column on the left and two
+   394px plan cards on the right. Nothing in style.css draws this —
+   .product-card is the Pricing page's tall plan card and .ctaband is
+   the peach closing bar, so the card here is local. Everything that
+   already exists is reused: .shell, .tag, .h2, .h3, .h6, .body-sm and
+   the .btn--solid .btn--lg pair.
+   ================================================================= */
+
+/* The content rows run on an exact 88px rhythm: testimonials end at
+   15616, this band starts at 15704. Each part carries its own gap —
+   the assembler only concatenates, and .section would put an 80 here. */
+.bbh-pricing { margin-top: 88px; }
+
+.bbh-pricing__row {
+  display: flex;
+  align-items: flex-start;   /* the head is 262 tall against the cards' 331 */
+  gap: 56px;
+}
+
+/* 1280 - 820 - 56 = 404, the width the h2 wraps to three lines at.
+   The basis is the Figma width rather than 0 so the two columns give
+   ground in proportion once the shell's gutter starts closing: at 1280
+   there is no free space and both land on their exact Figma widths, and
+   below it the head keeps roughly a third of the deficit instead of
+   being crushed to nothing by a rigid 820. */
+.bbh-pricing__head {
+  flex: 1 1 404px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* ---------- the two plan cards ----------------------------------- */
+/* 820 is the design width and the cap, but it has to be a shrinkable
+   basis: as a hard `width` it wins every fight with the head and eats
+   the whole content box before the stacking breakpoint is reached. */
+.bbh-pricing__plans {
+  flex: 0 1 820px;
+  max-width: 820px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.bbh-pricing__plan {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  /* Figma insets the card's content 24 from the outer edge and draws the
+     1px stroke inside that, so the border takes its width out of the
+     padding: 23 + 1 lands the icon plate on x/y 24 like the render. */
+  padding: 23px;
+  border: 1px solid transparent;
+  border-radius: 20px;      /* one-off — not on the --bbh-radius-* scale */
+  /* The card edge is not the flat brand stroke it reads as at a glance: it
+     is the same ramp the module cards use — full stroke/brand/strong in the
+     top-left and bottom-right corners, flat stroke/brand/primary across the
+     middle. A gradient cannot be a border-color, so the border is left
+     transparent and painted by a second background layer clipped to the
+     border box, with the surface clipped to the padding box on top.
+     Angle and stops are measured off the 394 x 331 node at 1:1 and the
+     ramp is not symmetric: 97deg, flat from 17.5% to 81%. This card does
+     not share --bbh-edge-tilt with the 1280-wide cards, and 97 is shallower
+     than its own diagonal because the pair inherits one gradient
+     transform across the row. */
+  background:
+    linear-gradient(var(--bbh-bg-default-surface), var(--bbh-bg-default-surface)) padding-box,
+    linear-gradient(97deg,
+      var(--bbh-stroke-brand-strong), var(--bbh-stroke-brand-primary) 17.5%,
+      var(--bbh-stroke-brand-primary) 81%, var(--bbh-stroke-brand-strong)) border-box;
+}
+
+/* `top` is a fixed 87 in Figma while the name column inside it hugs to
+   90 (56 plate + 8 + 26 label). The 3px is a real overflow in the
+   design, not a rounding error: honouring it is what puts the price
+   row on y 127 and keeps the card at 331 instead of 334. */
+.bbh-pricing__top {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  height: 87px;
+}
+.bbh-pricing__name {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.bbh-pricing__plate {
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: var(--bbh-radius-lg);
+  background: var(--bbh-bg-brand-subtle);
+}
+.bbh-pricing__plate img { width: 40px; height: 40px; }
+
+/* Heading face at 18/26 but Medium, where .h6 ships SemiBold, and in the
+   brand *fill* orange rather than the darkened text token. */
+.bbh-pricing__product {
+  font-weight: 500;
+  color: var(--bbh-bg-brand-secondary);
+}
+
+.bbh-pricing__body {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* One line, two sizes on a shared baseline: the 46/56 figure sets the
+   line box (hence the 56 the frame reports) and "Start at" rides in it
+   at 28/36. Both are Bold. .h2 already draws the heading face, the
+   46/56 and the -0.022em the substituted Inter needs, so the only type
+   delta here is the weight: this page's 46/56 is h2-bold, not the
+   SemiBold .h2 ships for the Features page. */
+.bbh-pricing__price {
+  font-weight: 700;
+  color: var(--bbh-text-primary);
+  white-space: nowrap;
+}
+.bbh-pricing__price-lead {
+  font-size: var(--bbh-size-2xl);
+  line-height: var(--bbh-lh-2xl);
+  color: var(--bbh-text-secondary);
+}
+
+/* body/small-medium — .body-sm is the regular weight of the same style */
+.bbh-pricing__note { font-weight: 500; }
+
+/* Stacked, the row's main axis is vertical, so every `flex` above now
+   reads as a HEIGHT basis. The head's `1 1 404px` would become a
+   404px-tall box that its own `overflow: hidden` then clips, and a
+   `1 0 0` basis collapses it to nothing — head, headline and lede all
+   disappear. Each column has to go back to hugging its content. */
+@media (max-width: 1080px) {
+  .bbh-pricing__row { flex-direction: column; gap: 40px; }
+  .bbh-pricing__head { flex: none; align-self: stretch; }
+  .bbh-pricing__plans { flex: none; width: 100%; max-width: none; align-items: stretch; }
+}
+@media (max-width: 720px) {
+  .bbh-pricing__plans { flex-direction: column; }
+  .bbh-pricing__plan { flex: none; }
+}
+
+/* ---------- token steps ------------------------------------------ */
+@media (max-width: 1600px) {
+  .bbh { --bbh-gutter: clamp(20px, 10vw, 160px); }
+}
+@media (max-width: 1440px) {
+  .bbh-app-band__inner { grid-template-columns: 38% 1fr; }
+}
+@media (max-width: 1180px) {
+  .bbh { --bbh-section-gap: 80px; }
+}
+@media (max-width: 1024px) {
+  .bbh { --bbh-size-5xl: 40px; --bbh-lh-5xl: 48px; --bbh-size-4xl: 34px; --bbh-lh-4xl: 42px; --bbh-size-3xl: 28px; --bbh-lh-3xl: 36px; --bbh-size-2xl: 24px; --bbh-lh-2xl: 32px; --bbh-size-xl:  21px; --bbh-lh-xl:  29px; }
+  .bbh-app-band__inner { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 720px) {
+  .bbh { --bbh-section-gap: 64px; --bbh-size-5xl: 32px; --bbh-lh-5xl: 40px; --bbh-size-4xl: 28px; --bbh-lh-4xl: 36px; --bbh-size-3xl: 24px; --bbh-lh-3xl: 32px; --bbh-size-2xl: 22px; --bbh-lh-2xl: 30px; --bbh-size-xl:  19px; --bbh-lh-xl:  27px; --bbh-size-lg:  17px; --bbh-lh-lg:  25px; }
+}
+
+/* ---------- reflows for the borrowed module components ------------ */
+@media (max-width: 1100px) {
+  .bbh-mp-rgrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .bbh-mp-rgrid { grid-template-columns: 1fr; }
+}
+
+/* =================================================================
+   WORDPRESS SHIM
+   The static page has none of this; core blocks do.
+   ================================================================= */
+/* Every section root carries the page background, because the tokens and the
+   body rule are declared on .bbh rather than on :root and <body>. That turns a
+   `z-index: -1` pseudo-element into an invisible one: with no stacking context
+   between it and the document root, it paints UNDER the section's own white
+   fill instead of over it, and the gradient ring around all three split cards
+   simply disappears — no box moves, so only a pixel diff finds it. Isolating
+   each root restores the static paint order: background, then the negative
+   layer, then the content. */
+.bbh { isolation: isolate; }
+
+/* core/buttons wraps its buttons in a container div. The static page has the
+   two hero buttons as direct children of a flex row with a 24px gap, and that
+   wrapper swallows it — the pair lands 20px too close with nothing else out of
+   place. `display: contents` takes the wrapper out of the box tree, so every
+   button is once again a child of whatever the design put it in, with that
+   parent's own gap and alignment. */
+.bbh .wp-block-buttons { display: contents; }
+.bbh .wp-block-button { margin: 0; }
+/* The anchor is only the label here — .bbh-btn styles the block itself, as it
+   does everywhere else in this sheet. Reset what wp-block-library and a
+   theme.json elements.button rule would otherwise put on it. */
+.bbh .wp-block-button__link {
+  background: none; border: 0; padding: 0; border-radius: 0; color: inherit;
+  font: inherit; letter-spacing: inherit; text-decoration: none;
+}
+/* The arrow was an <img> inside the anchor. core/button keeps plain text, so
+   it is redrawn as a pseudo-element — which also stops an editor deleting it
+   by accident. Box and leaf geometry are the ICON METRICS entry for
+   arrow-right.svg, unchanged: a 20px box with the leaf at 2.5 / 3.75, and the
+   24px box the 56px button draws the same file in. A button that had no icon
+   in the design is marked --noicon by gen-patterns.py. */
+.bbh-btn::after {
+  content: ''; flex: none; width: 20px; height: 20px;
+  background: url('../icon/arrow-right.svg') no-repeat 2.5px 3.75px / 15.001px 12.501px;
+}
+.bbh-btn--lg::after {
+  width: 24px; height: 24px;
+  background-position: 3px 4.5px; background-size: 18.001px 15.001px;
+}
+/* the arrow ships brand-coloured; on the brand fill it has to flip to white */
+.bbh-btn--solid::after { filter: brightness(0) invert(1); }
+.bbh-btn--noicon::after { content: none; }
+
+/* core/image wraps the picture in a <figure> and the design's class lands on
+   the wrapper, so a border-radius rounds a box the picture inside it ignores —
+   the three reviewer portraits came out square-cornered. Handing the radius
+   down is enough; sizing is already right, because the wrapper is what the
+   design's width/height rules were written for. */
+.bbh .wp-block-image > img { border-radius: inherit; }
+
+/* When the design put no class on the <img>, the figure core adds is a box the
+   static page never had, and it lands between a sized wrapper and the picture
+   it sizes. `.bbh-split__panel img` and `.bbh-dfy__panel img` both say
+   `height: 100%`, and a percentage height resolves against the figure — which
+   is auto — instead of against the panel, so five artwork panels fell back to
+   their natural aspect and stopped filling (and cropping to) their frame. At
+   1600 the frames happen to BE 740x528, the images' own aspect, so nothing
+   showed; below 1080 the panel stretches to the card and the picture came up
+   short by up to 300px.
+
+   `display: contents` drops the figure out of the box tree, so the picture is
+   once again a direct child of the wrapper the design wrote those rules for —
+   the same fix, for the same reason, as the core/buttons wrapper above. Only
+   the figures with no design class of their own qualify: where the class DID
+   land on the figure, that box is the one the design's rules size. */
+.bbh .wp-block-image:not([class*="bbh-"]) { display: contents; }
