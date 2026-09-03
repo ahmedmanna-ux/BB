@@ -1,0 +1,66 @@
+/* =============================================================
+   Homepage — 01 LOGO WALL
+   Figma: Home / 3780:57831 / 4179:66170 — 1600 x 292
+   A centred heading over a single wrapping row of customer logos.
+   ============================================================= */
+
+/* The frame is a centred column: heading, 56 gap, the logo row, then a
+   40px pad on the bottom edge only — 36 + 56 + 160 + 40 = 292.
+   88 on top is the homepage's row rhythm (hero ends 800, this starts 888). */
+.hp-logowall {
+  margin-top: 88px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+}
+
+/* Heading/h4-bold: the 28/36 heading face at Bold, where the shared .h4
+   default is SemiBold. Everything else about .h4 is already right. */
+.hp-logowall__title {
+  font-weight: 700;
+  text-align: center;
+}
+
+/* One wrapping row across the 1280 content width — 48 between logos,
+   32 between the two lines. Row one measures 1159 with its gaps, so the
+   sixth logo wraps on its own: the two-row break in the design is the
+   wrap doing its job, not a hard split, and it needs no markup of its
+   own. Each line centres its logos on its 64px cross axis, which is
+   what drops the short 48 and 40 tall marks onto their Figma y. */
+.hp-logowall__logos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 32px 48px;
+}
+
+/* Each logo keeps the exact box Figma gives it; the exports are cropped
+   to those boxes already, so contain is a no-op that only guards against
+   a re-export at a different aspect. */
+.hp-logowall__logo {
+  flex: none;
+  display: block;
+  object-fit: contain;
+}
+
+.hp-logowall__logo--bossbabe    { width: 199px; height: 48px; }
+.hp-logowall__logo--stanford    { width: 168px; height: 64px; }
+.hp-logowall__logo--fea         { width: 168px; height: 64px; }
+.hp-logowall__logo--mit         { width: 204px; height: 64px; }
+.hp-logowall__logo--lifemastery { width: 228px; height: 64px; }
+.hp-logowall__logo--yale        { width: 228px; height: 64px; }
+.hp-logowall__logo--chalene     { width: 126px; height: 48px; }
+.hp-logowall__logo--foundr      { width: 132px; height: 40px; }
+
+/* 1024 is where style.css steps the type scale down (--size-2xl 28 -> 24),
+   so the 56px column gap and the 48px logo gap tighten on the same step
+   rather than on a breakpoint of this section's own. */
+@media (max-width: 1024px) {
+  .hp-logowall { gap: 40px; }
+  .hp-logowall__logos { gap: 24px 32px; }
+}

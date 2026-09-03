@@ -1,0 +1,209 @@
+/* =================================================================
+   HOME — 08 WHO IT IS FOR  ("Ten kinds of community, one platform")
+   Figma: Home / 3780:57831 / Feature Bento (3922:64299), 1600 x 882.
+
+   A peach band carrying an eyebrow + h2, then a carousel track of
+   equal cards — a tinted artwork panel over a title and a blurb —
+   with a "See All Features" button and the dot/arrow control cluster
+   below. Nothing in style.css draws this: .modcards and .gridcards
+   are bordered white tiles, and the .integrations carousel bar runs a
+   52px outlined prev against a filled next, which this one does not.
+
+   Geometry, straight off the frame: 64 top pad, head 102, 40, track
+   516, 40, control row 56, 64 bottom pad = 882.
+   ================================================================= */
+
+.hp-bento2 {
+  margin-top: 88px;                       /* the homepage's 88px row rhythm */
+  background: var(--bg-brand-subtle);
+}
+
+/* The band is full-bleed but its contents are pinned to the 1600 frame.
+   Only the LEFT gutter is padding here: the card track is 1609 wide and
+   is meant to run off the frame's right edge, third card half-cut, the
+   way the comp draws it. The clip therefore belongs on this box (which
+   stops at 1600) and not on the section, which keeps growing with the
+   viewport. The control row puts its own 160 back on the right. */
+.hp-bento2__inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 64px 0 64px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  overflow: hidden;
+}
+
+/* ---------- head -------------------------------------------------- */
+.hp-bento2__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+/* Heading/h2-bold — this frame takes the 700 cut of 46/56, not the 600
+   the Features page uses at the same size. */
+.hp-bento2__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- the carousel track ------------------------------------ */
+/* Three 515 cards on a 32 gap = 1609, which is 169 wider than the 1440
+   the gutter leaves. That overflow is the design: it is what tells you
+   the row scrolls. Only these three cards exist in the frame, so the
+   markup carries three; `is-current` marks the slide the comp shows. */
+.hp-bento2__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  width: max-content;
+}
+
+.hp-bento2__card {
+  flex: none;
+  width: 515px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* Figma hangs the shadow off the Cell frame, not off the artwork, so
+     it is a drop-shadow filter on the whole card rather than a box-shadow
+     on the panel — the same soft halo reaches the copy below. */
+  filter: drop-shadow(0 8px 12px rgba(17, 35, 55, .1));
+}
+
+.hp-bento2__art {
+  position: relative;
+  height: 380px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--bg-brand-secondary);
+}
+
+/* The rounded triangle is an 833-square layer centred on the panel and
+   nudged 16.5 down; the artwork itself sits at 13.71%/9.6% inside that
+   square, i.e. 604.51 x 544.75 at (-44.797, -130.032) from the panel's
+   top-left:
+       left = 50% - (833/2 - 0.1371*833) = 257.5 - 302.297 = -44.797
+       top  = 50% + 16.5 - (833/2 - 0.096*833) = 190 - 320.032 = -130.032
+   Those four numbers are then expressed as percentages of the 515 x 380
+   panel, so the artwork scales WITH the panel rather than just staying
+   centred on it — the media queries below shrink the panel and the shape
+   has to come with it or the composition breaks. At 515 x 380 the
+   percentages resolve to the pixel values above exactly.
+   It carries its own inner shadows in the SVG — there is no fill to
+   recolour, the light edges ARE the shape. */
+.hp-bento2__poly {
+  position: absolute;
+  left: -8.6985%;                         /* -44.797 / 515  */
+  top: -34.2189%;                         /* -130.032 / 380 */
+  width: 117.3806%;                       /*  604.51 / 515  */
+  height: 143.3553%;                      /*  544.75 / 380  */
+  max-width: none;
+  pointer-events: none;
+}
+
+.hp-bento2__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* Heading/h5-semiBold: .h5 ships at 400, this one is the 600 cut */
+.hp-bento2__card-title { font-weight: 600; }
+/* 16/24 on text/default/secondary — .body-md is the same metrics on the
+   lighter tertiary grey, so the colour is the only delta worth a class */
+.hp-bento2__card-text {
+  font-size: var(--size-md);
+  line-height: var(--lh-md);
+  color: var(--text-secondary);
+}
+
+/* ---------- button + carousel controls ----------------------------- */
+.hp-bento2__cta {
+  width: 100%;
+  padding-right: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.hp-bento2__controls {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.hp-bento2__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hp-bento2__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--bg-brand-tertiary);
+  transition: background-color .25s ease;
+}
+/* the comp lights the SECOND dot, not the first — reproduced as drawn */
+.hp-bento2__dot.is-active { background: var(--bg-brand-primary); }
+
+.hp-bento2__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Both arrows are filled discs here, unlike the outlined prev the
+   integrations bar uses. 40 disc, 8 pad, a 24 icon box, an 18 x 15
+   glyph centred in it. Colour-only hover — nothing moves. */
+.hp-bento2__arrow {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--bg-brand-primary);
+  transition: background-color .25s ease;
+}
+.hp-bento2__arrow:hover { background: var(--bg-brand-accent); }
+/* Both shared white arrow files are bare 21 x 17.5 leaves exported from a
+   28px iconFrame (0.75 / 0.625 of the box, the same ratios arrow-right.svg
+   keeps in its 20px box). Figma frames these in a 24px iconFrame, so the
+   asset box is 24 and the glyph inside it is 18 x 15 — both have to
+   survive, which is what style.css's own icon table does with a box size
+   plus a leaf inset. The extra class in the selector is load-bearing:
+   style.css sizes every `img[src$="arrow-right.svg"]` into a 20px box and
+   carousel-arrow-right.svg matches that suffix; left alone it squeezed the
+   next arrow to 13 x 7.5 while the prev arrow stayed correct. */
+.hp-bento2__nav .hp-bento2__arrow img {
+  width: 24px;
+  height: 24px;
+  padding: 4.500px 3.000px 4.499px 3.000px;
+}
+
+/* ---------- narrower viewports -------------------------------------
+   Below the frame width the band keeps its clipped-track reading; past
+   1099 the gutter and the card width come in together so two cards and
+   a sliver still fit, and the head stops forcing one line. */
+@media (max-width: 1099px) {
+  .hp-bento2__inner { padding: 56px 0 56px 40px; gap: 32px; }
+  .hp-bento2__cta { padding-right: 40px; }
+  .hp-bento2__title { white-space: normal; }
+  .hp-bento2__card { width: 420px; }
+  .hp-bento2__art { height: 310px; }
+}
+
+@media (max-width: 720px) {
+  .hp-bento2__inner { padding: 48px 0 48px 24px; }
+  .hp-bento2__cta { padding-right: 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .hp-bento2__controls { width: 100%; justify-content: space-between; }
+  .hp-bento2__card { width: 300px; }
+  .hp-bento2__art { height: 222px; }
+}

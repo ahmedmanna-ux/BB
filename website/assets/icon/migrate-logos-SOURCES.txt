@@ -1,0 +1,15 @@
+Migration brand logos — downloaded 2026-08-25 from buddyboss.com (BuddyBoss's own hosted assets).
+
+/wp-content/uploads/2026/08/bb-migrate-buddypress.png      -> migrate-buddypress.png
+/wp-content/uploads/2026/08/bb-migrate-ultimate-member.png -> migrate-ultimate-member.png   (NOT used)
+/wp-content/uploads/2026/08/bb-migrate-higherlogic.png     -> migrate-higherlogic.png
+/wp-content/uploads/2026/08/bb-migrate-kajabi.png          -> migrate-kajabi.png
+/wp-content/uploads/2026/08/bb-migrate-thinkific.png       -> migrate-thinkific.png
+/wp-content/uploads/2026/06/circle-favicon.png             -> migrate-circle.png
+/wp-content/uploads/2026/06/fluent-community-favicon.png   -> migrate-fluentcommunity.png
+/wp-content/uploads/2026/06/mighty-networks-favicon.png    -> migrate-mightynetworks.png
+/wp-content/uploads/2026/06/peepso-favicon.png             -> migrate-peepso.png
+/wp-content/uploads/2026/06/skool-favicon.png              -> migrate-skool.png
+
+bbPress uses the file's own component 3647:74160 (-integrationLogos).
+No logo exists on buddyboss.com for wpForo, phpBB or XenForo.

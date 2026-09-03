@@ -1,0 +1,37 @@
+/* =================================================================
+   HOMEPAGE — 06 gamification   Figma 3922:65583, 1600 x 770
+   The blue variant of the split card. Structure comes from
+   03-courses.css; this file carries the colour delta and the one real
+   difference in the component: the copy column is three stacked
+   heading + paragraph blocks (Points / Achievements / Ranks) instead of
+   a lead-in and a bullet list.
+   ================================================================= */
+
+/* Figma declares the fill tint as blue/50 and the stroke as blue/500. Only
+   blue-50 exists in style.css, so blue/500 is a literal. The stroke's stop
+   positions are the fitted pair described in 03-courses.css; its pale run is
+   blue-50, the same colour as the fill tint. #008de6 is also the fill of the
+   artwork panel, which is baked into the exported PNG. */
+.hp-split--blue {
+  --hp-split-tint: var(--blue-50);
+  --hp-split-edge: linear-gradient(116.565deg,
+                   #008de6 0.39%, var(--blue-50) 15.3%,
+                   var(--blue-50) 84.7%, #008de6 99.61%);
+}
+
+/* This section is 770, not 772: its head runs a 15px gap where the other
+   two run 16, and its headline is SemiBold where theirs is Bold. */
+.hp-split--blue .hp-split__head { gap: 15px; }
+.hp-split--blue .hp-split__head > .h2 { font-weight: 600; }
+
+/* Copy column: 32 between the block stack and the buttons, 24 between
+   blocks, 8 inside one. */
+.hp-split--blue .hp-split__copy { gap: 32px; }
+.hp-split__blocks { display: flex; flex-direction: column; gap: 24px; }
+.hp-split__block  { display: flex; flex-direction: column; gap: 8px; }
+/* .h5 is the right 24/32 heading but ships at Regular; here it is SemiBold. */
+.hp-split__block > .h5 { font-weight: 600; }
+.hp-split__block > p {
+  font-size: var(--size-md); line-height: var(--lh-md);
+  color: var(--text-secondary);
+}

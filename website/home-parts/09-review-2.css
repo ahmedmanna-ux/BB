@@ -1,0 +1,11 @@
+/* =============================================================
+   Homepage — 09 REVIEW BAND 2
+   Figma: Home / 3780:57831 / 4443:82653 — 1600 x 432
+   Delta only. Everything else comes from 05-review-1.css.
+   ============================================================= */
+
+/* This instance alone sets 20 under the quote mark instead of 16, which
+   makes its copy block 228 tall and drops the whole right-hand column
+   2px against the other two. It is a real difference in the design, not
+   a rounding artefact, so it is reproduced rather than normalised. */
+.hp-review--roomy .hp-review__quote { gap: 20px; }

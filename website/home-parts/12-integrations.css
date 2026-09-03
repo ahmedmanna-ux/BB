@@ -1,0 +1,185 @@
+/* =============================================================
+   Homepage — 12 INTEGRATIONS
+   Figma: Home / 3780:57831 / integrations (4257:68198) — 1600 x 692
+
+   NOT the Features page's `.integrations` component. That one is the
+   tabbed carousel with copy, artwork and arrow nav; this is a flat
+   two-row logo grid ruled like graph paper. Nothing is shared but the
+   word, so everything below is its own `hp-` component.
+
+   The frame is three stacked blocks with an 8px gap between them:
+   head 0-172, the ruled grid 180-628, the button 636-692.
+   ============================================================= */
+
+.hp-integrations {
+  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  max-width: var(--page-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- head -------------------------------------------------- */
+/* 956 wide and centred on the 1600 frame, not on the 1280 content
+   column — so it sets its own width rather than sitting in .shell.
+   Its own column runs at 16, where the shared .secthead runs 12; and
+   the eyebrow here is the plain 18/26 `.tag` rule-and-label, not the
+   two-rule pill .secthead swaps in. Hence a local head. */
+.hp-integrations__head {
+  width: 100%;
+  max-width: 956px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Heading/h2-bold — the shared .h2 is SemiBold. The title shrink-wraps
+   to 786 in the design and is one line there, so it must not wrap. */
+.hp-integrations__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Body/large-regular in text/default/secondary. .body-md is the right
+   16/24 but carries text/default/tertiary, so only the colour changes.
+   The Figma text box is a fixed 52 tall over two 24px lines — the extra
+   4 is the design's, not a rounding artefact, and it is what puts the
+   grid below on its 180. */
+.hp-integrations__lede {
+  width: 100%;
+  height: 52px;
+  color: var(--text-secondary);
+}
+
+/* ---------- the ruled grid ---------------------------------------- */
+/* Two layers on one 448-tall box: the vertical rules span the whole 448
+   behind, the rows sit 70 down from the top and 71 up from the bottom.
+   The rows are their own frame in Figma rather than a child of the rule
+   frame, which is why this is padding on the parent and not a gap. */
+.hp-integrations__grid {
+  position: relative;
+  width: 100%;
+  padding-block: 70px 71px;
+}
+
+/* Ten hairlines across the 1280 content column, first flush left and
+   last flush right — space-between reproduces the design's 142.111
+   pitch exactly. (Figma reports each one an x of 1 greater than it
+   draws: the rules are 448x1 rects rotated 90deg, and the reported x is
+   the rotated origin corner, not the visual left edge.) */
+.hp-integrations__vrules {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Every rule in this section is the same fade: stroke/default/secondary
+   at the middle, running out to stroke/default/highest — which is pure
+   white, not transparent — at both ends. Figma puts the midpoint at
+   49.519%, so keep the stop off-centre rather than rounding it to 50. */
+.hp-integrations__vrule {
+  flex: none;
+  width: 1px;
+  background: linear-gradient(to bottom,
+              var(--bg-default-surface),
+              var(--stroke-default-sec) 49.519%,
+              var(--bg-default-surface));
+}
+
+.hp-integrations__rows {
+  position: relative;            /* paints over the rules layer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* The horizontals are full-bleed 1600, unlike the verticals: they run
+   past the content column to the frame edge. 1 + 16 + 120 + 16 + 1 + 16
+   + 120 + 16 + 1 = 307. */
+.hp-integrations__rule {
+  flex: none;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right,
+              var(--bg-default-surface),
+              var(--stroke-default-sec) 49.519%,
+              var(--bg-default-surface));
+}
+
+/* 9 tiles across the 1280 column with 8px of end padding: 1264 of track
+   less 9 x 120 leaves 184, and space-between splits it into eight 23px
+   gaps — the 143 pitch the design lists tile by tile. */
+.hp-integrations__row {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0;
+  padding: 0 8px;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* The tile box and the glyph box are two different sizes: a 120 square
+   with a 12 radius, holding a 64 square of artwork. The tile carries no
+   fill in this design — the radius is the component's, and it is kept so
+   the box stays the one the design draws. */
+.hp-integrations__tile {
+  flex: none;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Each logo is exported from its own instance node at 3x, already
+   composed with whatever crop and mask that logo carries in the
+   component. contain keeps a re-export at another aspect from being
+   stretched to the square. */
+.hp-integrations__logo {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+/* ---------- the button -------------------------------------------- */
+/* .btn--solid .btn--lg is already the design's fill button at 56 tall
+   with 24px side padding; it just needs to stop stretching to the
+   column's width as a flex item. */
+.hp-integrations__cta {
+  flex: none;
+  align-self: center;
+}
+
+/* ---------- narrow ------------------------------------------------- */
+/* Below the content column the nine-up row cannot hold, so the rows wrap
+   and centre and the ruled backdrop drops out — a graph-paper grid whose
+   columns no longer line up with anything is worse than none. */
+@media (max-width: 1024px) {
+  .hp-integrations__head { padding-inline: 24px; }
+  .hp-integrations__title { white-space: normal; }
+  .hp-integrations__lede { height: auto; }
+  .hp-integrations__grid { padding-block: 40px; }
+  .hp-integrations__vrules { display: none; }
+  .hp-integrations__row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    padding-inline: 24px;
+  }
+  .hp-integrations__tile { width: 96px; height: 96px; }
+  .hp-integrations__logo { width: 56px; height: 56px; }
+}

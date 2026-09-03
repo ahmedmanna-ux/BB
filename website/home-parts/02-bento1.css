@@ -1,0 +1,161 @@
+/* =================================================================
+   HOME — COMMUNITY-FEATURES BENTO
+   Figma: Home / 3780:57831 / bento1 (3930:66113), 1600 x 1227.
+
+   Head (172) + 40 + a 1280-wide seven-tile bento (919) + 40 +
+   the "See All Features" button (56).
+
+   Nothing in style.css draws this: .minicards is a 3-up equal grid
+   with an icon and no artwork, .duo is a two-card row with a body
+   button, and neither carries the tile's 8px artwork inset. So the
+   tile is its own component; everything else here — .shell, .tag,
+   .h2/.h5/.h6, .body-sm/.body-md, .btn — is reused as it stands.
+   ================================================================= */
+
+.hp-bento { display: flex; flex-direction: column; gap: 40px; }
+
+/* ---------- head -------------------------------------------------
+   align-items:flex-start makes each row hug its own text, which is
+   what Figma's 973-wide title frame is — a shrink-wrap, not a cap. */
+.hp-bento__head {
+  display: flex; flex-direction: column; gap: 16px; align-items: flex-start;
+}
+/* The homepage sets its 46/56 section heads in Bold; .h2 ships SemiBold,
+   which is the Features-page weight. Same split the module pages have. */
+.hp-bento__title { font-weight: 700; white-space: nowrap; }
+/* Body/large-medium — 16/24 at Medium in text/default/secondary. The
+   scale has the size but not this weight/colour pairing, and the box is
+   956 x 52 so the two lines break where the design breaks them. */
+.hp-bento__lede {
+  width: 956px; height: 52px;
+  font-size: var(--size-md); line-height: var(--lh-md); font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ---------- the bento ---------------------------------------------
+   Row A is 600 tall: a 630-wide tall tile beside a 630-wide column of
+   the 299 profile tile over a 281 pair. Row B is three equal tiles.
+   Every gap in the grid is 20. */
+.hp-bento__grid { display: flex; flex-direction: column; gap: 20px; }
+.hp-bento__row  { display: flex; gap: 20px; }
+.hp-bento__row--a { height: 600px; }
+.hp-bento__row--b { height: 299px; }
+.hp-bento__col {
+  width: 630px; flex: none;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.hp-bento__pair { display: flex; gap: 20px; flex: 1 1 auto; min-height: 0; }
+.hp-bento__pair > .hp-tile { flex: 1 1 0; min-width: 0; }
+.hp-bento__row--b > .hp-tile { flex: 1 1 0; min-width: 0; }
+
+/* ---------- one tile ---------------------------------------------
+   A gradient stroke can't be a border-color, so the border is left
+   transparent and painted by a second background layer clipped to the
+   border box, with the card's own surface clipped to the padding box
+   on top — the same construction .split and .fcard use.
+
+   This ramp is NOT --stops-peach: measured off the render at 1:1 the
+   flat pale band runs 15.1%-84.9%, not 26%-74%, and it reaches both
+   corners exactly (stroke/brand/strong at 0 and 100). Figma holds the
+   gradient in object space with a fixed 0.819/0.181 mix of the card's
+   two axes, so each tile size needs the CSS angle that reproduces it:
+       angle = 180 - atan(4.516 * height / width)
+   Hence one --hp-tile-angle per tile size below.
+
+   These strokes are drawn INSIDE the frame edge, not centred on it:
+   in the 1:1 render the profile card's top stroke fills row 212 whole
+   and leaves row 211 white, which a centred stroke could not do. So
+   the 8px Figma inset is 1px border + 7px padding on every tile, and
+   the artwork panel lands on its Figma coordinate. */
+.hp-tile {
+  --hp-tile-angle: 107deg;
+  position: relative;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 7px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-3xl);
+  background:
+    linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
+    linear-gradient(var(--hp-tile-angle),
+      var(--stroke-brand-strong),
+      var(--stroke-brand-primary) 15.1%,
+      var(--stroke-brand-primary) 84.9%,
+      var(--stroke-brand-strong)) border-box;
+  overflow: hidden;
+}
+/* The tiles are static — the whole bento has no hover state in the
+   design, and the only control in the section is the button below it. */
+
+.hp-tile__wrap {
+  flex: none;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 8px 16px;
+}
+.hp-tile__title { color: var(--text-primary); }
+/* .body-md carries text/default/tertiary; every tile description here is
+   text/default/secondary, which .body-sm already is. */
+.hp-tile__text { color: var(--text-secondary); }
+
+/* The artwork panel is one flattened export per tile — the peach plate,
+   its inset-shadow gradient shapes and the product screen composited as
+   Figma clips them. It takes the rest of the tile's height, and the
+   exports carry the panel's own 16px corners baked opaque, so the radius
+   has to be re-cut here. */
+.hp-tile__art {
+  flex: 1 1 0; min-height: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top left;
+  border-radius: var(--radius-2xl);
+}
+
+/* ---------- tile variants ----------------------------------------- */
+/* 630 x 600, and the one tile with a fill of its own: a white ->
+   background/brand/muted -> white sweep running up-left. */
+.hp-tile--feed {
+  --hp-tile-angle: 103.1deg;
+  width: 630px; flex: none;
+  background:
+    linear-gradient(-80.37deg,
+      var(--bg-default-surface) 0.63%,
+      var(--bg-brand-muted) 40.08%,
+      var(--bg-default-surface) 101.15%) padding-box,
+    linear-gradient(var(--hp-tile-angle),
+      var(--stroke-brand-strong),
+      var(--stroke-brand-primary) 15.1%,
+      var(--stroke-brand-primary) 84.9%,
+      var(--stroke-brand-strong)) border-box;
+}
+/* the tall tile insets its copy by 24/16 rather than 16/8, and sets the
+   title one step up the scale at Heading/h5-semiBold */
+.hp-tile--feed .hp-tile__wrap  { padding: 16px 24px; }
+.hp-tile--feed .hp-tile__title { font-weight: 600; }
+
+/* This card alone is stroked at 1.5, not 1 (node 3930:66119). Chrome floors
+   a used border-width to whole device pixels, so a 1.5px border paints as
+   1px AND costs the artwork panel its Figma inset. Draw the missing half
+   instead: a 1px ring on the padding box — the pixel column just inside the
+   border — carrying the same gradient at 50% alpha. Half-covering a pixel
+   with colour C is what a 1.5px stroke does to it, and over the border's own
+   column C composited on C is still C, so the outer pixel stays solid. The
+   1:1 render agrees to within 2/255 on all four edges. */
+.hp-tile--feed::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  border-radius: calc(var(--radius-3xl) - 1px); padding: 1px; opacity: .5;
+  background: linear-gradient(var(--hp-tile-angle),
+    var(--stroke-brand-strong),
+    var(--stroke-brand-primary) 15.1%,
+    var(--stroke-brand-primary) 84.9%,
+    var(--stroke-brand-strong));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+}
+
+.hp-tile--profile { --hp-tile-angle: 115deg;   height: 299px; flex: none; }  /* 630 x 299 */
+.hp-tile--groups,
+.hp-tile--forums  { --hp-tile-angle: 103.5deg; }                             /* 305 x 281 */
+.hp-tile--wide    { --hp-tile-angle: 107deg; }                               /* 413 x 299 */
+
+/* ---------- the button -------------------------------------------- */
+.hp-bento__cta { display: flex; }

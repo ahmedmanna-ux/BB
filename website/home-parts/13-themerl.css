@@ -1,0 +1,212 @@
+/* =================================================================
+   HOMEPAGE — 13 DONE FOR YOU   Figma "Theme / RL" 4319:61445, 1600 x 1356
+
+   Eyebrow + 46/56 headline + a two-line lede, then two 1280 x 560 cards
+   stacked 32 apart. The first (4406:81078) puts the artwork LEFT and a
+   peach copy panel RIGHT; the second (4406:80248) flips it — copy LEFT,
+   artwork RIGHT — and runs blue. Confirmed against both nodes: the flip
+   is real, and it is carried by the asymmetric padding (16 on the artwork
+   side, 32 on the copy side), not by a row-reverse.
+
+   Geometry off the frame: head 172 (32 tag + 16 + 56 h2 + 16 + 52 lede),
+   32, card 560, 32, card 560 = 1356.
+
+   Nothing in style.css draws this card. .split is the Features-page shape
+   (stroke centred on the frame, flat white fill, 12/32 padding, 40 gap,
+   772 x 576 panel); .product-card and .duo__card are the 624-tall outlined
+   tiles. Every number here is different, so this is its own component.
+
+   It IS the same recipe the homepage's split cards (03/04/06) use — same
+   1.5px outside stroke, same three-stop tinted fill, same 740 x 528 panel,
+   same 444 copy column, same dot bullets. The constants below were fitted
+   independently off this node's render and agree with theirs to within a
+   degree; they are repeated rather than inherited so this fragment styles
+   and verifies on its own. Worth factoring into one shared block when the
+   page is assembled.
+   ================================================================= */
+
+.hp-dfy {
+  margin-top: 88px;                     /* the homepage's 88px row rhythm */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ---------- section head: eyebrow + headline + lede --------------- */
+.hp-dfy__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+/* Heading/h2-bold: 46/56 at the 700 cut, not the 600 .h2 ships. The frame
+   sets this line to 993 with no wrap, so it must not be allowed to break —
+   a second line would push both cards 56px down the section. */
+.hp-dfy__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* Body/large-regular — 16/24 at 400 in text/default/secondary, NOT the
+   .body-md tertiary grey. Figma fixes the box at 52 for its two 24px
+   lines; that spare 4px is what puts the first card on y=204, not 200. */
+.hp-dfy__lede {
+  width: 956px;
+  max-width: 100%;
+  height: 52px;
+  font-size: var(--size-md);
+  line-height: var(--lh-md);
+  color: var(--text-secondary);
+}
+
+/* ---------- the card ---------------------------------------------- */
+/* Fill is a three-stop diagonal: white at both ends of the axis with the
+   tint peaking at 59.8% along it, on a 110.3deg axis for this 1280 x 560
+   box. Measured off the comp at rmse 2.5/255 on the peach card and 1.1 on
+   the blue one — well under a visible step. */
+.hp-dfy__card {
+  position: relative;
+  margin-top: 32px;
+  display: flex;
+  gap: 48px;
+  border-radius: var(--radius-3xl);
+  background: linear-gradient(110.3deg,
+              #ffffff 0%, var(--hp-dfy-tint) 59.8%, #ffffff 100%);
+}
+/* Artwork left / copy right, so the 16 pad is on the left and the 32 on
+   the right. The App card is the mirror. */
+.hp-dfy__card--web { padding: 16px 32px 16px 16px; }
+.hp-dfy__card--app { padding: 16px 16px 16px 32px; }
+
+/* Figma draws the stroke 1.5px OUTSIDE the frame — not centred on it and
+   not inside: the fill starts at x=160 exactly while the stroke's outer
+   edge measures 158.5. A CSS border would eat 3px out of the card's own
+   1280 x 560 and drag the section off its Figma height, so the ring is
+   drawn by a pseudo-element sitting BEHIND the card's opaque fill (z-index
+   -1 against a merely position:relative box, so it paints after the page
+   and before the card).
+
+   The ring cannot simply be laid out at inset -1.5px: Chrome snaps a
+   fractional inset on a positioned box to whole pixels, and the outer
+   half-row Figma antialiases disappears. It CAN be CLIPPED at a fractional
+   offset — clip-path takes float geometry and antialiases the result — so
+   the box is laid out at a whole -2px and cut back to -1.5px with the
+   25.5px outer radius the stroke actually has (24 fill + 1.5 stroke,
+   concentric; the outer arc was fitted off a 1:1 export of the card node at
+   R = 25.5 +/- 0.05).
+
+   The earlier two-ring stand-in — a full-strength 1px at -1px plus a second
+   1px at 50% at -2px — matched the straight edges exactly but spread the
+   stroke's 1.5px of ink over 2px at the corners, so all eight arcs read a
+   third paler and visibly softer than Figma's. Sampled along the corner
+   diagonal, its coverage error against the render was 0.077; this is
+   0.021. */
+.hp-dfy__card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  clip-path: inset(0.5px round calc(var(--radius-3xl) + 1.5px));
+  z-index: -1;
+  background: var(--hp-dfy-edge);
+  pointer-events: none;
+}
+
+/* ---------- copy column ------------------------------------------- */
+/* 444 wide, 40 top and bottom inside the 528 row, and top-aligned: the
+   frame is a fixed 528 with only 374 (Web) / 406 (App) of content, so the
+   slack falls at the bottom. Do not centre it. */
+.hp-dfy__copy {
+  flex: none;
+  width: 444px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 40px;
+}
+.hp-dfy__intro { display: flex; flex-direction: column; gap: 16px; }
+
+/* Dot bullets, not the 16px check icons .checks draws: a 6px disc in the
+   card's saturated colour, centred on a 22px line inside a 24px row. */
+.hp-dfy__list { display: flex; flex-direction: column; gap: 8px; }
+.hp-dfy__list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 1px;
+  font-size: var(--size-sm);
+  line-height: var(--lh-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.hp-dfy__list li::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--hp-dfy-dot);
+}
+
+.hp-dfy__actions { display: flex; align-items: flex-start; gap: 16px; }
+
+/* ---------- artwork ----------------------------------------------- */
+/* The artwork frame clips its contents in Figma at a 20px radius, and its
+   corners come back from the export with the card fill baked in opaque.
+   Re-cutting the radius here clips those baked pixels away, so there is
+   nothing for uncomposite.py to solve. */
+.hp-dfy__panel {
+  flex: none;
+  width: 740px;
+  height: 528px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.hp-dfy__panel img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- peach variant (Web DFY) -------------------------------- */
+/* Pale run is stroke/brand/primary from 15.3% to 84.7% on a 116.565deg
+   axis, saturated ends stroke/brand/strong. The fill tint is that same
+   pale peach; the artwork panel underneath is the lighter brand secondary
+   and is baked into the export, not set here. */
+.hp-dfy__card--web {
+  --hp-dfy-tint: var(--bg-brand-muted);
+  --hp-dfy-dot:  var(--bg-brand-primary);
+  --hp-dfy-edge: linear-gradient(116.565deg,
+                 var(--stroke-brand-strong) 0.39%, var(--stroke-brand-primary) 15.3%,
+                 var(--stroke-brand-primary) 84.7%, var(--stroke-brand-strong) 99.61%);
+}
+
+/* ---------- blue variant (App DFY) --------------------------------- */
+/* Same axis and stops in blue. The saturated end is Figma's blue/500,
+   #008de6 — the same fill the app artwork sits on — which style.css does
+   not mirror (it carries blue/50, /200, /300 only), so it is written out
+   here rather than invented as a token in a file this fragment may not
+   own. The pale run is blue/50. */
+.hp-dfy__card--app {
+  --hp-dfy-tint: var(--blue-50);
+  --hp-dfy-dot:  #008de6;
+  --hp-dfy-edge: linear-gradient(116.565deg,
+                 #008de6 0.39%, var(--blue-50) 15.3%,
+                 var(--blue-50) 84.7%, #008de6 99.61%);
+}
+
+/* ---------- narrower viewports ------------------------------------ */
+@media (max-width: 1439px) {
+  .hp-dfy__title { white-space: normal; }
+  .hp-dfy__lede  { width: 100%; height: auto; }
+  .hp-dfy__card  { gap: 32px; }
+  .hp-dfy__copy  { flex: 0 1 38%; width: auto; min-width: 340px; }
+  .hp-dfy__panel { flex: 1 1 auto; width: auto; height: auto; aspect-ratio: 740 / 528; }
+}
+@media (max-width: 1023px) {
+  .hp-dfy__card--web,
+  .hp-dfy__card--app { flex-direction: column; gap: 0; padding: 16px; }
+  /* artwork on top in both cards, whichever side it starts on */
+  .hp-dfy__copy  { flex: none; width: 100%; min-width: 0; order: 2; padding: 24px 8px 8px; }
+  .hp-dfy__panel { width: 100%; order: 1; }
+}
+@media (max-width: 599px) {
+  .hp-dfy__card--web,
+  .hp-dfy__card--app { padding: 8px; margin-top: 24px; }
+  .hp-dfy__copy    { padding: 20px 8px 8px; }
+  .hp-dfy__actions { flex-wrap: wrap; }
+}

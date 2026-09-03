@@ -1,0 +1,162 @@
+/* =================================================================
+   HOME — PRICING CTA
+   Figma: Home / 3780:57831 / pricing (4443:82777), 1600 x 331.
+   The last band before the footer: a head column on the left and two
+   394px plan cards on the right. Nothing in style.css draws this —
+   .product-card is the Pricing page's tall plan card and .ctaband is
+   the peach closing bar, so the card here is local. Everything that
+   already exists is reused: .shell, .tag, .h2, .h3, .h6, .body-sm and
+   the .btn--solid .btn--lg pair.
+   ================================================================= */
+
+/* The content rows run on an exact 88px rhythm: testimonials end at
+   15616, this band starts at 15704. Each part carries its own gap —
+   the assembler only concatenates, and .section would put an 80 here. */
+.hp-pricing { margin-top: 88px; }
+
+.hp-pricing__row {
+  display: flex;
+  align-items: flex-start;   /* the head is 262 tall against the cards' 331 */
+  gap: 56px;
+}
+
+/* 1280 - 820 - 56 = 404, the width the h2 wraps to three lines at.
+   The basis is the Figma width rather than 0 so the two columns give
+   ground in proportion once the shell's gutter starts closing: at 1280
+   there is no free space and both land on their exact Figma widths, and
+   below it the head keeps roughly a third of the deficit instead of
+   being crushed to nothing by a rigid 820. */
+.hp-pricing__head {
+  flex: 1 1 404px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* ---------- the two plan cards ----------------------------------- */
+/* 820 is the design width and the cap, but it has to be a shrinkable
+   basis: as a hard `width` it wins every fight with the head and eats
+   the whole content box before the stacking breakpoint is reached. */
+.hp-pricing__plans {
+  flex: 0 1 820px;
+  max-width: 820px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.hp-pricing__plan {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  /* Figma insets the card's content 24 from the outer edge and draws the
+     1px stroke inside that, so the border takes its width out of the
+     padding: 23 + 1 lands the icon plate on x/y 24 like the render. */
+  padding: 23px;
+  border: 1px solid transparent;
+  border-radius: 20px;      /* one-off — not on the --radius-* scale */
+  /* The card edge is not the flat brand stroke it reads as at a glance: it
+     is the same ramp the module cards use — full stroke/brand/strong in the
+     top-left and bottom-right corners, flat stroke/brand/primary across the
+     middle. A gradient cannot be a border-color, so the border is left
+     transparent and painted by a second background layer clipped to the
+     border box, with the surface clipped to the padding box on top.
+     Angle and stops are measured off the 394 x 331 node at 1:1 and the
+     ramp is not symmetric: 97deg, flat from 17.5% to 81%. This card does
+     not share --edge-tilt with the 1280-wide cards, and 97 is shallower
+     than its own diagonal because the pair inherits one gradient
+     transform across the row. */
+  background:
+    linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
+    linear-gradient(97deg,
+      var(--stroke-brand-strong), var(--stroke-brand-primary) 17.5%,
+      var(--stroke-brand-primary) 81%, var(--stroke-brand-strong)) border-box;
+}
+
+/* `top` is a fixed 87 in Figma while the name column inside it hugs to
+   90 (56 plate + 8 + 26 label). The 3px is a real overflow in the
+   design, not a rounding error: honouring it is what puts the price
+   row on y 127 and keeps the card at 331 instead of 334. */
+.hp-pricing__top {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  height: 87px;
+}
+.hp-pricing__name {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hp-pricing__plate {
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-brand-subtle);
+}
+.hp-pricing__plate img { width: 40px; height: 40px; }
+
+/* Heading face at 18/26 but Medium, where .h6 ships SemiBold, and in the
+   brand *fill* orange rather than the darkened text token. */
+.hp-pricing__product {
+  font-weight: 500;
+  color: var(--bg-brand-secondary);
+}
+
+.hp-pricing__body {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* One line, two sizes on a shared baseline: the 46/56 figure sets the
+   line box (hence the 56 the frame reports) and "Start at" rides in it
+   at 28/36. Both are Bold. .h2 already draws the heading face, the
+   46/56 and the -0.022em the substituted Inter needs, so the only type
+   delta here is the weight: this page's 46/56 is h2-bold, not the
+   SemiBold .h2 ships for the Features page. */
+.hp-pricing__price {
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.hp-pricing__price-lead {
+  font-size: var(--size-2xl);
+  line-height: var(--lh-2xl);
+  color: var(--text-secondary);
+}
+
+/* body/small-medium — .body-sm is the regular weight of the same style */
+.hp-pricing__note { font-weight: 500; }
+
+/* Stacked, the row's main axis is vertical, so every `flex` above now
+   reads as a HEIGHT basis. The head's `1 1 404px` would become a
+   404px-tall box that its own `overflow: hidden` then clips, and a
+   `1 0 0` basis collapses it to nothing — head, headline and lede all
+   disappear. Each column has to go back to hugging its content. */
+@media (max-width: 1080px) {
+  .hp-pricing__row { flex-direction: column; gap: 40px; }
+  .hp-pricing__head { flex: none; align-self: stretch; }
+  .hp-pricing__plans { flex: none; width: 100%; max-width: none; align-items: stretch; }
+}
+@media (max-width: 720px) {
+  .hp-pricing__plans { flex-direction: column; }
+  .hp-pricing__plan { flex: none; }
+}

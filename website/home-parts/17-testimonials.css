@@ -1,0 +1,115 @@
+/* =================================================================
+   HOME — TESTIMONIALS
+   Figma: Home / 3780:57831 / "Testimonial Header" (4431:82022),
+   1600 x 1524 — the tallest band on the page.
+
+   A peach full-bleed band: the centred two-line h2, a row of four
+   expert cards (4437:82291, 1280 x 380), then the three-column
+   review masonry (4431:82024, 1280 x 768).
+
+   The masonry is the same component the module pages ship, so it
+   runs on .mp-reviews / .mp-rgrid / .mp-rcol / .mp-review straight
+   out of style.css — only the band's own rhythm and the card stroke
+   are different here, and only those are restated below.
+   ================================================================= */
+
+/* Content rows run on an exact 88px rhythm and every part carries its
+   own gap — bento3 ends at 14004, this band starts at 14092. */
+.hp-testimonials { margin-top: 88px; }
+
+/* The module pages set 40 under the headline; this band sets 48 —
+   the h2 ends at 192 and the expert row starts at 240. */
+.hp-testimonials .mp-reviews__title { margin-bottom: 48px; }
+
+/* The masonry is 48 below the expert row: 620 -> 668. */
+.hp-experts { margin-bottom: 48px; }
+
+/* ---------- expert cards (4437:82291) -----------------------------
+   Four equal columns that size to the tallest card: (1280 - 3*24)/4
+   = 302 each, and Stephen James' six-line quote sets all four to 380.
+   ------------------------------------------------------------------ */
+.hp-experts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.hp-expert {
+  /* stroke/regular 1px, and it is a RAMP, not a flat colour: the same
+     card edge the module pages draw — stroke/brand/strong at the
+     top-left and bottom-right corners, easing into stroke/brand/primary
+     and holding it flat across the middle. A 4x export of 4437:82292
+     reads #fcdfd6 straight down the top and bottom edges and climbs to
+     #ef5d33 at the two live corners, so the flat orange outline was
+     wrong on every edge. All four cards share one gradient transform in
+     Figma, so one rule serves the row.
+
+     Same two-layer recipe as .fcard: the fill paints to the padding box,
+     the ramp to the border box, and the border itself is transparent.
+     Angle and stops are measured off the export, not derived — these
+     cards inherit the row's transform, which is why 302 x 380 reads far
+     shallower than its own diagonal would give. */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-default-surface), var(--bg-default-surface)) padding-box,
+    linear-gradient(94.6deg,
+      var(--stroke-brand-strong), var(--stroke-brand-primary) 17.25%,
+      var(--stroke-brand-primary) 81%, var(--stroke-brand-strong)) border-box;
+  border-radius: 20px;
+  /* Figma's insets are 24 / 20 / 40 / 20 measured to the middle of the
+     stroke; CSS puts the border inside, so each edge gives back its 1px
+     and the content column still measures 302 - 40 - 2 = 262 wide,
+     which is what keeps the quotes on the design's line counts. */
+  padding: 23px 19px 39px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+/* The logo is right-aligned to the content column and top-aligned with
+   the portrait. Figma lets it overlap the name block (the details
+   column is up to 95px wider than the space left over) — the collision
+   is only ever horizontal, because the logo sits above the name rows.
+   Taking the logo out of flow reproduces that without squeezing the
+   text, which a flex row would do. */
+.hp-expert__info { position: relative; min-height: 136px; }
+.hp-expert__who { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.hp-expert__portrait { width: 72px; height: 72px; border-radius: var(--radius-full); object-fit: cover; }
+.hp-expert__id { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.hp-expert__name { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+
+/* Body/small-regular + Body/small-semiBold, 4px apart — a flex row, not
+   a word space, so the gap stays exactly 4 whatever the face. */
+.hp-expert__role {
+  display: flex; gap: 4px; white-space: nowrap;
+  font-size: var(--size-sm); line-height: var(--lh-sm);
+}
+.hp-expert__role-pre { color: var(--text-secondary); }
+.hp-expert__org { font-weight: 600; color: var(--text-primary); }
+
+.hp-expert__logo { position: absolute; top: 0; right: 0; }
+/* Each logo is exported at its own displayed box — the Figma frames crop
+   the source art differently, so the sizes are not interchangeable. */
+.hp-expert__logo--wpcrafter { width: 131px; height: 44px; }
+.hp-expert__logo--plm       { width: 150px; height: 36px; }
+.hp-expert__logo--atarim    { width: 104px; height: 30px; }
+.hp-expert__logo--learndash { width: 141px; height: 28px; }
+
+/* Heading/h6-regular, black — the quote is set in the heading face at
+   the body's 18/26, not in Inter. */
+.hp-expert__quote { margin: 0; }
+.hp-expert__text {
+  font-family: var(--font-heading); letter-spacing: -0.022em;
+  font-size: var(--size-lg); line-height: var(--lh-lg);
+  font-weight: 400; color: var(--text-primary);
+}
+
+/* ---------- review masonry (4431:82024) ---------------------------
+   The homepage outlines these cards in stroke/brand/tertiary (#f59e85)
+   where the module pages use stroke/brand/secondary. At Figma's 0.5px
+   the stroke composites over the band's #fdefeb to #f9c6b8, which is
+   what the 1:1 render measures; style.css carries the module pages'
+   paler #fbd6cc, so it is restated here.
+   ------------------------------------------------------------------ */
+.hp-testimonials .mp-review { border-color: #f9c6b8; }
+
+/* Figma fills every reviewer avatar with object-cover; the shared rule in
+   style.css only sizes the box, which is invisible while every avatar is
+   square — and av-dwayne.png is 1200 x 992, so it was being stretched 21%
+   taller than the design draws it. Scoped here rather than fixed in the
+   component, which this section may not touch. */
+.hp-testimonials .mp-review__who img { object-fit: cover; }

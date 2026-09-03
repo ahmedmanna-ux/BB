@@ -1,0 +1,23 @@
+/* =================================================================
+   HOMEPAGE — 04 memberships   Figma 3863:63099, 1600 x 772
+   The peach variant of the split card. Everything structural lives in
+   03-courses.css, which the assembler loads first; this file is only the
+   colour delta. The section is identical to Courses down to the pixel —
+   same 956 head, same 40 gap, same 1280 x 560 card, same 444 copy column
+   and 740 x 528 panel — so it deliberately adds no geometry.
+   ================================================================= */
+
+/* Figma declares the fill tint as background/brand/muted and the stroke as
+   stroke/brand/strong; both are tokens here. The stroke's stop positions
+   are the fitted pair described in 03-courses.css — the pale run is
+   stroke/brand/primary, which is the same colour as the fill tint, so this
+   variant reuses one peach for both. The artwork panel underneath is a
+   different, lighter colour again (background/brand/secondary #fe724a),
+   and it is baked into the exported PNG rather than set here. */
+.hp-split--peach {
+  --hp-split-tint: var(--bg-brand-muted);
+  --hp-split-dot:  var(--bg-brand-primary);
+  --hp-split-edge: linear-gradient(116.565deg,
+                   var(--stroke-brand-strong) 0.39%, var(--stroke-brand-primary) 15.3%,
+                   var(--stroke-brand-primary) 84.7%, var(--stroke-brand-strong) 99.61%);
+}

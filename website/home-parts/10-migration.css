@@ -1,0 +1,284 @@
+/* =============================================================
+   Homepage — 10 MIGRATION
+   Figma: Home / 3780:57831 / migration (4257:68639) — 1600 x 700.
+   Eyebrow + 46/56 heading, then one outlined card split into a
+   peach "map" panel (platform logos wired to the BuddyBoss mark)
+   and two SEPARATE labelled chip groups. The two groups carry the
+   whole point of the section — WordPress sources are handled by
+   built-in tools, hosted platforms by the agency team — so they
+   stay two blocks with two headings, never one merged list.
+   Nothing in style.css draws any of this.
+   ============================================================= */
+
+/* 100 (head) + 40 + 560 (card) = 700. 88 is the homepage row rhythm. */
+.hp-migration {
+  margin-top: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Figma hugs the heading at 851; the h1 layer is a Heading/h2-bold,
+   i.e. 46/56 at Bold where the shared .h2 default is SemiBold. */
+.hp-migration__head {
+  width: 851px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.hp-migration__title { font-weight: 700; }
+
+/* ---------- the card --------------------------------------------
+   The 1.5px stroke is a gradient, not a flat colour: stroke/brand/strong
+   at the top-left and bottom-right corners, flattening to the
+   stroke/brand/primary tint across the middle. Solved off the Figma
+   render at 1:1 — the ink profile along all four edges fits a
+   116.565deg axis (dx:dy exactly 2:1 on this 1280x560 box) with the
+   flat band running 15%-85%, and the floor pixel reads #fcdfd6 on the
+   nose. This card is 560 tall, so it shares neither --edge-tilt nor
+   the 26%/74% of --stops-peach.
+   The stroke is NOT the usual inside border. Reading the render's ink
+   profile off all four edges: the pixel just outside the 1280x560 box
+   is at full strength and the one beyond it at exactly half, on every
+   edge — an OUTSIDE stroke of 1.5px, which is also why Figma exports
+   the frame at 702 rather than 700. So the card's own box and its
+   16/32/16 padding are the Figma numbers untouched, with nothing to
+   eat out of the pads.
+   Drawing that 1.5 is the awkward part: Chrome snaps a used border to
+   a whole device pixel (`border: 1.5px` paints 1px, two thirds of the
+   density) and snaps a 1.5px padding up to 2. So the ring is built as
+   two 1px masked rings instead — a solid one hard against the box, a
+   half-opacity one outside it — which lands the same 1.0 / 0.5 pair of
+   pixels the render has. The card must therefore NOT clip its overflow;
+   nothing inside it needs clipping anyway, since the map and both chip
+   rows clip themselves. */
+.hp-migration__card {
+  --hp-mig-edge: linear-gradient(116.565deg,
+                  var(--stroke-brand-strong), var(--stroke-brand-primary) 15%,
+                  var(--stroke-brand-primary) 85%, var(--stroke-brand-strong));
+  position: relative;
+  width: 100%;
+  height: 560px;
+  border-radius: var(--radius-3xl);
+  padding: 16px 32px 16px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+.hp-migration__card::before,
+.hp-migration__card::after {
+  content: '';
+  position: absolute;
+  padding: 1px;
+  background: var(--hp-mig-edge);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+          mask-image: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+  -webkit-mask-clip: content-box, border-box;
+          mask-clip: content-box, border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+.hp-migration__card::before {
+  inset: -1px;
+  border-radius: calc(var(--radius-3xl) + 1px);
+}
+.hp-migration__card::after {
+  inset: -2px;
+  border-radius: calc(var(--radius-3xl) + 2px);
+  opacity: 0.5;
+}
+
+/* ---------- the map panel ---------------------------------------
+   Figma's fill is a two-stop linear gradient whose CSS form the plugin
+   hands over exactly; checked against the render, the sampled corners
+   land within one 8-bit step, so the odd stop percentages are kept
+   verbatim rather than rounded. */
+.hp-migration__map {
+  position: relative;
+  flex: none;
+  width: 740px;
+  height: 528px;
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+  background: linear-gradient(245.334deg,
+              #ff9779 0.617%, #ffffff 104.91%);
+}
+
+/* One overlay carries all six dashed connectors: they are authored as
+   six separate vectors in Figma but they meet at shared junctions, so
+   composing them into a single 740x528 sheet keeps those joins exact
+   instead of leaving them to six independent offsets. They paint above
+   the logo plates, as five of the six do in Figma. */
+.hp-migration__wires {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 740px;
+  height: 528px;
+  z-index: 1;
+}
+
+/* Every logo sits on its own translucent white plate. Figma pads each
+   plate 12 and lets the plate hug the logo, so the plate size is the
+   logo size + 24 and each one is a different box — 11 + 1px of rim here,
+   which keeps the outer box and the logo's origin on their Figma pixel.
+   The rim is the one thing the plugin's code drops: every plate carries a
+   1px light edge, and the render puts it at ~72-78% white over the panel,
+   so the fill is clipped to the padding box and the rim composites
+   against the gradient rather than on top of the fill.
+   Note the plate fill is NOT the flat white/0.4 the plugin reports: solved
+   against the panel gradient, the effective alpha ramps ~0.36 at a plate's
+   top-left to ~0.43 at its bottom-right (~0.04 to ~0.18 on the BuddyBoss
+   plate, whose nominal is 0.1) and the R channel sits ~1.3 BELOW the
+   backdrop, which no white overlay can do. There is an unemitted Figma
+   effect on every plate; the flat value is the closest CSS can get. */
+.hp-migration__node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-clip: padding-box;
+}
+.hp-migration__node-logo {
+  flex: none;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+/* The panel and the chips share a logo wherever Figma shares the source
+   node, but three of the panel plates draw from a HIGHER-resolution export
+   than the 64px chip copy on disk, and each of those takes its own file:
+   Fluent Community (68px plate, 512px source), Circle (56px plate, 96px
+   source) and Mighty Networks (48px plate, 96px source). Feeding those
+   plates the 64px chip export costs real sharpness — the wordmark on the
+   Mighty plate goes visibly blocky at 64->48 where Figma runs 96->48 — so
+   the panel gets the Figma-sized copy and the chip keeps the shared file.
+   Kajabi, Skool and BuddyPress genuinely share one source and reuse it.
+   Fluent Community's plate additionally carries the -integrationLogos
+   component, which clips the same rounded-square favicon to a circle; the
+   circle is cut here rather than shipping a second drawing of it. */
+.hp-migration__node-logo--round { border-radius: 50%; }
+
+.hp-migration__node--buddypress { left: 274px; top:  52px; }
+.hp-migration__node--buddypress .hp-migration__node-logo { width: 40px; height: 40px; }
+
+.hp-migration__node--mighty     { left:  75px; top: 152px; }
+.hp-migration__node--mighty .hp-migration__node-logo { width: 48px; height: 48px; }
+
+.hp-migration__node--kajabi     { left: 562px; top: 220px; }
+.hp-migration__node--kajabi .hp-migration__node-logo { width: 44px; height: 44px; }
+
+.hp-migration__node--circle     { left: 562px; top:  44px; }
+.hp-migration__node--circle .hp-migration__node-logo { width: 56px; height: 56px; }
+
+.hp-migration__node--skool      { left: 582px; top: 394px; }
+.hp-migration__node--skool .hp-migration__node-logo { width: 48px; height: 48px; }
+
+.hp-migration__node--fluent     { left: 106px; top: 370px; border-radius: var(--radius-3xl); }
+.hp-migration__node--fluent .hp-migration__node-logo { width: 68px; height: 68px; }
+
+/* The BuddyBoss plate is the odd one out twice over: a 24 radius and a
+   tenth-opacity white rather than four tenths. */
+.hp-migration__node--bb {
+  left: 318px; top: 212px;
+  border-radius: var(--radius-3xl);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.hp-migration__bb-mark { flex: none; width: 88px; height: 88px; }
+
+/* ---------- the two groups --------------------------------------
+   The column stretches to the card's 528 and centres its two groups
+   inside a 40px inset, which is what puts the first heading on y 103. */
+.hp-migration__lists {
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding-block: 40px;
+}
+
+.hp-migration__group { display: flex; flex-direction: column; }
+/* the two groups do not share a heading gap in the design — 8 above the
+   WordPress chips, 16 above the hosted ones */
+.hp-migration__group--wp     { gap:  8px; }
+.hp-migration__group--hosted { gap: 16px; }
+
+.hp-migration__group-title { font-weight: 500; }
+
+.hp-migration__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* 14/20 Inter Medium, not the 14/22 of .body-sm — the chips set their own
+   line height. The chip stroke is the one stroke on this section the render
+   puts INSIDE its box, so the 10/16 pads give up its 1px and read 9 and 15;
+   that lands every chip edge on the render's own pixel. */
+.hp-migration__chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 15px 8px 9px;
+  border: 1px solid var(--stroke-brand-primary);
+  border-radius: var(--radius-lg);
+  background: var(--bg-default-surface);
+  overflow: hidden;
+  font-size: var(--size-sm);
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--text-brand);
+  white-space: nowrap;
+}
+/* the four label-only chips lose the logo and pad evenly */
+.hp-migration__chip--plain { padding-left: 15px; }
+
+/* the hosted-platform labels drop to text/default/secondary; only the
+   WordPress group keeps the brand colour */
+.hp-migration__chips--muted .hp-migration__chip { color: var(--text-secondary); }
+
+.hp-migration__chip-logo {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+/* ---------- narrow ------------------------------------------------
+   Below the 1280 content width the split stops fitting, so the two
+   groups drop under the map. The map is an absolutely positioned
+   diagram on a fixed 740x528 field, so it is stepped down whole with
+   zoom — which scales its layout box too — rather than by re-solving
+   seven plate positions per breakpoint. The two groups stay two
+   labelled blocks all the way down. */
+@media (max-width: 1180px) {
+  .hp-migration__card {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 16px;
+  }
+  .hp-migration__lists { align-self: stretch; padding-block: 0 16px; }
+}
+
+@media (max-width: 820px) {
+  .hp-migration__map { zoom: 0.68; }
+}
+
+@media (max-width: 560px) {
+  .hp-migration__map { zoom: 0.5; }
+  .hp-migration__head { width: auto; }
+}

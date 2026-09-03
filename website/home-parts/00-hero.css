@@ -1,0 +1,161 @@
+/* =================================================================
+   HOMEPAGE 00 — HERO        Figma `hero` 3780:57832, 1600 x 800
+   -----------------------------------------------------------------
+   The 72px `navMenu` (3780:57919) is a sibling laid OVER this band, so
+   the section owns the full 800 and pulls itself up under the sticky
+   bar — the same trick .hero uses on the Features page, anchored to
+   --header-h rather than a hard 72 so the two stay in step.
+
+   Everything sits on the 1600 frame by absolute coordinate:
+     glow  -153,484  479x480   (Ellipse 110, clipped left and bottom)
+     art    716, 76  884x724   (frame `img`, clipped right and bottom)
+     copy   160,144  513x532
+   ================================================================= */
+.hp-hero {
+  position: relative; overflow: hidden;
+  background: var(--bg-brand-subtle);
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
+}
+.hp-hero__stage {
+  position: relative;
+  width: 100%; max-width: var(--page-max); margin-inline: auto;
+  height: calc(800px - var(--header-h));   /* the 800 band, less the bar */
+}
+
+/* --- decoration ---------------------------------------------------
+   Ellipse 110 is a 479x480 circle filled at 1% white and lit by a
+   #ef5d33 INNER shadow offset (-16,-40) at blur 68 — which is why the
+   glow pools on its lower-right arc and fades to nothing top-left. The
+   circle is flipped in Figma, so its reported origin (326,964) is the
+   far corner: the visible box runs -153..326 by 484..964 and the band
+   clips the rest. The SVG carries the filter, so it stays one asset.
+
+   The stage is capped at 1600 and centred, so past that width its
+   edges pull inward and a bleeding shape would come away from the
+   viewport. The subtracted overflow cancels that. */
+.hp-hero__glow {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: calc(484px - var(--header-h));
+  left: calc(-153px - max(0px, 100vw - var(--page-max)) / 2);
+  width: 479px; height: 480px;
+}
+
+/* --- the collage --------------------------------------------------
+   Figma's `img` frame is one clipped composition — an orange plate, the
+   activity post, the member card, the reaction bubble, the group card
+   and the two course-price cards, several of which run past the frame
+   and are cut by it. Exported whole at 2x and un-composited, so the two
+   rounded left corners are real alpha and the peach reads through. */
+.hp-hero__art {
+  position: absolute; z-index: 1; pointer-events: none;
+  top: calc(76px - var(--header-h));
+  right: calc(0px - max(0px, 100vw - var(--page-max)) / 2);
+  width: 884px; height: 724px;
+  border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
+}
+
+/* --- copy column -------------------------------------------------- */
+.hp-hero__copy {
+  position: absolute; z-index: 2;
+  left: var(--gutter); top: calc(144px - var(--header-h));
+  width: 513px;
+  display: flex; flex-direction: column; gap: 40px; align-items: flex-start;
+}
+.hp-hero__intro { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; width: 100%; }
+.hp-hero__head  { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+
+/* The homepage eyebrow is a third variant again: the heading face at
+   24/32 Medium tracked 4% (0.96px), no rule and no pill. It is NOT the
+   Features hero's 12%/2.88px and NOT the .tag rule-and-label. */
+.hp-hero__eyebrow {
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: var(--size-xl); line-height: var(--lh-xl); letter-spacing: 0.96px;
+  color: var(--text-brand);
+}
+.hp-hero__title { color: var(--text-primary); }
+/* The lede runs on text/default/secondary, a step darker than the
+   text/default/tertiary .body-md carries everywhere else.
+
+   Both faces here are Inter, so the first two lines break exactly where
+   the design breaks them. The third does not: Chrome sets that string
+   about 0.5% wider than Figma does and needs 515 where the design's box
+   is 513, which would drop "apps" onto a fourth line and push the CTAs
+   and the chips 24px down the column. The paragraph is given those two
+   pixels rather than inventing letter-spacing to claw them back —
+   nothing else in the column moves. */
+.hp-hero__lede { color: var(--text-secondary); width: calc(100% + 2px); }
+.hp-hero__actions { display: flex; gap: 24px; }
+
+/* --- review-platform chips ---------------------------------------- */
+.hp-hero__ratings { display: flex; align-items: center; gap: 16px; }
+.hp-rating {
+  display: flex; align-items: center; gap: 12px;
+  height: 72px; padding: 12px 16px;
+  background: var(--bg-default-surface);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+}
+/* Both marks sit on the same plate: radius 8, logo inset 6, ringed by a
+   0.5px stroke/default/secondary hairline.
+
+   That hairline is not a CSS border. Figma CENTRES the 0.5px stroke on
+   the 44px edge, so its render lays a half-strength line — #ececec, the
+   --stroke-hairline the project already keeps for exactly this composite
+   — one pixel OUTSIDE the box: the plate reads 46px wide at 175..220.
+   `border: 0.5px solid #d9d9d9` gets snapped by Chrome to a full 1px at
+   full strength (217 against the design's 236) and laid INSIDE, so the
+   plate reads 44 wide and twice as dark. Neither error moves a box, so
+   the geometry probe cannot see it. A 1px box-shadow ring restores both
+   the tone and the position and leaves the 44px layout box untouched. */
+.hp-rating__logo {
+  flex: none; width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 1px var(--stroke-hairline);
+  overflow: hidden;
+}
+.hp-rating__logo img { width: 32px; height: 32px; }
+/* Trustpilot's mark is a raster laid into a 32x31 slot, not a square */
+.hp-rating__logo img[src$="badge-trustpilot.png"] { height: 31px; object-fit: cover; }
+.hp-rating__body { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.hp-rating__stars { display: flex; align-items: center; gap: 4px; }
+.hp-rating__stars img { width: 16px; height: 16px; }
+.hp-rating__score {
+  font-size: var(--size-md); line-height: var(--lh-md); font-weight: 600;
+  color: var(--text-secondary); white-space: nowrap;
+}
+
+/* =================================================================
+   RESPONSIVE
+   ================================================================= */
+/* Below the frame width the copy column keeps its 513 while the gutter
+   goes fluid, so the collage has to give ground or it would reach the
+   text. It shrinks on its own aspect and stays welded to the right. */
+@media (max-width: 1600px) {
+  .hp-hero__art {
+    width: min(884px, calc(100vw - 700px));
+    height: auto; aspect-ratio: 884 / 724;
+  }
+}
+
+/* below the reflow threshold the band stacks like a normal section */
+@media (max-width: 1099px) {
+  .hp-hero__stage {
+    height: auto; padding: 64px var(--gutter) 0;
+    display: flex; flex-direction: column; align-items: center; gap: 48px;
+  }
+  .hp-hero__glow { display: none; }
+  .hp-hero__copy { position: static; width: min(513px, 100%); }
+  .hp-hero__art {
+    position: static; width: min(884px, 100%);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .hp-hero__stage { padding-top: 48px; gap: 40px; }
+  .hp-hero__actions { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; max-width: 320px; }
+  .hp-hero__actions .btn { width: 100%; }
+  .hp-hero__ratings { flex-wrap: wrap; }
+}

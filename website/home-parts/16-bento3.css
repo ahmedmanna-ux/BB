@@ -1,0 +1,432 @@
+/* =================================================================
+   Homepage — 16 BUILT YOUR WAY
+   Figma: Home / 3780:57831 / "Feature Bento" (4408:81312) — 1600 x 1052
+
+   A head block over a 2x2 bento: two rows of 408-tall cards, 24 apart,
+   each card a copy wrap over a full-bleed artwork panel. Nothing in
+   style.css draws this — .modcards/.gridcards are the module pages'
+   3-up icon tiles, and .split is the 1280-wide two-column band.
+   ================================================================= */
+
+.hp-bento3 {
+  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* ---------- head -------------------------------------------------- */
+/* The Head frame hugs its widest child, which is the lede at 956. */
+.hp-bento3__head {
+  width: 956px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Heading/h2-bold — 46/56 at Bold, where the shared .h2 runs SemiBold.
+   Figma sets the node to hug on one line. */
+.hp-bento3__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Body/large-medium: the same 16/24 as .body-md but Medium, and on
+   text/default/secondary rather than the tertiary .body-md defaults to.
+   The node is fixed at 52 over two 24px lines — 4px of slack Figma
+   leaves under the second line, so it is set rather than derived. */
+.hp-bento3__lede {
+  height: 52px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ---------- the bento grid ---------------------------------------- */
+.hp-bento3__grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.hp-bento3__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ---------- one card ----------------------------------------------
+   Two gradients per card, and both are angle-sensitive:
+
+   FILL — white -> background/brand/muted at 40% -> white, drawn on an
+   axis Figma stores in object space, so the CSS angle is different for
+   every card width. The three widths here (438 / 818 / 628) get the
+   three angles Figma resolves to.
+
+   EDGE — the stroke is a gradient too, not the flat stroke/brand/strong
+   Figma's codegen flattens it to: full brand at the top-left corner,
+   fading to stroke/brand/primary across a wide flat middle, full brand
+   again at the bottom-right. Solved off the 1:1 render on all three card
+   widths: the flat band runs 15%-85% (not the 26%-74% the module cards
+   in style.css use), and the axis is a constant object-space mix that
+   comes out as tan(angle) = -4.545 * height / width. That is a
+   different handle from --edge-tilt, so this section carries its own.
+
+   Figma's stroke sits INSIDE the frame and does not push the children —
+   the render confirms it (the card title's glyphs start at x+24, and the
+   card-2 screenshot at x+82, neither offset by the stroke). So the ring
+   is drawn as a masked overlay rather than a CSS border: a border would
+   both eat the padding and, at 1.5px on a 1x screen, get snapped by
+   Chrome to a whole pixel and come out a third too thin. */
+.hp-bcard {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 408px;
+  border-radius: var(--radius-3xl);
+  background: var(--hp-b3-fill);
+  padding-top: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+/* The stroke: a gradient ring punched out with a content-box mask, so it
+   stays a ring around the 24px corners. z-index lifts it over the
+   artwork, which is where Figma paints it.
+
+   It takes two rings to land on 1.5px. Chrome snaps a mask's box to whole
+   device pixels, so a single 1.5px ring paints 2px solid — a third too
+   heavy. An opaque 1px ring under a half-opacity 2px one composites to
+   exactly what Figma antialiases: the first pixel at full strength, the
+   second at half. */
+.hp-bcard::before,
+.hp-bcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: var(--hp-b3-edge);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+.hp-bcard::before { padding: 1px; }
+.hp-bcard::after  { padding: 2px; opacity: .5; }
+
+.hp-bcard--privacy {
+  flex: 0 0 438px;
+  --hp-b3-fill: linear-gradient(-80.157deg,
+                 var(--bg-default-surface) 0.629%,
+                 var(--bg-brand-muted) 40.083%,
+                 var(--bg-default-surface) 101.15%);
+  --hp-b3-edge: linear-gradient(103.29deg, var(--hp-b3-stops));
+}
+.hp-bcard--appearance {
+  --hp-b3-fill: linear-gradient(-72.046deg,
+                 var(--bg-default-surface) 0.629%,
+                 var(--bg-brand-muted) 40.083%,
+                 var(--bg-default-surface) 101.15%);
+  --hp-b3-edge: linear-gradient(113.80deg, var(--hp-b3-stops));
+}
+.hp-bcard--editors,
+.hp-bcard--custom {
+  --hp-b3-fill: linear-gradient(-76.030deg,
+                 var(--bg-default-surface) 0.629%,
+                 var(--bg-brand-muted) 40.083%,
+                 var(--bg-default-surface) 101.15%);
+  --hp-b3-edge: linear-gradient(108.71deg, var(--hp-b3-stops));
+}
+.hp-bcard {
+  --hp-b3-stops: var(--stroke-brand-strong),
+                 var(--stroke-brand-primary) 15%,
+                 var(--stroke-brand-primary) 85%,
+                 var(--stroke-brand-strong);
+}
+
+/* ---------- card copy --------------------------------------------- */
+.hp-bcard__wrap {
+  width: 100%;
+  flex: none;
+  height: 120px;                            /* 16 + 32 + 8 + 48 + 16 */
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Heading/h5-semiBold — .h5 carries the 24/32 but defaults to Regular. */
+.hp-bcard__title {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Body/large-regular on text/default/secondary. */
+.hp-bcard__text {
+  margin: 0;
+  font-size: var(--size-md);
+  line-height: var(--lh-md);
+  color: var(--text-secondary);
+}
+
+/* ---------- the artwork panel --------------------------------------
+   The panel runs to the card's outer edge on three sides; its own 16px
+   radius never shows, because the card clips first at 24. Everything
+   inside is placed absolutely from the panel's top-left, exactly as
+   Figma reports it. */
+.hp-bcard__art {
+  align-self: stretch;
+  height: 272px;
+  flex: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+}
+
+/* The soft orange arc behind the screenshots: a 326 circle with almost
+   no fill, lit by two opposed inset shadows in background/brand/primary.
+   Only the sliver that misses the artwork above it is ever visible. */
+.hp-b3-glow {
+  position: absolute;
+  width: 326px;
+  height: 326px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, .01);
+  box-shadow: inset -16px -20px 40px 0 var(--bg-brand-primary),
+              inset  16px  20px 40px 0 var(--bg-brand-primary);
+}
+.hp-b3-glow--appearance { left: 628px;  top: 90px; }
+.hp-b3-glow--editors    { left: -102px; top: 90px; }
+.hp-b3-glow--custom     { left: -102px; top: 66px; }
+
+/* Every screenshot is an image fill Figma crops inside its frame, so the
+   frame is the clip and the img keeps the fill's own scale and offset. */
+.hp-b3-shot {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+}
+.hp-b3-shot img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+/* --- card 1: the shield -------------------------------------------- */
+.hp-b3-privacy {
+  position: absolute;
+  left: -44px;
+  top: -15px;
+  width: 528px;
+  height: 352px;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* --- card 2: the community screenshot ------------------------------ */
+.hp-b3-shot--appearance {
+  left: 82px;
+  top: 24px;
+  width: 655px;
+  height: 431px;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-img1);
+}
+.hp-b3-shot--appearance img {
+  left: -14.97%;
+  top: -20.02%;
+  width: 131.62%;
+  height: 120.02%;
+}
+
+/* --- card 3: the editor screenshot, the tool pill, the block panel -- */
+.hp-b3-shot--editors {
+  left: 67.274px;
+  top: 32px;
+  width: 525.452px;
+  height: 331px;
+}
+.hp-b3-shot--editors img {
+  left: -4.07%;
+  top: -13.32%;
+  width: 106.98%;
+  height: 113.22%;
+}
+
+/* This one takes img2's offset and blur but at 20% black, not the 24%
+   --shadow-img2 in style.css carries — so it is written out. */
+.hp-b3-shot--blocks {
+  left: 419px;
+  top: 24px;
+  width: 185px;
+  height: 321px;
+  border-radius: var(--radius-2xl);
+  box-shadow: -16px 0 32px rgba(0, 0, 0, .2);
+}
+.hp-b3-shot--blocks img {
+  left: -142.24%;
+  top: -9.13%;
+  width: 380.18%;
+  height: 109.13%;
+}
+
+.hp-b3-tools {
+  position: absolute;
+  left: 24px;
+  top: 113px;
+  width: 228px;
+  height: 64px;
+  padding: 8px 12px;
+  background: var(--bg-default-surface);
+  border-radius: var(--radius-xl);
+  /* Figma casts this one as a DROP_SHADOW rather than the layer shadow the
+     other four use, and the two are not interchangeable in Chrome: a
+     box-shadow is blurred with Skia's three-box approximation, a filter
+     goes through the real Gaussian. Measured against the render, the
+     filter halves the error on every side of the pill (MAE 4.97 -> 2.54
+     right, 5.61 -> 3.89 above, 4.73 -> 3.36 below), so it is the
+     primitive the design actually asks
+     for. The other four shadows here are layer shadows and stay box. */
+  filter: drop-shadow(12px 0 16px rgba(0, 0, 0, .24));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.hp-b3-tools__row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+/* Figma's 1px tile stroke sits inside the 48 square and paints over the
+   logo rather than shrinking it, so it is drawn as an inset outline —
+   a real border would crop 1px off every mark. */
+.hp-b3-tool {
+  position: relative;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-default-surface);
+  outline: 1px solid #eee;
+  outline-offset: -1px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* No object-fit here on purpose. Figma's codegen emits object-cover for
+   these fills, but tile 4's 340-square source goes into a 48x49 box and
+   the render shows it stretched to that box, not cropped to it — cover
+   measures worse against the render (8.15 -> 9.05 MAE over the tile), so
+   the leaf keeps the two explicit dimensions Figma reports for it. */
+.hp-b3-tool img { display: block; max-width: none; }
+.hp-b3-tool--1 img { width: 48.001px; height: 48.001px; }
+.hp-b3-tool--3     { box-shadow: 0 10px 22px -8px rgba(17, 35, 55, .3); }
+.hp-b3-tool--3 img { width: 48.178px; height: 48.178px; }
+.hp-b3-tool--4 img { width: 48px; height: 49px; }
+
+.hp-b3-tool__crop {
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 45px;
+  overflow: hidden;
+}
+.hp-b3-tool__crop img {
+  position: absolute;
+  left: -76.26%;
+  top: 0;
+  width: 252.85%;
+  height: 100%;
+}
+
+/* --- card 4: the code editor ---------------------------------------
+   The one panel that is not on the peach tint: a #232323 window with a
+   #d7d7d7 hairline, 895 wide against a 628 card, so its right half is
+   clipped away. Like the tile strokes, its border is inside and does
+   not move the title bar, which is why it is an outline. */
+.hp-b3-code {
+  position: absolute;
+  left: 57px;
+  top: 16px;
+  width: 895px;
+  height: 285px;
+  background: #232323;
+  border-radius: var(--radius-2xl);
+  outline: 1px solid #d7d7d7;
+  outline-offset: -1px;
+  box-shadow: var(--shadow-img1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* The rule under the bar is a 1.286 stroke that Figma likewise draws
+   without displacing anything — a border-bottom would pull the traffic
+   lights 0.6px off centre, so it is painted rather than laid out.
+
+   It cannot be an inset shadow either. The bar is 47.571 tall, so its
+   Figma edge falls at y=843.571 and the stroke covers 842.285-843.571:
+   71% of row 842, 57% of row 843. Chrome snaps the painted border box to
+   844 first and then insets the shadow from there, which lands the rule
+   on 842.71-844 — a whole row low, and the biggest non-font region in the
+   diff. Anchoring a two-stop gradient to the same snapped bottom edge
+   puts the two coverages back on the rows Figma antialiases them onto. */
+.hp-b3-code__bar {
+  width: 100%;
+  flex: none;
+  height: 47.571px;
+  padding: 11.571px 16.714px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(to top,
+                rgba(121, 121, 121, .571) 0 1px,
+                rgba(121, 121, 121, .715) 1px 2px,
+                rgba(121, 121, 121, 0) 2px);
+}
+.hp-b3-code__dot {
+  flex: none;
+  width: 10.286px;
+  height: 10.286px;
+  border-radius: var(--radius-full);
+}
+.hp-b3-code__dot--red   { background: #ca5252; }
+.hp-b3-code__dot--amber { background: #ffcc4d; }
+.hp-b3-code__dot--green { background: #14ae5c; }
+
+.hp-b3-code__body {
+  width: 100%;
+  flex: none;
+  padding-block: 11.571px;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 14.786px;
+  line-height: 1.9;
+  font-weight: 500;
+}
+.hp-b3-code__gutter {
+  flex: none;
+  padding-left: 16.714px;
+  padding-right: 14.143px;
+  color: var(--text-light);
+  text-align: right;
+}
+.hp-b3-code__gutter span { display: block; }
+.hp-b3-code__lines { flex: none; color: rgba(255, 255, 255, .82); }
+.hp-b3-code__lines p { margin: 0; white-space: pre; }
+.hp-b3-code__comment { color: rgba(255, 255, 255, .3); }
+.hp-b3-code__fn      { color: #f5a56c; }
+.hp-b3-code__str     { color: #8ed0a8; }

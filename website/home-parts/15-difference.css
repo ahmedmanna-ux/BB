@@ -1,0 +1,246 @@
+/* =================================================================
+   Homepage — 15 THE DIFFERENCE
+   Figma: Home / 3780:57831 / Frame 1000004971 (4319:59147) — 1600 x 779
+
+   A left-aligned head over one 1280 x 568 comparison table: a narrow
+   row-label column, three competitor columns and a highlighted
+   BuddyBoss column. Nothing in style.css draws a table — .stats is the
+   Features page's divider grid and .gridcards is a tile row — so the
+   whole component is local.
+
+   Geometry off the frame: head 0-171, table 211-779. Row heights are
+   NOT authored: every row is 16 + n*22 + 16 tall (54 for one line, 76
+   for two), which is why this is a real <table> and not a five-column
+   grid with fixed track heights — the columns that wrap are what set
+   the height of the row they sit in.
+
+   Two things the section render can mislead you about, both checked
+   against the node rather than the picture:
+
+   * The BuddyBoss column is NOT a raised card sitting proud of the
+     table. It is background/brand/accent on the header cell and
+     background/brand/subtle on the eight body cells, clipped by the
+     table's own 20px corners — top-right and bottom-right arcs are the
+     TABLE's radius, not the column's. There is no offset, no second
+     radius and no shadow: sampled at 1:1 the fill starts at y=211 and
+     x=1024 dead flush with the header row and the third column.
+   * The table's 1px stroke is a gradient and it sits OUTSIDE the frame
+     edge, not centred on it: the table box is 160..1440 / 211..779 and
+     the stroke paints 159..160 and 1440..1441, wholly outside. That is
+     why the stroke cannot be a CSS `border` here — a border would push
+     the section to 781. It is drawn as a ring behind the table instead,
+     which keeps the section on its 779.
+   ================================================================= */
+
+.hp-diff {
+  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  /* Figma's background/default/primary. style.css carries the same hex
+     as --stroke-default-prim but has no background token for it, and
+     borrowing a stroke token for a fill would be a lie in the code. */
+  --hp-diff-head-bg: #e8e8e8;
+
+  /* The table stroke: stroke/brand/strong at the top-left and
+     bottom-right corners, flat stroke/brand/primary across the middle.
+     Solved off the render at 1:1 rather than guessed. Each of the four
+     edges gives an independent least-squares line through its ~200-480
+     ramp pixels; the two slopes fix the axis at 112.46deg (dx:dy =
+     2.419:1) and the four zero/one crossings fix the stops. Restated on
+     THIS ring's 1282 x 570 box — 0.19% longer a gradient line than the
+     1280 x 568 frame Figma solves on — they land at 0.7 / 15.6 / 84.9 /
+     99.8. The two end offsets are not rounding slack: dropping them to
+     0 and 100 widens both ramps by 5% and the ink runs 6 levels light at
+     the dark end. Floor pixel reads #fcdfd6 exactly. So this stroke
+     shares neither the --edge-tilt of the 599-tall module cards nor the
+     26%/74% of --stops-peach. */
+  --hp-diff-edge: linear-gradient(112.46deg,
+                    var(--stroke-brand-strong) 0.7%,
+                    var(--stroke-brand-primary) 15.6%,
+                    var(--stroke-brand-primary) 84.9%,
+                    var(--stroke-brand-strong) 99.8%);
+}
+
+/* ---------- head -------------------------------------------------- */
+/* The Head frame hugs its widest child, the lede at 956; the heading
+   shrink-wraps to 731 on one line. The eyebrow is the plain 18/26
+   rule-and-label `.tag`, not the centred pill .secthead swaps in. */
+.hp-diff__head {
+  width: 956px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Heading/h2-bold — 46/56 at Bold, where the shared .h2 runs SemiBold. */
+.hp-diff__title {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Body/large-regular: .body-md is already the right 16/24 but carries
+   text/default/tertiary, so only the colour changes. The node is fixed
+   at 52 over two 24px lines — the same 4px of slack the other homepage
+   ledes carry, and it is what puts the table on its 211. */
+.hp-diff__lede {
+  width: 100%;
+  height: 52px;
+  color: var(--text-secondary);
+}
+
+/* ---------- the table --------------------------------------------- */
+/* 39, not 40: Figma reports the Head frame as 171 while its three
+   children stack to 172 (auto-layout rounding down off fractional text
+   boxes). The table still lands on y=211 and the section on 779. */
+.hp-diff__tablewrap {
+  position: relative;
+  width: 100%;
+  margin-top: 39px;
+}
+
+/* The stroke ring. It is a plain filled rounded rect one pixel bigger
+   than the table on every side, painted underneath it: the cells tile
+   the table box edge to edge and are all opaque, so the only place the
+   ring shows is the 1px it sticks out — which is exactly where Figma's
+   outside stroke sits. Concentric radii (21 outside, 20 inside) keep
+   that 1px even around the corners. */
+.hp-diff__edge {
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  background: var(--hp-diff-edge);
+}
+
+.hp-diff__table {
+  position: relative;            /* paints over the ring */
+  width: 100%;
+  table-layout: fixed;           /* header row sets the five tracks */
+  border-collapse: separate;     /* so each row keeps its own 1px rule */
+  border-spacing: 0;
+  font-size: var(--size-sm);
+  line-height: var(--lh-sm);
+}
+
+/* Column tracks: 168 + 232 + 232 + 232 + 416 = 1280, written as the
+   share of 1280 each one is. On the 1600 frame they resolve to those
+   exact pixels; below it they shrink with the content column instead of
+   forcing the table wider than the box it sits in, which is what fixed
+   pixel tracks do under `table-layout: fixed`. */
+.hp-diff__c0 { width: 13.125%; }   /* 168  */
+.hp-diff__c1,
+.hp-diff__c2,
+.hp-diff__c3 { width: 18.125%; }   /* 232  */
+.hp-diff__c4 { width: 32.5%; }     /* 416  */
+
+.hp-diff__hcell,
+.hp-diff__cell {
+  vertical-align: top;           /* Figma stacks every cell from the top */
+  text-align: left;              /* <th> defaults to centre */
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+
+/* ---------- header row -------------------------------------------- */
+/* 22 + 26 + 22 = 70. The 26 is the brand lockup, and the empty label
+   cell carries a zero-width space at the same 26 so the row keeps its
+   height even if the lockup is edited out. */
+.hp-diff__hcell {
+  padding: 22px 16px 22px 0;
+  background: var(--hp-diff-head-bg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.hp-diff__hcell--label { padding-left: 28px; }
+
+.hp-diff__spacer {
+  display: block;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #b8b8bf;                /* the design's own placeholder grey */
+}
+
+.hp-diff__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* The mark is a 32px vector overflowing a 26px frame by 3 on every side
+   — Figma draws it that way, so the image keeps its 32 and gives the
+   overflow back as negative margin. The 10px gap then measures off the
+   26 the layout box is worth, putting the wordmark on its 1084. */
+.hp-diff__mark {
+  width: 32px;
+  height: 32px;
+  margin: -3px;
+  flex: none;
+}
+.hp-diff__brandname {
+  font-size: var(--size-lg);
+  line-height: var(--lh-lg);
+  font-weight: 700;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+/* ---------- body rows --------------------------------------------- */
+/* 16 + 22 + 16 = 54 for a one-line row, 76 where a cell wraps. Figma
+   draws the row rule inside the frame edge without spending any of the
+   16, so the top pad gives the border its pixel back. */
+.hp-diff__cell {
+  padding: 15px 16px 16px 0;
+  border-top: 1px solid var(--stroke-brand-primary);
+  background: var(--bg-default-surface);
+  color: var(--text-secondary);
+}
+.hp-diff__label {
+  padding-left: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ---------- the BuddyBoss column ---------------------------------- */
+.hp-diff__hcell.hp-diff__bb {
+  padding: 22px 28px 22px 24px;
+  background: var(--bg-brand-accent);
+}
+.hp-diff__cell.hp-diff__bb {
+  padding: 15px 28px 16px 24px;
+  background: var(--bg-brand-subtle);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* The table's own 20px corners. There is no clip on the table box —
+   the four corner cells carry the radius themselves, which is both
+   what Figma draws and what keeps the 1px ring visible behind them. */
+.hp-diff__table thead .hp-diff__hcell:first-child { border-top-left-radius: 20px; }
+.hp-diff__table thead .hp-diff__hcell:last-child { border-top-right-radius: 20px; }
+.hp-diff__table tbody tr:last-child .hp-diff__label { border-bottom-left-radius: 20px; }
+.hp-diff__table tbody tr:last-child .hp-diff__bb { border-bottom-right-radius: 20px; }
+
+/* ---------- narrow ------------------------------------------------ */
+@media (max-width: 1439px) {
+  .hp-diff__head { width: 100%; }
+  .hp-diff__title { white-space: normal; }
+  .hp-diff__lede { height: auto; }
+}
+
+/* Below the content column the five tracks cannot compress without
+   crushing the copy into stacks of single words, so the table scrolls
+   inside its own box instead. The gradient ring goes with it: an
+   outside stroke on a scroller would be clipped away on three sides,
+   and a flat stroke/brand/primary edge is the honest degradation. */
+@media (max-width: 1023px) {
+  .hp-diff__tablewrap {
+    overflow-x: auto;
+    border: 1px solid var(--stroke-brand-primary);
+    border-radius: 20px;
+  }
+  .hp-diff__edge { display: none; }
+  .hp-diff__table { min-width: 900px; }
+}

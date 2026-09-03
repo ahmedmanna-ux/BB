@@ -1,0 +1,100 @@
+/* =================================================================
+   HOME — FACTS BAND
+   Figma: Home / 3780:57831 / facts (4225:67481), 1600 x 446.
+   A tinted price card holding the "$0" figure and five outlined
+   fact tiles. Nothing in style.css draws this: .stats/.stat is the
+   Features page's 4-up divider grid with the animated bar, a
+   different component in every respect but the name.
+   ================================================================= */
+
+/* Content rows on this page run on an exact 88px rhythm: gamification
+   ends at 5593, this band starts at 5681. Every other part carries its
+   own gap — the assembler only concatenates — and .section would put an
+   80 here, so the 88 is set directly. */
+.hp-facts { margin-top: 88px; }
+
+.hp-facts__card {
+  /* The card's stroke is a gradient, not a flat colour — full
+     stroke/default/tertiary at the top-left and bottom-right corners,
+     fading to the stroke/default/primary tint across the middle. Same
+     trick the module cards use: the border is left transparent and
+     painted by a second background layer clipped to the border box,
+     with the card's own surface clipped to the padding box on top.
+     Angle and stop positions are solved off the Figma render at 1:1
+     (107deg, flat band 18%-82%) — this card is 446 tall, so it does
+     not share --edge-tilt with the 599px module cards. */
+  --hp-edge: linear-gradient(107deg,
+              var(--stroke-default-tert), var(--stroke-default-prim) 18%,
+              var(--stroke-default-prim) 82%, var(--stroke-default-tert));
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-default-subtle), var(--bg-default-subtle)) padding-box,
+    var(--hp-edge) border-box;
+  border-radius: var(--radius-3xl);
+  /* This card's stroke measures INSIDE the frame edge, not centred on it:
+     in the 1:1 render x=159 is still page white, x=160 is the full stroke
+     and x=161 is the fill. So 1280x446 already includes the stroke, and
+     the pad gives up the border's width to keep the 24/40 content inset. */
+  padding: 39px 23px;
+  overflow: hidden;
+  display: flex; flex-direction: column; gap: 32px;
+}
+
+/* ---------- the figure ------------------------------------------- */
+.hp-facts__head { display: flex; flex-direction: column; align-items: center; }
+
+.hp-facts__label {
+  font-size: var(--size-xs); line-height: var(--lh-xs); font-weight: 500;
+  color: var(--text-tertiary); white-space: nowrap;
+}
+/* the 56/68 figure sits in its own 10px-padded, clipped frame */
+.hp-facts__figure { padding-block: 10px; overflow: hidden; }
+.hp-facts__price { color: var(--text-brand); white-space: nowrap; }
+/* gray/90 — this one line is the only place the page uses it, and
+   style.css has no token for it */
+.hp-facts__lede { color: #1a1a1a; white-space: nowrap; }
+
+/* ---------- the five tiles --------------------------------------- */
+/* the row clips: Figma's clipsContent cuts the one tile shadow flat at
+   the row's bottom edge, and the render confirms it */
+.hp-facts__tiles { display: flex; gap: 16px; overflow: hidden; }
+
+.hp-facts__tile {
+  flex: 1 1 0; min-width: 0; height: 192px;
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-default-surface);
+  border: 1px solid var(--stroke-default-prim);
+  border-radius: var(--radius-2xl);
+  padding: 23px;              /* 24 less the border, as above */
+  overflow: hidden;
+}
+/* Figma hangs a soft shadow on the second tile only. Reproduced as drawn
+   rather than normalised away — it is 3/255 at its darkest. */
+.hp-facts__tile--lift { box-shadow: 0 8px 24px -12px rgba(17, 35, 55, .1); }
+
+.hp-facts__tile-head { display: flex; flex-direction: column; gap: 4px; }
+.hp-facts__icon { width: 40px; height: 40px; }
+/* .h6 is SemiBold; the tile titles run the heading/h6-medium style */
+.hp-facts__tile-title { font-weight: 500; white-space: nowrap; }
+
+/* ---------- narrower viewports ------------------------------------ */
+/* No mobile frame is drawn for this band, so these follow the house
+   pattern the other parts use. Both blocks are max-width, so the 1600
+   layout the gates measure is untouched.
+
+   The five tiles are the constraint: below ~1024 a fifth of the shell no
+   longer holds a 14/22 paragraph inside a fixed 192, and the tile's own
+   clip would swallow the last line. So the row wraps and the tiles size
+   to their copy instead. */
+@media (max-width: 1024px) {
+  .hp-facts { margin-top: 64px; }
+  .hp-facts__tiles { flex-wrap: wrap; }
+  .hp-facts__tile { flex: 1 1 240px; height: auto; min-height: 192px; }
+  /* the head centres boxes, not text, so a lede that wraps needs this */
+  .hp-facts__lede { white-space: normal; text-align: center; }
+}
+
+@media (max-width: 720px) {
+  .hp-facts__card { padding: 31px 23px; }
+  .hp-facts__tile { flex-basis: 100%; min-height: 0; }
+}

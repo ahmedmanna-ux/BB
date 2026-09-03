@@ -1,0 +1,134 @@
+/* =============================================================
+   Homepage — 05 / 09 / 14 REVIEW BANDS
+   Figma: Home / 3780:57831 / 4443:82613, 4443:82653, 4443:82699
+   Three instances of one band, 1600 x 432 each.
+   Every shared rule lives here; 09 and 14 carry only their deltas.
+
+   What actually differs between the three: the portrait, and — on 09
+   only — the gap under the quote mark (20 instead of 16). The band
+   tint, the quote, the name, the role and every measurement are
+   identical in all three, so nothing else is parameterised.
+   ============================================================= */
+
+/* A tinted full-bleed row: 64 top and bottom around a 304-tall content
+   band — 64 + 304 + 64 = 432. 88 above is the homepage's row rhythm.
+   The tint is the band's own fill, so .shell sits inside it rather than
+   on the section, which is the opposite of the untinted rows. */
+.hp-review {
+  margin-top: 88px;
+  padding-block: 64px;
+  background: var(--bg-default-subtle);
+}
+
+/* The portrait is the tall element, so the copy centres against it.
+   Figma rounds the copy block's top to a whole pixel — 224 tall in a
+   304 box lands on 40 — and align-items: center does the same. */
+.hp-review__row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.hp-review__media {
+  position: relative;
+  flex: none;
+  width: 304px;
+  height: 304px;
+}
+
+.hp-review__portrait {
+  width: 304px;
+  height: 304px;
+  border-radius: var(--radius-3xl);
+  object-fit: cover;
+}
+
+/* 56px badge inset 16 from the portrait's bottom-right corner: a 48px
+   icon in 4px of padding. The fill is the brand orange at 60%, NOT the
+   --bg-brand-primary token flat — the portrait reads through it. The
+   glyph is a solid white disc with the triangle punched out of it, so
+   the play mark itself is that translucent orange showing through.
+
+   The badge also blurs what it sits on. Figma's background blur is not
+   in the MCP payload — no backdrop-blur class comes back — but the 1:1
+   renders settle it: on band 14 the portrait has a hard black/white
+   edge running under the badge and Figma smooths it to an even
+   terracotta, while an unblurred 60% fill lets the edge cut straight
+   through as a salmon wedge. Sweeping the radius against all three
+   renders bottoms out at 16px (measured across the annulus between the
+   white disc and the badge rim: 24.8 -> 16.0 mean abs on 14, 18.1 ->
+   11.7 on 09; 05 sits on a low-contrast backdrop and cannot
+   discriminate). Neither gate sees this: it moves no box, and the
+   annulus is too thin to light an 8px pagediff cell. */
+.hp-review__play {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  background: rgba(239, 93, 51, .6);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+.hp-review__play img { width: 48px; height: 48px; }
+
+/* Both marks are exported from the icon FRAME, so the 32/48 box is
+   already inside the viewBox and neither takes the leaf inset that
+   style.css hands every other svg. The file names matter as much as
+   this rule: those insets are applied by an [src$=] suffix match, so an
+   asset called hp-play-circle.svg is caught by the 24px play-circle.svg
+   rule and renders 4.5px small inside a box that still measures 48 —
+   invisible to a geometry probe. The hp-review-* names sidestep the
+   match and the explicit zero keeps a later rule from re-creating it. */
+.hp-review__play img,
+.hp-review__mark { padding: 0; }
+
+/* 687 is authored, not derived: the quote breaks after "with", "our"
+   and "reality." at that width and the three lines are what make the
+   copy block 156 tall. */
+.hp-review__body {
+  flex: none;
+  width: 687px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hp-review__quote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.hp-review__mark { width: 32px; height: 32px; }
+
+/* Heading/h4-semiBold on text/default/primary — .h4 already draws it,
+   and the quote takes the full primary black rather than the secondary
+   grey the .review card's quote uses. */
+.hp-review__text { color: var(--text-primary); }
+
+/* Heading/h6-medium over Body/small-regular, 4 apart: exactly what
+   .review__name and .review__role already carry, so they are reused
+   as-is and only the stacking is new. */
+.hp-review__by {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Below 1180 the 687px measure no longer fits beside the 304px portrait,
+   so the copy column has to become fluid. `width: auto` alone is not
+   enough: `flex: none` is `0 0 auto`, so the item takes its max-content
+   width — the whole quote on one 1949px line — and refuses to shrink,
+   and `overflow-x: hidden` on body then clips the sentence mid-word.
+   It has to grow AND shrink, and min-width: 0 is what lets a flex item
+   go below its min-content width so the text wraps instead. */
+@media (max-width: 1180px) {
+  .hp-review__body { flex: 1 1 auto; width: auto; min-width: 0; }
+}
+
+@media (max-width: 900px) {
+  .hp-review { margin-top: 64px; padding-block: 48px; }
+  .hp-review__row { flex-direction: column; align-items: flex-start; gap: 32px; }
+}
