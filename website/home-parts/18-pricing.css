@@ -132,14 +132,37 @@
    46/56 and the -0.022em the substituted Inter needs, so the only type
    delta here is the weight: this page's 46/56 is h2-bold, not the
    SemiBold .h2 ships for the Features page. */
+/* Three boxes on one vertically-centred row, not one line of mixed inline
+   type: the lead at 24/32 medium, the figure at 46/56 semiBold, the billing
+   rider at 16/24 regular, with a 12px gap to the lead and 4px to the rider.
+   Set inline they would share a baseline instead of a centre, which sits the
+   lead ~9px low; and .h2's own 600 is the figure's weight — the 700 that used
+   to be here was heavier than the design. */
 .hp-pricing__price {
-  font-weight: 700;
+  display: flex; align-items: center; gap: 12px;
   color: var(--text-primary);
   white-space: nowrap;
 }
 .hp-pricing__price-lead {
-  font-size: var(--size-2xl);
-  line-height: var(--lh-2xl);
+  font-size: var(--size-xl);
+  line-height: var(--lh-xl);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.hp-pricing__price-figure { display: flex; align-items: center; gap: 4px; }
+
+/* The billing-period rider that follows the figure: body/large-regular,
+   16/24 in the secondary token, 4 from the "$99". It rides inside the
+   46/56 line box the figure sets, so it adds nothing to the row height
+   and the card stays 331. Margin rather than a space in the markup —
+   a literal space here would be set at the parent's 46px and land
+   nearer 13 than the 4 the design asks for. */
+.hp-pricing__price-unit {
+  font-family: var(--font-body);
+  font-size: var(--size-md);
+  line-height: var(--lh-md);
+  font-weight: 400;
+  letter-spacing: normal;
   color: var(--text-secondary);
 }
 

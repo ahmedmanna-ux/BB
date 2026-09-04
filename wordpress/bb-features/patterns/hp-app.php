@@ -27,7 +27,7 @@ $bbh_img = get_theme_file_uri( 'assets/img/' );
 				<!-- wp:group {"className":"bbh-app-card__head","layout":{"type":"default"}} -->
 				<div class="wp-block-group bbh-app-card__head">
 					<!-- wp:html -->
-					<span class="bbh-tag"><span>Mobile App</span></span>
+					<span class="bbh-tag"><span>MOBILE APP</span></span>
 					<!-- /wp:html -->
 					<!-- wp:heading {"level":2,"className":"bbh-h3 bbh-h3--bold"} -->
 					<h2 class="wp-block-heading bbh-h3 bbh-h3--bold">Get your own branded app</h2>

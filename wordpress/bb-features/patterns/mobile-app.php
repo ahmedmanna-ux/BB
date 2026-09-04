@@ -21,7 +21,7 @@ $bbf_icon = get_theme_file_uri( 'assets/icon/' );
 			<div class="wp-block-group bbf-app__intro">
 			<!-- wp:group {"className":"bbf-app__head","layout":{"type":"default"}} -->
 			<div class="wp-block-group bbf-app__head">
-				<!-- wp:paragraph {"className":"bbf-tag"} --><p class="bbf-tag">Mobile App</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"bbf-tag"} --><p class="bbf-tag">MOBILE APP</p><!-- /wp:paragraph -->
 				<!-- wp:heading {"className":"bbf-h3 bbf-h3--bold"} --><h2 class="wp-block-heading bbf-h3 bbf-h3--bold">Get your own branded app</h2><!-- /wp:heading -->
 			</div>
 			<!-- /wp:group -->

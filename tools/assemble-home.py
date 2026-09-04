@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble website/home.html and its stylesheet block from website/home-parts/.
+"""Assemble website/index.html and its stylesheet block from website/home-parts/.
 
     python3 tools/assemble-home.py
 
@@ -7,17 +7,17 @@ Each homepage section is built in isolation as a pair of files under
 `website/home-parts/` — `NN-slug.html` (the fragment) and `NN-slug.css` (only
 what that section adds). This walks them in numeric order and produces:
 
-  * `website/home.html`  — head + the shared header + <main class="hp"> + every
+  * `website/index.html` — head + the shared header + <main class="hp"> + every
     fragment in order + the footer + the shared scripts
   * a fenced block inside `website/css/style.css`, rewritten in place, holding
     every part's CSS in the same order
 
 Keeping the parts separate is what lets sections be built and re-verified one
 at a time without agents colliding in one file; keeping assembly generated is
-what stops home.html and the parts drifting apart. Re-run it after any edit to
-a part — never hand-edit home.html or the fenced CSS block.
+what stops the page and the parts drifting apart. Re-run it after any edit to
+a part — never hand-edit index.html or the fenced CSS block.
 
-The header and the footer both come from index.html rather than from a part —
+The header and the footer both come from features.html rather than from a part —
 they are shared components that every page carries, so a homepage-local copy
 would be one more thing to keep in sync.
 """
@@ -60,7 +60,7 @@ def between(text: str, start_pat: str, end_pat: str) -> str:
 
     Searching for the end from position 0 works for the header and the footer,
     whose closing tags are unique, and silently fails for the script tag: the
-    first `</script>` in index.html closes the inline `js`-class snippet up in
+    first `</script>` in features.html closes the inline `js`-class snippet up in
     the <head>, so the slice ran backwards and came out empty. The homepage
     shipped with no main.js at all — which sets `js` on <html> but never adds
     `is-visible`, leaving every .reveal and .stagger section at opacity 0 for
@@ -68,12 +68,14 @@ def between(text: str, start_pat: str, end_pat: str) -> str:
     a = re.search(start_pat, text)
     b = re.search(end_pat, text[a.end():]) if a else None
     if not a or not b:
-        sys.exit(f'assemble-home: could not find {start_pat!r}..{end_pat!r} in index.html')
+        sys.exit(f'assemble-home: could not find {start_pat!r}..{end_pat!r} in features.html')
     return text[a.start():a.end() + b.end()]
 
 
 def main() -> None:
-    index = (SITE / 'index.html').read_text()
+    # the homepage IS index.html, so the shared chrome comes from the Features
+    # page — reading it from the output would be circular
+    index = (SITE / 'features.html').read_text()
     header = between(index, r'<header class="site-header"', r'</header>')
     footer = between(index, r'<footer class="site-footer"', r'</footer>')
     scripts = between(index, r'<script src="js/main\.js"', r'</script>')
@@ -93,7 +95,7 @@ def main() -> None:
     out.append('')
     out.append(scripts)
     out.append('</body>\n</html>')
-    (SITE / 'home.html').write_text('\n'.join(out) + '\n')
+    (SITE / 'index.html').write_text('\n'.join(out) + '\n')
 
     # --- the stylesheet block ------------------------------------------
     css_parts = []
@@ -123,7 +125,7 @@ main.hp + .site-footer { margin-top: 88px; }"""
         style = style.rstrip('\n') + '\n\n' + block + '\n'
     style_path.write_text(style)
 
-    print(f'home.html: {len(body_parts)} sections in <main>, shared header + footer')
+    print(f'index.html: {len(body_parts)} sections in <main>, shared header + footer')
     for f in frags:
         has = 'css' if f.with_suffix('.css').is_file() else '   '
         print(f'   {f.stem:22} {has}')

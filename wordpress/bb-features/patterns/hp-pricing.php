@@ -20,7 +20,7 @@ $bbh_img = get_theme_file_uri( 'assets/img/' );
 			<span class="bbh-tag"><span>Pricing</span></span>
 			<!-- /wp:html -->
 			<!-- wp:heading {"level":2,"className":"bbh-h3"} -->
-			<h2 class="wp-block-heading bbh-h3">Build your community from $99 and your branded app from $79</h2>
+			<h2 class="wp-block-heading bbh-h3">Build your community from $99 and your branded app from $99</h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"bbh-body-sm"} -->
 			<p class="bbh-body-sm">Everything you need to build and grow an online community, membership site, or social learning platform—with powerful web and mobile experiences.</p>
@@ -48,7 +48,7 @@ $bbh_img = get_theme_file_uri( 'assets/img/' );
 				<!-- wp:group {"className":"bbh-pricing__body","layout":{"type":"default"}} -->
 				<div class="wp-block-group bbh-pricing__body">
 					<!-- wp:paragraph {"className":"bbh-h2 bbh-pricing__price"} -->
-					<p class="bbh-h2 bbh-pricing__price"><span class="bbh-pricing__price-lead">Start at</span> $99</p>
+					<p class="bbh-h2 bbh-pricing__price"><span class="bbh-pricing__price-lead">Start at</span><span class="bbh-pricing__price-figure">$99<span class="bbh-pricing__price-unit">/year</span></span></p>
 					<!-- /wp:paragraph -->
 					<!-- wp:paragraph {"className":"bbh-body-sm bbh-pricing__note"} -->
 					<p class="bbh-body-sm bbh-pricing__note">Build a complete community, membership site, or online learning platform.</p>
@@ -83,7 +83,7 @@ $bbh_img = get_theme_file_uri( 'assets/img/' );
 				<!-- wp:group {"className":"bbh-pricing__body","layout":{"type":"default"}} -->
 				<div class="wp-block-group bbh-pricing__body">
 					<!-- wp:paragraph {"className":"bbh-h2 bbh-pricing__price"} -->
-					<p class="bbh-h2 bbh-pricing__price"><span class="bbh-pricing__price-lead">Start at</span> $79</p>
+					<p class="bbh-h2 bbh-pricing__price"><span class="bbh-pricing__price-lead">Start at</span><span class="bbh-pricing__price-figure">$99<span class="bbh-pricing__price-unit">/month</span></span></p>
 					<!-- /wp:paragraph -->
 					<!-- wp:paragraph {"className":"bbh-body-sm bbh-pricing__note"} -->
 					<p class="bbh-body-sm bbh-pricing__note">Launch your branded mobile app for iOS or Android through your own developer account.</p>

@@ -453,7 +453,10 @@ if fam is None:
     sys.exit('gen-patterns: unknown page %r — try one of %s'
              % (page, ', '.join(p for f in FAMILIES for p in f.pages)))
 SLUG_PFX, PAGE_TITLE, META = fam.pages[page]
-SRC = str(ROOT / 'website' / (page + '.html'))
+# the homepage's file is index.html, since it is the site root; every other
+# page's file matches its key
+SRC_FILE = {'home': 'index'}
+SRC = str(ROOT / 'website' / (SRC_FILE.get(page, page) + '.html'))
 
 html=open(SRC).read()
 m_main = re.search(r'<main\b[^>]*>', html)

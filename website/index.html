@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Features — BuddyBoss</title>
-<meta name="description" content="Every module BuddyBoss ships with: activity feeds, social groups, forums, messaging, member profiles, media, gamification, moderation, courses and a white-label native app.">
+<title>BuddyBoss — Your full-scale community and online learning platform</title>
+<meta name="description" content="Build online communities, membership sites and social learning platforms on your own WordPress site — with profiles, groups, forums, activity feeds, messaging, courses and a branded mobile app.">
 <link rel="icon" href="assets/icon/logo-buddyboss.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,6 @@
 </head>
 <body>
 
-<!-- ============================ HEADER ============================ -->
 <header class="site-header" id="siteHeader">
   <div class="shell site-header__inner">
     <a href="#" aria-label="BuddyBoss home">
@@ -33,8 +32,8 @@
           Preview <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
         </button>
         <div class="navdrop__menu" id="navPreview" hidden>
-          <a href="home.html">Home</a>
-          <a href="index.html" class="is-current">Features (Top Modules)</a>
+          <a href="index.html">Home</a>
+          <a href="features.html" class="is-current">Features (Top Modules)</a>
           <a href="activity-feeds.html">Activity Feeds</a>
           <a href="member-profiles.html">Member Profiles</a>
           <a href="social-groups.html">Social Groups</a>
@@ -62,447 +61,509 @@
   </div>
 </header>
 
-<main>
+<main class="hp">
 
-<!-- ============================= HERO ============================= -->
-<section class="hero">
-  <div class="hero__stage" id="heroStage">
-    <img class="hero__deco hero__glow" src="assets/img/hero-glow.svg" alt="" aria-hidden="true">
-    <img class="hero__deco hero__panel" src="assets/img/hero-panel.svg" alt="" aria-hidden="true">
+<!-- ================== 00-HERO ================== -->
+<section class="hp-hero">
+  <div class="hp-hero__stage">
+    <img class="hp-hero__glow" src="assets/img/hp-hero-glow.svg" alt="" aria-hidden="true">
+    <img class="hp-hero__art" src="assets/img/hp-hero-art.png" alt="" aria-hidden="true">
 
-    <div class="hero__copy">
-      <div class="hero__head">
-        <p class="hero__eyebrow">BuddyBoss Features</p>
-        <h1 class="h1 hero__title">Build a community where people feel connected</h1>
-      </div>
-      <div class="hero__actions">
-        <a href="#" class="btn btn--solid btn--lg">Watch Demo <img src="assets/icon/play-circle.svg" alt="" aria-hidden="true"></a>
-        <a href="#" class="btn btn--ghost btn--lg">Get BuddyBoss Now</a>
-      </div>
-    </div>
-
-    <div class="float float--composer"><img src="assets/img/hero-composer.png" alt="" aria-hidden="true"></div>
-    <div class="float float--avatars"><img src="assets/img/hero-avatars.png" alt="" aria-hidden="true"></div>
-    <div class="float float--notification"><img src="assets/img/hero-notification.png" alt="" aria-hidden="true"></div>
-    <div class="float float--message"><img src="assets/img/hero-message.png" alt="" aria-hidden="true"></div>
-    <div class="float float--update"><img src="assets/img/hero-update.png" alt="" aria-hidden="true"></div>
-    <div class="float float--reactions"><img src="assets/img/hero-reactions.png" alt="" aria-hidden="true"></div>
-  </div>
-</section>
-
-<!-- ======================= MODULE OVERVIEW ======================== -->
-<section class="shell section">
-  <div class="modules stagger">
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-activity.svg" alt=""></span>
-      <h3 class="module-card__title">Activity Feeds</h3>
-      <p class="module-card__text">Personalized feeds for updates, discussions, polls, and community news.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-groups.svg" alt=""></span>
-      <h3 class="module-card__title">Social Groups &amp; Discussions</h3>
-      <p class="module-card__text">Dedicated spaces where members connect, collaborate, and share ideas.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-messaging.svg" alt=""></span>
-      <h3 class="module-card__title">Private Messaging</h3>
-      <p class="module-card__text">Secure one-to-one and group conversations with rich media sharing.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-media.svg" alt=""></span>
-      <h3 class="module-card__title">Media Uploads</h3>
-      <p class="module-card__text">Let members share photos, videos, audio, documents, and more.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-profiles.svg" alt=""></span>
-      <h3 class="module-card__title">Member Profiles</h3>
-      <p class="module-card__text">Rich profiles with custom fields, social links, and privacy controls.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-reactions.svg" alt=""></span>
-      <h3 class="module-card__title">Reactions &amp; Custom Emoji</h3>
-      <p class="module-card__text">Customizable emoji reactions on every post, comment, and message.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-follow.svg" alt=""></span>
-      <h3 class="module-card__title">Follow &amp; Connections</h3>
-      <p class="module-card__text">Let members follow each other and build trusted connections.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-moderation.svg" alt=""></span>
-      <h3 class="module-card__title">Moderation</h3>
-      <p class="module-card__text">Keep your community safe with reports and spam prevention tools.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-membership.svg" alt=""></span>
-      <h3 class="module-card__title">Memberships</h3>
-      <p class="module-card__text">Monetize your community with flexible memberships and subscriptions.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-gamification.svg" alt=""></span>
-      <h3 class="module-card__title">Gamifications</h3>
-      <p class="module-card__text">Reward participation with points, badges, ranks, and achievements.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-courses.svg" alt=""></span>
-      <h3 class="module-card__title">Courses</h3>
-      <p class="module-card__text">Online courses, lessons, quizzes, and seamless LMS integrations.</p>
-    </article>
-    <article class="module-card">
-      <span class="module-card__icon"><img src="assets/icon/mod-app.svg" alt=""></span>
-      <h3 class="module-card__title">Native Mobile App</h3>
-      <p class="module-card__text">A white-label native app published under your own developer accounts.</p>
-    </article>
-  </div>
-</section>
-
-<!-- ========================= ACTIVITY FEEDS ======================== -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>Activity Feeds</span></span>
-    <h2 class="h2">Activity feeds that feels alive</h2>
-  </div>
-
-  <div class="split reveal">
-    <div class="split__body">
-      <div class="split__intro">
-        <h3 class="h5">Keep members engaged with a personalized activity feed</h3>
-        <p class="body-sm">Give members a familiar social space to share updates, discover conversations, and stay connected with the people and communities that matter most.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Personalized feed</b> — only posts that matter</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Pinned posts</b> — keep key posts on top</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Scheduled posts</b> — write now, publish later</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Polls</b> — ask, vote, decide</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Activity topics</b> — organize the feed</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Threaded comments</b> — replies stay organized</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Auto refresh</b> — never miss a post</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Post sharing</b> — share anywhere, even WhatsApp</span></li>
-      </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Activity Feeds <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-    </div>
-    <div class="split__panel"><img src="assets/img/panel-feed.png" alt="BuddyBoss activity feed with post composer, reactions and a live poll" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- ========================== SOCIAL GROUPS ======================== -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>Social Groups</span></span>
-    <h2 class="h2">Big community, small groups</h2>
-  </div>
-
-  <div class="split split--blue reveal">
-    <div class="split__body split__body--airy">
-      <div class="split__intro">
-        <h3 class="h5">Bring members together in social groups — public, private, or hidden</h3>
-        <p class="body-sm">Create dedicated spaces where members connect around shared interests, collaborate, share content, and build stronger communities.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Group privacy</b> — control who sees and joins</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Group feed</b> — every group gets its own</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Roles &amp; permissions</b> — decide who posts and invites</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Group types</b> — reach every member at once</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Zoom meetings</b> — schedule and sync inside groups</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Group messages</b> — reach every member at once</span></li>
-      </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Social Groups <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-    </div>
-    <div class="split__panel"><img src="assets/img/panel-groups.png" alt="A BuddyBoss group page showing organizers, members and group cards" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- ================= FORUM DISCUSSIONS + MESSAGING ================= -->
-<section class="shell section">
-  <div class="duo">
-    <article class="duo__card reveal reveal--left">
-      <div class="duo__panel"><img src="assets/img/panel-forum.png" alt="A forum discussion thread with nested replies" loading="lazy"></div>
-      <div class="duo__body">
-        <div class="duo__intro">
-          <div class="duo__intro-head">
-            <span class="tag"><span>Forum Discussions</span></span>
-            <h2 class="h3">Discussions worth keeping</h2>
-          </div>
-          <p class="body-sm">Create organized discussion spaces where members can ask questions, share knowledge, exchange ideas, and build a searchable knowledge base through meaningful conversations.</p>
+    <div class="hp-hero__copy">
+      <div class="hp-hero__intro">
+        <div class="hp-hero__head">
+          <p class="hp-hero__eyebrow">#1 WordPress Community Platform</p>
+          <h1 class="h1 hp-hero__title">Your full-scale community and online learning</h1>
+          <p class="body-md hp-hero__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
         </div>
-        <a href="#" class="btn btn--ghost btn--md">Explore Forum Discussions <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-      </div>
-    </article>
-
-    <article class="duo__card reveal reveal--right">
-      <div class="duo__panel"><img src="assets/img/panel-messaging.png" alt="A private message thread with the composer open" loading="lazy"></div>
-      <div class="duo__body">
-        <div class="duo__intro">
-          <div class="duo__intro-head">
-            <span class="tag"><span>Private Messaging</span></span>
-            <h2 class="h3">Say more with a message</h2>
-          </div>
-          <p class="body-sm">Keep conversations inside your community with private one-to-one and group messaging. Share photos, videos, audio, and files while giving you full control over who can message whom.</p>
+        <div class="hp-hero__actions">
+          <a href="#" class="btn btn--solid btn--lg">Get BuddyBoss</a>
+          <a href="#" class="btn btn--ghost btn--lg">See Demo Community</a>
         </div>
-        <a href="#" class="btn btn--ghost btn--md">Explore Private Messaging <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
       </div>
-    </article>
+
+      <div class="hp-hero__ratings">
+        <div class="hp-rating">
+          <span class="hp-rating__logo"><img src="assets/icon/badge-trustpilot.png" alt="Trustpilot"></span>
+          <span class="hp-rating__body">
+            <span class="hp-rating__stars">
+              <img src="assets/icon/hp-star-trustpilot.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-trustpilot.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-trustpilot.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-trustpilot.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-trustpilot.svg" alt="" aria-hidden="true">
+            </span>
+            <span class="hp-rating__score">4.6 out of 5 </span>
+          </span>
+        </div>
+        <div class="hp-rating">
+          <span class="hp-rating__logo"><img src="assets/icon/badge-wordpress.svg" alt="WordPress"></span>
+          <span class="hp-rating__body">
+            <span class="hp-rating__stars">
+              <img src="assets/icon/hp-star-amber.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-amber.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-amber.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-amber.svg" alt="" aria-hidden="true">
+              <img src="assets/icon/hp-star-amber.svg" alt="" aria-hidden="true">
+            </span>
+            <span class="hp-rating__score">4.9 out of 5</span>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ========================= MEMBER PROFILES ======================= -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>Member Profiles</span></span>
-    <h2 class="h2">Every member. more than a username</h2>
+<!-- ================== 01-LOGOWALL ================== -->
+<section class="shell hp-logowall">
+  <h2 class="h4 hp-logowall__title">Trusted by creators and brands worldwide</h2>
+  <div class="hp-logowall__logos">
+    <img class="hp-logowall__logo hp-logowall__logo--bossbabe" src="assets/img/hp-logo-bossbabe.png" alt="bossbabe">
+    <img class="hp-logowall__logo hp-logowall__logo--stanford" src="assets/img/hp-logo-stanford.png" alt="Stanford University">
+    <img class="hp-logowall__logo hp-logowall__logo--fea" src="assets/img/hp-logo-fea.png" alt="female ENTREPRENEUR association">
+    <img class="hp-logowall__logo hp-logowall__logo--mit" src="assets/img/hp-logo-mit.png" alt="Massachusetts Institute of Technology">
+    <img class="hp-logowall__logo hp-logowall__logo--lifemastery" src="assets/img/hp-logo-lifemastery.png" alt="Project Life Mastery">
+    <img class="hp-logowall__logo hp-logowall__logo--yale" src="assets/img/hp-logo-yale.png" alt="Yale University">
+    <img class="hp-logowall__logo hp-logowall__logo--chalene" src="assets/img/hp-logo-chalene.png" alt="Chalene">
+    <img class="hp-logowall__logo hp-logowall__logo--foundr" src="assets/img/hp-logo-foundr.png" alt="foundr">
+  </div>
+</section>
+
+<!-- ================== 02-BENTO1 ================== -->
+<section class="shell hp-bento">
+  <div class="hp-bento__head">
+    <span class="tag"><span>Community Features</span></span>
+    <h2 class="h2 hp-bento__title">A social network on your own WordPress site</h2>
+    <p class="hp-bento__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
   </div>
 
-  <div class="split split--green reveal">
-    <div class="split__body split__body--airy">
-      <div class="split__intro">
-        <h3 class="h5">Give every member a rich profile — with the fields you define and privacy down to every field</h3>
-        <p class="body-sm">Members join for the content and stay for the people. Profiles turn a user list into a community — faces, stories, things in common — on a WordPress site you own.</p>
+  <div class="hp-bento__grid">
+    <div class="hp-bento__row hp-bento__row--a">
+      <article class="hp-tile hp-tile--feed">
+        <div class="hp-tile__wrap">
+          <h3 class="h5 hp-tile__title">Activity feed</h3>
+          <p class="body-md hp-tile__text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from algorithms.</p>
+        </div>
+        <img class="hp-tile__art" src="assets/img/hp-bento-activity.png" alt="" aria-hidden="true">
+      </article>
+
+      <div class="hp-bento__col">
+        <article class="hp-tile hp-tile--profile">
+          <div class="hp-tile__wrap">
+            <h3 class="h6 hp-tile__title">Member profile</h3>
+            <p class="body-sm hp-tile__text">Granular permissions, access controls, and moderation tools.</p>
+          </div>
+          <img class="hp-tile__art" src="assets/img/hp-bento-profile.png" alt="" aria-hidden="true">
+        </article>
+
+        <div class="hp-bento__pair">
+          <article class="hp-tile hp-tile--groups">
+            <div class="hp-tile__wrap">
+              <h3 class="h6 hp-tile__title">Social groups</h3>
+              <p class="body-sm hp-tile__text">Organize members by interest, topic, or cohort.</p>
+            </div>
+            <img class="hp-tile__art" src="assets/img/hp-bento-groups.png" alt="" aria-hidden="true">
+          </article>
+
+          <article class="hp-tile hp-tile--forums">
+            <div class="hp-tile__wrap">
+              <h3 class="h6 hp-tile__title">Forums</h3>
+              <p class="body-sm hp-tile__text">Organize members by interest, topic, or cohort.</p>
+            </div>
+            <img class="hp-tile__art" src="assets/img/hp-bento-forums.png" alt="" aria-hidden="true">
+          </article>
+        </div>
       </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Profile fields</b> — custom field types, no code</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Profile types</b> — unique fields &amp; permissions per type</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Member directory</b> — searchable grid &amp; list views</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Advanced profile search</b> — filter by the fields you choose</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Member connections</b> — connect, follow &amp; message</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>WordPress roles</b> — auto-assigned per profile type</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Avatars &amp; covers</b> — branded defaults, member uploads</span></li>
+    </div>
+
+    <div class="hp-bento__row hp-bento__row--b">
+      <article class="hp-tile hp-tile--wide">
+        <div class="hp-tile__wrap">
+          <h3 class="h6 hp-tile__title">Moderation</h3>
+          <p class="body-sm hp-tile__text">Member &amp; content blocking with auto-block hide</p>
+        </div>
+        <img class="hp-tile__art" src="assets/img/hp-bento-moderation.png" alt="" aria-hidden="true">
+      </article>
+
+      <article class="hp-tile hp-tile--wide">
+        <div class="hp-tile__wrap">
+          <h3 class="h6 hp-tile__title">Private messaging</h3>
+          <p class="body-sm hp-tile__text">One to one or group chats with file sharing</p>
+        </div>
+        <img class="hp-tile__art" src="assets/img/hp-bento-messaging.png" alt="" aria-hidden="true">
+      </article>
+
+      <article class="hp-tile hp-tile--wide">
+        <div class="hp-tile__wrap">
+          <h3 class="h6 hp-tile__title">Like &amp; Reactions</h3>
+          <p class="body-sm hp-tile__text">Granular permissions, access controls, and ipsum</p>
+        </div>
+        <img class="hp-tile__art" src="assets/img/hp-bento-reactions.png" alt="" aria-hidden="true">
+      </article>
+    </div>
+  </div>
+
+  <div class="hp-bento__cta">
+    <a href="#" class="btn btn--ghost btn--lg">See All Features <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+  </div>
+</section>
+
+<!-- ================== 03-COURSES ================== -->
+<section class="shell hp-split hp-split--green">
+  <div class="hp-split__head">
+    <span class="tag"><span>courses</span></span>
+    <h2 class="h2">Teach it, sell it, keep the money</h2>
+    <p class="hp-split__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
+  </div>
+
+  <div class="hp-split__card">
+    <div class="hp-split__copy">
+      <div class="hp-split__intro">
+        <h3 class="h4">Keep members engaged with personalized activity feed</h3>
+        <p class="body-sm">BuddyBoss Courses is built into the platform. Build the curriculum, set the work, mark it and take the payment — without buying a second plugin.</p>
+      </div>
+      <ul class="hp-split__list">
+        <li>Courses, lessons and topics with drip and prerequisites</li>
+        <li>Assignments with deadlines, attachments and a gradebook</li>
+        <li>Quizzes with six question types and per-attempt results</li>
+        <li>A lesson player with offline downloads in the app</li>
+        <li>Progress surfaced across feeds, groups and profiles</li>
       </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Member Profiles <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <div class="hp-split__actions">
+        <a class="btn btn--solid btn--md" href="#">Explore Course <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+        <a class="btn btn--ghost btn--md" href="#">Get BuddyBoss</a>
+      </div>
     </div>
-    <div class="split__panel"><img src="assets/img/panel-profiles.png" alt="A member profile with about fields, connections and a photo cropper" loading="lazy"></div>
+    <div class="hp-split__panel"><img src="assets/img/hp-courses-panel.png" alt="BuddyBoss course cards showing prices, ratings, enrolment counts and a lesson player" loading="lazy"></div>
   </div>
 </section>
 
-<!-- ============================ BIG REVIEW ========================= -->
-<section class="shell section">
-  <figure class="review reveal reveal--zoom">
-    <div class="review__stars" aria-label="Rated 5 out of 5">
-      <img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt=""><img src="assets/icon/star-32.svg" alt="">
+<!-- ================== 04-MEMBERSHIPS ================== -->
+<section class="shell hp-split hp-split--peach">
+  <div class="hp-split__head">
+    <span class="tag"><span>memberships</span></span>
+    <h2 class="h2">Charge for it, on your own terms</h2>
+    <p class="hp-split__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
+  </div>
+
+  <div class="hp-split__card">
+    <div class="hp-split__copy">
+      <div class="hp-split__intro">
+        <h3 class="h4">Keep members engaged with personalized activity feed</h3>
+        <p class="body-sm">BuddyBoss Memberships is built in, so a second plugin is optional. Sell one-time or recurring plans through Stripe. BuddyBoss takes 2.9% on Start and nothing on Launch or Scale.</p>
+      </div>
+      <ul class="hp-split__list">
+        <li>Monthly, yearly and one-time plans with free trials</li>
+        <li>Members upgrade, downgrade or cancel from their account</li>
+        <li>0% platform fee on Launch and Scale</li>
+        <li>Discounts, custom button text and a benefits checklist</li>
+      </ul>
+      <div class="hp-split__actions">
+        <a class="btn btn--solid btn--md" href="#">Explore Memberships <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+        <a class="btn btn--ghost btn--md" href="#">Get BuddyBoss</a>
+      </div>
     </div>
-    <blockquote class="review__block">
-      <h2 class="h3">A Game-Changer for the WordPress Ecosystem</h2>
-      <p class="review__quote">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
-    </blockquote>
-    <figcaption class="review__by">
-      <span class="review__person">
-        <img src="assets/icon/av-review.png" alt="">
-        <span>
-          <span class="review__name review__name--block">John Doe</span>
-          <span class="review__role">Managing Director</span>
+    <div class="hp-split__panel"><img src="assets/img/hp-memberships-panel.png" alt="The BuddyBoss membership price box beside a Gold plan card and the Stripe logo" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ================== 05-REVIEW-1 ================== -->
+<section class="hp-review">
+  <div class="shell">
+    <div class="hp-review__row">
+      <div class="hp-review__media">
+        <img class="hp-review__portrait" src="assets/icon/av-review.png" alt="">
+        <span class="hp-review__play">
+          <img src="assets/icon/hp-review-play.svg" alt="" aria-hidden="true">
         </span>
-      </span>
-      <img class="review__logo" src="assets/icon/logo-foundr.png" alt="foundr">
-    </figcaption>
-  </figure>
-</section>
-
-<!-- ================== REACTIONS + NOTIFICATIONS ==================== -->
-<section class="shell section">
-  <div class="duo">
-    <article class="duo__card reveal reveal--left">
-      <div class="duo__panel"><img src="assets/img/panel-reactions.png" alt="An activity post with the emoji reaction bar open" loading="lazy"></div>
-      <div class="duo__body">
-        <div class="duo__intro">
-          <div class="duo__intro-head">
-            <span class="tag"><span>Like &amp; Reactions</span></span>
-            <h2 class="h3">Reactions beyond the like button</h2>
-          </div>
-          <p class="body-sm">Encourage everyday engagement with customizable emoji reactions across activity posts, comments, blog posts, and private messages. Choose a simple Like button or up to six emotions to make every interaction more expressive.</p>
-        </div>
-        <a href="#" class="btn btn--ghost btn--md">Explore Like &amp; Reactions <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
       </div>
-    </article>
-
-    <article class="duo__card reveal reveal--right">
-      <div class="duo__panel"><img src="assets/img/panel-notifications.png" alt="The notifications panel with mentions, replies and follows" loading="lazy"></div>
-      <div class="duo__body">
-        <div class="duo__intro">
-          <div class="duo__intro-head">
-            <span class="tag"><span>Notifications</span></span>
-            <h2 class="h3">Notifications, never noise</h2>
-          </div>
-          <p class="body-sm">Keep members engaged with personalized notifications across email, web push, and on-screen alerts. Deliver mentions, replies, and invites while letting members choose how and when they stay informed.</p>
-        </div>
-        <a href="#" class="btn btn--ghost btn--md">Explore Notifications <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ========================== MEDIA UPLOADS ======================== -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>Media Uploads</span></span>
-    <h2 class="h2">Share every media type</h2>
-  </div>
-
-  <div class="stack stack--blue stack--narrow reveal">
-    <div class="stack__panel"><img src="assets/img/panel-media.png" alt="Photo grid, video post and the document uploader in the post composer" loading="lazy"></div>
-    <div class="feature-row stagger">
-      <div class="feature-row__item">
-        <img src="assets/icon/feat-video.svg" alt="">
-        <h3 class="feature-row__title">Media types</h3>
-        <p class="feature-row__text">Support photos, videos, audio, documents, and more, giving members more ways to share.</p>
-      </div>
-      <div class="feature-row__item">
-        <img src="assets/icon/feat-images.svg" alt="">
-        <h3 class="feature-row__title">Media albums</h3>
-        <p class="feature-row__text">Organize photos and videos into albums, making media easier to upload, browse, and manage.</p>
-      </div>
-      <div class="feature-row__item">
-        <img src="assets/icon/feat-upload.svg" alt="">
-        <h3 class="feature-row__title">Upload permissions</h3>
-        <p class="feature-row__text">Control who can upload media with flexible permissions based on roles, profiles, or community settings.</p>
-      </div>
-      <div class="feature-row__item">
-        <img src="assets/icon/feat-filetext.svg" alt="">
-        <h3 class="feature-row__title">File type control</h3>
-        <p class="feature-row__text">Choose which file formats members can upload to maintain content quality and community security.</p>
-      </div>
-    </div>
-    <div class="stack__cta">
-      <a href="#" class="btn btn--ghost btn--md">Explore Media Uploads <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <figure class="hp-review__body">
+        <blockquote class="hp-review__quote">
+          <img class="hp-review__mark" src="assets/icon/hp-review-quotes.svg" alt="" aria-hidden="true">
+          <p class="h4 hp-review__text">The freedom, flexibility, and support keep us with BuddyBoss for the long haul. It’s helping us turn our vision of building the Internet of Apps into reality.</p>
+        </blockquote>
+        <figcaption class="hp-review__by">
+          <span class="review__name">John Doe</span>
+          <span class="review__role">Managing Director</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ========================== GAMIFICATIONS ======================== -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>Gamifications</span></span>
-    <h2 class="h2">Gamify your commmunity</h2>
+<!-- ================== 06-GAMIFICATION ================== -->
+<section class="shell hp-split hp-split--blue">
+  <div class="hp-split__head">
+    <span class="tag"><span>gamification</span></span>
+    <h2 class="h2">Reward the behavior you want</h2>
+    <p class="hp-split__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
   </div>
 
-  <div class="stack stack--tight reveal">
-    <div class="stack__panel"><img src="assets/img/panel-gamification.png" alt="Achievement cards, a rank unlock modal and a member card with badges" loading="lazy"></div>
-    <div class="stack__split">
-      <div class="stack__split-left">
-        <h3 class="h4">Reward the behavior you want — community gamification built into WordPress</h3>
-        <p class="body-sm">Keep members motivated with points, badges, ranks, and achievements that reward participation, recognize contributions, and encourage long-term community engagement.</p>
+  <div class="hp-split__card">
+    <div class="hp-split__copy">
+      <div class="hp-split__blocks">
+        <div class="hp-split__block">
+          <h3 class="h5">Points</h3>
+          <p>Run several point currencies at once. Award or deduct them on actions, with frequency caps and triggers limited to chosen profile types.</p>
+        </div>
+        <div class="hp-split__block">
+          <h3 class="h5">Achievements</h3>
+          <p>Trigger on actions, point totals, ranks, or other achievements — so badges can chain into each other.</p>
+        </div>
+        <div class="hp-split__block">
+          <h3 class="h5">Ranks</h3>
+          <p>Members climb levels that unlock hidden social groups and courses.</p>
+        </div>
       </div>
-      <div class="stack__split-right">
-        <ul class="checks checks--roomy stagger">
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Points</b> — reward the actions you choose</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Ranks</b> — levels members climb</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Content unlocks</b> — courses &amp; hidden groups, per rank</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Achievements</b> — badges for any milestone</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Leaderboards</b> — by point type &amp; timeframe</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Profile badges</b> — progress on display everywhere</span></li>
-          <li><img src="assets/icon/check.svg" alt=""><span><b>Awards page</b> — the community trophy case</span></li>
+      <div class="hp-split__actions">
+        <a class="btn btn--solid btn--md" href="#">Explore Gamification <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+        <a class="btn btn--ghost btn--md" href="#">Get BuddyBoss</a>
+      </div>
+    </div>
+    <div class="hp-split__panel"><img src="assets/img/hp-gamification-panel.png" alt="A BuddyBoss member profile with gems and engagement points beside an achievements grid and a rank unlock message" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ================== 07-FACTS ================== -->
+<section class="shell hp-facts">
+  <div class="hp-facts__card">
+    <div class="hp-facts__head">
+      <p class="hp-facts__label">WHAT YOU PAY PER MEMBER</p>
+      <div class="hp-facts__figure"><p class="h1 hp-facts__price">$0</p></div>
+      <h2 class="h4 hp-facts__lede">Forever — however big you grow</h2>
+    </div>
+    <ul class="hp-facts__tiles">
+      <li class="hp-facts__tile">
+        <div class="hp-facts__tile-head">
+          <img class="hp-facts__icon" src="assets/icon/hp-inf-members.svg" alt="" aria-hidden="true">
+          <h3 class="h6 hp-facts__tile-title">Members</h3>
+        </div>
+        <p class="body-sm">Freedom to grow your audience without limits — no per-seat pricing, ever.</p>
+      </li>
+      <li class="hp-facts__tile hp-facts__tile--lift">
+        <div class="hp-facts__tile-head">
+          <img class="hp-facts__icon" src="assets/icon/hp-inf-admins.svg" alt="" aria-hidden="true">
+          <h3 class="h6 hp-facts__tile-title">Admins</h3>
+        </div>
+        <p class="body-sm">Grant roles and permissions across your whole team.</p>
+      </li>
+      <li class="hp-facts__tile">
+        <div class="hp-facts__tile-head">
+          <img class="hp-facts__icon" src="assets/icon/hp-inf-groups.svg" alt="" aria-hidden="true">
+          <h3 class="h6 hp-facts__tile-title">Groups</h3>
+        </div>
+        <p class="body-sm">Organize members by interests, topics, and projects.</p>
+      </li>
+      <li class="hp-facts__tile">
+        <div class="hp-facts__tile-head">
+          <img class="hp-facts__icon" src="assets/icon/hp-inf-events.svg" alt="" aria-hidden="true">
+          <h3 class="h6 hp-facts__tile-title">Events</h3>
+        </div>
+        <p class="body-sm">Bring members together, in-person or online — with Zoom &amp; YouTube Live.</p>
+      </li>
+      <li class="hp-facts__tile">
+        <div class="hp-facts__tile-head">
+          <img class="hp-facts__icon" src="assets/icon/hp-inf-courses.svg" alt="" aria-hidden="true">
+          <h3 class="h6 hp-facts__tile-title">Courses</h3>
+        </div>
+        <p class="body-sm">Sell single courses, bundles, or start the next online university.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================== 08-BENTO2 ================== -->
+<section class="hp-bento2">
+  <div class="hp-bento2__inner">
+    <div class="hp-bento2__head">
+      <span class="tag"><span>who it is for</span></span>
+      <h2 class="h2 hp-bento2__title">Ten kinds of community, one platform</h2>
+    </div>
+    <div class="hp-bento2__track">
+      <article class="hp-bento2__card is-current">
+        <div class="hp-bento2__art">
+          <img class="hp-bento2__poly" src="assets/img/hp-bento-poly.svg" alt="" aria-hidden="true">
+        </div>
+        <div class="hp-bento2__copy">
+          <h3 class="h5 hp-bento2__card-title">Education</h3>
+          <p class="hp-bento2__card-text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from algorithms.</p>
+        </div>
+      </article>
+      <article class="hp-bento2__card">
+        <div class="hp-bento2__art">
+          <img class="hp-bento2__poly" src="assets/img/hp-bento-poly.svg" alt="" aria-hidden="true">
+        </div>
+        <div class="hp-bento2__copy">
+          <h3 class="h5 hp-bento2__card-title">Coaching</h3>
+          <p class="hp-bento2__card-text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from algorithms.</p>
+        </div>
+      </article>
+      <article class="hp-bento2__card">
+        <div class="hp-bento2__art">
+          <img class="hp-bento2__poly" src="assets/img/hp-bento-poly.svg" alt="" aria-hidden="true">
+        </div>
+        <div class="hp-bento2__copy">
+          <h3 class="h5 hp-bento2__card-title">Online Courses</h3>
+          <p class="hp-bento2__card-text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from algorithms.</p>
+        </div>
+      </article>
+    </div>
+    <div class="hp-bento2__cta">
+      <a href="#" class="btn btn--ghost btn--lg hp-bento2__more">See All Features <img src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      <div class="hp-bento2__controls">
+        <div class="hp-bento2__dots">
+          <button type="button" class="hp-bento2__dot" aria-label="Show slide 1"></button>
+          <button type="button" class="hp-bento2__dot is-active" aria-label="Show slide 2"></button>
+          <button type="button" class="hp-bento2__dot" aria-label="Show slide 3"></button>
+          <button type="button" class="hp-bento2__dot" aria-label="Show slide 4"></button>
+        </div>
+        <div class="hp-bento2__nav">
+          <button type="button" class="hp-bento2__arrow hp-bento2__arrow--prev" aria-label="Previous community types">
+            <img src="assets/icon/app-arrow-left.svg" alt="" aria-hidden="true">
+          </button>
+          <button type="button" class="hp-bento2__arrow hp-bento2__arrow--next" aria-label="Next community types">
+            <img src="assets/icon/carousel-arrow-right.svg" alt="" aria-hidden="true">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 09-REVIEW-2 ================== -->
+<section class="hp-review hp-review--roomy">
+  <div class="shell">
+    <div class="hp-review__row">
+      <div class="hp-review__media">
+        <img class="hp-review__portrait" src="assets/img/hp-review-2.png" alt="">
+        <span class="hp-review__play">
+          <img src="assets/icon/hp-review-play.svg" alt="" aria-hidden="true">
+        </span>
+      </div>
+      <figure class="hp-review__body">
+        <blockquote class="hp-review__quote">
+          <img class="hp-review__mark" src="assets/icon/hp-review-quotes.svg" alt="" aria-hidden="true">
+          <p class="h4 hp-review__text">The freedom, flexibility, and support keep us with BuddyBoss for the long haul. It’s helping us turn our vision of building the Internet of Apps into reality.</p>
+        </blockquote>
+        <figcaption class="hp-review__by">
+          <span class="review__name">John Doe</span>
+          <span class="review__role">Managing Director</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 10-MIGRATION ================== -->
+<section class="shell hp-migration">
+  <div class="hp-migration__head">
+    <span class="tag"><span>migration</span></span>
+    <h2 class="h2 hp-migration__title">Bring the community you already have</h2>
+  </div>
+
+  <div class="hp-migration__card">
+    <div class="hp-migration__map">
+      <div class="hp-migration__node hp-migration__node--fluent">
+        <img class="hp-migration__node-logo hp-migration__node-logo--round" src="assets/icon/hp-migrate-fluentcommunity-lg.png" alt="Fluent Community">
+      </div>
+      <div class="hp-migration__node hp-migration__node--circle">
+        <img class="hp-migration__node-logo" src="assets/icon/hp-migrate-circle-lg.png" alt="Circle">
+      </div>
+      <div class="hp-migration__node hp-migration__node--skool">
+        <img class="hp-migration__node-logo" src="assets/icon/migrate-skool.png" alt="Skool">
+      </div>
+      <div class="hp-migration__node hp-migration__node--kajabi">
+        <img class="hp-migration__node-logo" src="assets/icon/migrate-kajabi.png" alt="Kajabi">
+      </div>
+      <div class="hp-migration__node hp-migration__node--mighty">
+        <img class="hp-migration__node-logo" src="assets/icon/hp-migrate-mightynetworks-lg.png" alt="Mighty Networks">
+      </div>
+      <div class="hp-migration__node hp-migration__node--buddypress">
+        <img class="hp-migration__node-logo" src="assets/icon/migrate-buddypress.png" alt="BuddyPress">
+      </div>
+      <div class="hp-migration__node hp-migration__node--bb">
+        <img class="hp-migration__bb-mark" src="assets/icon/hp-mig-bb-mark.svg" alt="BuddyBoss">
+      </div>
+      <img class="hp-migration__wires" src="assets/icon/hp-mig-lines.svg" alt="" aria-hidden="true">
+    </div>
+
+    <div class="hp-migration__lists">
+      <div class="hp-migration__group hp-migration__group--wp">
+        <p class="h6 hp-migration__group-title">Built in - moving from WordPress</p>
+        <ul class="hp-migration__chips">
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-buddypress.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">BuddyPress</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-peepso.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">PeepSo</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-fluentcommunity.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Fluent Community</span>
+          </li>
+          <li class="hp-migration__chip hp-migration__chip--plain">
+            <span class="hp-migration__chip-label">wpForo</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/hp-migrate-bbpress.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">bbPress</span>
+          </li>
+          <li class="hp-migration__chip hp-migration__chip--plain">
+            <span class="hp-migration__chip-label">phpBB</span>
+          </li>
+          <li class="hp-migration__chip hp-migration__chip--plain">
+            <span class="hp-migration__chip-label">XenForo</span>
+          </li>
+          <li class="hp-migration__chip hp-migration__chip--plain">
+            <span class="hp-migration__chip-label">and more</span>
+          </li>
         </ul>
-        <a href="#" class="btn btn--ghost btn--md">Explore Gamifications <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+      </div>
+
+      <div class="hp-migration__group hp-migration__group--hosted">
+        <p class="h6 hp-migration__group-title">Our agency team - moving from hosted platorm</p>
+        <ul class="hp-migration__chips hp-migration__chips--muted">
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-kajabi.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Kajabi</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-thinkific.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Thinkific</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-mightynetworks.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Mighty Networks</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-circle.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Circle</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-skool.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Skool</span>
+          </li>
+          <li class="hp-migration__chip">
+            <img class="hp-migration__chip-logo" src="assets/icon/migrate-higherlogic.png" alt="" aria-hidden="true">
+            <span class="hp-migration__chip-label">Higher Logic</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ MODERATION ========================= -->
-<section class="shell section">
-  <div class="halves">
-    <div class="halves__copy reveal reveal--left">
-      <div class="halves__intro">
-        <div class="halves__intro-head">
-          <span class="tag"><span>Moderation</span></span>
-          <h2 class="h3 h3--bold">Automated moderation tools for your community</h2>
-        </div>
-        <p class="body-sm">Keep your community safe and welcoming with powerful moderation tools that help manage content, reduce spam, and maintain healthy member interactions.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Member blocking</b> — hide anyone, everywhere</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Content reporting</b> — posts, photos, forums &amp; more</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Reporting categories</b> — define what’s reportable</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Auto-hide</b> — content hides after enough reports</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Auto suspend</b> — repeat offenders, handled automatically</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Reported content</b> — review, hide, or restore</span></li>
-      </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Moderation <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-    </div>
-    <div class="halves__art reveal reveal--right"><img src="assets/img/panel-moderation.png" alt="Reported media hidden automatically, with the moderation toggles beside it" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- =========================== OFFLOAD MEDIA ======================= -->
-<section class="shell section">
-  <div class="halves halves--flip">
-    <div class="halves__copy reveal reveal--right">
-      <div class="halves__intro">
-        <div class="halves__intro-head">
-          <span class="tag"><span>Offload Media</span></span>
-          <h2 class="h3 h3--bold">Store media files on external storage</h2>
-        </div>
-        <p class="body-sm body-sm--grey">Reduce server storage and improve performance by offloading media files to cloud storage, ensuring faster loading times and a more scalable community.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Global CDN</b> — Cloudflare-fast, worldwide</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Custom domain</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Bulk offload</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Download back</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Smart fallbacks</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Cache control</b> — what it does</span></li>
-      </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Offload Media <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-    </div>
-    <div class="halves__art reveal reveal--left"><img src="assets/img/panel-offload.png" alt="Media files syncing between a BuddyBoss site and Cloudflare storage" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- ============================ SEO SETTINGS ======================= -->
-<section class="shell section">
-  <div class="halves">
-    <div class="halves__copy reveal reveal--left">
-      <div class="halves__intro">
-        <div class="halves__intro-head">
-          <span class="tag"><span>SEO Settings</span></span>
-          <h2 class="h3 h3--bold">Built-in SEO tools</h2>
-        </div>
-        <p class="body-sm">Improve your community's visibility with built-in SEO settings that help search engines discover, index, and rank your content more effectively.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>SEO title &amp; description</b> — control your search snippet</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Open graph</b> — rich previews when shared</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Activity title templates</b> — dynamic tags per post</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Indexing controls</b> — choose what Google sees</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Clean permalinks</b> — custom slugs site-wide</span></li>
-      </ul>
-    </div>
-    <div class="halves__art reveal reveal--right"><img src="assets/img/panel-seo.png" alt="SEO title and description settings with the resulting search snippet" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- ========================= MEMBER BLOGGING ======================= -->
-<section class="shell section">
-  <div class="halves halves--flip">
-    <div class="halves__copy reveal reveal--right">
-      <div class="halves__intro">
-        <div class="halves__intro-head">
-          <span class="tag"><span>Member Blogging</span></span>
-          <h2 class="h3 h3--bold">Your community members write the blog</h2>
-        </div>
-        <p class="body-sm body-sm--grey">The content you never have to write. Members turn what they know into real articles, and every published post is one more indexable page of user-generated content working for your site.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Blog creator</b> — write from the front end</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Block editor</b> — text, images, galleries, video</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Admin approval</b> — review before it’s live</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Writer permissions</b> — who publishes, by role</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Bookmarks</b> — save posts for later</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Scheduling</b> — publish now or later</span></li>
-      </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Member Blogging <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-    </div>
-    <div class="halves__art reveal reveal--left"><img src="assets/img/panel-blogging.png" alt="The front-end blog creator with the block editor and publishing options" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- ============================ MOBILE APP ========================= -->
-<section class="app-band section">
+<!-- ================== 11-APP ================== -->
+<section class="app-band">
   <img class="app-band__deco app-band__poly" src="assets/img/app-polygon.svg" alt="" aria-hidden="true">
   <img class="app-band__deco app-band__ellipse" src="assets/img/app-ellipse.svg" alt="" aria-hidden="true">
   <div class="shell app-band__inner">
     <div class="app-card reveal reveal--left">
       <div class="app-card__intro">
         <div class="app-card__head">
-          <span class="tag"><span>Mobile App</span></span>
+          <span class="tag"><span>MOBILE APP</span></span>
           <h2 class="h3 h3--bold">Get your own branded app</h2>
         </div>
         <p class="body-sm">Launch a fully white-label native community app under your own App Store and Google Play developer accounts—your brand, your icon, your community.</p>
@@ -539,241 +600,401 @@
   </div>
 </section>
 
-<!-- ============================= COURSES =========================== -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>BuddyBoss Courses</span></span>
-    <h2 class="h2">Power of native courses</h2>
+<!-- ================== 12-INTEGRATIONS ================== -->
+<section class="hp-integrations">
+  <div class="hp-integrations__head">
+    <span class="tag"><span>integrations</span></span>
+    <h2 class="h2 hp-integrations__title">Works with the tools you already run</h2>
+    <p class="body-md hp-integrations__lede">BuddyBoss runs on your own WordPress site, so it works with the plugins you already use. LMS and commerce integrations come with Launch and Scale, and we never take a cut of sales made through them.</p>
   </div>
 
-  <div class="split split--blue reveal">
-    <div class="split__body split__body--airy">
-      <div class="split__intro">
-        <h3 class="h5">Create public, private, and hidden groups with dedicated feeds, forums, messaging, and subgroups.</h3>
-        <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+  <div class="hp-integrations__grid">
+    <div class="hp-integrations__vrules" aria-hidden="true">
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+      <span class="hp-integrations__vrule"></span>
+    </div>
+
+    <div class="hp-integrations__rows">
+      <span class="hp-integrations__rule" aria-hidden="true"></span>
+
+      <ul class="hp-integrations__row">
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-learndash.png" alt="LearnDash"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-tutor.png" alt="Tutor LMS"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-lifter.png" alt="LifterLMS"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-memberpress.png" alt="MemberPress"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-woo.png" alt="WooCommerce"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-zoom.png" alt="Zoom"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-pusher.png" alt="Pusher"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-onesignal.png" alt="OneSignal"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-giphy.png" alt="GIPHY"></li>
       </ul>
-      <a href="#" class="btn btn--ghost btn--md">Explore Courses <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-    </div>
-    <div class="split__panel"><img src="assets/img/panel-courses.png" alt="The BuddyBoss courses experience" loading="lazy"></div>
-  </div>
-</section>
 
-<!-- ========================== MEMBERSHIP ========================== -->
-<section class="shell section">
-  <div class="block__head reveal">
-    <span class="tag"><span>BuddyBoss Membership</span></span>
-    <h2 class="h2">Membership with 0% fees</h2>
-  </div>
+      <span class="hp-integrations__rule" aria-hidden="true"></span>
 
-  <div class="split split--green reveal">
-    <div class="split__body split__body--airy">
-      <div class="split__intro">
-        <h3 class="h5">Enjoy features like video conferencing, webinars, and interactive sessions directly within your platform.</h3>
-        <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
-      </div>
-      <ul class="checks stagger">
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-        <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
+      <ul class="hp-integrations__row">
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-elementor.png" alt="Elementor"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-yoast.png" alt="Yoast SEO"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-rankmath.png" alt="Rank Math"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-wpml.png" alt="WPML"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-gravity-forms.png" alt="Gravity Forms"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-wp-forms.png" alt="WPForms"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-fluent-crm.png" alt="FluentCRM"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-mailpoet.png" alt="MailPoet"></li>
+        <li class="hp-integrations__tile"><img class="hp-integrations__logo" src="assets/img/hp-int-wp-fusion.png" alt="WP Fusion"></li>
       </ul>
+
+      <span class="hp-integrations__rule" aria-hidden="true"></span>
     </div>
-    <div class="split__panel memb-art">
-      <span class="memb-art__glow" aria-hidden="true"></span>
-      <span class="memb-art__shot memb-art__shot--back">
-        <img src="assets/img/memb-shot-back.png" alt="Membership options in the WordPress admin" loading="lazy">
-      </span>
-      <span class="memb-art__shot memb-art__shot--front">
-        <img src="assets/img/memb-shot-front.png" alt="Bronze and Gold membership tiers on the front end" loading="lazy">
-      </span>
+  </div>
+
+  <a href="#" class="btn btn--solid btn--lg hp-integrations__cta">Explore All Integrations</a>
+</section>
+
+<!-- ================== 13-THEMERL ================== -->
+<section class="shell hp-dfy">
+  <div class="hp-dfy__head">
+    <span class="tag"><span>DONE for you</span></span>
+    <h2 class="h2 hp-dfy__title">We build it, so you can focus on your business</h2>
+    <p class="hp-dfy__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
+  </div>
+
+  <div class="hp-dfy__card hp-dfy__card--web">
+    <div class="hp-dfy__panel">
+      <img src="assets/img/hp-dfy-web.png" alt="A BuddyBoss member profile on the web, with a settings gear, a code snippet badge and an open colour picker set to #3E34FF floating over it" loading="lazy">
+    </div>
+    <div class="hp-dfy__copy">
+      <div class="hp-dfy__intro">
+        <h3 class="h4">Web DFY</h3>
+        <p class="body-sm">BuddyBoss Memberships is built in, so a second plugin is optional. Sell one-time or recurring plans through Stripe. BuddyBoss takes 2.9% on Start and nothing on Launch or Scale.</p>
+      </div>
+      <ul class="hp-dfy__list">
+        <li>Full platform setup — theme, plugins, configuration</li>
+        <li>Custom branding — your colours, logo &amp; fonts</li>
+        <li>Content migration — imported &amp; organised</li>
+        <li>Launch-ready in ~2 weeks</li>
+      </ul>
+      <div class="hp-dfy__actions">
+        <a class="btn btn--solid btn--md" href="#">Explore DFY <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+        <a class="btn btn--ghost btn--md" href="#">Get BuddyBoss</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hp-dfy__card hp-dfy__card--app">
+    <div class="hp-dfy__copy">
+      <div class="hp-dfy__intro">
+        <h3 class="h4">App DFY</h3>
+        <p class="body-sm">BuddyBoss Memberships is built in, so a second plugin is optional. Sell one-time or recurring plans through Stripe. BuddyBoss takes 2.9% on Start and nothing on Launch or Scale.</p>
+      </div>
+      <ul class="hp-dfy__list">
+        <li>App Launch (iOS and Android)</li>
+        <li>Done For You Setup</li>
+        <li>Monthly Maintenance</li>
+        <li>App Store Graphics (6-monthly)</li>
+        <li>Feature Configuration Support</li>
+      </ul>
+      <div class="hp-dfy__actions">
+        <a class="btn btn--solid btn--md" href="#">Explore DFY <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+        <a class="btn btn--ghost btn--md" href="#">Get BuddyBoss</a>
+      </div>
+    </div>
+    <div class="hp-dfy__panel">
+      <img src="assets/img/hp-dfy-app.png" alt="Three BuddyBoss mobile app screens — a course catalogue, an activity feed post and a group directory — with maintenance, upload and design badges around them" loading="lazy">
     </div>
   </div>
 </section>
 
-<!-- ====================== THEME / READYLAUNCH ====================== -->
-<section class="shell section">
-  <div class="products">
-    <article class="product-card reveal reveal--left">
-      <div class="product-card__art"><img src="assets/img/panel-theme.png" alt="A community profile page styled with the BuddyBoss Theme" loading="lazy"></div>
-      <div class="product-card__body">
-        <div class="product-card__copy">
-          <h2 class="h3">BuddyBoss Theme</h2>
-          <p class="body-sm">Take full control of your community's design with a premium BuddyBoss theme, customizing layouts, branding, typography, headers, and member-facing pages to match your brand.</p>
-        </div>
-        <a href="#" class="btn btn--ghost btn--md">Explore Theme <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
+<!-- ================== 14-REVIEW-3 ================== -->
+<section class="hp-review">
+  <div class="shell">
+    <div class="hp-review__row">
+      <div class="hp-review__media">
+        <img class="hp-review__portrait" src="assets/img/hp-review-3.png" alt="">
+        <span class="hp-review__play">
+          <img src="assets/icon/hp-review-play.svg" alt="" aria-hidden="true">
+        </span>
       </div>
-    </article>
-
-    <article class="product-card reveal reveal--right">
-      <div class="product-card__art"><img src="assets/img/panel-readylaunch.png" alt="A ReadyLaunch activity feed with sidebar widgets" loading="lazy"></div>
-      <div class="product-card__body">
-        <div class="product-card__copy">
-          <h2 class="h3">ReadyLaunch</h2>
-          <p class="body-sm">Launch your community faster with ReadyLaunch, featuring professionally designed templates, customizable layouts, branding options, beautiful widgets, and polished member-facing pages.</p>
-        </div>
-        <a href="#" class="btn btn--ghost btn--md">Explore ReadyLaunch <img class="ico-arrow" src="assets/icon/arrow-right.svg" alt="" aria-hidden="true"></a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- =========================== INTEGRATIONS ======================= -->
-<section class="shell section">
-  <div class="integrations__heads reveal">
-    <div class="block__head block__head--wide is-current">
-      <span class="tag"><span>integrations</span></span>
-      <h2 class="h2">Integrations that take BuddyBoss to the next level</h2>
-    </div>
-    <div class="block__head">
-      <span class="tag"><span>tutor lms</span></span>
-      <h2 class="h2">Tutor LMS course integration</h2>
-    </div>
-    <div class="block__head">
-      <span class="tag"><span>zoom</span></span>
-      <h2 class="h2">Zoom integration</h2>
-    </div>
-    <div class="block__head">
-      <span class="tag"><span>recaptcha</span></span>
-      <h2 class="h2">reCaptcha integration</h2>
-    </div>
-    <div class="block__head">
-      <span class="tag"><span>event calendar pro</span></span>
-      <h2 class="h2">Event calendar pro integration</h2>
-    </div>
-  </div>
-
-  <div class="integrations reveal">
-    <div class="integrations__slides">
-      <div class="integrations__slide is-current">
-        <div class="integrations__panel">
-          <img src="assets/img/panel-integrations.png" alt="Logos of the apps and services that integrate with BuddyBoss" loading="lazy">
-        </div>
-      </div>
-      <div class="integrations__slide integrations__slide--tab integrations__slide--blue">
-        <div class="integrations__copy">
-          <p class="integrations__lead">Connect Tutor LMS courses with BuddyBoss community.</p>
-          <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
-          <ul class="checks">
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          </ul>
-        </div>
-        <div class="integrations__art">
-          <img src="assets/img/panel-tab-tutor.png" alt="The Tutor LMS course detail and course cards inside a BuddyBoss community" loading="lazy">
-        </div>
-      </div>
-      <div class="integrations__slide integrations__slide--tab integrations__slide--green">
-        <div class="integrations__copy">
-          <p class="integrations__lead">Enjoy features like video conferencing, webinars, and interactive sessions directly within your platform.</p>
-          <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
-          <ul class="checks">
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          </ul>
-        </div>
-        <div class="integrations__art">
-          <img src="assets/img/panel-tab-zoom.png" alt="A scheduled Zoom meeting in the activity feed beside the Zoom settings panel" loading="lazy">
-        </div>
-      </div>
-      <div class="integrations__slide integrations__slide--tab integrations__slide--blue">
-        <div class="integrations__copy">
-          <p class="integrations__lead">Implement reCAPTCHA for BuddyBoss to enhance security and prevent spam across your community.</p>
-          <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
-          <ul class="checks">
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          </ul>
-        </div>
-        <div class="integrations__art">
-          <img src="assets/img/panel-tab-recaptcha.png" alt="A reCAPTCHA image challenge and the "I'm not a robot" checkbox" loading="lazy">
-        </div>
-      </div>
-      <div class="integrations__slide integrations__slide--tab integrations__slide--blue">
-        <div class="integrations__copy">
-          <p class="integrations__lead">Create professional event experience with event calendar pro plugin.</p>
-          <p class="body-sm">A classic Like, or up to six expressive emotions — members react to posts, comments, blogs, and private messages.</p>
-          <ul class="checks">
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-            <li><img src="assets/icon/check.svg" alt=""><span><b>Feature name</b> — what it does</span></li>
-          </ul>
-        </div>
-        <div class="integrations__art">
-          <img src="assets/img/panel-tab-events.png" alt="An event schedule list beside an event details screen" loading="lazy">
-        </div>
-      </div>
-    </div>
-    <div class="integrations__bar">
-      <div class="integrations__dots">
-          <button type="button" class="integrations__dot is-active" aria-label="Integrations overview"></button>
-          <button type="button" class="integrations__dot" aria-label="Tutor LMS course integration"></button>
-          <button type="button" class="integrations__dot" aria-label="Zoom integration"></button>
-          <button type="button" class="integrations__dot" aria-label="reCaptcha integration"></button>
-          <button type="button" class="integrations__dot" aria-label="Event calendar pro integration"></button>
-      </div>
-      <div class="integrations__nav">
-        <button type="button" class="integrations__arrow integrations__arrow--prev" aria-label="Previous integration">
-          <img src="assets/icon/carousel-arrow-left.svg" alt="" aria-hidden="true">
-        </button>
-        <button type="button" class="integrations__arrow integrations__arrow--next" aria-label="Next integration">
-          <img src="assets/icon/carousel-arrow-right.svg" alt="" aria-hidden="true">
-        </button>
-      </div>
+      <figure class="hp-review__body">
+        <blockquote class="hp-review__quote">
+          <img class="hp-review__mark" src="assets/icon/hp-review-quotes.svg" alt="" aria-hidden="true">
+          <p class="h4 hp-review__text">The freedom, flexibility, and support keep us with BuddyBoss for the long haul. It’s helping us turn our vision of building the Internet of Apps into reality.</p>
+        </blockquote>
+        <figcaption class="hp-review__by">
+          <span class="review__name">John Doe</span>
+          <span class="review__role">Managing Director</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ============================== STATS =========================== -->
-<section class="shell section">
-  <div class="stats reveal">
-    <div class="stat">
-      <div class="stat__top">
-        <p class="stat__num">30+</p>
-        <p class="stat__text">Community modules built into one platform for every stage of your community journey</p>
-      </div>
-      <span class="stat__bar"></span>
+<!-- ================== 15-DIFFERENCE ================== -->
+<section class="shell hp-diff">
+  <div class="hp-diff__head">
+    <span class="tag"><span>THE DIFFERENCE</span></span>
+    <h2 class="h2 hp-diff__title">The four ways to run a community</h2>
+    <p class="body-md hp-diff__lede">BuddyBoss runs on your own WordPress site, so it works with the plugins you already use. LMS and commerce integrations come with Launch and Scale, and we never take a cut of sales made through them.</p>
+  </div>
+
+  <div class="hp-diff__tablewrap">
+    <span class="hp-diff__edge" aria-hidden="true"></span>
+    <table class="hp-diff__table">
+      <thead>
+        <tr>
+          <th class="hp-diff__hcell hp-diff__hcell--label hp-diff__c0" scope="col"><span class="hp-diff__spacer">&#8203;</span></th>
+          <th class="hp-diff__hcell hp-diff__c1" scope="col">Facebook &amp; Discord</th>
+          <th class="hp-diff__hcell hp-diff__c2" scope="col">Hosted platforms</th>
+          <th class="hp-diff__hcell hp-diff__c3" scope="col">WordPress plugins</th>
+          <th class="hp-diff__hcell hp-diff__bb hp-diff__c4" scope="col">
+            <span class="hp-diff__brand">
+              <img class="hp-diff__mark" src="assets/icon/hp-diff-bb-mark.svg" alt="" aria-hidden="true">
+              <span class="hp-diff__brandname">BuddyBoss</span>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Where it runs</th>
+          <td class="hp-diff__cell">Their platform, their rules</td>
+          <td class="hp-diff__cell">Their servers, their rules</td>
+          <td class="hp-diff__cell">Your own WordPress site</td>
+          <td class="hp-diff__cell hp-diff__bb">Your own WordPress site and database</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Your members</th>
+          <td class="hp-diff__cell">Facebook exports no member emails</td>
+          <td class="hp-diff__cell">The platform holds the relationship</td>
+          <td class="hp-diff__cell">Yours</td>
+          <td class="hp-diff__cell hp-diff__bb">Yours — members, content and data</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Who sees a post</th>
+          <td class="hp-diff__cell">An algorithm decides</td>
+          <td class="hp-diff__cell">The platform decides</td>
+          <td class="hp-diff__cell">You do</td>
+          <td class="hp-diff__cell hp-diff__bb">You do. No algorithm, no reach limits</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Fees on sales</th>
+          <td class="hp-diff__cell">Discord takes 10% of subscriptions</td>
+          <td class="hp-diff__cell">0.5% to 10% of sales, forever</td>
+          <td class="hp-diff__cell">None</td>
+          <td class="hp-diff__cell hp-diff__bb">0% on Launch and Scale. 2.9% on Start</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">What is included</th>
+          <td class="hp-diff__cell">Chat and posts</td>
+          <td class="hp-diff__cell">Community, courses on higher tiers</td>
+          <td class="hp-diff__cell">Community only, assembled yourself</td>
+          <td class="hp-diff__cell hp-diff__bb">Community, courses and memberships in one licence</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Branded app</th>
+          <td class="hp-diff__cell">No — you are in their app</td>
+          <td class="hp-diff__cell">A premium tier, or their brand</td>
+          <td class="hp-diff__cell">Limited or none</td>
+          <td class="hp-diff__cell hp-diff__bb">Your own app in both stores</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Support</th>
+          <td class="hp-diff__cell">Community forums</td>
+          <td class="hp-diff__cell">Included in the plan</td>
+          <td class="hp-diff__cell">Varies. None on the free ones</td>
+          <td class="hp-diff__cell hp-diff__bb">Included, plus an agency team</td>
+        </tr>
+        <tr>
+          <th class="hp-diff__cell hp-diff__label" scope="row">Hosting</th>
+          <td class="hp-diff__cell">Included</td>
+          <td class="hp-diff__cell">Included in the price</td>
+          <td class="hp-diff__cell">You bring it</td>
+          <td class="hp-diff__cell hp-diff__bb">You bring it</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================== 16-BENTO3 ================== -->
+<section class="shell hp-bento3">
+  <div class="hp-bento3__head">
+    <span class="tag"><span>built your way</span></span>
+    <h2 class="h2 hp-bento3__title">Freedom to build without limits</h2>
+    <p class="body-md hp-bento3__lede">Build online communities, membership sites, and social learning platforms with profiles, groups, forums, activity feeds, messaging, notifications, media sharing, courses, gamification, and mobile apps</p>
+  </div>
+
+  <div class="hp-bento3__grid">
+    <div class="hp-bento3__row">
+
+      <article class="hp-bcard hp-bcard--privacy">
+        <div class="hp-bcard__wrap">
+          <h3 class="h5 hp-bcard__title">Data &amp; privacy</h3>
+          <p class="hp-bcard__text">Members control how their data is collected and shared across the community.</p>
+        </div>
+        <div class="hp-bcard__art">
+          <img class="hp-b3-privacy" src="assets/img/hp-b3-privacy.png" alt="" aria-hidden="true">
+        </div>
+      </article>
+
+      <article class="hp-bcard hp-bcard--appearance">
+        <div class="hp-bcard__wrap">
+          <h3 class="h5 hp-bcard__title">Appearance options </h3>
+          <p class="hp-bcard__text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from algorithms.</p>
+        </div>
+        <div class="hp-bcard__art">
+          <span class="hp-b3-glow hp-b3-glow--appearance"></span>
+          <span class="hp-b3-shot hp-b3-shot--appearance"><img src="assets/img/hp-b3-appearance.png" alt="" aria-hidden="true"></span>
+        </div>
+      </article>
+
     </div>
-    <div class="stat">
-      <div class="stat__top">
-        <p class="stat__num">300+</p>
-        <p class="stat__text">Integrations with leading WordPress plugins and trusted third-party services</p>
-      </div>
-      <span class="stat__bar"></span>
-    </div>
-    <div class="stat">
-      <div class="stat__top">
-        <p class="stat__num">10+</p>
-        <p class="stat__text">Years of building community software trusted by WordPress creators and businesses</p>
-      </div>
-      <span class="stat__bar"></span>
-    </div>
-    <div class="stat">
-      <div class="stat__top">
-        <p class="stat__num">65,000+</p>
-        <p class="stat__text">Communities worldwide trust BuddyBoss to grow, engage, and retain their members</p>
-      </div>
-      <span class="stat__bar"></span>
+
+    <div class="hp-bento3__row">
+
+      <article class="hp-bcard hp-bcard--editors">
+        <div class="hp-bcard__wrap">
+          <h3 class="h5 hp-bcard__title">Drag &amp; drop editors</h3>
+          <p class="hp-bcard__text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from algorithms.</p>
+        </div>
+        <div class="hp-bcard__art">
+          <span class="hp-b3-glow hp-b3-glow--editors"></span>
+          <span class="hp-b3-shot hp-b3-shot--editors"><img src="assets/img/hp-b3-editors.png" alt="" aria-hidden="true"></span>
+          <div class="hp-b3-tools">
+            <div class="hp-b3-tools__row">
+              <span class="hp-b3-tool hp-b3-tool--1"><img src="assets/img/hp-b3-tool-1.png" alt="" aria-hidden="true"></span>
+              <span class="hp-b3-tool hp-b3-tool--2"><span class="hp-b3-tool__crop"><img src="assets/img/hp-b3-tool-2.png" alt="" aria-hidden="true"></span></span>
+              <span class="hp-b3-tool hp-b3-tool--3"><img src="assets/img/hp-b3-tool-3.png" alt="" aria-hidden="true"></span>
+              <span class="hp-b3-tool hp-b3-tool--4"><img src="assets/img/hp-b3-tool-4.png" alt="" aria-hidden="true"></span>
+            </div>
+          </div>
+          <span class="hp-b3-shot hp-b3-shot--blocks"><img src="assets/img/hp-b3-blocks.png" alt="" aria-hidden="true"></span>
+        </div>
+      </article>
+
+      <article class="hp-bcard hp-bcard--custom">
+        <div class="hp-bcard__wrap">
+          <h3 class="h5 hp-bcard__title">Custom development</h3>
+          <p class="hp-bcard__text">Personalized activity feeds with posts, comments, likes, and @mentions — the heartbeat of your community, free from</p>
+        </div>
+        <div class="hp-bcard__art">
+          <span class="hp-b3-glow hp-b3-glow--custom"></span>
+          <div class="hp-b3-code">
+            <div class="hp-b3-code__bar">
+              <span class="hp-b3-code__dot hp-b3-code__dot--red"></span>
+              <span class="hp-b3-code__dot hp-b3-code__dot--amber"></span>
+              <span class="hp-b3-code__dot hp-b3-code__dot--green"></span>
+            </div>
+            <div class="hp-b3-code__body">
+              <div class="hp-b3-code__gutter"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+              <div class="hp-b3-code__lines">
+                <p class="hp-b3-code__comment">// extend any member profile</p>
+                <p><span class="hp-b3-code__fn">add_filter</span>( <span class="hp-b3-code__str">'bb_member_profile'</span>, <span class="hp-b3-code__fn">function</span>( $fields ) {</p>
+                <p>  $fields[<span class="hp-b3-code__str">'badge'</span>] = <span class="hp-b3-code__fn">get_rank</span>( $user );</p>
+                <p>  <span class="hp-b3-code__fn">return</span> $fields;</p>
+                <p>} );</p>
+                <p>&#8203;</p>
+                <p><span class="hp-b3-code__fn">register_rest_route</span>( <span class="hp-b3-code__str">'bb/v1'</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- ========================== TESTIMONIALS ======================== -->
-<section class="mp-reviews section">
+<!-- ================== 17-TESTIMONIALS ================== -->
+<section class="mp-reviews hp-testimonials">
   <div class="shell">
     <h2 class="h2 mp-reviews__title reveal">Trusted by 65,000+ customers and rated 4.8/5 based on 700+ customer reviews</h2>
+
+    <div class="hp-experts stagger">
+      <article class="hp-expert">
+        <div class="hp-expert__info">
+          <div class="hp-expert__who">
+            <img class="hp-expert__portrait" src="assets/icon/hp-av-expert.png" alt="">
+            <div class="hp-expert__id">
+              <p class="h6 hp-expert__name">Adam Preiser</p>
+              <p class="hp-expert__role">
+                <span class="hp-expert__role-pre">Founder of</span>
+                <span class="hp-expert__org">WPCrafter</span>
+              </p>
+            </div>
+          </div>
+          <img class="hp-expert__logo hp-expert__logo--wpcrafter" src="assets/icon/hp-logo-wpcrafter.png" alt="WPCrafter">
+        </div>
+        <blockquote class="hp-expert__quote">
+          <p class="hp-expert__text">“I fell in love with BuddyBoss instantly. It got me to open up my wallet right away and start using it!”</p>
+        </blockquote>
+      </article>
+
+      <article class="hp-expert">
+        <div class="hp-expert__info">
+          <div class="hp-expert__who">
+            <img class="hp-expert__portrait" src="assets/icon/hp-av-expert.png" alt="">
+            <div class="hp-expert__id">
+              <p class="h6 hp-expert__name">Stephen James</p>
+              <p class="hp-expert__role">
+                <span class="hp-expert__role-pre">Founder of</span>
+                <span class="hp-expert__org">ProjectLifeMastery</span>
+              </p>
+            </div>
+          </div>
+          <img class="hp-expert__logo hp-expert__logo--plm" src="assets/icon/hp-logo-projectlifemastery.png" alt="Project Life Mastery">
+        </div>
+        <blockquote class="hp-expert__quote">
+          <p class="hp-expert__text">“I looked at Kajabi and Thinkific and a variety of others, but they didn’t accomplish what I was looking for, they didn’t allow the customization that I wanted for my customers.”</p>
+        </blockquote>
+      </article>
+
+      <article class="hp-expert">
+        <div class="hp-expert__info">
+          <div class="hp-expert__who">
+            <img class="hp-expert__portrait" src="assets/icon/hp-av-expert.png" alt="">
+            <div class="hp-expert__id">
+              <p class="h6 hp-expert__name">Vito Peleg</p>
+              <p class="hp-expert__role">
+                <span class="hp-expert__role-pre">Founder of</span>
+                <span class="hp-expert__org">Atarim</span>
+              </p>
+            </div>
+          </div>
+          <img class="hp-expert__logo hp-expert__logo--atarim" src="assets/icon/hp-logo-atarim.png" alt="Atarim">
+        </div>
+        <blockquote class="hp-expert__quote">
+          <p class="hp-expert__text">“BuddyBoss worked perfectly and literally saved us months and months of development”</p>
+        </blockquote>
+      </article>
+
+      <article class="hp-expert">
+        <div class="hp-expert__info">
+          <div class="hp-expert__who">
+            <img class="hp-expert__portrait" src="assets/icon/hp-av-expert.png" alt="">
+            <div class="hp-expert__id">
+              <p class="h6 hp-expert__name">Justin Ferriman</p>
+              <p class="hp-expert__role">
+                <span class="hp-expert__role-pre">Founder &amp; Advisor of</span>
+                <span class="hp-expert__org">LearnDash</span>
+              </p>
+            </div>
+          </div>
+          <img class="hp-expert__logo hp-expert__logo--learndash" src="assets/icon/hp-logo-learndash.png" alt="LearnDash">
+        </div>
+        <blockquote class="hp-expert__quote">
+          <p class="hp-expert__text">“Big props to the guys at BuddyBoss for hitting a home run with this product. Such a great fit for many use-cases.”</p>
+        </blockquote>
+      </article>
+    </div>
+
     <div class="mp-rgrid stagger">
       <div class="mp-rcol">
         <article class="mp-review">
@@ -785,7 +1006,7 @@
           <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
             <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
           </div>
-          <p class="mp-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss. These guys and gals are good!</p>
+          <p class="mp-review__text">Great support people. Very attentive and helpful and quick to respond. We launched a new community site that includes an app. This was a major first-time undertaking for us, and we couldn't have done it without the expertise and patience determination we found in the support team at Buddyboss.</p>
         </article>
         <article class="mp-review">
           <img class="mp-review__src" src="assets/icon/badge-wordpress.svg" alt="WordPress">
@@ -809,7 +1030,7 @@
           <div class="mp-review__stars" role="img" aria-label="Rated 4 out of 5">
             <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20-outline.svg" alt="">
           </div>
-          <p class="mp-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them for the long haul! We have a vision to build the Internet of Apps, and BuddyBoss is helping make that a reality!</p>
+          <p class="mp-review__text">BuddyBoss is leading the way for Wordpress Users to enter into the App Space with their Native App plugin, Platform Plugin and plan to make it even easier in the future. It has personally revolutionized our own business, and as full stack developers we can attest to the uniqueness of what they've created. Bad reviews happen every day, but it's not every day where you come across an opportunity to utilize something like BB App and Platform with freedom, and the support of those freedoms is why I'm sticking with them.</p>
         </article>
         <article class="mp-review">
           <img class="mp-review__src" src="assets/icon/badge-trustpilot.png" alt="Trustpilot">
@@ -820,7 +1041,7 @@
           <div class="mp-review__stars" role="img" aria-label="Rated 5 out of 5">
             <img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt=""><img src="assets/icon/star-20.svg" alt="">
           </div>
-          <p class="mp-review__text">The BuddyBoss DFY Web process was very well laid out. It provided video explanations of each step and instructions for completing those steps. The questionnaires at the beginning of each stage help to set the expectations of the upcoming work. They also offer a full service agency approach if you would prefer to not be involved in the setup at all.</p>
+          <p class="mp-review__text">The BuddyBoss DFY Web process was very well laid out. It provided video explanations of each step and instructions for completing those steps. The questionnaires at the beginning of each stage help to set the expectations of the upcoming work.</p>
         </article>
       </div>
       <div class="mp-rcol">
@@ -851,18 +1072,51 @@
   </div>
 </section>
 
-<!-- ============================== CTA ============================= -->
-<section class="shell section">
-  <div class="cta reveal reveal--zoom">
-    <h2 class="h1 cta__title">Build your online community today with 50% off</h2>
-    <p class="cta__text">Build thriving communities, membership sites, and online learning platforms with BuddyBoss—the leading WordPress community platform.</p>
-    <a href="#" class="btn btn--white btn--lg">Get BuddyBoss Now <img class="ico-arrow" src="assets/icon/cta-arrow.svg" alt="" aria-hidden="true"></a>
+<!-- ================== 18-PRICING ================== -->
+<section class="shell hp-pricing">
+  <div class="hp-pricing__row">
+    <div class="hp-pricing__head">
+      <span class="tag"><span>Pricing</span></span>
+      <h2 class="h3">Build your community from $99 and your branded app from $99</h2>
+      <p class="body-sm">Everything you need to build and grow an online community, membership site, or social learning platform—with powerful web and mobile experiences.</p>
+    </div>
+    <div class="hp-pricing__plans">
+      <div class="hp-pricing__plan">
+        <div class="hp-pricing__top">
+          <div class="hp-pricing__name">
+            <span class="hp-pricing__plate">
+              <img src="assets/icon/hp-price-web.svg" alt="" aria-hidden="true">
+            </span>
+            <p class="h6 hp-pricing__product">BuddyBoss Web</p>
+          </div>
+        </div>
+        <div class="hp-pricing__body">
+          <p class="h2 hp-pricing__price"><span class="hp-pricing__price-lead">Start at</span><span class="hp-pricing__price-figure">$99<span class="hp-pricing__price-unit">/year</span></span></p>
+          <p class="body-sm hp-pricing__note">Build a complete community, membership site, or online learning platform.</p>
+        </div>
+        <a class="btn btn--solid btn--lg" href="#">View Web Pricing</a>
+      </div>
+      <div class="hp-pricing__plan">
+        <div class="hp-pricing__top">
+          <div class="hp-pricing__name">
+            <span class="hp-pricing__plate">
+              <img src="assets/icon/hp-price-app.svg" alt="" aria-hidden="true">
+            </span>
+            <p class="h6 hp-pricing__product">BuddyBoss App</p>
+          </div>
+        </div>
+        <div class="hp-pricing__body">
+          <p class="h2 hp-pricing__price"><span class="hp-pricing__price-lead">Start at</span><span class="hp-pricing__price-figure">$99<span class="hp-pricing__price-unit">/month</span></span></p>
+          <p class="body-sm hp-pricing__note">Launch your branded mobile app for iOS or Android through your own developer account.</p>
+        </div>
+        <a class="btn btn--solid btn--lg" href="#">View App Pricing</a>
+      </div>
+    </div>
   </div>
 </section>
 
 </main>
 
-<!-- ============================ FOOTER ============================ -->
 <footer class="site-footer">
   <div class="shell">
     <div class="site-footer__cols">
