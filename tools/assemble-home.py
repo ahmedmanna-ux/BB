@@ -105,15 +105,33 @@ def main() -> None:
             css_parts.append(f'\n/* ---------- {f.stem} ---------- */\n' + slab(p))
     rhythm = """
 /* ---------- page rhythm ----------
-   Every row of the homepage sits exactly 88px below the one before it — one
-   gap, no exceptions, all the way from the hero to the footer. Stating it once
-   here means a section that forgets to set its own still lands right; one did,
-   and nothing about its own geometry gave that away. */
-.hp > * + * { margin-top: 88px; }
+   Every row inside the content frame sits exactly 104px below the one before
+   it — one gap, no exceptions, all the way to the footer. Stating it once here
+   means a section that forgets to set its own still lands right; one did, and
+   nothing about its own geometry gave that away.
+
+   It was 88 until 2026-09-15, when the design widened all eighteen content
+   gaps to 104 and grew the page 16561 -> 16849. That is exactly 18 x 16, which
+   is how the change was identified: no row was added, removed or resized, only
+   moved. The hero is the one exception — see below.
+
+   The selector is `main.hp`, not `.hp`, and that matters. gen-home-css.py
+   rewrites this sheet
+   for WordPress, where there is no page wrapper at all: every pattern is an
+   independent top-level block carrying `bbh` itself, so a bare `.bbh > * + *`
+   matched each ROW'S OWN CHILDREN and pushed them apart instead of spacing the
+   rows. Anchoring to the <main> element makes the rule a no-op over there,
+   where per-row margins do the work, and changes nothing here. */
+main.hp > * + * { margin-top: 104px; }
+/* The hero still clears the first row by 88, not 104: the content frame starts
+   at y=888 against a hero that ends at 800, and that gap did not move when the
+   rest did. Specificity beats the rule above, so order here is not
+   load-bearing. */
+main.hp > .hp-hero + * { margin-top: 88px; }
 /* the footer is a sibling of <main>, not a child, so the rule above cannot
    reach it and it would otherwise fall back to the 80px --section-gap the
    other fifteen pages use */
-main.hp + .site-footer { margin-top: 88px; }"""
+main.hp + .site-footer { margin-top: 104px; }"""
     block = FENCE_OPEN + '\n' + rhythm + '\n' + '\n'.join(css_parts) + '\n' + FENCE_CLOSE
 
     style_path = SITE / 'css' / 'style.css'

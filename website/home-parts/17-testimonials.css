@@ -13,9 +13,9 @@
    are different here, and only those are restated below.
    ================================================================= */
 
-/* Content rows run on an exact 88px rhythm and every part carries its
-   own gap — bento3 ends at 14004, this band starts at 14092. */
-.hp-testimonials { margin-top: 88px; }
+/* Content rows run on an exact 104px rhythm and every part carries its
+   own gap — bento3 ends at 14244, this band starts at 14348. */
+.hp-testimonials { margin-top: 104px; }
 
 /* The module pages set 40 under the headline; this band sets 48 —
    the h2 ends at 192 and the expert row starts at 240. */

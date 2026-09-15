@@ -14,8 +14,9 @@
    is its own component; the colour variants below are the only deltas.
    ================================================================= */
 
-/* Content rows on this page run on an exact 88px rhythm. */
-.hp-split { margin-top: 88px; }
+/* Content rows on this page run on an exact 104px rhythm (88 until
+   2026-09-15). This rule covers all three .hp-split rows. */
+.hp-split { margin-top: 104px; }
 
 /* ---------- section head: eyebrow + headline + lede --------------- */
 .hp-split__head {

@@ -25,16 +25,25 @@
       <a href="#">Products <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
       <a href="#">Pricing</a>
       <a href="#">Integrations <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
-      <a href="#">Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
+      <div class="navdrop navdrop--solutions">
+        <button type="button" class="navdrop__toggle" aria-expanded="false" aria-controls="navSolutions">
+          Solutions <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
+        </button>
+        <div class="navdrop__menu" id="navSolutions" hidden>
+          <a href="use-cases.html">Use Cases</a>
+          <a href="education.html">Education</a>
+        </div>
+      </div>
       <a href="#">Resources <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true"></a>
 
-      <div class="navdrop">
+      <div class="navdrop navdrop--preview">
         <button type="button" class="navdrop__toggle" aria-expanded="false" aria-controls="navPreview">
           Preview <img src="assets/icon/hdr-caret.svg" alt="" aria-hidden="true">
         </button>
         <div class="navdrop__menu" id="navPreview" hidden>
           <a href="index.html">Home</a>
           <a href="features.html">Features (Top Modules)</a>
+          <a href="use-cases.html">Use Cases</a>
           <a href="activity-feeds.html" class="is-current">Activity Feeds</a>
           <a href="member-profiles.html">Member Profiles</a>
           <a href="social-groups.html">Social Groups</a>

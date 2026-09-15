@@ -15,7 +15,7 @@
    The tint is the band's own fill, so .shell sits inside it rather than
    on the section, which is the opposite of the untinted rows. */
 .hp-review {
-  margin-top: 88px;
+  margin-top: 104px;
   padding-block: 64px;
   background: var(--bg-default-subtle);
 }

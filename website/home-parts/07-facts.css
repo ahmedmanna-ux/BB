@@ -7,11 +7,11 @@
    different component in every respect but the name.
    ================================================================= */
 
-/* Content rows on this page run on an exact 88px rhythm: gamification
-   ends at 5593, this band starts at 5681. Every other part carries its
+/* Content rows on this page run on an exact 104px rhythm: gamification
+   ends at 5673, this band starts at 5777. Every other part carries its
    own gap — the assembler only concatenates — and .section would put an
-   80 here, so the 88 is set directly. */
-.hp-facts { margin-top: 88px; }
+   80 here, so the 104 is set directly. */
+.hp-facts { margin-top: 104px; }
 
 .hp-facts__card {
   /* The card's stroke is a gradient, not a flat colour — full

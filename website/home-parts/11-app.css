@@ -1,3 +1,10 @@
 /* The Mobile App band is the same component the Features page carries, and
-   all of its styling already lives in style.css under .app-band. Nothing to
-   add here — the file exists so the part list reads complete. */
+   all of its styling already lives in style.css under .app-band. The one
+   thing that cannot live there is the row gap: .app-band is shared, and on
+   the Features page the row takes its 80 from .section. So the homepage adds
+   its own hook rather than giving the shared component a margin.
+
+   It is set here rather than left to main.hp > * + * because the WordPress
+   build has no page wrapper for that rule to hang off — see 02-bento1.css,
+   which had the same problem. */
+.hp-app { margin-top: 104px; }

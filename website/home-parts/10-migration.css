@@ -12,7 +12,7 @@
 
 /* 100 (head) + 40 + 560 (card) = 700. 88 is the homepage row rhythm. */
 .hp-migration {
-  margin-top: 88px;
+  margin-top: 104px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

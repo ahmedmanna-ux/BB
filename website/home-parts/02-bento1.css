@@ -12,13 +12,26 @@
    .h2/.h5/.h6, .body-sm/.body-md, .btn — is reused as it stands.
    ================================================================= */
 
-.hp-bento { display: flex; flex-direction: column; gap: 40px; }
+/* The 104px row gap is set here, not left to main.hp > * + *, because the
+   WordPress build has no page wrapper for that rule to hang off — every
+   pattern is a top-level block. Every other row carries its own; this one and
+   the App band did not, and they were the two rows that came out flush
+   against their neighbour in the WP preview. */
+.hp-bento { margin-top: 104px; display: flex; flex-direction: column; gap: 40px; }
 
 /* ---------- head -------------------------------------------------
-   align-items:flex-start makes each row hug its own text, which is
-   what Figma's 973-wide title frame is — a shrink-wrap, not a cap. */
+   Centred as of 2026-09-15. It used to be flush left at x=160; the
+   design moved the whole Head frame to x=313.5 on the 1600 canvas —
+   313.5 + 973/2 = 800, dead centre — and centred the tag and lede
+   inside it too. align-items still shrink-wraps each row to its own
+   text, which is what Figma's 973-wide title frame is; only the axis
+   the rows align on changed.
+
+   This is the FIRST bento only. The other two heads did not move, and
+   they are .hp-bento2__head / .hp-bento3__head, so nothing here can
+   reach them. */
 .hp-bento__head {
-  display: flex; flex-direction: column; gap: 16px; align-items: flex-start;
+  display: flex; flex-direction: column; gap: 16px; align-items: center;
 }
 /* The homepage sets its 46/56 section heads in Bold; .h2 ships SemiBold,
    which is the Features-page weight. Same split the module pages have. */
@@ -30,6 +43,7 @@
   width: 956px; height: 52px;
   font-size: var(--size-md); line-height: var(--lh-md); font-weight: 500;
   color: var(--text-secondary);
+  text-align: center;
 }
 
 /* ---------- the bento ---------------------------------------------

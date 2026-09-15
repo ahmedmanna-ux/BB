@@ -33,7 +33,7 @@
    ================================================================= */
 
 .hp-diff {
-  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  margin-top: 104px;              /* the homepage's 104px row rhythm */
   display: flex;
   flex-direction: column;
   align-items: flex-start;

@@ -6,7 +6,12 @@
 
 /* The frame is a centred column: heading, 56 gap, the logo row, then a
    40px pad on the bottom edge only — 36 + 56 + 160 + 40 = 292.
-   88 on top is the homepage's row rhythm (hero ends 800, this starts 888). */
+
+   88 on top, and it STAYS 88. This is the one row the 2026-09-15 rhythm
+   change did not touch: the design widened every gap inside the content
+   frame to 104, but the hero-to-content gap is fixed by the content frame's
+   own y=888 against a hero ending at 800, and that did not move. Everything
+   below this row is 104. */
 .hp-logowall {
   margin-top: 88px;
   padding-bottom: 40px;

@@ -12,7 +12,7 @@
    ============================================================= */
 
 .hp-integrations {
-  margin-top: 88px;              /* the homepage's 88px row rhythm */
+  margin-top: 104px;              /* the homepage's 104px row rhythm */
   max-width: var(--page-max);
   margin-inline: auto;
   display: flex;

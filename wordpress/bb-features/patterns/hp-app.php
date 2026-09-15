@@ -10,8 +10,8 @@
 
 $bbh_img = get_theme_file_uri( 'assets/img/' );
 ?>
-<!-- wp:group {"align":"full","className":"bbh bbh-app-band","layout":{"type":"default"}} -->
-<div class="wp-block-group alignfull bbh bbh-app-band">
+<!-- wp:group {"align":"full","className":"bbh bbh-app-band bbh-app","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull bbh bbh-app-band bbh-app">
 	<!-- wp:html -->
 	<img class="bbh-app-band__deco bbh-app-band__poly" src="<?php echo esc_url( get_theme_file_uri( 'assets/img/app-polygon.svg' ) ); ?>" alt="" aria-hidden="true"/>
 	<!-- /wp:html -->

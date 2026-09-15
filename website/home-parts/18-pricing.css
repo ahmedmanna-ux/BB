@@ -9,10 +9,10 @@
    the .btn--solid .btn--lg pair.
    ================================================================= */
 
-/* The content rows run on an exact 88px rhythm: testimonials end at
-   15616, this band starts at 15704. Each part carries its own gap —
+/* The content rows run on an exact 104px rhythm: testimonials end at
+   15872, this band starts at 15976. Each part carries its own gap —
    the assembler only concatenates, and .section would put an 80 here. */
-.hp-pricing { margin-top: 88px; }
+.hp-pricing { margin-top: 104px; }
 
 .hp-pricing__row {
   display: flex;
